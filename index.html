@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Nabbit captures, categorises, and files every receipt the moment it happens. Receipt management built for Canadian small businesses. Free 30-day trial."/>
+  <meta property="og:title" content="Nabbit — Every receipt, nabbed and filed."/>
+  <meta property="og:description" content="Snap, forward, or drop — Nabbit captures receipts instantly and has them organised, categorised, and export-ready before you're back at your desk."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://nabbit.ca"/>
+  <title>Nabbit — Every receipt, nabbed and filed.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --indigo:     #4F46E5;
+      --indigo-dk:  #3730A3;
+      --indigo-lt:  #EEF2FF;
+      --citrine:    #F5C518;
+      --citrine-dk: #D4A800;
+      --slate:      #1E1B4B;
+      --slate-md:   #374151;
+      --slate-lt:   #6B7280;
+      --white:      #FAFAF7;
+      --border:     #E5E4E9;
+      --r-sm: 8px; --r-md: 16px; --r-lg: 24px; --r-xl: 32px;
+      --shadow-sm:  0 2px 8px rgba(30,27,75,0.08);
+      --shadow-md:  0 4px 24px rgba(79,70,229,0.12), 0 1px 4px rgba(30,27,75,0.06);
+      --shadow-lg:  0 20px 60px rgba(79,70,229,0.18), 0 4px 16px rgba(30,27,75,0.10);
+      --font-d: 'Plus Jakarta Sans', sans-serif;
+      --font-b: 'Inter', sans-serif;
+      --pad-x: clamp(1.25rem, 5vw, 5rem);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); background: var(--white); color: var(--slate); line-height: 1.6; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ─── UTILITY ────────────────────────────────────────── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 var(--pad-x); }
+    .eyebrow {
+      font-family: var(--font-d); font-weight: 700; font-size: .72rem;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--indigo);
+    }
+    .section-title {
+      font-family: var(--font-d); font-weight: 800;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      letter-spacing: -.03em; line-height: 1.1; color: var(--slate);
+    }
+    .body-copy { font-size: 1rem; color: var(--slate-lt); line-height: 1.75; }
+
+    /* ─── BUTTONS ────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-d); font-weight: 700; font-size: .9rem;
+      padding: .7rem 1.5rem; border-radius: 100px; border: none;
+      transition: transform .15s, box-shadow .2s, background .2s, color .2s;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--indigo); color: #fff;
+      box-shadow: 0 2px 12px rgba(79,70,229,.35);
+    }
+    .btn-primary:hover { background: var(--indigo-dk); box-shadow: 0 6px 20px rgba(79,70,229,.4); }
+    .btn-citrine {
+      background: var(--citrine); color: var(--slate);
+      box-shadow: 0 2px 12px rgba(245,197,24,.35);
+      font-size: 1rem; padding: .85rem 2rem;
+    }
+    .btn-citrine:hover { background: var(--citrine-dk); box-shadow: 0 6px 20px rgba(245,197,24,.5); }
+    .btn-outline {
+      background: transparent; color: var(--slate);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--indigo); color: var(--indigo); }
+    .btn-ghost-white {
+      background: rgba(255,255,255,.12); color: #fff;
+      border: 1.5px solid rgba(255,255,255,.2);
+    }
+    .btn-ghost-white:hover { background: rgba(255,255,255,.2); }
+    .btn-lg { font-size: 1.05rem; padding: .9rem 2.25rem; }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(250,250,247,.88);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .2s;
+    }
+    nav.scrolled { box-shadow: 0 2px 16px rgba(30,27,75,.08); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-d); font-weight: 900; font-size: 1.3rem;
+      letter-spacing: -.02em; color: var(--slate);
+    }
+    /* Inline SVG rabbit mark in nav */
+    .nav-rabbit { width: 36px; height: 36px; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: .88rem; font-weight: 500; color: var(--slate-md); transition: color .2s; }
+    .nav-links a:hover { color: var(--indigo); }
+    .nav-actions { display: flex; align-items: center; gap: .75rem; }
+    .nav-login { font-family: var(--font-d); font-weight: 600; font-size: .88rem; color: var(--slate-md); transition: color .2s; }
+    .nav-login:hover { color: var(--indigo); }
+
+    /* Mobile nav */
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--slate); border-radius: 2px; transition: all .3s; }
+    .mobile-menu {
+      display: none; position: fixed; inset: 68px 0 0;
+      background: var(--white); z-index: 199; padding: 2rem;
+      flex-direction: column; gap: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--font-d); font-size: 1.15rem; font-weight: 700; color: var(--slate); }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 6vw, 5rem);
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 4rem;
+      min-height: calc(100vh - 68px);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--indigo-lt); color: var(--indigo);
+      font-family: var(--font-d); font-weight: 700; font-size: .75rem;
+      padding: .35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+    .hero-badge .pulse { width: 7px; height: 7px; background: var(--indigo); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+    .hero h1 {
+      font-family: var(--font-d); font-weight: 900;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      letter-spacing: -.045em; line-height: 1.06;
+      color: var(--slate); margin-bottom: 1.5rem;
+    }
+    .hero h1 .accent {
+      color: var(--indigo); position: relative; display: inline-block;
+    }
+    .hero h1 .accent::after {
+      content: ''; position: absolute; left: 0; bottom: 3px;
+      width: 100%; height: 8px; background: var(--citrine);
+      z-index: -1; border-radius: 4px; opacity: .55;
+    }
+    .hero-sub { font-size: 1.1rem; color: var(--slate-lt); max-width: 46ch; margin-bottom: 2.5rem; line-height: 1.75; }
+    .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .hero-trust { display: flex; align-items: center; gap: .75rem; margin-top: 2.25rem; font-size: .82rem; color: var(--slate-lt); }
+    .avatars { display: flex; }
+    .avatars span {
+      width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--white);
+      background: var(--indigo); display: flex; align-items: center; justify-content: center;
+      font-size: .68rem; font-weight: 700; color: #fff; margin-left: -8px;
+    }
+    .avatars span:first-child { margin-left: 0; }
+    .avatars span:nth-child(2) { background: #7C3AED; }
+    .avatars span:nth-child(3) { background: #059669; }
+
+    /* Hero visual - mascot + mockup card */
+    .hero-visual {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 2rem;
+      position: relative;
+    }
+    .mascot-wrapper {
+      position: relative;
+      filter: drop-shadow(0 24px 48px rgba(79,70,229,.22));
+      animation: mascot-float 5s ease-in-out infinite;
+    }
+    @keyframes mascot-float {
+      0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}
+    }
+    .hero-card {
+      background: #fff; border-radius: var(--r-lg); border: 1px solid var(--border);
+      padding: 1.5rem; box-shadow: var(--shadow-lg); width: 300px;
+    }
+    .hero-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+    .hero-card-icon {
+      width: 36px; height: 36px; background: var(--indigo); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .hero-card-merchant { font-family: var(--font-d); font-weight: 700; font-size: .88rem; color: var(--slate); }
+    .hero-card-date { font-size: .72rem; color: var(--slate-lt); }
+    .receipt-line { display: flex; justify-content: space-between; font-size: .78rem; padding: .3rem 0; border-bottom: 1px dashed var(--border); color: var(--slate-md); }
+    .receipt-line:last-of-type { border: none; }
+    .receipt-total { display: flex; justify-content: space-between; margin-top: .75rem; padding-top: .5rem; border-top: 2px solid var(--slate); font-family: var(--font-d); font-weight: 800; font-size: .9rem; }
+    .receipt-tag { display: inline-flex; align-items: center; gap: 4px; margin-top: .75rem; background: var(--indigo-lt); color: var(--indigo); font-size: .7rem; font-weight: 600; padding: .2rem .65rem; border-radius: 5px; }
+    .chip {
+      position: absolute; background: #fff; border-radius: 100px;
+      box-shadow: var(--shadow-md); padding: .45rem .9rem;
+      font-size: .72rem; font-weight: 700; font-family: var(--font-d);
+      color: var(--slate); display: flex; align-items: center; gap: 5px;
+    }
+    .chip-1 { top: -16px; right: -10px; animation: chip-float 4s ease-in-out infinite; }
+    .chip-2 { bottom: 30px; left: -20px; animation: chip-float 4.5s ease-in-out infinite .8s; }
+    @keyframes chip-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+
+    /* ─── PROOF STRIP ────────────────────────────────────── */
+    .proof {
+      background: var(--slate);
+      padding: 1.5rem var(--pad-x);
+    }
+    .proof-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 3rem; flex-wrap: wrap;
+    }
+    .proof-stat { text-align: center; }
+    .proof-num { font-family: var(--font-d); font-weight: 900; font-size: 1.6rem; color: var(--citrine); line-height: 1; }
+    .proof-label { font-size: .75rem; color: rgba(255,255,255,.5); margin-top: 3px; }
+    .proof-div { width: 1px; height: 40px; background: rgba(255,255,255,.12); }
+
+    /* ─── HOW IT WORKS ───────────────────────────────────── */
+    .how { padding: clamp(4rem, 8vw, 7rem) 0; }
+    .how-header { text-align: center; margin-bottom: 4rem; }
+    .how-header .eyebrow { margin-bottom: .75rem; display: block; }
+    .how-header .section-title { margin-bottom: 1rem; }
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; position: relative; }
+    .steps::before {
+      content: ''; position: absolute; top: 28px;
+      left: calc(16.67% + 24px); right: calc(16.67% + 24px); height: 2px;
+      background: repeating-linear-gradient(to right, var(--indigo) 0,var(--indigo) 6px, transparent 6px, transparent 14px);
+      z-index: 0;
+    }
+    .step { position: relative; z-index: 1; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--indigo); color: #fff;
+      font-family: var(--font-d); font-weight: 900; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem; box-shadow: 0 0 0 6px var(--indigo-lt);
+    }
+    .step-title { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--slate); margin-bottom: .4rem; }
+    .step-desc { font-size: .88rem; color: var(--slate-lt); line-height: 1.65; }
+
+    /* ─── FEATURES ───────────────────────────────────────── */
+    .features { padding: clamp(3rem, 7vw, 6rem) 0; background: var(--indigo-lt); }
+    .features-header { text-align: center; margin-bottom: 3.5rem; }
+    .features-header .eyebrow { margin-bottom: .75rem; display: block; }
+    .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+    .feature-card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--r-lg); padding: 1.85rem;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .feature-card:hover { border-color: var(--indigo); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: var(--r-sm);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem;
+    }
+    .feature-icon svg { width: 24px; height: 24px; }
+    .fi-indigo { background: var(--indigo-lt); }
+    .fi-citrine { background: #FEF9E7; }
+    .fi-green { background: #ECFDF5; }
+    .fi-purple { background: #F5F3FF; }
+    .fi-red { background: #FEF2F2; }
+    .fi-teal { background: #F0FDFA; }
+    .feature-title { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--slate); margin-bottom: .4rem; }
+    .feature-desc { font-size: .87rem; color: var(--slate-lt); line-height: 1.65; }
+
+    /* ─── PRICING ────────────────────────────────────────── */
+    .pricing { padding: clamp(4rem, 8vw, 7rem) 0; }
+    .pricing-header { text-align: center; margin-bottom: 3.5rem; }
+    .pricing-header .eyebrow { margin-bottom: .75rem; display: block; }
+    .pricing-header .section-title { margin-bottom: 1rem; }
+    .pricing-toggle {
+      display: inline-flex; align-items: center; gap: .75rem;
+      background: #F3F4F6; border-radius: 100px; padding: .3rem .4rem;
+      margin-top: 1.5rem;
+    }
+    .toggle-btn {
+      font-family: var(--font-d); font-weight: 600; font-size: .82rem;
+      padding: .45rem 1.1rem; border-radius: 100px; border: none; background: none;
+      color: var(--slate-lt); transition: all .2s;
+    }
+    .toggle-btn.active { background: #fff; color: var(--slate); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; align-items: start; }
+    .plan-card {
+      background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--r-xl); padding: 2rem;
+      position: relative; transition: transform .2s, box-shadow .2s;
+    }
+    .plan-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .plan-card.featured {
+      border-color: var(--indigo); border-width: 2px;
+      box-shadow: 0 0 0 4px var(--indigo-lt), var(--shadow-md);
+    }
+    .plan-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--indigo); color: #fff; font-family: var(--font-d);
+      font-weight: 700; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+      padding: .3rem 1rem; border-radius: 100px;
+    }
+    .plan-name { font-family: var(--font-d); font-weight: 800; font-size: .9rem; letter-spacing: .05em; text-transform: uppercase; color: var(--slate-lt); margin-bottom: .5rem; }
+    .plan-price { display: flex; align-items: flex-end; gap: 4px; margin-bottom: .4rem; }
+    .plan-price .currency { font-family: var(--font-d); font-weight: 700; font-size: 1.1rem; color: var(--slate-md); align-self: flex-start; margin-top: .5rem; }
+    .plan-price .amount { font-family: var(--font-d); font-weight: 900; font-size: 2.8rem; letter-spacing: -.04em; color: var(--slate); line-height: 1; }
+    .plan-price .period { font-size: .82rem; color: var(--slate-lt); margin-bottom: .3rem; }
+    .plan-desc { font-size: .82rem; color: var(--slate-lt); margin-bottom: 1.5rem; line-height: 1.55; }
+    .plan-divider { border: none; border-top: 1px solid var(--border); margin: 1.25rem 0; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.75rem; }
+    .plan-features li { display: flex; align-items: flex-start; gap: 8px; font-size: .85rem; color: var(--slate-md); }
+    .plan-features li .check { color: var(--indigo); flex-shrink: 0; margin-top: 1px; }
+    .plan-features li .cross { color: #D1D5DB; flex-shrink: 0; margin-top: 1px; }
+    .plan-cta { width: 100%; text-align: center; justify-content: center; }
+
+    /* ─── TESTIMONIALS ───────────────────────────────────── */
+    .testimonials { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--slate); }
+    .testi-header { text-align: center; margin-bottom: 3.5rem; }
+    .testi-header .eyebrow { color: var(--citrine); display: block; margin-bottom: .75rem; }
+    .testi-header .section-title { color: #fff; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+    .testi-card {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--r-lg); padding: 1.75rem;
+      transition: border-color .25s, transform .25s;
+    }
+    .testi-card:hover { border-color: rgba(255,255,255,.25); transform: translateY(-3px); }
+    .stars { color: var(--citrine); font-size: .85rem; letter-spacing: 2px; margin-bottom: .75rem; }
+    .testi-text { font-size: .9rem; color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 1.25rem; }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .testi-av { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-weight: 700; font-size: .78rem; color: #fff; flex-shrink: 0; }
+    .testi-name { font-family: var(--font-d); font-weight: 700; font-size: .85rem; color: #fff; }
+    .testi-role { font-size: .72rem; color: rgba(255,255,255,.4); }
+
+    /* ─── CTA BANNER ─────────────────────────────────────── */
+    .cta-banner {
+      background: var(--indigo); padding: clamp(4rem, 8vw, 6rem) 0;
+      position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: ''; position: absolute; top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(245,197,24,.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .cta-banner::after {
+      content: ''; position: absolute; bottom: -80px; left: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .cta-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 3rem; }
+    .cta-inner .section-title { color: #fff; margin-bottom: .75rem; }
+    .cta-inner .body-copy { color: rgba(255,255,255,.65); max-width: 46ch; }
+    .cta-actions { display: flex; flex-direction: column; align-items: center; gap: .75rem; flex-shrink: 0; }
+    .cta-note { font-size: .75rem; color: rgba(255,255,255,.4); }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer { background: var(--slate); padding: clamp(3rem, 6vw, 5rem) 0 2rem; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer-brand .nav-logo { color: #fff; margin-bottom: 1rem; }
+    .footer-desc { font-size: .83rem; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 28ch; margin-bottom: 1.5rem; }
+    .social-links { display: flex; gap: 10px; }
+    .social-link {
+      width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      transition: border-color .2s, background .2s;
+    }
+    .social-link:hover { border-color: var(--indigo); background: rgba(79,70,229,.2); }
+    .social-link svg { width: 16px; height: 16px; fill: rgba(255,255,255,.55); }
+    .footer-col h4 { font-family: var(--font-d); font-weight: 700; font-size: .82rem; color: #fff; margin-bottom: .9rem; letter-spacing: .03em; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .footer-col ul a { font-size: .83rem; color: rgba(255,255,255,.45); transition: color .2s; }
+    .footer-col ul a:hover { color: #fff; }
+    .newsletter-form { display: flex; gap: 8px; margin-top: .25rem; }
+    .newsletter-input {
+      flex: 1; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px; padding: .6rem 1rem; font-size: .83rem; color: #fff;
+      font-family: var(--font-b); outline: none; transition: border-color .2s;
+    }
+    .newsletter-input::placeholder { color: rgba(255,255,255,.3); }
+    .newsletter-input:focus { border-color: var(--indigo); }
+    .btn-newsletter {
+      background: var(--indigo); color: #fff; border: none; border-radius: 8px;
+      padding: .6rem 1rem; font-size: .83rem; font-weight: 600; font-family: var(--font-d);
+      transition: background .2s; white-space: nowrap;
+    }
+    .btn-newsletter:hover { background: var(--indigo-dk); }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 2rem; font-size: .78rem; color: rgba(255,255,255,.28); flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: rgba(255,255,255,.28); transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,.6); }
+
+    /* ─── MODAL ──────────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(30,27,75,.65); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+      opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--white); border-radius: var(--r-xl);
+      padding: 2.5rem; width: 100%; max-width: 440px;
+      box-shadow: 0 32px 80px rgba(30,27,75,.3);
+      transform: translateY(16px); transition: transform .3s;
+      position: relative;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-close {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      background: none; border: none; font-size: 1.4rem; color: var(--slate-lt);
+      line-height: 1; padding: 4px; border-radius: 6px; transition: background .2s, color .2s;
+    }
+    .modal-close:hover { background: var(--border); color: var(--slate); }
+    .modal-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 1.5rem; }
+    .modal-logo-text { font-family: var(--font-d); font-weight: 900; font-size: 1.2rem; color: var(--slate); }
+    .modal-title { font-family: var(--font-d); font-weight: 800; font-size: 1.4rem; letter-spacing: -.03em; color: var(--slate); margin-bottom: .4rem; }
+    .modal-sub { font-size: .88rem; color: var(--slate-lt); margin-bottom: 1.75rem; }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+    .form-label { font-family: var(--font-d); font-weight: 600; font-size: .82rem; color: var(--slate); }
+    .form-input {
+      background: #fff; border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      padding: .7rem 1rem; font-size: .9rem; color: var(--slate); font-family: var(--font-b);
+      outline: none; transition: border-color .2s, box-shadow .2s; width: 100%;
+    }
+    .form-input:focus { border-color: var(--indigo); box-shadow: 0 0 0 3px var(--indigo-lt); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .form-submit { width: 100%; justify-content: center; margin-top: .5rem; }
+    .form-terms { font-size: .75rem; color: var(--slate-lt); text-align: center; margin-top: .75rem; line-height: 1.5; }
+    .form-terms a { color: var(--indigo); }
+    .form-divider { display: flex; align-items: center; gap: .75rem; margin: 1rem 0; }
+    .form-divider::before, .form-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .form-divider span { font-size: .75rem; color: var(--slate-lt); white-space: nowrap; }
+    .form-tabs { display: flex; gap: 0; background: var(--border); border-radius: var(--r-sm); padding: 3px; margin-bottom: 1.5rem; }
+    .form-tab {
+      flex: 1; text-align: center; padding: .6rem;
+      font-family: var(--font-d); font-weight: 700; font-size: .82rem;
+      color: var(--slate-lt); border-radius: calc(var(--r-sm) - 2px);
+      border: none; background: none; transition: all .2s;
+    }
+    .form-tab.active { background: #fff; color: var(--slate); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+    .form-alert { padding: .75rem 1rem; border-radius: var(--r-sm); font-size: .83rem; margin-bottom: 1rem; display: none; }
+    .form-alert.success { background: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; display: block; }
+    .form-alert.error { background: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; display: block; }
+    .forgot-link { font-size: .8rem; color: var(--indigo); font-weight: 600; text-align: right; display: block; margin-top: -.5rem; margin-bottom: .75rem; }
+    .forgot-link:hover { text-decoration: underline; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media(max-width:1024px) {
+      .features-grid { grid-template-columns: repeat(2,1fr); }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .testi-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:768px) {
+      .hero { grid-template-columns: 1fr; padding-top: 3rem; min-height: auto; gap: 2.5rem; }
+      .hero-visual { order: -1; }
+      .hero h1 { font-size: 2.4rem; }
+      .steps { grid-template-columns: 1fr; }
+      .steps::before { display: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+      .cta-actions { align-items: flex-start; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links, .nav-actions { display: none; }
+      .hamburger { display: flex; }
+      .proof-div { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────────────── -->
+<nav id="mainNav">
+  <div class="container">
+    <div class="nav-inner">
+
+      <a href="/" class="nav-logo">
+        <!-- Nabbit rabbit SVG mark — inline, scales perfectly -->
+        <svg class="nav-rabbit" viewBox="0 0 160 180" fill="none" aria-hidden="true">
+          <path d="M 48 85 C 42 70 38 45 40 22 C 42 10 50 4 58 6 C 66 8 72 16 70 30 C 68 50 62 72 58 88 Z" fill="#3730A3"/>
+          <path d="M 28 160 C 18 150 14 132 16 112 C 18 92 28 76 42 68 C 52 62 64 60 76 62 C 88 64 98 72 104 84 C 114 80 126 82 132 92 C 138 102 134 118 126 126 C 130 134 130 144 124 152 C 118 160 108 164 96 164 C 80 166 52 170 28 160 Z" fill="#3730A3"/>
+          <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" fill="#6366F1"/>
+          <path d="M 52 72 C 48 60 46 40 48 22 C 50 12 56 8 60 10 C 58 24 56 48 54 68 Z" fill="#E0E7FF"/>
+          <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" fill="#6366F1"/>
+          <path d="M 86 72 C 84 62 86 48 90 38 C 94 28 100 24 104 26 C 100 38 94 56 90 70 Z" fill="#E0E7FF"/>
+          <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" fill="#6366F1"/>
+          <path d="M 116 100 C 126 104 132 112 130 122 C 128 132 120 138 110 136 C 104 134 100 128 102 120 C 104 112 110 104 116 100 Z" fill="#818CF8"/>
+          <circle cx="88" cy="88" r="10" fill="#1E1B4B"/>
+          <circle cx="91" cy="85" r="4" fill="white"/>
+          <circle cx="94" cy="83" r="2" fill="white" opacity=".7"/>
+          <ellipse cx="128" cy="108" rx="7" ry="5" fill="#1E1B4B"/>
+          <rect x="128" y="116" width="26" height="42" rx="3" fill="#F5C518"/>
+          <rect x="132" y="124" width="16" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
+          <rect x="132" y="132" width="16" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
+          <rect x="132" y="140" width="12" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
+          <rect x="132" y="148" width="14" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
+          <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
+          <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
+          <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
+          <rect x="128" y="116" width="26" height="42" rx="3" stroke="#1E1B4B" stroke-width="2.5" fill="none"/>
+        </svg>
+        nabbit
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#" class="nav-login" onclick="openModal('login');return false;">Log in</a>
+        <button class="btn btn-primary" onclick="openModal('trial')">Start free trial →</button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#how" onclick="closeMobile()">How it works</a>
+  <a href="#features" onclick="closeMobile()">Features</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#" onclick="openModal('login');closeMobile();return false;" style="color:var(--slate-lt)">Log in</a>
+  <button class="btn btn-primary btn-lg" style="width:fit-content" onclick="openModal('trial');closeMobile()">Start free trial →</button>
+</div>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section>
+  <div class="container">
+    <div class="hero">
+
+      <div class="hero-copy">
+        <div class="hero-badge"><span class="pulse"></span> Now in early access · Canada 🇨🇦</div>
+        <h1>Every receipt,<br><span class="accent">nabbed</span> and filed.</h1>
+        <p class="hero-sub">Snap a photo, forward an email, or drag and drop — Nabbit captures every receipt the moment it happens and has it organised, categorised, and QBO-ready before you're back at your desk.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" onclick="openModal('trial')">Start free — 30 days →</button>
+          <a href="#how" class="btn btn-outline">See how it works</a>
+        </div>
+        <div class="hero-trust">
+          <div class="avatars">
+            <span>JM</span><span>KL</span><span>RB</span>
+          </div>
+          <span>Trusted by 500+ Canadian businesses</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <!-- Rabbit mascot -->
+        <div class="mascot-wrapper">
+          <svg width="200" height="220" viewBox="0 0 160 180" fill="none" aria-label="Nabbit mascot — rabbit holding a receipt">
+            <path d="M 48 85 C 42 70 38 45 40 22 C 42 10 50 4 58 6 C 66 8 72 16 70 30 C 68 50 62 72 58 88 Z" fill="#3730A3"/>
+            <path d="M 28 160 C 18 150 14 132 16 112 C 18 92 28 76 42 68 C 52 62 64 60 76 62 C 88 64 98 72 104 84 C 114 80 126 82 132 92 C 138 102 134 118 126 126 C 130 134 130 144 124 152 C 118 160 108 164 96 164 C 80 166 52 170 28 160 Z" fill="#3730A3"/>
+            <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" fill="#6366F1"/>
+            <path d="M 52 72 C 48 60 46 40 48 22 C 50 12 56 8 60 10 C 58 24 56 48 54 68 Z" fill="#E0E7FF"/>
+            <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" fill="#6366F1"/>
+            <path d="M 86 72 C 84 62 86 48 90 38 C 94 28 100 24 104 26 C 100 38 94 56 90 70 Z" fill="#E0E7FF"/>
+            <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" fill="#6366F1"/>
+            <path d="M 116 100 C 126 104 132 112 130 122 C 128 132 120 138 110 136 C 104 134 100 128 102 120 C 104 112 110 104 116 100 Z" fill="#818CF8"/>
+            <circle cx="88" cy="88" r="10" fill="#1E1B4B"/>
+            <circle cx="91" cy="85" r="4" fill="white"/>
+            <circle cx="94" cy="83" r="2" fill="white" opacity=".7"/>
+            <ellipse cx="128" cy="108" rx="7" ry="5" fill="#1E1B4B"/>
+            <rect x="128" y="116" width="26" height="42" rx="3" fill="#F5C518"/>
+            <rect x="132" y="124" width="16" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
+            <rect x="132" y="132" width="16" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
+            <rect x="132" y="140" width="12" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
+            <rect x="132" y="148" width="14" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
+            <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
+            <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
+            <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
+            <rect x="128" y="116" width="26" height="42" rx="3" stroke="#1E1B4B" stroke-width="2.5" fill="none"/>
+          </svg>
+
+          <!-- Floating chips -->
+          <div class="chip chip-1">
+            <svg width="12" height="12" viewBox="0 0 20 20" fill="#059669"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            Auto-categorised
+          </div>
+          <div class="chip chip-2">
+            <svg width="12" height="12" viewBox="0 0 20 20" fill="#4F46E5"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4zM3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+            Synced to QBO
+          </div>
+        </div>
+
+        <!-- Receipt preview card -->
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="hero-card-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="#F5C518"><path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1.581.814L10 14.197l-4.419 2.617A1 1 0 014 16V4z"/></svg>
+            </div>
+            <div>
+              <div class="hero-card-merchant">Staples Canada #0042</div>
+              <div class="hero-card-date">June 20, 2026 · 2:47 PM</div>
+            </div>
+          </div>
+          <div class="receipt-line"><span>Office Paper (2×)</span><span>$28.50</span></div>
+          <div class="receipt-line"><span>Ink Cartridges</span><span>$54.99</span></div>
+          <div class="receipt-line"><span>USB Hub</span><span>$39.00</span></div>
+          <div class="receipt-total"><span>Total (HST incl.)</span><span>$136.44</span></div>
+          <div class="receipt-tag">📁 Office Supplies · HST flagged ✓</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROOF STRIP ────────────────────────────────────────── -->
+<div class="proof">
+  <div class="proof-inner">
+    <div class="proof-stat"><div class="proof-num">500+</div><div class="proof-label">Canadian businesses</div></div>
+    <div class="proof-div"></div>
+    <div class="proof-stat"><div class="proof-num">$1,200+</div><div class="proof-label">extra deductions found</div></div>
+    <div class="proof-div"></div>
+    <div class="proof-stat"><div class="proof-num">99.4%</div><div class="proof-label">capture accuracy</div></div>
+    <div class="proof-div"></div>
+    <div class="proof-stat"><div class="proof-num">7 yrs</div><div class="proof-label">CRA-compliant storage</div></div>
+    <div class="proof-div"></div>
+    <div class="proof-stat"><div class="proof-num">QBO</div><div class="proof-label">native integration</div></div>
+  </div>
+</div>
+
+<!-- ─── HOW IT WORKS ──────────────────────────────────────── -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="how-header">
+      <span class="eyebrow">How it works</span>
+      <h2 class="section-title">Nabbed. Sorted. Done.</h2>
+      <p class="body-copy" style="max-width:50ch;margin:0 auto">Three steps. No double entry. No lost receipts. No month-end scramble.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3 class="step-title">Snap, forward, or drop</h3>
+        <p class="step-desc">Photo on mobile, drag-and-drop on desktop, or forward email receipts to your unique Nabbit address. However you get receipts, Nabbit is ready.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3 class="step-title">Nabbit does the work</h3>
+        <p class="step-desc">OCR reads every field. AI matches the merchant, assigns a category, and flags HST/GST automatically — no manual entry, no correction needed.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3 class="step-title">Sync and close</h3>
+        <p class="step-desc">Expenses flow directly to QuickBooks Online. Your bookkeeper gets everything they need. Month-end closes itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURES ──────────────────────────────────────────── -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="features-header">
+      <span class="eyebrow">Why Nabbit</span>
+      <h2 class="section-title">Built for Canadian small business.<br>Nothing else.</h2>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon fi-indigo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <h3 class="feature-title">One-tap capture</h3>
+        <p class="feature-desc">Snap a photo the moment you pay. Nabbit reads the merchant, amount, date, and HST automatically. No typing, no filing, no forgetting.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-citrine">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3 class="feature-title">Smart categorisation</h3>
+        <p class="feature-desc">Receipts are filed into the right expense category before you open the app. Train it once and it learns your business for good.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="feature-title">CRA-compliant storage</h3>
+        <p class="feature-desc">Every receipt stored in full resolution for 7 years, encrypted at rest, and retrievable in seconds if CRA ever comes calling.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3 class="feature-title">QuickBooks Online sync</h3>
+        <p class="feature-desc">Push expenses directly to QBO. No double-entry, no copy-paste errors. Your bookkeeper gets clean, categorised data automatically.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 class="feature-title">Multi-company portals</h3>
+        <p class="feature-desc">Manage receipts across multiple entities from a single login. Each company gets its own isolated portal — perfect for fractional CFOs.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon fi-teal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="feature-title">HST auto-flagging</h3>
+        <p class="feature-desc">Every receipt is automatically checked for HST/GST. Missing tax info gets flagged before it becomes a problem at filing time.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ───────────────────────────────────────────── -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-header">
+      <span class="eyebrow">Pricing</span>
+      <h2 class="section-title">Simple, transparent pricing.<br>No surprises.</h2>
+      <p class="body-copy">All plans include a 30-day free trial. No credit card required to start.</p>
+      <div class="pricing-toggle">
+        <button class="toggle-btn active" id="monthlyBtn" onclick="setToggle('monthly')">Monthly</button>
+        <button class="toggle-btn" id="annualBtn" onclick="setToggle('annual')">Annual <span style="font-size:.7rem;color:#059669;font-weight:700">Save 20%</span></button>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Free trial -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">
+          <span class="currency">CA</span>
+          <span class="amount">$0</span>
+          <span class="period">/mo</span>
+        </div>
+        <p class="plan-desc">30 days free, no card required. Full access to all features so you can see exactly what Nabbit can do.</p>
+        <hr class="plan-divider"/>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Up to 50 receipts</li>
+          <li><span class="check">✓</span> AI categorisation</li>
+          <li><span class="check">✓</span> QBO export (CSV)</li>
+          <li><span class="check">✓</span> 1 company portal</li>
+          <li><span class="cross">✗</span> QBO direct sync</li>
+          <li><span class="cross">✗</span> CRA 7-year storage</li>
+        </ul>
+        <button class="btn btn-outline btn-lg plan-cta" onclick="openModal('trial')">Start free trial</button>
+      </div>
+
+      <!-- Pay as you go — featured -->
+      <div class="plan-card featured">
+        <div class="plan-badge">Most popular</div>
+        <div class="plan-name">Pay As You Go</div>
+        <div class="plan-price">
+          <span class="currency">CA</span>
+          <span class="amount" id="paygoPrice">$14</span>
+          <span class="period" id="paygoPeriod">.99/mo</span>
+        </div>
+        <p class="plan-desc">Per user, per month. Scales with your business. Cancel any time.</p>
+        <hr class="plan-divider"/>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Unlimited receipts</li>
+          <li><span class="check">✓</span> AI categorisation + learning</li>
+          <li><span class="check">✓</span> QBO direct sync</li>
+          <li><span class="check">✓</span> CRA 7-year storage</li>
+          <li><span class="check">✓</span> 1 company portal</li>
+          <li><span class="check">✓</span> Email & CSV forwarding</li>
+        </ul>
+        <button class="btn btn-primary btn-lg plan-cta" onclick="openModal('trial')">Start free trial →</button>
+      </div>
+
+      <!-- Value plan -->
+      <div class="plan-card">
+        <div class="plan-name">Value Plan</div>
+        <div class="plan-price">
+          <span class="currency">CA</span>
+          <span class="amount" id="valuePrice">$64</span>
+          <span class="period" id="valuePeriod">.99/mo</span>
+        </div>
+        <p class="plan-desc">Up to 5 users, priority support, and multi-company access. Built for bookkeepers and fractional CFOs.</p>
+        <hr class="plan-divider"/>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Everything in Pay As You Go</li>
+          <li><span class="check">✓</span> Up to 5 users</li>
+          <li><span class="check">✓</span> Multi-company portals</li>
+          <li><span class="check">✓</span> Priority support</li>
+          <li><span class="check">✓</span> Dedicated onboarding</li>
+          <li><span class="check">✓</span> Bulk export + reporting</li>
+        </ul>
+        <button class="btn btn-outline btn-lg plan-cta" onclick="openModal('trial')">Start free trial</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────── -->
+<section class="testimonials">
+  <div class="container">
+    <div class="testi-header">
+      <span class="eyebrow">What people are saying</span>
+      <h2 class="section-title">Less receipt stress.<br>Better books.</h2>
+    </div>
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"I used to spend the last Sunday of every month digging through my wallet. Now I snap receipts on the spot with Nabbit and my bookkeeper has everything she needs by the 1st."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#4F46E5">MP</div>
+          <div>
+            <div class="testi-name">Marcus P.</div>
+            <div class="testi-role">Owner, Northside Contracting · Hamilton, ON</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"As a fractional CFO across three clients, Nabbit's multi-portal setup is exactly what I needed. One login, clean data separation, zero spreadsheet gymnastics."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#7C3AED">SK</div>
+          <div>
+            <div class="testi-name">Sandra K., CPA</div>
+            <div class="testi-role">Fractional CFO · Toronto, ON</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"The QBO sync alone saved me 90 minutes at month-end. And knowing every receipt is CRA-compliant for 7 years? Peace of mind I didn't know I was missing."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#059669">TR</div>
+          <div>
+            <div class="testi-name">Theo R.</div>
+            <div class="testi-role">Founder, Lakeside Media · Ottawa, ON</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ──────────────────────────────────────────────── -->
+<section id="about" style="padding:clamp(4rem,8vw,7rem) 0;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+      <div>
+        <span class="eyebrow" style="display:block;margin-bottom:.75rem">About Nabbit</span>
+        <h2 class="section-title" style="margin-bottom:1.25rem">Built by accountants,<br>for accountants.</h2>
+        <p class="body-copy" style="margin-bottom:1rem">Nabbit was built out of frustration. After years of watching small business owners lose deductions, miss receipts, and spend their weekends reconciling paper stubs, we decided to fix it.</p>
+        <p class="body-copy" style="margin-bottom:1rem">We're a Canadian company. Our product is built for Canadian tax rules — CRA compliance, HST/GST, QBO integration — not bolted on after the fact.</p>
+        <p class="body-copy" style="margin-bottom:2rem">The name? "Nab it" — to seize suddenly. Like a rabbit snatching something up before it disappears. That's what Nabbit does to your receipts.</p>
+        <a href="mailto:hello@nabbit.ca" class="btn btn-primary">Get in touch →</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+        <div style="background:var(--indigo-lt);border-radius:var(--r-lg);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-size:1.5rem;flex-shrink:0">🇨🇦</div>
+          <div>
+            <div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">Canadian-first</div>
+            <div style="font-size:.83rem;color:var(--slate-lt);line-height:1.6">Built for CRA rules, HST/GST, and the way Canadian businesses actually work.</div>
+          </div>
+        </div>
+        <div style="background:#ECFDF5;border-radius:var(--r-lg);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-size:1.5rem;flex-shrink:0">🔒</div>
+          <div>
+            <div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">Data isolation</div>
+            <div style="font-size:.83rem;color:var(--slate-lt);line-height:1.6">Multi-tenant with strict row-level security. No company can ever see another company's data.</div>
+          </div>
+        </div>
+        <div style="background:#FEF9E7;border-radius:var(--r-lg);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+          <div style="font-size:1.5rem;flex-shrink:0">⚡</div>
+          <div>
+            <div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">AI-powered extraction</div>
+            <div style="font-size:.83rem;color:var(--slate-lt);line-height:1.6">Powered by Anthropic's Claude vision API. Reads and categorises your receipt in under 3 seconds.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BANNER ────────────────────────────────────────── -->
+<div class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2 class="section-title">The last receipt you file<br>manually is the one<br>you sign up with.</h2>
+        <p class="body-copy" style="margin-top:.75rem">30 days free, no card required. Cancel any time.</p>
+      </div>
+      <div class="cta-actions">
+        <button class="btn btn-citrine btn-lg" onclick="openModal('trial')">Start free trial →</button>
+        <span class="cta-note">30 days free · No credit card · Cancel any time</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo" style="color:#fff;margin-bottom:1rem;display:flex">
+          <svg class="nav-rabbit" viewBox="0 0 160 180" fill="none" style="filter:brightness(0) invert(1)">
+            <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" fill="white"/>
+            <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" fill="white"/>
+            <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" fill="white"/>
+            <rect x="128" y="116" width="26" height="42" rx="3" fill="#F5C518"/>
+          </svg>
+          nabbit
+        </a>
+        <p class="footer-desc">Nabbit makes receipt management effortless for Canadian small businesses, bookkeepers, and everyone in between.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Twitter/X">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#">Changelog</a></li>
+          <li><a href="#">Roadmap</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Security</a></li>
+          <li><a href="mailto:hello@nabbit.ca">Contact</a></li>
+          <li><a href="#" onclick="openModal('login');return false">Admin Login</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Stay in the loop</h4>
+        <p style="font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:.75rem;line-height:1.6">Product updates, tax tips, and the occasional bookkeeping shortcut.</p>
+        <div class="newsletter-form">
+          <input class="newsletter-input" type="email" id="newsletterEmail" placeholder="you@company.com" aria-label="Email address"/>
+          <button class="btn-newsletter" onclick="subscribeNewsletter()">Join</button>
+        </div>
+        <div id="newsletterMsg" style="display:none;font-size:.75rem;color:#6EE7B7;margin-top:.5rem"></div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Nabbit (1001583085 Ontario Inc.). All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">EULA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── TRIAL MODAL ───────────────────────────────────────── -->
+<div class="modal-overlay" id="trialModal" onclick="closeModalOnOverlay(event,'trialModal')">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
+    <button class="modal-close" onclick="closeModal('trial')" aria-label="Close">✕</button>
+    <div class="modal-logo">
+      <svg width="28" height="28" viewBox="0 0 160 180" fill="none">
+        <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" fill="#6366F1"/>
+        <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" fill="#6366F1"/>
+        <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" fill="#6366F1"/>
+        <rect x="128" y="116" width="26" height="42" rx="3" fill="#F5C518"/>
+      </svg>
+      <span class="modal-logo-text">nabbit</span>
+    </div>
+    <h2 class="modal-title" id="trialTitle">Start your free trial</h2>
+    <p class="modal-sub">30 days free. No credit card required. Cancel any time.</p>
+
+    <div id="trialAlert" class="form-alert"></div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="trialFirst">First name</label>
+        <input class="form-input" type="text" id="trialFirst" placeholder="Bryce" autocomplete="given-name"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="trialLast">Last name</label>
+        <input class="form-input" type="text" id="trialLast" placeholder="Anger" autocomplete="family-name"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="trialEmail">Work email</label>
+      <input class="form-input" type="email" id="trialEmail" placeholder="you@company.com" autocomplete="email"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="trialCompany">Company name</label>
+      <input class="form-input" type="text" id="trialCompany" placeholder="Acme Inc." autocomplete="organization"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="trialPassword">Password</label>
+      <input class="form-input" type="password" id="trialPassword" placeholder="Min. 8 characters" autocomplete="new-password"/>
+    </div>
+    <button class="btn btn-primary btn-lg form-submit" onclick="submitTrial()">Create my account →</button>
+    <p class="form-terms">By creating an account you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
+    <div class="form-divider"><span>Already have an account?</span></div>
+    <button class="btn btn-outline form-submit" onclick="switchToLogin()">Log in instead</button>
+  </div>
+</div>
+
+<!-- ─── LOGIN MODAL ───────────────────────────────────────── -->
+<div class="modal-overlay" id="loginModal" onclick="closeModalOnOverlay(event,'loginModal')">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <button class="modal-close" onclick="closeModal('login')" aria-label="Close">✕</button>
+    <div class="modal-logo">
+      <svg width="28" height="28" viewBox="0 0 160 180" fill="none">
+        <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" fill="#6366F1"/>
+        <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" fill="#6366F1"/>
+        <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" fill="#6366F1"/>
+        <rect x="128" y="116" width="26" height="42" rx="3" fill="#F5C518"/>
+      </svg>
+      <span class="modal-logo-text">nabbit</span>
+    </div>
+    <h2 class="modal-title" id="loginTitle">Welcome back</h2>
+    <p class="modal-sub">Log in to your Nabbit account.</p>
+
+    <div id="loginAlert" class="form-alert"></div>
+
+    <div class="form-group">
+      <label class="form-label" for="loginEmail">Email</label>
+      <input class="form-input" type="email" id="loginEmail" placeholder="you@company.com" autocomplete="email"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="loginPassword">Password</label>
+      <input class="form-input" type="password" id="loginPassword" placeholder="Your password" autocomplete="current-password"/>
+    </div>
+    <a href="#" class="forgot-link" onclick="showForgot();return false">Forgot password?</a>
+
+    <div id="forgotForm" style="display:none;margin-bottom:1rem">
+      <div class="form-group">
+        <label class="form-label" for="forgotEmail">Enter your email to reset</label>
+        <input class="form-input" type="email" id="forgotEmail" placeholder="you@company.com"/>
+      </div>
+      <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="sendReset()">Send reset link</button>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem">
+      <label style="display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--slate-md);cursor:pointer">
+        <input type="checkbox" id="rememberMe" style="accent-color:var(--indigo)"/>
+        Remember me
+      </label>
+    </div>
+
+    <button class="btn btn-primary btn-lg form-submit" onclick="submitLogin()">Log in →</button>
+    <div class="form-divider" style="margin-top:1rem"><span>Don't have an account?</span></div>
+    <button class="btn btn-outline form-submit" onclick="switchToTrial()">Start free trial</button>
+  </div>
+</div>
+
+<!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+<script>
+  // ── NAV SCROLL SHADOW ──
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 8);
+  });
+
+  // ── HAMBURGER ──
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  // ── PRICING TOGGLE ──
+  const prices = {
+    paygo:  { monthly: '$14<span style="font-size:1.2rem">.99</span>', annual: '$11<span style="font-size:1.2rem">.99</span>' },
+    value:  { monthly: '$64<span style="font-size:1.2rem">.99</span>', annual: '$51<span style="font-size:1.2rem">.99</span>' }
+  };
+  let billingCycle = 'monthly';
+  function setToggle(cycle) {
+    billingCycle = cycle;
+    document.getElementById('monthlyBtn').classList.toggle('active', cycle === 'monthly');
+    document.getElementById('annualBtn').classList.toggle('active', cycle === 'annual');
+    const suffix = cycle === 'annual' ? '/mo, billed annually' : '/mo';
+    document.getElementById('paygoPrice').innerHTML = cycle === 'monthly' ? '$14<span style="font-size:1.2rem">.99</span>' : '$11<span style="font-size:1.2rem">.99</span>';
+    document.getElementById('paygoPeriod').textContent = suffix;
+    document.getElementById('valuePrice').innerHTML = cycle === 'monthly' ? '$64<span style="font-size:1.2rem">.99</span>' : '$51<span style="font-size:1.2rem">.99</span>';
+    document.getElementById('valuePeriod').textContent = suffix;
+  }
+
+  // ── MODALS ──
+  function openModal(type) {
+    closeMobile();
+    document.getElementById(type + 'Modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(type) {
+    document.getElementById(type + 'Modal').classList.remove('open');
+    document.body.style.overflow = '';
+    clearAlert(type);
+  }
+  function closeModalOnOverlay(e, id) {
+    if (e.target.id === id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal('trial'); closeModal('login'); }
+  });
+  function switchToLogin() { closeModal('trial'); setTimeout(() => openModal('login'), 150); }
+  function switchToTrial() { closeModal('login'); setTimeout(() => openModal('trial'), 150); }
+
+  function showAlert(type, msg, isError) {
+    const el = document.getElementById(type + 'Alert');
+    el.textContent = msg;
+    el.className = 'form-alert ' + (isError ? 'error' : 'success');
+  }
+  function clearAlert(type) {
+    const el = document.getElementById(type + 'Alert');
+    if (el) el.className = 'form-alert';
+  }
+
+  // ── TRIAL SUBMIT ──
+  // In production this would POST to your Supabase sign-up or
+  // redirect to ledger-live-close.lovable.app with a deep link.
+  function submitTrial() {
+    const first = document.getElementById('trialFirst').value.trim();
+    const last  = document.getElementById('trialLast').value.trim();
+    const email = document.getElementById('trialEmail').value.trim();
+    const company = document.getElementById('trialCompany').value.trim();
+    const pass  = document.getElementById('trialPassword').value;
+
+    if (!first || !last || !email || !company || !pass) {
+      showAlert('trial', 'Please fill in all fields.', true); return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showAlert('trial', 'Please enter a valid email address.', true); return;
+    }
+    if (pass.length < 8) {
+      showAlert('trial', 'Password must be at least 8 characters.', true); return;
+    }
+
+    // Redirect to the live app with pre-filled email
+    showAlert('trial', '🐇 Setting up your account…', false);
+    setTimeout(() => {
+      window.location.href = 'https://ledger-live-close.lovable.app?email=' + encodeURIComponent(email) + '&ref=nabbit-trial';
+    }, 1200);
+  }
+
+  // ── LOGIN SUBMIT ──
+  function submitLogin() {
+    const email = document.getElementById('loginEmail').value.trim();
+    const pass  = document.getElementById('loginPassword').value;
+    if (!email || !pass) { showAlert('login', 'Please enter your email and password.', true); return; }
+    showAlert('login', 'Logging you in…', false);
+    setTimeout(() => {
+      window.location.href = 'https://ledger-live-close.lovable.app?email=' + encodeURIComponent(email) + '&action=login';
+    }, 800);
+  }
+
+  // ── FORGOT PASSWORD ──
+  function showForgot() {
+    document.getElementById('forgotForm').style.display = 'block';
+  }
+  function sendReset() {
+    const email = document.getElementById('forgotEmail').value.trim();
+    if (!email) { showAlert('login', 'Please enter your email address.', true); return; }
+    showAlert('login', '✓ Reset link sent — check your inbox.', false);
+    document.getElementById('forgotForm').style.display = 'none';
+  }
+
+  // ── NEWSLETTER ──
+  function subscribeNewsletter() {
+    const email = document.getElementById('newsletterEmail').value.trim();
+    const msg = document.getElementById('newsletterMsg');
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.textContent = 'Please enter a valid email.';
+      msg.style.color = '#FCA5A5';
+      msg.style.display = 'block';
+      return;
+    }
+    msg.textContent = "🐇 You're in! We'll be in touch.";
+    msg.style.color = '#6EE7B7';
+    msg.style.display = 'block';
+    document.getElementById('newsletterEmail').value = '';
+  }
+
+  // ── SCROLL ANIMATIONS ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.feature-card, .testi-card, .step, .plan-card').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = `opacity .45s ease ${i * 0.07}s, transform .45s ease ${i * 0.07}s, border-color .25s, box-shadow .25s`;
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
