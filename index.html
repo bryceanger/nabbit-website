@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+  <meta name="theme-color" content="#4F46E5"/>
   <meta name="description" content="Nabbit captures, categorises, and files every receipt the moment it happens. Receipt management built for Canadian small businesses. Free 30-day trial."/>
   <meta property="og:title" content="Nabbit — Every receipt, nabbed and filed."/>
   <meta property="og:description" content="Snap, forward, or drop — Nabbit captures receipts instantly and has them organised, categorised, and export-ready before you're back at your desk."/>
@@ -518,13 +522,14 @@
 
       <ul class="nav-links">
         <li><a href="#how">How it works</a></li>
+        <li><a href="#walkthroughs">Videos</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#about">About</a></li>
       </ul>
 
       <div class="nav-actions">
-        <a href="#" class="nav-login" onclick="openModal('login');return false;">Log in</a>
+        <a href="#" class="nav-login" href="login.html">Log in</a>
         <button class="btn btn-primary" onclick="openModal('trial')">Start free trial →</button>
       </div>
 
@@ -902,6 +907,94 @@
   </div>
 </section>
 
+
+<!-- ─── VIDEO WALKTHROUGHS ──────────────────────────────── -->
+<section id="walkthroughs" style="padding:clamp(4rem,8vw,7rem) 0;background:#fff;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3.5rem">
+      <span class="eyebrow" style="display:block;margin-bottom:.75rem">See it in action</span>
+      <h2 class="section-title">Up and running in under 10 minutes.</h2>
+      <p class="body-copy" style="max-width:50ch;margin:1rem auto 0">Three short videos that walk you through everything — from creating your account to your first receipt synced to QuickBooks.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+
+      <!-- Video 1 -->
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(79,70,229,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="background:var(--slate);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;" onclick="openVideo(1)">
+          <!-- Thumbnail -->
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1E1B4B,#3730A3);display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center">
+              <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,.3);cursor:pointer">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <div style="font-size:.7rem;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.1em;text-transform:uppercase">2 min watch</div>
+            </div>
+          </div>
+          <div style="position:absolute;top:.75rem;left:.75rem;background:var(--citrine);color:var(--slate);font-size:.65rem;font-weight:700;padding:.25rem .6rem;border-radius:100px;letter-spacing:.05em">STEP 1</div>
+        </div>
+        <div style="padding:1.25rem 1.5rem 1.5rem">
+          <div style="font-family:var(--font-d);font-weight:700;font-size:.95rem;color:var(--slate);margin-bottom:.35rem">Register & set up your account</div>
+          <div style="font-size:.82rem;color:var(--slate-lt);line-height:1.6">Create your Nabbit account, add your company, invite your bookkeeper, and take your first receipt photo.</div>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(79,70,229,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="background:var(--slate);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;" onclick="openVideo(2)">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#312E81,#4F46E5);display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center">
+              <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,.3)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <div style="font-size:.7rem;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.1em;text-transform:uppercase">3 min watch</div>
+            </div>
+          </div>
+          <div style="position:absolute;top:.75rem;left:.75rem;background:var(--citrine);color:var(--slate);font-size:.65rem;font-weight:700;padding:.25rem .6rem;border-radius:100px;letter-spacing:.05em">STEP 2</div>
+        </div>
+        <div style="padding:1.25rem 1.5rem 1.5rem">
+          <div style="font-family:var(--font-d);font-weight:700;font-size:.95rem;color:var(--slate);margin-bottom:.35rem">Connect QuickBooks Online</div>
+          <div style="font-size:.82rem;color:var(--slate-lt);line-height:1.6">Authorise the QBO connection in two clicks, map your expense accounts, and watch your first receipt sync live.</div>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(79,70,229,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="background:var(--slate);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;" onclick="openVideo(3)">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0F172A,#1E3A5F);display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center">
+              <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,.3)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <div style="font-size:.7rem;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.1em;text-transform:uppercase">3 min watch</div>
+            </div>
+          </div>
+          <div style="position:absolute;top:.75rem;left:.75rem;background:var(--citrine);color:var(--slate);font-size:.65rem;font-weight:700;padding:.25rem .6rem;border-radius:100px;letter-spacing:.05em">STEP 3</div>
+        </div>
+        <div style="padding:1.25rem 1.5rem 1.5rem">
+          <div style="font-family:var(--font-d);font-weight:700;font-size:.95rem;color:var(--slate);margin-bottom:.35rem">Connect OneDrive / SharePoint</div>
+          <div style="font-size:.82rem;color:var(--slate-lt);line-height:1.6">Link your Microsoft 365 account so receipt images are automatically backed up to your company SharePoint folder.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Video modal -->
+    <div id="videoModal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:2rem;" onclick="closeVideo()">
+      <div style="width:100%;max-width:800px;position:relative;" onclick="event.stopPropagation()">
+        <button onclick="closeVideo()" style="position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer">✕ Close</button>
+        <div id="videoContent" style="background:#000;border-radius:12px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+          <div style="text-align:center;color:rgba(255,255,255,.5)">
+            <div style="font-size:2rem;margin-bottom:.75rem">🎬</div>
+            <div style="font-family:var(--font-d);font-weight:700;font-size:1rem;color:#fff;margin-bottom:.4rem" id="videoTitle">Video coming soon</div>
+            <div style="font-size:.85rem">We're recording the walkthrough videos now.<br>Sign up for early access and we'll notify you.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ─── CTA BANNER ────────────────────────────────────────── -->
 <div class="cta-banner">
   <div class="container">
@@ -934,13 +1027,13 @@
         </a>
         <p class="footer-desc">Nabbit makes receipt management effortless for Canadian small businesses, bookkeepers, and everyone in between.</p>
         <div class="social-links">
-          <a href="#" class="social-link" aria-label="Twitter/X">
+          <a href="https://x.com/nabbitca" target="_blank" rel="noopener" class="social-link" aria-label="Twitter/X">
             <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
-          <a href="#" class="social-link" aria-label="LinkedIn">
+          <a href="https://linkedin.com/company/nabbitca" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <a href="#" class="social-link" aria-label="Instagram">
+          <a href="https://instagram.com/nabbitca" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </a>
         </div>
@@ -952,6 +1045,7 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#how">How it works</a></li>
+        <li><a href="#walkthroughs">Videos</a></li>
           <li><a href="#">Changelog</a></li>
           <li><a href="#">Roadmap</a></li>
         </ul>
@@ -964,7 +1058,7 @@
           <li><a href="#">Blog</a></li>
           <li><a href="#">Security</a></li>
           <li><a href="mailto:hello@nabbit.ca">Contact</a></li>
-          <li><a href="#" onclick="openModal('login');return false">Admin Login</a></li>
+          <li><a href="login.html">Admin Login</a></li>
         </ul>
       </div>
 
@@ -982,9 +1076,9 @@
     <div class="footer-bottom">
       <span>© 2026 Nabbit (1001583085 Ontario Inc.). All rights reserved.</span>
       <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">EULA</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="eula.html">EULA</a>
       </div>
     </div>
   </div>
@@ -1031,7 +1125,7 @@
       <input class="form-input" type="password" id="trialPassword" placeholder="Min. 8 characters" autocomplete="new-password"/>
     </div>
     <button class="btn btn-primary btn-lg form-submit" onclick="submitTrial()">Create my account →</button>
-    <p class="form-terms">By creating an account you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
+    <p class="form-terms">By creating an account you agree to our <a href="terms.html">Terms of Use</a> and <a href="privacy.html">Privacy Policy</a>.</p>
     <div class="form-divider"><span>Already have an account?</span></div>
     <button class="btn btn-outline form-submit" onclick="switchToLogin()">Log in instead</button>
   </div>
@@ -1169,7 +1263,8 @@
     // Redirect to the live app with pre-filled email
     showAlert('trial', '🐇 Setting up your account…', false);
     setTimeout(() => {
-      window.location.href = 'https://ledger-live-close.lovable.app?email=' + encodeURIComponent(email) + '&ref=nabbit-trial';
+      const params = new URLSearchParams({email:email,first:first,last:last,company:company,ref:'nabbit-trial',action:'signup'});
+      window.location.href = 'login.html?' + params.toString();
     }, 1200);
   }
 
@@ -1228,6 +1323,20 @@
     el.style.transition = `opacity .45s ease ${i * 0.07}s, transform .45s ease ${i * 0.07}s, border-color .25s, box-shadow .25s`;
     observer.observe(el);
   });
+
+  // ── VIDEO MODAL ──
+  const videoTitles = ['', 'Register & set up your account', 'Connect QuickBooks Online', 'Connect OneDrive & SharePoint'];
+  function openVideo(n) {
+    document.getElementById('videoTitle').textContent = videoTitles[n];
+    const modal = document.getElementById('videoModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeVideo() {
+    document.getElementById('videoModal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeVideo(); });
 </script>
 
 </body>

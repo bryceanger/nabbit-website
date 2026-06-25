@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /login.html
+Disallow: /onboarding.html
+
+Sitemap: https://nabbit.ca/sitemap.xml
