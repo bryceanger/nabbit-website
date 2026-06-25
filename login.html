@@ -5,706 +5,225 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Log in to your Nabbit account."/>
   <meta name="robots" content="noindex, nofollow"/>
-  <!-- Security headers -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
   <meta http-equiv="X-Frame-Options" content="DENY"/>
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://ledger-live-close.lovable.app;"/>
   <title>Log in — Nabbit</title>
-  <!-- Supabase JS client -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --indigo:#00A854;--indigo-dk:#007A3D;--indigo-lt:#E8F5EE;
-      --citrine:#0099CC;--slate:#0F1A12;--slate-md:#2D4A35;--slate-lt:#5A7060;
-      --white:#F4F8F5;--border:#D6E8DB;
-      --font-d:'Plus Jakarta Sans',sans-serif;--font-b:'Inter',sans-serif;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:    #00A854;
+      --green-dk: #007A3D;
+      --green-lt: #E8F5EE;
+      --cyan:     #0099CC;
+      --slate:    #0F1A12;
+      --slate-lt: #5A7060;
+      --white:    #F4F8F5;
+      --border:   #D6E8DB;
+      --font:     'Plus Jakarta Sans', sans-serif;
     }
-    html,body{height:100%}
-    body{
-      font-family:var(--font-b);
-      background:var(--white);
-      color:var(--slate);
-      display:flex;
-      flex-direction:column;
-      min-height:100vh;
-    }
-
-    /* ── SPLIT LAYOUT ── */
-    .layout{display:flex;min-height:100vh}
-
-    /* Left panel — brand */
-    .brand-panel{
-      width:42%;flex-shrink:0;
-      background:var(--slate);
-      display:flex;flex-direction:column;
-      justify-content:space-between;
-      padding:3rem;
-      position:relative;overflow:hidden;
-    }
-    .brand-panel::before{
-      content:'';position:absolute;
-      top:-100px;right:-100px;
-      width:400px;height:400px;
-      background:radial-gradient(circle,rgba(0,168,84,.5) 0%,transparent 65%);
-      border-radius:50%;
-    }
-    .brand-panel::after{
-      content:'';position:absolute;
-      bottom:-80px;left:-60px;
-      width:300px;height:300px;
-      background:radial-gradient(circle,rgba(0,153,204,.12) 0%,transparent 65%);
-      border-radius:50%;
-    }
-    .brand-logo{
-      display:flex;align-items:center;gap:10px;
-      font-family:var(--font-d);font-weight:900;font-size:1.35rem;
-      color:#fff;letter-spacing:-.02em;
-      position:relative;z-index:1;
-      text-decoration:none;
-    }
-    .brand-logo svg{width:36px;height:36px;flex-shrink:0}
-    .brand-content{position:relative;z-index:1}
-    .brand-headline{
-      font-family:var(--font-d);font-weight:900;
-      font-size:clamp(1.6rem,2.5vw,2.2rem);
-      letter-spacing:-.04em;line-height:1.15;
-      color:#fff;margin-bottom:1.25rem;
-    }
-    .brand-headline span{color:var(--citrine)}
-    .brand-sub{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:36ch}
-    .brand-testimonial{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.1);
-      border-radius:16px;padding:1.5rem;
-      position:relative;z-index:1;margin-top:2rem;
-    }
-    .brand-quote{font-size:.88rem;color:rgba(255,255,255,.75);line-height:1.65;font-style:italic;margin-bottom:1rem}
-    .brand-author{display:flex;align-items:center;gap:10px}
-    .brand-av{
-      width:36px;height:36px;border-radius:50%;
-      background:var(--indigo);display:flex;align-items:center;justify-content:center;
-      font-family:var(--font-d);font-weight:700;font-size:.78rem;color:#fff;flex-shrink:0;
-    }
-    .brand-name{font-family:var(--font-d);font-weight:700;font-size:.82rem;color:#fff}
-    .brand-role{font-size:.72rem;color:rgba(255,255,255,.4)}
-    .brand-footer{
-      font-size:.72rem;color:rgba(255,255,255,.25);
-      position:relative;z-index:1;
+    html, body { height: 100%; }
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--slate);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
     }
 
-    /* Right panel — form */
-    .form-panel{
-      flex:1;display:flex;align-items:center;justify-content:center;
-      padding:3rem 2rem;background:#fff;
+    .card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0,168,84,0.10), 0 2px 8px rgba(15,26,18,0.06);
     }
-    .form-box{width:100%;max-width:420px}
 
-    .form-header{margin-bottom:2rem}
-    .form-title{
-      font-family:var(--font-d);font-weight:900;
-      font-size:1.75rem;letter-spacing:-.04em;
-      color:var(--slate);margin-bottom:.4rem;
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      color: var(--slate);
+      margin-bottom: 2rem;
+      text-decoration: none;
     }
-    .form-sub{font-size:.9rem;color:var(--slate-lt)}
-    .form-sub a{color:var(--indigo);font-weight:600}
+    .logo img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 8px;
+    }
 
-    /* Tabs */
-    .tabs{
-      display:flex;background:#F3F4F6;
-      border-radius:10px;padding:3px;
-      margin-bottom:1.75rem;
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--slate);
+      margin-bottom: .5rem;
     }
-    .tab{
-      flex:1;text-align:center;padding:.6rem;
-      font-family:var(--font-d);font-weight:700;font-size:.82rem;
-      color:var(--slate-lt);border-radius:8px;
-      border:none;background:none;cursor:pointer;transition:all .2s;
+    p {
+      font-size: .9rem;
+      color: var(--slate-lt);
+      line-height: 1.6;
+      margin-bottom: 2rem;
     }
-    .tab.active{background:#fff;color:var(--slate);box-shadow:0 1px 4px rgba(0,0,0,.1)}
 
-    /* Form elements */
-    .field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
-    .field-label{
-      font-family:var(--font-d);font-weight:600;
-      font-size:.82rem;color:var(--slate);
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--green);
+      color: #fff;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: .9rem 1.5rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 2px 12px rgba(0,168,84,.3);
+      margin-bottom: .75rem;
     }
-    .field-input{
-      background:#fff;border:1.5px solid var(--border);
-      border-radius:8px;padding:.7rem 1rem;
-      font-size:.9rem;color:var(--slate);font-family:var(--font-b);
-      outline:none;transition:border-color .2s,box-shadow .2s;width:100%;
+    .btn-primary:hover {
+      background: var(--green-dk);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,168,84,.4);
     }
-    .field-input:focus{border-color:var(--indigo);box-shadow:0 0 0 3px var(--indigo-lt)}
-    .field-input.error{border-color:#DC2626;box-shadow:0 0 0 3px #FEF2F2}
-    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-    .field-hint{font-size:.74rem;color:var(--slate-lt);margin-top:.2rem}
-    .field-error{font-size:.74rem;color:#DC2626;margin-top:.2rem;display:none}
 
-    .forgot{
-      display:block;text-align:right;
-      font-size:.8rem;font-weight:600;color:var(--indigo);
-      margin-top:-.5rem;margin-bottom:.9rem;
+    .btn-outline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: transparent;
+      color: var(--slate);
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: .95rem;
+      padding: .85rem 1.5rem;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
     }
-    .forgot:hover{text-decoration:underline}
+    .btn-outline:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
 
-    .remember{
-      display:flex;align-items:center;gap:6px;
-      font-size:.82rem;color:var(--slate-md);
-      margin-bottom:1.25rem;cursor:pointer;
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin: 1.25rem 0;
     }
-    .remember input{accent-color:var(--indigo)}
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .divider span {
+      font-size: .75rem;
+      color: var(--slate-lt);
+    }
 
-    .btn-submit{
-      width:100%;display:flex;align-items:center;justify-content:center;gap:8px;
-      background:var(--indigo);color:#fff;
-      font-family:var(--font-d);font-weight:700;font-size:1rem;
-      padding:.85rem;border-radius:100px;border:none;cursor:pointer;
-      transition:background .2s,transform .15s,box-shadow .2s;
-      box-shadow:0 2px 12px rgba(0,168,84,.35);
-      margin-bottom:.75rem;
+    .secure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: .72rem;
+      color: var(--slate-lt);
+      margin-top: 1.5rem;
     }
-    .btn-submit:hover{background:var(--indigo-dk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,168,84,.4)}
-    .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+    .secure svg { width: 12px; height: 12px; fill: #059669; }
 
-    .btn-secondary-full{
-      width:100%;display:flex;align-items:center;justify-content:center;
-      background:transparent;color:var(--slate-md);
-      font-family:var(--font-d);font-weight:600;font-size:.9rem;
-      padding:.75rem;border-radius:100px;
-      border:1.5px solid var(--border);cursor:pointer;
-      transition:border-color .2s,color .2s;margin-bottom:.75rem;
+    .back {
+      margin-top: 1.5rem;
+      font-size: .82rem;
+      color: var(--slate-lt);
     }
-    .btn-secondary-full:hover{border-color:var(--indigo);color:var(--indigo)}
+    .back a {
+      color: var(--green);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .back a:hover { text-decoration: underline; }
 
-    .divider{
-      display:flex;align-items:center;gap:.75rem;
-      margin:.75rem 0;
+    /* Spinner animation while redirecting */
+    .spinner {
+      display: none;
+      width: 18px; height: 18px;
+      border: 2.5px solid rgba(255,255,255,.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
     }
-    .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
-    .divider span{font-size:.75rem;color:var(--slate-lt);white-space:nowrap}
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    .terms{
-      font-size:.74rem;color:var(--slate-lt);
-      text-align:center;line-height:1.55;margin-top:.5rem;
-    }
-    .terms a{color:var(--indigo)}
-
-    /* Alert */
-    .alert{
-      padding:.75rem 1rem;border-radius:8px;
-      font-size:.83rem;line-height:1.5;
-      margin-bottom:1rem;display:none;
-    }
-    .alert.success{background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0;display:flex;gap:8px;align-items:flex-start}
-    .alert.error{background:#FEF2F2;color:#991B1B;border:1px solid #FECACA;display:flex;gap:8px;align-items:flex-start}
-    .alert.info{background:var(--indigo-lt);color:var(--indigo-dk);border:1px solid #A7D9B8;display:flex;gap:8px;align-items:flex-start}
-
-    /* Password strength */
-    .pw-strength{margin-top:.4rem;display:none}
-    .pw-bar-track{height:4px;background:#E5E7EB;border-radius:2px;overflow:hidden;margin-bottom:.3rem}
-    .pw-bar-fill{height:100%;border-radius:2px;transition:width .3s,background .3s;width:0%}
-    .pw-label{font-size:.72rem;color:var(--slate-lt)}
-
-    /* Secure badge */
-    .secure-badge{
-      display:flex;align-items:center;justify-content:center;gap:6px;
-      font-size:.72rem;color:var(--slate-lt);margin-top:1.25rem;
-    }
-    .secure-badge svg{width:12px;height:12px;fill:#059669}
-
-    /* Step indicator (for onboarding flow inside signup) */
-    .steps-indicator{
-      display:flex;align-items:center;gap:0;
-      margin-bottom:1.5rem;
-    }
-    .step-dot{
-      width:28px;height:28px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      font-family:var(--font-d);font-weight:700;font-size:.72rem;
-      flex-shrink:0;transition:all .2s;
-    }
-    .step-dot.done{background:var(--indigo);color:#fff}
-    .step-dot.active{background:var(--indigo);color:#fff;box-shadow:0 0 0 4px var(--indigo-lt)}
-    .step-dot.pending{background:#F3F4F6;color:var(--slate-lt)}
-    .step-line{flex:1;height:2px;background:#E5E7EB}
-    .step-line.done{background:var(--indigo)}
-    .step-labels{
-      display:flex;justify-content:space-between;
-      margin-top:.4rem;margin-bottom:1.25rem;
-    }
-    .step-lbl{
-      font-size:.64rem;font-weight:600;color:var(--slate-lt);
-      text-align:center;flex:1;
-    }
-    .step-lbl.active{color:var(--indigo)}
-
-    /* Hidden panels */
-    .panel{display:none}
-    .panel.active{display:block}
-
-    /* Mobile */
-    @media(max-width:768px){
-      .brand-panel{display:none}
-      .form-panel{padding:2rem 1.25rem}
+    @media (max-width: 480px) {
+      .card { padding: 2rem 1.5rem; border-radius: 16px; }
     }
   </style>
 </head>
 <body>
 
-<div class="layout">
+<div class="card">
+  <a href="/" class="logo">
+    <img src="logo.jpg" alt="Nabbit"/>
+    nabbit
+  </a>
 
-  <!-- ── BRAND PANEL ── -->
-  <div class="brand-panel">
-    <a href="/" class="brand-logo">
-      <img src="logo.jpg" alt="Nabbit" style="height:36px;width:auto;object-fit:contain;border-radius:6px;"/>
-      nabbit
-    </a>
+  <h1>Welcome back 👋</h1>
+  <p>Nabbit accounts are managed through our secure app. Click below and you'll be logged in right away.</p>
 
-    <div class="brand-content">
-      <div class="brand-headline">Every receipt,<br><span>nabbed</span> and filed.</div>
-      <p class="brand-sub">Receipt management for Canadian small businesses. Snap, sync, and close your books — all before lunch.</p>
-      <div class="brand-testimonial">
-        <p class="brand-quote">"Nabbit's QBO sync saved me 90 minutes at month-end. And knowing every receipt is CRA-compliant for 7 years? Peace of mind I didn't know I was missing."</p>
-        <div class="brand-author">
-          <div class="brand-av">TR</div>
-          <div>
-            <div class="brand-name">Theo R.</div>
-            <div class="brand-role">Founder, Lakeside Media · Ottawa, ON</div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <a href="https://ledger-live-close.lovable.app" class="btn-primary" id="loginBtn" onclick="startRedirect(event, 'https://ledger-live-close.lovable.app')">
+    <span id="btnText">Log in to Nabbit →</span>
+    <span class="spinner" id="spinner"></span>
+  </a>
 
-    <div class="brand-footer">© 2026 Nabbit (1001583085 Ontario Inc.) · <a href="/" style="color:rgba(255,255,255,.3)">nabbit.ca</a></div>
+  <div class="divider"><span>new to Nabbit?</span></div>
+
+  <a href="https://ledger-live-close.lovable.app" class="btn-outline" onclick="startRedirect(event, 'https://ledger-live-close.lovable.app')">
+    Start your free 30-day trial
+  </a>
+
+  <div class="secure">
+    <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+    Secured with 256-bit SSL · Canadian data · CRA-compliant
   </div>
 
-  <!-- ── FORM PANEL ── -->
-  <div class="form-panel">
-    <div class="form-box">
-
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab active" id="tabLogin" onclick="showTab('login')">Log in</button>
-        <button class="tab" id="tabSignup" onclick="showTab('signup')">Start free trial</button>
-      </div>
-
-      <!-- ══ LOGIN PANEL ══ -->
-      <div id="panelLogin" class="panel active">
-        <div class="form-header">
-          <h1 class="form-title">Welcome back 👋</h1>
-          <p class="form-sub">Don't have an account? <a href="#" onclick="showTab('signup');return false">Start your free trial</a></p>
-        </div>
-
-        <div id="loginAlert" class="alert"></div>
-
-        <div class="field">
-          <label class="field-label" for="loginEmail">Email address</label>
-          <input class="field-input" type="email" id="loginEmail" placeholder="you@company.com" autocomplete="email" onkeydown="if(event.key==='Enter')submitLogin()"/>
-        </div>
-
-        <div class="field">
-          <label class="field-label" for="loginPass">Password</label>
-          <input class="field-input" type="password" id="loginPass" placeholder="Your password" autocomplete="current-password" onkeydown="if(event.key==='Enter')submitLogin()"/>
-        </div>
-
-        <a href="#" class="forgot" onclick="showForgot();return false">Forgot your password?</a>
-
-        <div id="forgotSection" style="display:none;margin-bottom:1rem;background:var(--indigo-lt);border-radius:12px;padding:1rem;">
-          <p style="font-size:.82rem;color:var(--slate);font-weight:600;margin-bottom:.6rem">Reset your password</p>
-          <div class="field" style="margin-bottom:.6rem">
-            <input class="field-input" type="email" id="forgotEmail" placeholder="you@company.com"/>
-          </div>
-          <button onclick="sendReset()" style="background:var(--indigo);color:#fff;border:none;border-radius:8px;padding:.55rem 1.1rem;font-family:var(--font-d);font-size:.82rem;font-weight:700;cursor:pointer">Send reset link →</button>
-        </div>
-
-        <label class="remember">
-          <input type="checkbox" id="rememberMe"/> Remember me for 30 days
-        </label>
-
-        <button class="btn-submit" id="loginBtn" onclick="submitLogin()">
-          Log in to Nabbit →
-        </button>
-
-        <div class="secure-badge">
-          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-          Secured with 256-bit SSL encryption
-        </div>
-      </div>
-
-      <!-- ══ SIGNUP PANEL ══ -->
-      <div id="panelSignup" class="panel">
-        <div class="form-header">
-          <h1 class="form-title" id="signupTitle">Create your account</h1>
-          <p class="form-sub" id="signupSub">30 days free. No credit card required.</p>
-        </div>
-
-        <!-- Step indicator -->
-        <div class="steps-indicator">
-          <div class="step-dot active" id="sd1">1</div>
-          <div class="step-line" id="sl1"></div>
-          <div class="step-dot pending" id="sd2">2</div>
-          <div class="step-line" id="sl2"></div>
-          <div class="step-dot pending" id="sd3">3</div>
-        </div>
-        <div class="step-labels">
-          <span class="step-lbl active" id="slbl1">Your details</span>
-          <span class="step-lbl" id="slbl2">Your company</span>
-          <span class="step-lbl" id="slbl3">Set up Nabbit</span>
-        </div>
-
-        <div id="signupAlert" class="alert"></div>
-
-        <!-- Step 1: Personal details -->
-        <div id="step1" class="panel active">
-          <div class="field-row">
-            <div class="field">
-              <label class="field-label" for="s1First">First name</label>
-              <input class="field-input" type="text" id="s1First" placeholder="Bryce" autocomplete="given-name"/>
-            </div>
-            <div class="field">
-              <label class="field-label" for="s1Last">Last name</label>
-              <input class="field-input" type="text" id="s1Last" placeholder="Anger" autocomplete="family-name"/>
-            </div>
-          </div>
-          <div class="field">
-            <label class="field-label" for="s1Email">Work email</label>
-            <input class="field-input" type="email" id="s1Email" placeholder="you@company.com" autocomplete="email"/>
-          </div>
-          <div class="field">
-            <label class="field-label" for="s1Pass">Password</label>
-            <input class="field-input" type="password" id="s1Pass" placeholder="Min. 8 characters" autocomplete="new-password" oninput="checkPassword(this.value)"/>
-            <div class="pw-strength" id="pwStrength">
-              <div class="pw-bar-track"><div class="pw-bar-fill" id="pwBar"></div></div>
-              <div class="pw-label" id="pwLabel">Too short</div>
-            </div>
-          </div>
-          <button class="btn-submit" onclick="goStep(2)">Continue →</button>
-          <p class="terms">By continuing you agree to our <a href="terms.html">Terms of Use</a> and <a href="privacy.html">Privacy Policy</a>.</p>
-        </div>
-
-        <!-- Step 2: Company details -->
-        <div id="step2" class="panel">
-          <div class="field">
-            <label class="field-label" for="s2Company">Company name</label>
-            <input class="field-input" type="text" id="s2Company" placeholder="Acme Inc." autocomplete="organization"/>
-          </div>
-          <div class="field">
-            <label class="field-label" for="s2Industry">Industry</label>
-            <select class="field-input" id="s2Industry">
-              <option value="">Select your industry…</option>
-              <option>Construction & Trades</option>
-              <option>Professional Services</option>
-              <option>Retail</option>
-              <option>Hospitality & Food Service</option>
-              <option>Healthcare</option>
-              <option>Technology</option>
-              <option>Real Estate</option>
-              <option>Non-Profit</option>
-              <option>Accounting / Bookkeeping</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="field">
-            <label class="field-label" for="s2Size">Company size</label>
-            <select class="field-input" id="s2Size">
-              <option value="">Select size…</option>
-              <option>Just me</option>
-              <option>2–5 employees</option>
-              <option>6–20 employees</option>
-              <option>21–50 employees</option>
-              <option>51+ employees</option>
-            </select>
-          </div>
-          <div class="field">
-            <label class="field-label" for="s2Province">Province</label>
-            <select class="field-input" id="s2Province">
-              <option value="">Select province…</option>
-              <option>Alberta</option>
-              <option>British Columbia</option>
-              <option>Manitoba</option>
-              <option>New Brunswick</option>
-              <option>Newfoundland and Labrador</option>
-              <option>Nova Scotia</option>
-              <option>Ontario</option>
-              <option>Prince Edward Island</option>
-              <option>Quebec</option>
-              <option>Saskatchewan</option>
-            </select>
-          </div>
-          <div style="display:flex;gap:.75rem">
-            <button class="btn-secondary-full" onclick="goStep(1)" style="flex:0 0 auto;width:auto;padding:.75rem 1.25rem">← Back</button>
-            <button class="btn-submit" style="margin-bottom:0" onclick="goStep(3)">Continue →</button>
-          </div>
-        </div>
-
-        <!-- Step 3: Setup & connect -->
-        <div id="step3" class="panel">
-          <p style="font-size:.88rem;color:var(--slate-md);line-height:1.65;margin-bottom:1.25rem">Almost there! Tell us how you'll use Nabbit so we can set up your account perfectly.</p>
-
-          <div class="field">
-            <label class="field-label">How do you currently manage receipts?</label>
-            <select class="field-input" id="s3Current">
-              <option value="">Select…</option>
-              <option>Paper / manually filing</option>
-              <option>Spreadsheets</option>
-              <option>Dext / ReceiptBank</option>
-              <option>Expensify</option>
-              <option>Hubdoc</option>
-              <option>QuickBooks (manual entry)</option>
-              <option>Nothing — it's chaos</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label class="field-label">Do you use QuickBooks Online?</label>
-            <select class="field-input" id="s3Qbo">
-              <option value="">Select…</option>
-              <option value="yes">Yes — I want to connect it</option>
-              <option value="no">No — I'll use CSV export for now</option>
-              <option value="maybe">Not sure yet</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label class="field-label">How did you hear about Nabbit?</label>
-            <select class="field-input" id="s3Source">
-              <option value="">Select…</option>
-              <option>Google search</option>
-              <option>LinkedIn</option>
-              <option>Accountant / bookkeeper referral</option>
-              <option>Word of mouth</option>
-              <option>Social media</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div style="display:flex;gap:.75rem">
-            <button class="btn-secondary-full" onclick="goStep(2)" style="flex:0 0 auto;width:auto;padding:.75rem 1.25rem">← Back</button>
-            <button class="btn-submit" style="margin-bottom:0" id="createBtn" onclick="createAccount()">Create my account →</button>
-          </div>
-
-          <div class="secure-badge" style="margin-top:1rem">
-            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-            Secured with 256-bit SSL · CRA-compliant storage · Canadian data
-          </div>
-        </div>
-
-      </div>
-      <!-- end signup panel -->
-
-    </div>
-  </div>
-
+  <div class="back">← <a href="/">Back to nabbit.ca</a></div>
 </div>
 
 <script>
-  // ── SUPABASE INIT ──
-  const SUPABASE_URL  = 'https://gojybvyjampzvuvoihql.supabase.co';
-  const SUPABASE_KEY  = 'sb_publishable_JGOSSbFElozot_igsyh_KQ_iOf_svR4';
-  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-  // ── APP URL ──
-  const APP_URL = 'https://ledger-live-close.lovable.app';
-
-  // ── TAB SWITCHING ──
-  function showTab(tab) {
-    document.getElementById('panelLogin').classList.toggle('active', tab === 'login');
-    document.getElementById('panelSignup').classList.toggle('active', tab === 'signup');
-    document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
-    document.getElementById('tabSignup').classList.toggle('active', tab === 'signup');
+  function startRedirect(e, url) {
+    e.preventDefault();
+    document.getElementById('btnText').textContent = 'Redirecting…';
+    document.getElementById('spinner').style.display = 'inline-block';
+    setTimeout(() => { window.location.href = url; }, 400);
   }
-
-  // ── FORGOT PASSWORD ──
-  function showForgot() {
-    document.getElementById('forgotSection').style.display = 'block';
-  }
-  async function sendReset() {
-    const email = document.getElementById('forgotEmail').value.trim();
-    if (!email) { showAlert('login', 'error', 'Please enter your email address.'); return; }
-    const { error } = await sb.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + '/login.html'
-    });
-    if (error) {
-      showAlert('login', 'error', error.message);
-    } else {
-      showAlert('login', 'success', '✓ Reset link sent — check your inbox.');
-      document.getElementById('forgotSection').style.display = 'none';
-    }
-  }
-
-  // ── ALERT HELPER ──
-  function showAlert(panel, type, msg) {
-    const el = document.getElementById(panel + 'Alert');
-    el.className = 'alert ' + type;
-    el.innerHTML = msg;
-  }
-  function clearAlert(panel) {
-    const el = document.getElementById(panel + 'Alert');
-    el.className = 'alert';
-  }
-
-  // ── LOGIN ──
-  async function submitLogin() {
-    const email = document.getElementById('loginEmail').value.trim();
-    const pass  = document.getElementById('loginPass').value;
-    clearAlert('login');
-
-    if (!email || !pass) { showAlert('login', 'error', 'Please enter your email and password.'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showAlert('login', 'error', 'Please enter a valid email address.'); return; }
-
-    const btn = document.getElementById('loginBtn');
-    btn.disabled = true;
-    btn.textContent = 'Logging in…';
-
-    const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
-
-    if (error) {
-      btn.disabled = false;
-      btn.textContent = 'Log in to Nabbit →';
-      const msg = error.message.includes('Invalid login') 
-        ? 'Incorrect email or password. Please try again.'
-        : error.message;
-      showAlert('login', 'error', msg);
-      return;
-    }
-
-    // Successful login — redirect to app
-    showAlert('login', 'success', '✓ Logged in! Redirecting to your account…');
-    setTimeout(() => { window.location.href = APP_URL; }, 800);
-  }
-
-  // ── PASSWORD STRENGTH ──
-  function checkPassword(val) {
-    const el  = document.getElementById('pwStrength');
-    const bar = document.getElementById('pwBar');
-    const lbl = document.getElementById('pwLabel');
-    el.style.display = 'block';
-    let score = 0;
-    if (val.length >= 8)  score++;
-    if (val.length >= 12) score++;
-    if (/[A-Z]/.test(val)) score++;
-    if (/[0-9]/.test(val)) score++;
-    if (/[^A-Za-z0-9]/.test(val)) score++;
-    const levels = [
-      { w: '20%', bg: '#EF4444', t: 'Too weak' },
-      { w: '40%', bg: '#F97316', t: 'Weak' },
-      { w: '60%', bg: '#EAB308', t: 'Fair' },
-      { w: '80%', bg: '#22C55E', t: 'Strong' },
-      { w: '100%', bg: '#16A34A', t: 'Very strong' },
-    ];
-    const l = levels[Math.min(score, 4)];
-    bar.style.width = l.w; bar.style.background = l.bg; lbl.textContent = l.t;
-  }
-
-  // ── SIGNUP STEPS ──
-  let currentStep = 1;
-  function goStep(n) {
-    clearAlert('signup');
-    if (n > currentStep) {
-      if (currentStep === 1) {
-        const first = document.getElementById('s1First').value.trim();
-        const last  = document.getElementById('s1Last').value.trim();
-        const email = document.getElementById('s1Email').value.trim();
-        const pass  = document.getElementById('s1Pass').value;
-        if (!first || !last) { showAlert('signup', 'error', 'Please enter your first and last name.'); return; }
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showAlert('signup', 'error', 'Please enter a valid email address.'); return; }
-        if (pass.length < 8) { showAlert('signup', 'error', 'Password must be at least 8 characters.'); return; }
-      }
-      if (currentStep === 2) {
-        if (!document.getElementById('s2Company').value.trim()) { showAlert('signup', 'error', 'Please enter your company name.'); return; }
-        if (!document.getElementById('s2Industry').value) { showAlert('signup', 'error', 'Please select your industry.'); return; }
-      }
-    }
-    document.getElementById('step' + currentStep).classList.remove('active');
-    document.getElementById('step' + n).classList.add('active');
-    currentStep = n;
-    updateStepUI(n);
-  }
-
-  function updateStepUI(n) {
-    for (let i = 1; i <= 3; i++) {
-      const dot = document.getElementById('sd' + i);
-      const lbl = document.getElementById('slbl' + i);
-      if (i < n)      { dot.className = 'step-dot done';    dot.innerHTML = '✓'; }
-      else if (i ===n){ dot.className = 'step-dot active';  dot.textContent = i; }
-      else            { dot.className = 'step-dot pending'; dot.textContent = i; }
-      lbl.className = 'step-lbl' + (i === n ? ' active' : '');
-    }
-    for (let i = 1; i <= 2; i++) {
-      document.getElementById('sl' + i).className = 'step-line' + (i < n ? ' done' : '');
-    }
-    const titles = ['Create your account', 'Tell us about your company', 'Almost ready!'];
-    const subs   = ['30 days free. No credit card required.', 'Help us set up Nabbit for your business.', "One last thing and you're in."];
-    document.getElementById('signupTitle').textContent = titles[n - 1];
-    document.getElementById('signupSub').textContent   = subs[n - 1];
-  }
-
-  // ── CREATE ACCOUNT ──
-  async function createAccount() {
-    const btn = document.getElementById('createBtn');
-    btn.disabled = true;
-    btn.textContent = '🐇 Setting up your account…';
-    clearAlert('signup');
-
-    const email   = document.getElementById('s1Email').value.trim();
-    const pass    = document.getElementById('s1Pass').value;
-    const first   = document.getElementById('s1First').value.trim();
-    const last    = document.getElementById('s1Last').value.trim();
-    const company = document.getElementById('s2Company').value.trim();
-    const industry = document.getElementById('s2Industry').value;
-    const size     = document.getElementById('s2Size').value;
-    const province = document.getElementById('s2Province').value;
-    const qbo      = document.getElementById('s3Qbo').value;
-    const source   = document.getElementById('s3Source').value;
-
-    // 1. Create Supabase auth user
-    const { data: authData, error: authError } = await sb.auth.signUp({
-      email,
-      password: pass,
-      options: {
-        data: {
-          first_name: first,
-          last_name:  last,
-          company_name: company,
-        }
-      }
-    });
-
-    if (authError) {
-      btn.disabled = false;
-      btn.textContent = 'Create my account →';
-      showAlert('signup', 'error', authError.message);
-      return;
-    }
-
-    // 2. If user created successfully, write onboarding data to profiles table
-    if (authData.user) {
-      await sb.from('profiles').upsert({
-        id:           authData.user.id,
-        first_name:   first,
-        last_name:    last,
-        company_name: company,
-        industry,
-        company_size: size,
-        province,
-        qbo_interest: qbo,
-        signup_source: source,
-        updated_at:   new Date().toISOString(),
-      }, { onConflict: 'id' });
-    }
-
-    // 3. Redirect to app
-    showAlert('signup', 'success', '🐇 Account created! Check your email to confirm, then log in.');
-    setTimeout(() => { window.location.href = APP_URL; }, 2000);
-  }
-
-  // ── AUTO-FOCUS ──
-  document.getElementById('loginEmail').focus();
 </script>
 
 </body>
