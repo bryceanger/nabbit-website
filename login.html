@@ -11,6 +11,8 @@
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://ledger-live-close.lovable.app;"/>
   <title>Log in — Nabbit</title>
+  <!-- Supabase JS client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -501,6 +503,14 @@
 </div>
 
 <script>
+  // ── SUPABASE INIT ──
+  const SUPABASE_URL  = 'https://gojybvyjampzvuvoihql.supabase.co';
+  const SUPABASE_KEY  = 'sb_publishable_JGOSSbFElozot_igsyh_KQ_iOf_svR4';
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // ── APP URL ──
+  const APP_URL = 'https://ledger-live-close.lovable.app';
+
   // ── TAB SWITCHING ──
   function showTab(tab) {
     document.getElementById('panelLogin').classList.toggle('active', tab === 'login');
@@ -513,11 +523,18 @@
   function showForgot() {
     document.getElementById('forgotSection').style.display = 'block';
   }
-  function sendReset() {
+  async function sendReset() {
     const email = document.getElementById('forgotEmail').value.trim();
-    if (!email) return;
-    showAlert('login', 'success', '✓ Reset link sent — check your inbox.');
-    document.getElementById('forgotSection').style.display = 'none';
+    if (!email) { showAlert('login', 'error', 'Please enter your email address.'); return; }
+    const { error } = await sb.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + '/login.html'
+    });
+    if (error) {
+      showAlert('login', 'error', error.message);
+    } else {
+      showAlert('login', 'success', '✓ Reset link sent — check your inbox.');
+      document.getElementById('forgotSection').style.display = 'none';
+    }
   }
 
   // ── ALERT HELPER ──
@@ -532,28 +549,43 @@
   }
 
   // ── LOGIN ──
-  function submitLogin() {
+  async function submitLogin() {
     const email = document.getElementById('loginEmail').value.trim();
     const pass  = document.getElementById('loginPass').value;
     clearAlert('login');
-    if (!email || !pass) { showAlert('login','error','Please enter your email and password.'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showAlert('login','error','Please enter a valid email address.'); return; }
+
+    if (!email || !pass) { showAlert('login', 'error', 'Please enter your email and password.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showAlert('login', 'error', 'Please enter a valid email address.'); return; }
+
     const btn = document.getElementById('loginBtn');
-    btn.disabled = true; btn.textContent = 'Logging in…';
-    // Redirect to app with login intent
-    setTimeout(() => {
-      window.location.href = 'https://ledger-live-close.lovable.app?email=' + encodeURIComponent(email) + '&action=login';
-    }, 800);
+    btn.disabled = true;
+    btn.textContent = 'Logging in…';
+
+    const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+
+    if (error) {
+      btn.disabled = false;
+      btn.textContent = 'Log in to Nabbit →';
+      const msg = error.message.includes('Invalid login') 
+        ? 'Incorrect email or password. Please try again.'
+        : error.message;
+      showAlert('login', 'error', msg);
+      return;
+    }
+
+    // Successful login — redirect to app
+    showAlert('login', 'success', '✓ Logged in! Redirecting to your account…');
+    setTimeout(() => { window.location.href = APP_URL; }, 800);
   }
 
   // ── PASSWORD STRENGTH ──
   function checkPassword(val) {
-    const el = document.getElementById('pwStrength');
+    const el  = document.getElementById('pwStrength');
     const bar = document.getElementById('pwBar');
     const lbl = document.getElementById('pwLabel');
     el.style.display = 'block';
     let score = 0;
-    if (val.length >= 8) score++;
+    if (val.length >= 8)  score++;
     if (val.length >= 12) score++;
     if (/[A-Z]/.test(val)) score++;
     if (/[0-9]/.test(val)) score++;
@@ -573,23 +605,21 @@
   let currentStep = 1;
   function goStep(n) {
     clearAlert('signup');
-    // Validate before moving forward
     if (n > currentStep) {
       if (currentStep === 1) {
         const first = document.getElementById('s1First').value.trim();
         const last  = document.getElementById('s1Last').value.trim();
         const email = document.getElementById('s1Email').value.trim();
         const pass  = document.getElementById('s1Pass').value;
-        if (!first || !last) { showAlert('signup','error','Please enter your first and last name.'); return; }
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showAlert('signup','error','Please enter a valid email address.'); return; }
-        if (pass.length < 8) { showAlert('signup','error','Password must be at least 8 characters.'); return; }
+        if (!first || !last) { showAlert('signup', 'error', 'Please enter your first and last name.'); return; }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showAlert('signup', 'error', 'Please enter a valid email address.'); return; }
+        if (pass.length < 8) { showAlert('signup', 'error', 'Password must be at least 8 characters.'); return; }
       }
       if (currentStep === 2) {
-        if (!document.getElementById('s2Company').value.trim()) { showAlert('signup','error','Please enter your company name.'); return; }
-        if (!document.getElementById('s2Industry').value) { showAlert('signup','error','Please select your industry.'); return; }
+        if (!document.getElementById('s2Company').value.trim()) { showAlert('signup', 'error', 'Please enter your company name.'); return; }
+        if (!document.getElementById('s2Industry').value) { showAlert('signup', 'error', 'Please select your industry.'); return; }
       }
     }
-    // Hide current, show next
     document.getElementById('step' + currentStep).classList.remove('active');
     document.getElementById('step' + n).classList.add('active');
     currentStep = n;
@@ -600,49 +630,77 @@
     for (let i = 1; i <= 3; i++) {
       const dot = document.getElementById('sd' + i);
       const lbl = document.getElementById('slbl' + i);
-      if (i < n) { dot.className = 'step-dot done'; dot.innerHTML = '✓'; }
-      else if (i === n) { dot.className = 'step-dot active'; dot.textContent = i; }
-      else { dot.className = 'step-dot pending'; dot.textContent = i; }
+      if (i < n)      { dot.className = 'step-dot done';    dot.innerHTML = '✓'; }
+      else if (i ===n){ dot.className = 'step-dot active';  dot.textContent = i; }
+      else            { dot.className = 'step-dot pending'; dot.textContent = i; }
       lbl.className = 'step-lbl' + (i === n ? ' active' : '');
     }
     for (let i = 1; i <= 2; i++) {
       document.getElementById('sl' + i).className = 'step-line' + (i < n ? ' done' : '');
     }
     const titles = ['Create your account', 'Tell us about your company', 'Almost ready!'];
-    const subs   = ['30 days free. No credit card required.', 'Help us set up Nabbit for your business.', 'One last thing and you\'re in.'];
-    document.getElementById('signupTitle').textContent = titles[n-1];
-    document.getElementById('signupSub').textContent   = subs[n-1];
+    const subs   = ['30 days free. No credit card required.', 'Help us set up Nabbit for your business.', "One last thing and you're in."];
+    document.getElementById('signupTitle').textContent = titles[n - 1];
+    document.getElementById('signupSub').textContent   = subs[n - 1];
   }
 
   // ── CREATE ACCOUNT ──
-  function createAccount() {
+  async function createAccount() {
     const btn = document.getElementById('createBtn');
-    btn.disabled = true; btn.textContent = '🐇 Setting up your account…';
-    // Collect all data
-    const data = {
-      first:    document.getElementById('s1First').value.trim(),
-      last:     document.getElementById('s1Last').value.trim(),
-      email:    document.getElementById('s1Email').value.trim(),
-      company:  document.getElementById('s2Company').value.trim(),
-      industry: document.getElementById('s2Industry').value,
-      size:     document.getElementById('s2Size').value,
-      province: document.getElementById('s2Province').value,
-      qbo:      document.getElementById('s3Qbo').value,
-      source:   document.getElementById('s3Source').value,
-    };
-    showAlert('signup','info','🐇 Creating your Nabbit account…');
-    // Redirect to app with pre-filled data as URL params
-    setTimeout(() => {
-      const params = new URLSearchParams({
-        email:   data.email,
-        first:   data.first,
-        last:    data.last,
-        company: data.company,
-        ref:     'nabbit-trial',
-        action:  'signup',
-      });
-      window.location.href = 'https://ledger-live-close.lovable.app?' + params.toString();
-    }, 1200);
+    btn.disabled = true;
+    btn.textContent = '🐇 Setting up your account…';
+    clearAlert('signup');
+
+    const email   = document.getElementById('s1Email').value.trim();
+    const pass    = document.getElementById('s1Pass').value;
+    const first   = document.getElementById('s1First').value.trim();
+    const last    = document.getElementById('s1Last').value.trim();
+    const company = document.getElementById('s2Company').value.trim();
+    const industry = document.getElementById('s2Industry').value;
+    const size     = document.getElementById('s2Size').value;
+    const province = document.getElementById('s2Province').value;
+    const qbo      = document.getElementById('s3Qbo').value;
+    const source   = document.getElementById('s3Source').value;
+
+    // 1. Create Supabase auth user
+    const { data: authData, error: authError } = await sb.auth.signUp({
+      email,
+      password: pass,
+      options: {
+        data: {
+          first_name: first,
+          last_name:  last,
+          company_name: company,
+        }
+      }
+    });
+
+    if (authError) {
+      btn.disabled = false;
+      btn.textContent = 'Create my account →';
+      showAlert('signup', 'error', authError.message);
+      return;
+    }
+
+    // 2. If user created successfully, write onboarding data to profiles table
+    if (authData.user) {
+      await sb.from('profiles').upsert({
+        id:           authData.user.id,
+        first_name:   first,
+        last_name:    last,
+        company_name: company,
+        industry,
+        company_size: size,
+        province,
+        qbo_interest: qbo,
+        signup_source: source,
+        updated_at:   new Date().toISOString(),
+      }, { onConflict: 'id' });
+    }
+
+    // 3. Redirect to app
+    showAlert('signup', 'success', '🐇 Account created! Check your email to confirm, then log in.');
+    setTimeout(() => { window.location.href = APP_URL; }, 2000);
   }
 
   // ── AUTO-FOCUS ──
