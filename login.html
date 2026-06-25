@@ -17,9 +17,9 @@
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --indigo:#4F46E5;--indigo-dk:#3730A3;--indigo-lt:#EEF2FF;
-      --citrine:#F5C518;--slate:#1E1B4B;--slate-md:#374151;--slate-lt:#6B7280;
-      --white:#FAFAF7;--border:#E5E4E9;
+      --indigo:#00A854;--indigo-dk:#007A3D;--indigo-lt:#E8F5EE;
+      --citrine:#0099CC;--slate:#0F1A12;--slate-md:#2D4A35;--slate-lt:#5A7060;
+      --white:#F4F8F5;--border:#D6E8DB;
       --font-d:'Plus Jakarta Sans',sans-serif;--font-b:'Inter',sans-serif;
     }
     html,body{height:100%}
@@ -48,14 +48,14 @@
       content:'';position:absolute;
       top:-100px;right:-100px;
       width:400px;height:400px;
-      background:radial-gradient(circle,rgba(79,70,229,.5) 0%,transparent 65%);
+      background:radial-gradient(circle,rgba(0,168,84,.5) 0%,transparent 65%);
       border-radius:50%;
     }
     .brand-panel::after{
       content:'';position:absolute;
       bottom:-80px;left:-60px;
       width:300px;height:300px;
-      background:radial-gradient(circle,rgba(245,197,24,.12) 0%,transparent 65%);
+      background:radial-gradient(circle,rgba(0,153,204,.12) 0%,transparent 65%);
       border-radius:50%;
     }
     .brand-logo{
@@ -163,10 +163,10 @@
       font-family:var(--font-d);font-weight:700;font-size:1rem;
       padding:.85rem;border-radius:100px;border:none;cursor:pointer;
       transition:background .2s,transform .15s,box-shadow .2s;
-      box-shadow:0 2px 12px rgba(79,70,229,.35);
+      box-shadow:0 2px 12px rgba(0,168,84,.35);
       margin-bottom:.75rem;
     }
-    .btn-submit:hover{background:var(--indigo-dk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,70,229,.4)}
+    .btn-submit:hover{background:var(--indigo-dk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,168,84,.4)}
     .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
 
     .btn-secondary-full{
@@ -200,7 +200,7 @@
     }
     .alert.success{background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0;display:flex;gap:8px;align-items:flex-start}
     .alert.error{background:#FEF2F2;color:#991B1B;border:1px solid #FECACA;display:flex;gap:8px;align-items:flex-start}
-    .alert.info{background:var(--indigo-lt);color:var(--indigo-dk);border:1px solid #C7D2FE;display:flex;gap:8px;align-items:flex-start}
+    .alert.info{background:var(--indigo-lt);color:var(--indigo-dk);border:1px solid #A7D9B8;display:flex;gap:8px;align-items:flex-start}
 
     /* Password strength */
     .pw-strength{margin-top:.4rem;display:none}
@@ -259,24 +259,7 @@
   <!-- ── BRAND PANEL ── -->
   <div class="brand-panel">
     <a href="/" class="brand-logo">
-      <svg viewBox="0 0 160 180" fill="none">
-        <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" fill="#6366F1"/>
-        <path d="M 52 72 C 48 60 46 40 48 22 C 50 12 56 8 60 10 C 58 24 56 48 54 68 Z" fill="#E0E7FF"/>
-        <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" fill="#6366F1"/>
-        <path d="M 86 72 C 84 62 86 48 90 38 C 94 28 100 24 104 26 C 100 38 94 56 90 70 Z" fill="#E0E7FF"/>
-        <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" fill="#6366F1"/>
-        <path d="M 116 100 C 126 104 132 112 130 122 C 128 132 120 138 110 136 C 104 134 100 128 102 120 C 104 112 110 104 116 100 Z" fill="#818CF8"/>
-        <circle cx="88" cy="88" r="10" fill="#1E1B4B"/>
-        <circle cx="91" cy="85" r="4" fill="white"/>
-        <ellipse cx="128" cy="108" rx="7" ry="5" fill="#1E1B4B"/>
-        <rect x="128" y="116" width="26" height="42" rx="3" fill="#F5C518"/>
-        <rect x="132" y="124" width="16" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
-        <rect x="132" y="132" width="16" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
-        <rect x="132" y="140" width="12" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
-        <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" stroke="#1E1B4B" stroke-width="4" fill="none"/>
-        <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" stroke="#1E1B4B" stroke-width="4" fill="none"/>
-        <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" stroke="#1E1B4B" stroke-width="4" fill="none"/>
-      </svg>
+      <img src="logo.jpg" alt="Nabbit" style="height:36px;width:auto;object-fit:contain;border-radius:6px;"/>
       nabbit
     </a>
 
