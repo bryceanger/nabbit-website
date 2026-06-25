@@ -6,7 +6,7 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
-  <meta name="theme-color" content="#4F46E5"/>
+  <meta name="theme-color" content="#00A854"/>
   <meta name="description" content="Nabbit captures, categorises, and files every receipt the moment it happens. Receipt management built for Canadian small businesses. Free 30-day trial."/>
   <meta property="og:title" content="Nabbit — Every receipt, nabbed and filed."/>
   <meta property="og:description" content="Snap, forward, or drop — Nabbit captures receipts instantly and has them organised, categorised, and export-ready before you're back at your desk."/>
@@ -17,22 +17,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    /* ─── TOKENS ─────────────────────────────────────────── */
+    /* ─── TOKENS — Option C: Clean Canopy ────────────────── */
     :root {
-      --indigo:     #4F46E5;
-      --indigo-dk:  #3730A3;
-      --indigo-lt:  #EEF2FF;
-      --citrine:    #F5C518;
-      --citrine-dk: #D4A800;
-      --slate:      #1E1B4B;
-      --slate-md:   #374151;
-      --slate-lt:   #6B7280;
-      --white:      #FAFAF7;
-      --border:     #E5E4E9;
+      --indigo:     #00A854;
+      --indigo-dk:  #007A3D;
+      --indigo-lt:  #E8F5EE;
+      --citrine:    #0099CC;
+      --citrine-dk: #007AA3;
+      --slate:      #0F1A12;
+      --slate-md:   #2D4A35;
+      --slate-lt:   #5A7060;
+      --white:      #F4F8F5;
+      --border:     #D6E8DB;
       --r-sm: 8px; --r-md: 16px; --r-lg: 24px; --r-xl: 32px;
-      --shadow-sm:  0 2px 8px rgba(30,27,75,0.08);
-      --shadow-md:  0 4px 24px rgba(79,70,229,0.12), 0 1px 4px rgba(30,27,75,0.06);
-      --shadow-lg:  0 20px 60px rgba(79,70,229,0.18), 0 4px 16px rgba(30,27,75,0.10);
+      --shadow-sm:  0 2px 8px rgba(15,26,18,0.08);
+      --shadow-md:  0 4px 24px rgba(0,168,84,0.12), 0 1px 4px rgba(15,26,18,0.06);
+      --shadow-lg:  0 20px 60px rgba(0,168,84,0.16), 0 4px 16px rgba(15,26,18,0.10);
       --font-d: 'Plus Jakarta Sans', sans-serif;
       --font-b: 'Inter', sans-serif;
       --pad-x: clamp(1.25rem, 5vw, 5rem);
@@ -70,15 +70,15 @@
     .btn:hover { transform: translateY(-1px); }
     .btn-primary {
       background: var(--indigo); color: #fff;
-      box-shadow: 0 2px 12px rgba(79,70,229,.35);
+      box-shadow: 0 2px 12px rgba(0,168,84,.35);
     }
-    .btn-primary:hover { background: var(--indigo-dk); box-shadow: 0 6px 20px rgba(79,70,229,.4); }
+    .btn-primary:hover { background: var(--indigo-dk); box-shadow: 0 6px 20px rgba(0,168,84,.4); }
     .btn-citrine {
       background: var(--citrine); color: var(--slate);
-      box-shadow: 0 2px 12px rgba(245,197,24,.35);
+      box-shadow: 0 2px 12px rgba(0,153,204,.35);
       font-size: 1rem; padding: .85rem 2rem;
     }
-    .btn-citrine:hover { background: var(--citrine-dk); box-shadow: 0 6px 20px rgba(245,197,24,.5); }
+    .btn-citrine:hover { background: var(--citrine-dk); box-shadow: 0 6px 20px rgba(0,153,204,.5); }
     .btn-outline {
       background: transparent; color: var(--slate);
       border: 1.5px solid var(--border);
@@ -99,7 +99,7 @@
       border-bottom: 1px solid var(--border);
       transition: box-shadow .2s;
     }
-    nav.scrolled { box-shadow: 0 2px 16px rgba(30,27,75,.08); }
+    nav.scrolled { box-shadow: 0 2px 16px rgba(15,26,18,.08); }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
       height: 68px;
@@ -170,7 +170,7 @@
       font-size: .68rem; font-weight: 700; color: #fff; margin-left: -8px;
     }
     .avatars span:first-child { margin-left: 0; }
-    .avatars span:nth-child(2) { background: #7C3AED; }
+    .avatars span:nth-child(2) { background: #0099CC; }
     .avatars span:nth-child(3) { background: #059669; }
 
     /* Hero visual - mascot + mockup card */
@@ -181,7 +181,7 @@
     }
     .mascot-wrapper {
       position: relative;
-      filter: drop-shadow(0 24px 48px rgba(79,70,229,.22));
+      filter: drop-shadow(0 24px 48px rgba(0,168,84,.18));
       animation: mascot-float 5s ease-in-out infinite;
     }
     @keyframes mascot-float {
@@ -267,9 +267,9 @@
     }
     .feature-icon svg { width: 24px; height: 24px; }
     .fi-indigo { background: var(--indigo-lt); }
-    .fi-citrine { background: #FEF9E7; }
+    .fi-citrine { background: #E0F4FB; }
     .fi-green { background: #ECFDF5; }
-    .fi-purple { background: #F5F3FF; }
+    .fi-purple { background: #E0F4FB; }
     .fi-red { background: #FEF2F2; }
     .fi-teal { background: #F0FDFA; }
     .feature-title { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--slate); margin-bottom: .4rem; }
@@ -348,7 +348,7 @@
     .cta-banner::before {
       content: ''; position: absolute; top: -100px; right: -100px;
       width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(245,197,24,.25) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0,153,204,.2) 0%, transparent 70%);
       border-radius: 50%;
     }
     .cta-banner::after {
@@ -374,7 +374,7 @@
       border-radius: 8px; display: flex; align-items: center; justify-content: center;
       transition: border-color .2s, background .2s;
     }
-    .social-link:hover { border-color: var(--indigo); background: rgba(79,70,229,.2); }
+    .social-link:hover { border-color: var(--indigo); background: rgba(0,168,84,.2); }
     .social-link svg { width: 16px; height: 16px; fill: rgba(255,255,255,.55); }
     .footer-col h4 { font-family: var(--font-d); font-weight: 700; font-size: .82rem; color: #fff; margin-bottom: .9rem; letter-spacing: .03em; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
@@ -405,7 +405,7 @@
     /* ─── MODAL ──────────────────────────────────────────── */
     .modal-overlay {
       position: fixed; inset: 0; z-index: 999;
-      background: rgba(30,27,75,.65); backdrop-filter: blur(4px);
+      background: rgba(15,26,18,.55); backdrop-filter: blur(4px);
       display: flex; align-items: center; justify-content: center; padding: 1.5rem;
       opacity: 0; pointer-events: none; transition: opacity .25s;
     }
@@ -413,7 +413,7 @@
     .modal {
       background: var(--white); border-radius: var(--r-xl);
       padding: 2.5rem; width: 100%; max-width: 440px;
-      box-shadow: 0 32px 80px rgba(30,27,75,.3);
+      box-shadow: 0 32px 80px rgba(15,26,18,.25);
       transform: translateY(16px); transition: transform .3s;
       position: relative;
     }
@@ -493,30 +493,7 @@
     <div class="nav-inner">
 
       <a href="/" class="nav-logo">
-        <!-- Nabbit rabbit SVG mark — inline, scales perfectly -->
-        <svg class="nav-rabbit" viewBox="0 0 160 180" fill="none" aria-hidden="true">
-          <path d="M 48 85 C 42 70 38 45 40 22 C 42 10 50 4 58 6 C 66 8 72 16 70 30 C 68 50 62 72 58 88 Z" fill="#3730A3"/>
-          <path d="M 28 160 C 18 150 14 132 16 112 C 18 92 28 76 42 68 C 52 62 64 60 76 62 C 88 64 98 72 104 84 C 114 80 126 82 132 92 C 138 102 134 118 126 126 C 130 134 130 144 124 152 C 118 160 108 164 96 164 C 80 166 52 170 28 160 Z" fill="#3730A3"/>
-          <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" fill="#6366F1"/>
-          <path d="M 52 72 C 48 60 46 40 48 22 C 50 12 56 8 60 10 C 58 24 56 48 54 68 Z" fill="#E0E7FF"/>
-          <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" fill="#6366F1"/>
-          <path d="M 86 72 C 84 62 86 48 90 38 C 94 28 100 24 104 26 C 100 38 94 56 90 70 Z" fill="#E0E7FF"/>
-          <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" fill="#6366F1"/>
-          <path d="M 116 100 C 126 104 132 112 130 122 C 128 132 120 138 110 136 C 104 134 100 128 102 120 C 104 112 110 104 116 100 Z" fill="#818CF8"/>
-          <circle cx="88" cy="88" r="10" fill="#1E1B4B"/>
-          <circle cx="91" cy="85" r="4" fill="white"/>
-          <circle cx="94" cy="83" r="2" fill="white" opacity=".7"/>
-          <ellipse cx="128" cy="108" rx="7" ry="5" fill="#1E1B4B"/>
-          <rect x="128" y="116" width="26" height="42" rx="3" fill="#F5C518"/>
-          <rect x="132" y="124" width="16" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
-          <rect x="132" y="132" width="16" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
-          <rect x="132" y="140" width="12" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
-          <rect x="132" y="148" width="14" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
-          <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
-          <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
-          <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
-          <rect x="128" y="116" width="26" height="42" rx="3" stroke="#1E1B4B" stroke-width="2.5" fill="none"/>
-        </svg>
+        <img src="logo.jpg" alt="Nabbit" style="height:36px;width:auto;object-fit:contain;border-radius:6px;"/>
         nabbit
       </a>
 
@@ -572,31 +549,9 @@
       </div>
 
       <div class="hero-visual">
-        <!-- Rabbit mascot -->
+        <!-- Nabbit logo mark -->
         <div class="mascot-wrapper">
-          <svg width="200" height="220" viewBox="0 0 160 180" fill="none" aria-label="Nabbit mascot — rabbit holding a receipt">
-            <path d="M 48 85 C 42 70 38 45 40 22 C 42 10 50 4 58 6 C 66 8 72 16 70 30 C 68 50 62 72 58 88 Z" fill="#3730A3"/>
-            <path d="M 28 160 C 18 150 14 132 16 112 C 18 92 28 76 42 68 C 52 62 64 60 76 62 C 88 64 98 72 104 84 C 114 80 126 82 132 92 C 138 102 134 118 126 126 C 130 134 130 144 124 152 C 118 160 108 164 96 164 C 80 166 52 170 28 160 Z" fill="#3730A3"/>
-            <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" fill="#6366F1"/>
-            <path d="M 52 72 C 48 60 46 40 48 22 C 50 12 56 8 60 10 C 58 24 56 48 54 68 Z" fill="#E0E7FF"/>
-            <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" fill="#6366F1"/>
-            <path d="M 86 72 C 84 62 86 48 90 38 C 94 28 100 24 104 26 C 100 38 94 56 90 70 Z" fill="#E0E7FF"/>
-            <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" fill="#6366F1"/>
-            <path d="M 116 100 C 126 104 132 112 130 122 C 128 132 120 138 110 136 C 104 134 100 128 102 120 C 104 112 110 104 116 100 Z" fill="#818CF8"/>
-            <circle cx="88" cy="88" r="10" fill="#1E1B4B"/>
-            <circle cx="91" cy="85" r="4" fill="white"/>
-            <circle cx="94" cy="83" r="2" fill="white" opacity=".7"/>
-            <ellipse cx="128" cy="108" rx="7" ry="5" fill="#1E1B4B"/>
-            <rect x="128" y="116" width="26" height="42" rx="3" fill="#F5C518"/>
-            <rect x="132" y="124" width="16" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
-            <rect x="132" y="132" width="16" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
-            <rect x="132" y="140" width="12" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
-            <rect x="132" y="148" width="14" height="3" rx="1.5" fill="#1E1B4B" opacity=".4"/>
-            <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
-            <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
-            <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" stroke="#1E1B4B" stroke-width="4" fill="none" stroke-linejoin="round"/>
-            <rect x="128" y="116" width="26" height="42" rx="3" stroke="#1E1B4B" stroke-width="2.5" fill="none"/>
-          </svg>
+          <img src="logo.jpg" alt="Nabbit" width="200" height="200" style="object-fit:contain;border-radius:16px;"/>
 
           <!-- Floating chips -->
           <div class="chip chip-1">
@@ -604,7 +559,7 @@
             Auto-categorised
           </div>
           <div class="chip chip-2">
-            <svg width="12" height="12" viewBox="0 0 20 20" fill="#4F46E5"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4zM3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 20 20" fill="#00A854"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4zM3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
             Synced to QBO
           </div>
         </div>
@@ -613,7 +568,7 @@
         <div class="hero-card">
           <div class="hero-card-header">
             <div class="hero-card-icon">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="#F5C518"><path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1.581.814L10 14.197l-4.419 2.617A1 1 0 014 16V4z"/></svg>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="#0099CC"><path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1.581.814L10 14.197l-4.419 2.617A1 1 0 014 16V4z"/></svg>
             </div>
             <div>
               <div class="hero-card-merchant">Staples Canada #0042</div>
@@ -686,7 +641,7 @@
 
       <div class="feature-card">
         <div class="feature-icon fi-indigo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#00A854" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
         </div>
         <h3 class="feature-title">One-tap capture</h3>
         <p class="feature-desc">Snap a photo the moment you pay. Nabbit reads the merchant, amount, date, and HST automatically. No typing, no filing, no forgetting.</p>
@@ -710,7 +665,7 @@
 
       <div class="feature-card">
         <div class="feature-icon fi-purple">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0099CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
         <h3 class="feature-title">QuickBooks Online sync</h3>
         <p class="feature-desc">Push expenses directly to QBO. No double-entry, no copy-paste errors. Your bookkeeper gets clean, categorised data automatically.</p>
@@ -832,7 +787,7 @@
         <div class="stars">★★★★★</div>
         <p class="testi-text">"I used to spend the last Sunday of every month digging through my wallet. Now I snap receipts on the spot with Nabbit and my bookkeeper has everything she needs by the 1st."</p>
         <div class="testi-author">
-          <div class="testi-av" style="background:#4F46E5">MP</div>
+          <div class="testi-av" style="background:#00A854">MP</div>
           <div>
             <div class="testi-name">Marcus P.</div>
             <div class="testi-role">Owner, Northside Contracting · Hamilton, ON</div>
@@ -844,7 +799,7 @@
         <div class="stars">★★★★★</div>
         <p class="testi-text">"As a fractional CFO across three clients, Nabbit's multi-portal setup is exactly what I needed. One login, clean data separation, zero spreadsheet gymnastics."</p>
         <div class="testi-author">
-          <div class="testi-av" style="background:#7C3AED">SK</div>
+          <div class="testi-av" style="background:#0099CC">SK</div>
           <div>
             <div class="testi-name">Sandra K., CPA</div>
             <div class="testi-role">Fractional CFO · Toronto, ON</div>
@@ -895,7 +850,7 @@
             <div style="font-size:.83rem;color:var(--slate-lt);line-height:1.6">Multi-tenant with strict row-level security. No company can ever see another company's data.</div>
           </div>
         </div>
-        <div style="background:#FEF9E7;border-radius:var(--r-lg);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
+        <div style="background:#E0F4FB;border-radius:var(--r-lg);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
           <div style="font-size:1.5rem;flex-shrink:0">⚡</div>
           <div>
             <div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">AI-powered extraction</div>
@@ -919,10 +874,10 @@
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
 
       <!-- Video 1 -->
-      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(79,70,229,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,168,84,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="background:var(--slate);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;" onclick="openVideo(1)">
           <!-- Thumbnail -->
-          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1E1B4B,#3730A3);display:flex;align-items:center;justify-content:center;">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0A2015,#007A3D);display:flex;align-items:center;justify-content:center;">
             <div style="text-align:center">
               <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,.3);cursor:pointer">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
@@ -939,9 +894,9 @@
       </div>
 
       <!-- Video 2 -->
-      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(79,70,229,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,168,84,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="background:var(--slate);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;" onclick="openVideo(2)">
-          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#312E81,#4F46E5);display:flex;align-items:center;justify-content:center;">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#004D80,#0099CC);display:flex;align-items:center;justify-content:center;">
             <div style="text-align:center">
               <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,.3)">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
@@ -958,9 +913,9 @@
       </div>
 
       <!-- Video 3 -->
-      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(79,70,229,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,168,84,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="background:var(--slate);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;" onclick="openVideo(3)">
-          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0F172A,#1E3A5F);display:flex;align-items:center;justify-content:center;">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0F1A12,#1A4A2E);display:flex;align-items:center;justify-content:center;">
             <div style="text-align:center">
               <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,.3)">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
@@ -1017,12 +972,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <a href="/" class="nav-logo" style="color:#fff;margin-bottom:1rem;display:flex">
-          <svg class="nav-rabbit" viewBox="0 0 160 180" fill="none" style="filter:brightness(0) invert(1)">
-            <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" fill="white"/>
-            <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" fill="white"/>
-            <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" fill="white"/>
-            <rect x="128" y="116" width="26" height="42" rx="3" fill="#F5C518"/>
-          </svg>
+          <img src="logo.jpg" alt="Nabbit" style="height:36px;width:auto;object-fit:contain;border-radius:6px;"/>
           nabbit
         </a>
         <p class="footer-desc">Nabbit makes receipt management effortless for Canadian small businesses, bookkeepers, and everyone in between.</p>
@@ -1089,12 +1039,7 @@
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
     <button class="modal-close" onclick="closeModal('trial')" aria-label="Close">✕</button>
     <div class="modal-logo">
-      <svg width="28" height="28" viewBox="0 0 160 180" fill="none">
-        <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" fill="#6366F1"/>
-        <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" fill="#6366F1"/>
-        <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" fill="#6366F1"/>
-        <rect x="128" y="116" width="26" height="42" rx="3" fill="#F5C518"/>
-      </svg>
+      <img src="logo.jpg" alt="Nabbit" style="height:28px;width:auto;object-fit:contain;border-radius:4px;"/>
       <span class="modal-logo-text">nabbit</span>
     </div>
     <h2 class="modal-title" id="trialTitle">Start your free trial</h2>
@@ -1136,12 +1081,7 @@
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
     <button class="modal-close" onclick="closeModal('login')" aria-label="Close">✕</button>
     <div class="modal-logo">
-      <svg width="28" height="28" viewBox="0 0 160 180" fill="none">
-        <path d="M 44 82 C 38 68 34 42 36 20 C 38 8 48 2 56 4 C 64 6 70 14 68 28 C 66 48 60 70 56 86 Z" fill="#6366F1"/>
-        <path d="M 80 78 C 78 66 80 48 86 34 C 90 22 98 16 104 18 C 110 20 112 30 108 44 C 104 58 96 72 88 80 Z" fill="#6366F1"/>
-        <path d="M 26 158 C 16 148 12 130 14 110 C 16 90 26 74 40 66 C 50 60 62 58 74 60 C 86 62 96 70 102 82 C 112 78 124 80 130 90 C 136 100 132 116 124 124 C 128 132 128 142 122 150 C 116 158 106 162 94 162 C 78 164 50 168 26 158 Z" fill="#6366F1"/>
-        <rect x="128" y="116" width="26" height="42" rx="3" fill="#F5C518"/>
-      </svg>
+      <img src="logo.jpg" alt="Nabbit" style="height:28px;width:auto;object-fit:contain;border-radius:4px;"/>
       <span class="modal-logo-text">nabbit</span>
     </div>
     <h2 class="modal-title" id="loginTitle">Welcome back</h2>
