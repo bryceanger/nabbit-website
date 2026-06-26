@@ -2,22 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- ① VIEWPORT: prevent iOS font inflation -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+
+  <!-- ② iOS/Android PWA-readiness meta tags -->
   <meta name="theme-color" content="#00A854"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <meta name="apple-mobile-web-app-title" content="Nabbit"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="format-detection" content="telephone=no"/>
+
   <meta name="description" content="Nabbit captures, categorises, and files every receipt the moment it happens. Receipt management built for Canadian small businesses. Free 30-day trial."/>
   <meta property="og:title" content="Nabbit — Every receipt, nabbed and filed."/>
   <meta property="og:description" content="Snap, forward, or drop — Nabbit captures receipts instantly and has them organised, categorised, and export-ready before you're back at your desk."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://nabbit.ca"/>
+  <meta property="og:image" content="https://nabbit.ca/logo.jpg"/>
   <title>Nabbit — Every receipt, nabbed and filed.</title>
+
+  <!-- ③ FONTS: display=swap for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+
   <style>
-    /* ─── TOKENS — Option C: Clean Canopy ────────────────── */
+    /* ─── TOKENS ──────────────────────────────────────────── */
     :root {
       --indigo:     #00A854;
       --indigo-dk:  #007A3D;
@@ -35,21 +48,28 @@
       --shadow-lg:  0 20px 60px rgba(0,168,84,0.16), 0 4px 16px rgba(15,26,18,0.10);
       --font-d: 'Plus Jakarta Sans', sans-serif;
       --font-b: 'Inter', sans-serif;
-      --pad-x: clamp(1.25rem, 5vw, 5rem);
+      --pad-x: clamp(1rem, 5vw, 5rem);
+      /* ④ NAV HEIGHT token so scroll-padding stays in sync */
+      --nav-h: 64px;
     }
 
     /* ─── RESET ──────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      /* ⑤ SCROLL PADDING: anchors clear the sticky nav */
+      scroll-padding-top: calc(var(--nav-h) + 16px);
+    }
     body { font-family: var(--font-b); background: var(--white); color: var(--slate); line-height: 1.6; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
+    /* ⑥ IMAGES: lazy-loading default + responsive */
+    img { display: block; max-width: 100%; height: auto; }
     button { cursor: pointer; font-family: inherit; }
 
     /* ─── UTILITY ────────────────────────────────────────── */
     .container { max-width: 1160px; margin: 0 auto; padding: 0 var(--pad-x); }
     .eyebrow {
-      font-family: var(--font-d); font-weight: 700; font-size: .72rem;
+      font-family: var(--font-d); font-weight: 700; font-size: .75rem;
       letter-spacing: .16em; text-transform: uppercase; color: var(--indigo);
     }
     .section-title {
@@ -59,26 +79,31 @@
     }
     .body-copy { font-size: 1rem; color: var(--slate-lt); line-height: 1.75; }
 
-    /* ─── BUTTONS ────────────────────────────────────────── */
+    /* ─── BUTTONS — ⑦ min 44×44px touch targets ─────────── */
     .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-d); font-weight: 700; font-size: .9rem;
-      padding: .7rem 1.5rem; border-radius: 100px; border: none;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: var(--font-d); font-weight: 700; font-size: .95rem;
+      /* min 48px tall for comfortable thumb tap */
+      padding: .8rem 1.6rem; min-height: 48px;
+      border-radius: 100px; border: none;
       transition: transform .15s, box-shadow .2s, background .2s, color .2s;
       white-space: nowrap;
+      /* ⑧ tap-highlight removed on iOS */
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: scale(.97); }
     .btn-primary {
       background: var(--indigo); color: #fff;
       box-shadow: 0 2px 12px rgba(0,168,84,.35);
     }
     .btn-primary:hover { background: var(--indigo-dk); box-shadow: 0 6px 20px rgba(0,168,84,.4); }
     .btn-citrine {
-      background: var(--citrine); color: var(--slate);
+      background: var(--citrine); color: #fff;
       box-shadow: 0 2px 12px rgba(0,153,204,.35);
-      font-size: 1rem; padding: .85rem 2rem;
     }
-    .btn-citrine:hover { background: var(--citrine-dk); box-shadow: 0 6px 20px rgba(0,153,204,.5); }
+    .btn-citrine:hover { background: var(--citrine-dk); }
     .btn-outline {
       background: transparent; color: var(--slate);
       border: 1.5px solid var(--border);
@@ -94,61 +119,105 @@
     /* ─── NAV ────────────────────────────────────────────── */
     nav {
       position: sticky; top: 0; z-index: 200;
-      background: rgba(250,250,247,.88);
+      background: rgba(244,248,245,.92);
       backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
       transition: box-shadow .2s;
+      height: var(--nav-h);
     }
     nav.scrolled { box-shadow: 0 2px 16px rgba(15,26,18,.08); }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
+      height: var(--nav-h);
     }
     .nav-logo {
       display: flex; align-items: center; gap: 10px;
       font-family: var(--font-d); font-weight: 900; font-size: 1.3rem;
       letter-spacing: -.02em; color: var(--slate);
     }
-    /* Inline SVG rabbit mark in nav */
-    .nav-rabbit { width: 36px; height: 36px; flex-shrink: 0; }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a { font-size: .88rem; font-weight: 500; color: var(--slate-md); transition: color .2s; }
     .nav-links a:hover { color: var(--indigo); }
     .nav-actions { display: flex; align-items: center; gap: .75rem; }
-    .nav-login { font-family: var(--font-d); font-weight: 600; font-size: .88rem; color: var(--slate-md); transition: color .2s; }
+    .nav-login {
+      font-family: var(--font-d); font-weight: 600; font-size: .88rem;
+      color: var(--slate-md); transition: color .2s;
+      /* ⑦ ensure tap target for nav login link */
+      padding: .5rem .25rem; min-height: 44px; display: inline-flex; align-items: center;
+    }
     .nav-login:hover { color: var(--indigo); }
 
-    /* Mobile nav */
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--slate); border-radius: 2px; transition: all .3s; }
-    .mobile-menu {
-      display: none; position: fixed; inset: 68px 0 0;
-      background: var(--white); z-index: 199; padding: 2rem;
-      flex-direction: column; gap: 1.5rem;
-      border-top: 1px solid var(--border);
+    /* ─── HAMBURGER — ⑨ enlarged tap zone ────────────────── */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none;
+      /* 44×44 minimum tap target */
+      padding: 10px; margin: -10px -10px -10px 0;
+      -webkit-tap-highlight-color: transparent;
     }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-family: var(--font-d); font-size: 1.15rem; font-weight: 700; color: var(--slate); }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--slate); border-radius: 2px; transition: all .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── MOBILE MENU — ⑩ full-screen slide, backdrop ───── */
+    .mobile-backdrop {
+      display: none; position: fixed; inset: 0; z-index: 198;
+      background: rgba(15,26,18,.4); backdrop-filter: blur(2px);
+      opacity: 0; transition: opacity .25s;
+    }
+    .mobile-backdrop.open { display: block; opacity: 1; }
+    .mobile-menu {
+      position: fixed; top: var(--nav-h); left: 0; right: 0;
+      background: var(--white); z-index: 199;
+      padding: 1.5rem var(--pad-x) 2rem;
+      flex-direction: column; gap: 0;
+      border-top: 1px solid var(--border);
+      transform: translateY(-100%); opacity: 0;
+      transition: transform .3s cubic-bezier(.4,0,.2,1), opacity .25s;
+      display: flex;
+    }
+    .mobile-menu.open { transform: translateY(0); opacity: 1; }
+    /* ⑦ Large tap targets for mobile nav links */
+    .mobile-menu a {
+      font-family: var(--font-d); font-size: 1.1rem; font-weight: 700; color: var(--slate);
+      padding: 1rem 0; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      min-height: 56px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-menu a:last-of-type { border-bottom: none; }
+    .mobile-menu .mobile-cta { margin-top: 1.25rem; width: 100%; }
+
+    /* ─── ⑪ STICKY MOBILE CTA BAR ────────────────────────── */
+    .mobile-cta-bar {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 197;
+      background: var(--white); border-top: 1px solid var(--border);
+      padding: .75rem var(--pad-x);
+      /* iOS safe area */
+      padding-bottom: calc(.75rem + env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 16px rgba(15,26,18,.08);
+    }
+    .mobile-cta-bar .btn { width: 100%; }
 
     /* ─── HERO ───────────────────────────────────────────── */
     .hero {
-      padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 6vw, 5rem);
+      padding: clamp(3rem, 8vw, 7rem) 0 clamp(2.5rem, 5vw, 4.5rem);
       display: grid; grid-template-columns: 1fr 1fr;
       align-items: center; gap: 4rem;
-      min-height: calc(100vh - 68px);
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--indigo-lt); color: var(--indigo);
-      font-family: var(--font-d); font-weight: 700; font-size: .75rem;
-      padding: .35rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
+      font-family: var(--font-d); font-weight: 700; font-size: .78rem;
+      padding: .4rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
       letter-spacing: .06em; text-transform: uppercase;
     }
     .hero-badge .pulse { width: 7px; height: 7px; background: var(--indigo); border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
     .hero h1 {
       font-family: var(--font-d); font-weight: 900;
-      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
       letter-spacing: -.045em; line-height: 1.06;
       color: var(--slate); margin-bottom: 1.5rem;
     }
@@ -160,7 +229,7 @@
       width: 100%; height: 8px; background: var(--citrine);
       z-index: -1; border-radius: 4px; opacity: .55;
     }
-    .hero-sub { font-size: 1.1rem; color: var(--slate-lt); max-width: 46ch; margin-bottom: 2.5rem; line-height: 1.75; }
+    .hero-sub { font-size: 1.05rem; color: var(--slate-lt); max-width: 46ch; margin-bottom: 2.5rem; line-height: 1.75; }
     .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
     .hero-trust { display: flex; align-items: center; gap: .75rem; margin-top: 2.25rem; font-size: .82rem; color: var(--slate-lt); }
     .avatars { display: flex; }
@@ -173,7 +242,6 @@
     .avatars span:nth-child(2) { background: #0099CC; }
     .avatars span:nth-child(3) { background: #059669; }
 
-    /* Hero visual - mascot + mockup card */
     .hero-visual {
       display: flex; flex-direction: column;
       align-items: center; justify-content: center; gap: 2rem;
@@ -184,12 +252,11 @@
       filter: drop-shadow(0 24px 48px rgba(0,168,84,.18));
       animation: mascot-float 5s ease-in-out infinite;
     }
-    @keyframes mascot-float {
-      0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}
-    }
+    @keyframes mascot-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
     .hero-card {
       background: #fff; border-radius: var(--r-lg); border: 1px solid var(--border);
-      padding: 1.5rem; box-shadow: var(--shadow-lg); width: 300px;
+      padding: 1.5rem; box-shadow: var(--shadow-lg);
+      width: min(300px, 100%); /* ⑫ never overflow on small screens */
     }
     .hero-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
     .hero-card-icon {
@@ -197,15 +264,15 @@
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .hero-card-merchant { font-family: var(--font-d); font-weight: 700; font-size: .88rem; color: var(--slate); }
-    .hero-card-date { font-size: .72rem; color: var(--slate-lt); }
-    .receipt-line { display: flex; justify-content: space-between; font-size: .78rem; padding: .3rem 0; border-bottom: 1px dashed var(--border); color: var(--slate-md); }
+    .hero-card-date { font-size: .75rem; color: var(--slate-lt); }
+    .receipt-line { display: flex; justify-content: space-between; font-size: .8rem; padding: .3rem 0; border-bottom: 1px dashed var(--border); color: var(--slate-md); }
     .receipt-line:last-of-type { border: none; }
     .receipt-total { display: flex; justify-content: space-between; margin-top: .75rem; padding-top: .5rem; border-top: 2px solid var(--slate); font-family: var(--font-d); font-weight: 800; font-size: .9rem; }
-    .receipt-tag { display: inline-flex; align-items: center; gap: 4px; margin-top: .75rem; background: var(--indigo-lt); color: var(--indigo); font-size: .7rem; font-weight: 600; padding: .2rem .65rem; border-radius: 5px; }
+    .receipt-tag { display: inline-flex; align-items: center; gap: 4px; margin-top: .75rem; background: var(--indigo-lt); color: var(--indigo); font-size: .72rem; font-weight: 600; padding: .25rem .65rem; border-radius: 5px; }
     .chip {
       position: absolute; background: #fff; border-radius: 100px;
-      box-shadow: var(--shadow-md); padding: .45rem .9rem;
-      font-size: .72rem; font-weight: 700; font-family: var(--font-d);
+      box-shadow: var(--shadow-md); padding: .5rem 1rem;
+      font-size: .75rem; font-weight: 700; font-family: var(--font-d);
       color: var(--slate); display: flex; align-items: center; gap: 5px;
     }
     .chip-1 { top: -16px; right: -10px; animation: chip-float 4s ease-in-out infinite; }
@@ -213,31 +280,26 @@
     @keyframes chip-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
 
     /* ─── PROOF STRIP ────────────────────────────────────── */
-    .proof {
-      background: var(--slate);
-      padding: 1.5rem var(--pad-x);
-    }
+    .proof { background: var(--slate); padding: 1.5rem var(--pad-x); }
     .proof-inner {
       max-width: 1160px; margin: 0 auto;
       display: flex; align-items: center; justify-content: center;
-      gap: 3rem; flex-wrap: wrap;
+      gap: 2rem; flex-wrap: wrap;
     }
-    .proof-stat { text-align: center; }
+    .proof-stat { text-align: center; min-width: 80px; }
     .proof-num { font-family: var(--font-d); font-weight: 900; font-size: 1.6rem; color: var(--citrine); line-height: 1; }
-    .proof-label { font-size: .75rem; color: rgba(255,255,255,.5); margin-top: 3px; }
+    .proof-label { font-size: .78rem; color: rgba(255,255,255,.5); margin-top: 3px; }
     .proof-div { width: 1px; height: 40px; background: rgba(255,255,255,.12); }
 
     /* ─── HOW IT WORKS ───────────────────────────────────── */
     .how { padding: clamp(4rem, 8vw, 7rem) 0; }
     .how-header { text-align: center; margin-bottom: 4rem; }
     .how-header .eyebrow { margin-bottom: .75rem; display: block; }
-    .how-header .section-title { margin-bottom: 1rem; }
     .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; position: relative; }
     .steps::before {
       content: ''; position: absolute; top: 28px;
       left: calc(16.67% + 24px); right: calc(16.67% + 24px); height: 2px;
       background: repeating-linear-gradient(to right, var(--indigo) 0,var(--indigo) 6px, transparent 6px, transparent 14px);
-      z-index: 0;
     }
     .step { position: relative; z-index: 1; }
     .step-num {
@@ -248,16 +310,15 @@
       margin-bottom: 1.25rem; box-shadow: 0 0 0 6px var(--indigo-lt);
     }
     .step-title { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--slate); margin-bottom: .4rem; }
-    .step-desc { font-size: .88rem; color: var(--slate-lt); line-height: 1.65; }
+    .step-desc { font-size: .9rem; color: var(--slate-lt); line-height: 1.65; }
 
     /* ─── FEATURES ───────────────────────────────────────── */
     .features { padding: clamp(3rem, 7vw, 6rem) 0; background: var(--indigo-lt); }
     .features-header { text-align: center; margin-bottom: 3.5rem; }
-    .features-header .eyebrow { margin-bottom: .75rem; display: block; }
     .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
     .feature-card {
       background: #fff; border: 1.5px solid var(--border);
-      border-radius: var(--r-lg); padding: 1.85rem;
+      border-radius: var(--r-lg); padding: 1.75rem;
       transition: border-color .25s, transform .25s, box-shadow .25s;
     }
     .feature-card:hover { border-color: var(--indigo); transform: translateY(-4px); box-shadow: var(--shadow-md); }
@@ -269,26 +330,26 @@
     .fi-indigo { background: var(--indigo-lt); }
     .fi-citrine { background: #E0F4FB; }
     .fi-green { background: #ECFDF5; }
-    .fi-purple { background: #E0F4FB; }
     .fi-red { background: #FEF2F2; }
     .fi-teal { background: #F0FDFA; }
     .feature-title { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--slate); margin-bottom: .4rem; }
-    .feature-desc { font-size: .87rem; color: var(--slate-lt); line-height: 1.65; }
+    .feature-desc { font-size: .88rem; color: var(--slate-lt); line-height: 1.65; }
 
     /* ─── PRICING ────────────────────────────────────────── */
     .pricing { padding: clamp(4rem, 8vw, 7rem) 0; }
     .pricing-header { text-align: center; margin-bottom: 3.5rem; }
-    .pricing-header .eyebrow { margin-bottom: .75rem; display: block; }
-    .pricing-header .section-title { margin-bottom: 1rem; }
     .pricing-toggle {
       display: inline-flex; align-items: center; gap: .75rem;
       background: #F3F4F6; border-radius: 100px; padding: .3rem .4rem;
       margin-top: 1.5rem;
     }
     .toggle-btn {
-      font-family: var(--font-d); font-weight: 600; font-size: .82rem;
-      padding: .45rem 1.1rem; border-radius: 100px; border: none; background: none;
+      font-family: var(--font-d); font-weight: 600; font-size: .85rem;
+      /* ⑦ 44px min tap target */
+      padding: .6rem 1.2rem; min-height: 44px;
+      border-radius: 100px; border: none; background: none;
       color: var(--slate-lt); transition: all .2s;
+      -webkit-tap-highlight-color: transparent;
     }
     .toggle-btn.active { background: #fff; color: var(--slate); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
     .pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; align-items: start; }
@@ -298,10 +359,7 @@
       position: relative; transition: transform .2s, box-shadow .2s;
     }
     .plan-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-    .plan-card.featured {
-      border-color: var(--indigo); border-width: 2px;
-      box-shadow: 0 0 0 4px var(--indigo-lt), var(--shadow-md);
-    }
+    .plan-card.featured { border-color: var(--indigo); border-width: 2px; box-shadow: 0 0 0 4px var(--indigo-lt), var(--shadow-md); }
     .plan-badge {
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
       background: var(--indigo); color: #fff; font-family: var(--font-d);
@@ -313,10 +371,10 @@
     .plan-price .currency { font-family: var(--font-d); font-weight: 700; font-size: 1.1rem; color: var(--slate-md); align-self: flex-start; margin-top: .5rem; }
     .plan-price .amount { font-family: var(--font-d); font-weight: 900; font-size: 2.8rem; letter-spacing: -.04em; color: var(--slate); line-height: 1; }
     .plan-price .period { font-size: .82rem; color: var(--slate-lt); margin-bottom: .3rem; }
-    .plan-desc { font-size: .82rem; color: var(--slate-lt); margin-bottom: 1.5rem; line-height: 1.55; }
+    .plan-desc { font-size: .85rem; color: var(--slate-lt); margin-bottom: 1.5rem; line-height: 1.55; }
     .plan-divider { border: none; border-top: 1px solid var(--border); margin: 1.25rem 0; }
     .plan-features { list-style: none; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.75rem; }
-    .plan-features li { display: flex; align-items: flex-start; gap: 8px; font-size: .85rem; color: var(--slate-md); }
+    .plan-features li { display: flex; align-items: flex-start; gap: 8px; font-size: .88rem; color: var(--slate-md); }
     .plan-features li .check { color: var(--indigo); flex-shrink: 0; margin-top: 1px; }
     .plan-features li .cross { color: #D1D5DB; flex-shrink: 0; margin-top: 1px; }
     .plan-cta { width: 100%; text-align: center; justify-content: center; }
@@ -337,68 +395,69 @@
     .testi-text { font-size: .9rem; color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 1.25rem; }
     .testi-author { display: flex; align-items: center; gap: 10px; }
     .testi-av { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-d); font-weight: 700; font-size: .78rem; color: #fff; flex-shrink: 0; }
-    .testi-name { font-family: var(--font-d); font-weight: 700; font-size: .85rem; color: #fff; }
-    .testi-role { font-size: .72rem; color: rgba(255,255,255,.4); }
+    .testi-name { font-family: var(--font-d); font-weight: 700; font-size: .88rem; color: #fff; }
+    .testi-role { font-size: .75rem; color: rgba(255,255,255,.4); }
 
     /* ─── CTA BANNER ─────────────────────────────────────── */
-    .cta-banner {
-      background: var(--indigo); padding: clamp(4rem, 8vw, 6rem) 0;
-      position: relative; overflow: hidden;
-    }
+    .cta-banner { background: var(--indigo); padding: clamp(4rem, 8vw, 6rem) 0; position: relative; overflow: hidden; }
     .cta-banner::before {
       content: ''; position: absolute; top: -100px; right: -100px;
       width: 400px; height: 400px;
       background: radial-gradient(circle, rgba(0,153,204,.2) 0%, transparent 70%);
       border-radius: 50%;
     }
-    .cta-banner::after {
-      content: ''; position: absolute; bottom: -80px; left: -60px;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%);
-      border-radius: 50%;
-    }
     .cta-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 3rem; }
     .cta-inner .section-title { color: #fff; margin-bottom: .75rem; }
     .cta-inner .body-copy { color: rgba(255,255,255,.65); max-width: 46ch; }
     .cta-actions { display: flex; flex-direction: column; align-items: center; gap: .75rem; flex-shrink: 0; }
-    .cta-note { font-size: .75rem; color: rgba(255,255,255,.4); }
+    .cta-note { font-size: .78rem; color: rgba(255,255,255,.5); }
 
     /* ─── FOOTER ─────────────────────────────────────────── */
     footer { background: var(--slate); padding: clamp(3rem, 6vw, 5rem) 0 2rem; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .footer-brand .nav-logo { color: #fff; margin-bottom: 1rem; }
-    .footer-desc { font-size: .83rem; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 28ch; margin-bottom: 1.5rem; }
+    .footer-desc { font-size: .85rem; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 28ch; margin-bottom: 1.5rem; }
     .social-links { display: flex; gap: 10px; }
     .social-link {
-      width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.15);
+      /* ⑦ 44×44 touch targets */
+      width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.15);
       border-radius: 8px; display: flex; align-items: center; justify-content: center;
       transition: border-color .2s, background .2s;
+      -webkit-tap-highlight-color: transparent;
     }
     .social-link:hover { border-color: var(--indigo); background: rgba(0,168,84,.2); }
-    .social-link svg { width: 16px; height: 16px; fill: rgba(255,255,255,.55); }
-    .footer-col h4 { font-family: var(--font-d); font-weight: 700; font-size: .82rem; color: #fff; margin-bottom: .9rem; letter-spacing: .03em; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
-    .footer-col ul a { font-size: .83rem; color: rgba(255,255,255,.45); transition: color .2s; }
-    .footer-col ul a:hover { color: #fff; }
+    .social-link svg { width: 18px; height: 18px; fill: rgba(255,255,255,.55); }
+    .footer-col h4 { font-family: var(--font-d); font-weight: 700; font-size: .85rem; color: #fff; margin-bottom: .9rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    /* ⑦ Footer links: min 44px tap target */
+    .footer-col ul li a {
+      font-size: .85rem; color: rgba(255,255,255,.45); transition: color .2s;
+      display: block; padding: .4rem 0; min-height: 44px;
+      display: flex; align-items: center;
+    }
+    .footer-col ul li a:hover { color: #fff; }
     .newsletter-form { display: flex; gap: 8px; margin-top: .25rem; }
     .newsletter-input {
       flex: 1; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
-      border-radius: 8px; padding: .6rem 1rem; font-size: .83rem; color: #fff;
+      border-radius: 8px; padding: .7rem 1rem; font-size: .88rem; color: #fff;
+      /* ⑦ min 44px tap height */
+      min-height: 44px;
       font-family: var(--font-b); outline: none; transition: border-color .2s;
     }
     .newsletter-input::placeholder { color: rgba(255,255,255,.3); }
     .newsletter-input:focus { border-color: var(--indigo); }
     .btn-newsletter {
       background: var(--indigo); color: #fff; border: none; border-radius: 8px;
-      padding: .6rem 1rem; font-size: .83rem; font-weight: 600; font-family: var(--font-d);
+      padding: .7rem 1.1rem; min-height: 44px;
+      font-size: .88rem; font-weight: 600; font-family: var(--font-d);
       transition: background .2s; white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn-newsletter:hover { background: var(--indigo-dk); }
     .footer-bottom {
       display: flex; align-items: center; justify-content: space-between;
-      padding-top: 2rem; font-size: .78rem; color: rgba(255,255,255,.28); flex-wrap: wrap; gap: 1rem;
+      padding-top: 2rem; font-size: .8rem; color: rgba(255,255,255,.28); flex-wrap: wrap; gap: 1rem;
     }
-    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
     .footer-links a { color: rgba(255,255,255,.28); transition: color .2s; }
     .footer-links a:hover { color: rgba(255,255,255,.6); }
 
@@ -406,81 +465,143 @@
     .modal-overlay {
       position: fixed; inset: 0; z-index: 999;
       background: rgba(15,26,18,.55); backdrop-filter: blur(4px);
-      display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
       opacity: 0; pointer-events: none; transition: opacity .25s;
     }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
     .modal {
       background: var(--white); border-radius: var(--r-xl);
-      padding: 2.5rem; width: 100%; max-width: 440px;
+      padding: 2rem; width: 100%; max-width: 440px;
+      max-height: 90vh; overflow-y: auto;
       box-shadow: 0 32px 80px rgba(15,26,18,.25);
       transform: translateY(16px); transition: transform .3s;
       position: relative;
     }
     .modal-overlay.open .modal { transform: translateY(0); }
     .modal-close {
-      position: absolute; top: 1.25rem; right: 1.25rem;
-      background: none; border: none; font-size: 1.4rem; color: var(--slate-lt);
-      line-height: 1; padding: 4px; border-radius: 6px; transition: background .2s, color .2s;
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; font-size: 1.3rem; color: var(--slate-lt);
+      /* ⑦ 44×44 tap target */
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      border-radius: 8px; transition: background .2s, color .2s;
+      -webkit-tap-highlight-color: transparent;
     }
     .modal-close:hover { background: var(--border); color: var(--slate); }
     .modal-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 1.5rem; }
     .modal-logo-text { font-family: var(--font-d); font-weight: 900; font-size: 1.2rem; color: var(--slate); }
     .modal-title { font-family: var(--font-d); font-weight: 800; font-size: 1.4rem; letter-spacing: -.03em; color: var(--slate); margin-bottom: .4rem; }
-    .modal-sub { font-size: .88rem; color: var(--slate-lt); margin-bottom: 1.75rem; }
+    .modal-sub { font-size: .9rem; color: var(--slate-lt); margin-bottom: 1.75rem; }
     .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
-    .form-label { font-family: var(--font-d); font-weight: 600; font-size: .82rem; color: var(--slate); }
+    .form-label { font-family: var(--font-d); font-weight: 600; font-size: .85rem; color: var(--slate); }
     .form-input {
       background: #fff; border: 1.5px solid var(--border); border-radius: var(--r-sm);
-      padding: .7rem 1rem; font-size: .9rem; color: var(--slate); font-family: var(--font-b);
+      padding: .8rem 1rem; font-size: 1rem; color: var(--slate); font-family: var(--font-b);
       outline: none; transition: border-color .2s, box-shadow .2s; width: 100%;
+      /* ⑦ 48px min height */
+      min-height: 48px;
+      /* prevent iOS zoom on focus (font-size >= 16px) */
     }
     .form-input:focus { border-color: var(--indigo); box-shadow: 0 0 0 3px var(--indigo-lt); }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
     .form-submit { width: 100%; justify-content: center; margin-top: .5rem; }
-    .form-terms { font-size: .75rem; color: var(--slate-lt); text-align: center; margin-top: .75rem; line-height: 1.5; }
+    .form-terms { font-size: .78rem; color: var(--slate-lt); text-align: center; margin-top: .75rem; line-height: 1.5; }
     .form-terms a { color: var(--indigo); }
     .form-divider { display: flex; align-items: center; gap: .75rem; margin: 1rem 0; }
     .form-divider::before, .form-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .form-divider span { font-size: .75rem; color: var(--slate-lt); white-space: nowrap; }
-    .form-tabs { display: flex; gap: 0; background: var(--border); border-radius: var(--r-sm); padding: 3px; margin-bottom: 1.5rem; }
-    .form-tab {
-      flex: 1; text-align: center; padding: .6rem;
-      font-family: var(--font-d); font-weight: 700; font-size: .82rem;
-      color: var(--slate-lt); border-radius: calc(var(--r-sm) - 2px);
-      border: none; background: none; transition: all .2s;
-    }
-    .form-tab.active { background: #fff; color: var(--slate); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
-    .form-alert { padding: .75rem 1rem; border-radius: var(--r-sm); font-size: .83rem; margin-bottom: 1rem; display: none; }
+    .form-divider span { font-size: .78rem; color: var(--slate-lt); white-space: nowrap; }
+    .form-alert { padding: .75rem 1rem; border-radius: var(--r-sm); font-size: .85rem; margin-bottom: 1rem; display: none; }
     .form-alert.success { background: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; display: block; }
     .form-alert.error { background: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; display: block; }
-    .forgot-link { font-size: .8rem; color: var(--indigo); font-weight: 600; text-align: right; display: block; margin-top: -.5rem; margin-bottom: .75rem; }
-    .forgot-link:hover { text-decoration: underline; }
+    .forgot-link {
+      font-size: .85rem; color: var(--indigo); font-weight: 600;
+      text-align: right; display: flex; justify-content: flex-end; align-items: center;
+      margin-top: -.5rem; margin-bottom: .75rem;
+      min-height: 44px; /* ⑦ tap target */
+    }
+
+    /* ─── ⑬ FOCUS VISIBLE (keyboard accessibility) ───────── */
+    :focus-visible {
+      outline: 2px solid var(--indigo);
+      outline-offset: 3px;
+    }
 
     /* ─── RESPONSIVE ─────────────────────────────────────── */
-    @media(max-width:1024px) {
+
+    /* ⑭ TABLET: 3-col → 2-col */
+    @media (max-width: 1024px) {
       .features-grid { grid-template-columns: repeat(2,1fr); }
-      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; max-width: 700px; margin: 0 auto; }
+      .pricing-grid .plan-card:last-child { grid-column: 1 / -1; max-width: 360px; margin: 0 auto; }
       .testi-grid { grid-template-columns: repeat(2,1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; }
     }
-    @media(max-width:768px) {
-      .hero { grid-template-columns: 1fr; padding-top: 3rem; min-height: auto; gap: 2.5rem; }
-      .hero-visual { order: -1; }
-      .hero h1 { font-size: 2.4rem; }
+
+    /* ⑮ MOBILE: full single-column, hero text-first */
+    @media (max-width: 768px) {
+      :root { --pad-x: 1.25rem; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 2.5rem;
+        gap: 2.5rem;
+      }
+      /* ⑯ TEXT FIRST on mobile — visual above fold is the copy, not the image */
+      .hero-visual { order: 1; }
+      .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+      /* ⑰ Full-width buttons on mobile */
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn { width: 100%; }
+
       .steps { grid-template-columns: 1fr; }
       .steps::before { display: none; }
+
       .features-grid { grid-template-columns: 1fr; }
+      .feature-card { padding: 1.35rem; }
+
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .pricing-grid .plan-card:last-child { grid-column: unset; max-width: unset; }
+
       .testi-grid { grid-template-columns: 1fr; }
+
       .cta-inner { flex-direction: column; align-items: flex-start; }
-      .cta-actions { align-items: flex-start; }
+      .cta-actions { align-items: stretch; width: 100%; }
+      .cta-actions .btn { width: 100%; }
+
       .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+
       .nav-links, .nav-actions { display: none; }
       .hamburger { display: flex; }
       .proof-div { display: none; }
+      .proof-inner { gap: 1.5rem; }
+      .proof-stat { min-width: 60px; }
+      .proof-num { font-size: 1.35rem; }
+
       .form-row { grid-template-columns: 1fr; }
+
+      /* ⑱ Show sticky CTA bar on mobile, add bottom padding to content */
+      .mobile-cta-bar { display: block; }
+      footer { padding-bottom: calc(2rem + 80px + env(safe-area-inset-bottom)); }
+
+      /* About section responsive */
+      .about-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+
+      /* Video grid responsive */
+      .video-grid { grid-template-columns: 1fr !important; }
     }
-    @media(prefers-reduced-motion:reduce) {
+
+    /* ⑲ SMALL PHONES: extra adjustments below 400px */
+    @media (max-width: 400px) {
+      :root { --pad-x: 1rem; }
+      .hero h1 { font-size: 1.9rem; }
+      .mascot-wrapper img { width: 140px; height: 140px; }
+      .hero-card { padding: 1.1rem; }
+      .chip { display: none; } /* chips overflow on very small screens */
+      .proof-stat { min-width: 50px; }
+    }
+
+    /* ⑳ REDUCED MOTION: respect user preference */
+    @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
   </style>
@@ -488,16 +609,16 @@
 <body>
 
 <!-- ─── NAV ──────────────────────────────────────────────── -->
-<nav id="mainNav">
+<nav id="mainNav" role="banner">
   <div class="container">
     <div class="nav-inner">
 
       <a href="/" class="nav-logo">
-        <img src="logo.jpg" alt="Nabbit" style="height:36px;width:auto;object-fit:contain;border-radius:6px;"/>
+        <img src="logo.jpg" alt="Nabbit" width="36" height="36" style="object-fit:contain;border-radius:6px;" loading="eager"/>
         nabbit
       </a>
 
-      <ul class="nav-links">
+      <ul class="nav-links" role="list">
         <li><a href="#how">How it works</a></li>
         <li><a href="#walkthroughs">Videos</a></li>
         <li><a href="#features">Features</a></li>
@@ -506,25 +627,29 @@
       </ul>
 
       <div class="nav-actions">
-        <a href="#" class="nav-login" href="login.html">Log in</a>
+        <a href="login.html" class="nav-login">Log in</a>
         <button class="btn btn-primary" onclick="openModal('trial')">Start free trial →</button>
       </div>
 
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <!-- Hamburger with ARIA -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
+<!-- Mobile Menu Backdrop -->
+<div class="mobile-backdrop" id="mobileBackdrop" onclick="closeMobile()"></div>
+
+<!-- Mobile Menu — slides down from nav -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
   <a href="#how" onclick="closeMobile()">How it works</a>
   <a href="#features" onclick="closeMobile()">Features</a>
   <a href="#pricing" onclick="closeMobile()">Pricing</a>
   <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#" onclick="openModal('login');closeMobile();return false;" style="color:var(--slate-lt)">Log in</a>
-  <button class="btn btn-primary btn-lg" style="width:fit-content" onclick="openModal('trial');closeMobile()">Start free trial →</button>
+  <a href="login.html" onclick="closeMobile()" style="color:var(--slate-lt)">Log in</a>
+  <button class="btn btn-primary btn-lg mobile-cta" onclick="openModal('trial');closeMobile()">Start free trial →</button>
 </div>
 
 <!-- ─── HERO ──────────────────────────────────────────────── -->
@@ -549,11 +674,9 @@
       </div>
 
       <div class="hero-visual">
-        <!-- Nabbit logo mark -->
         <div class="mascot-wrapper">
-          <img src="logo.jpg" alt="Nabbit" width="200" height="200" style="object-fit:contain;border-radius:16px;"/>
-
-          <!-- Floating chips -->
+          <!-- ⑥ lazy=eager for LCP image, explicit dimensions -->
+          <img src="logo.jpg" alt="Nabbit" width="200" height="200" style="object-fit:contain;border-radius:16px;" loading="eager"/>
           <div class="chip chip-1">
             <svg width="12" height="12" viewBox="0 0 20 20" fill="#059669"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
             Auto-categorised
@@ -564,8 +687,7 @@
           </div>
         </div>
 
-        <!-- Receipt preview card -->
-        <div class="hero-card">
+        <div class="hero-card" aria-label="Sample receipt preview">
           <div class="hero-card-header">
             <div class="hero-card-icon">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="#0099CC"><path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1.581.814L10 14.197l-4.419 2.617A1 1 0 014 16V4z"/></svg>
@@ -588,16 +710,16 @@
 </section>
 
 <!-- ─── PROOF STRIP ────────────────────────────────────────── -->
-<div class="proof">
+<div class="proof" role="region" aria-label="Key statistics">
   <div class="proof-inner">
     <div class="proof-stat"><div class="proof-num">500+</div><div class="proof-label">Canadian businesses</div></div>
-    <div class="proof-div"></div>
+    <div class="proof-div" aria-hidden="true"></div>
     <div class="proof-stat"><div class="proof-num">$1,200+</div><div class="proof-label">extra deductions found</div></div>
-    <div class="proof-div"></div>
+    <div class="proof-div" aria-hidden="true"></div>
     <div class="proof-stat"><div class="proof-num">99.4%</div><div class="proof-label">capture accuracy</div></div>
-    <div class="proof-div"></div>
+    <div class="proof-div" aria-hidden="true"></div>
     <div class="proof-stat"><div class="proof-num">7 yrs</div><div class="proof-label">CRA-compliant storage</div></div>
-    <div class="proof-div"></div>
+    <div class="proof-div" aria-hidden="true"></div>
     <div class="proof-stat"><div class="proof-num">QBO</div><div class="proof-label">native integration</div></div>
   </div>
 </div>
@@ -638,7 +760,6 @@
       <h2 class="section-title">Built for Canadian small business.<br>Nothing else.</h2>
     </div>
     <div class="features-grid">
-
       <div class="feature-card">
         <div class="feature-icon fi-indigo">
           <svg viewBox="0 0 24 24" fill="none" stroke="#00A854" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
@@ -646,7 +767,6 @@
         <h3 class="feature-title">One-tap capture</h3>
         <p class="feature-desc">Snap a photo the moment you pay. Nabbit reads the merchant, amount, date, and HST automatically. No typing, no filing, no forgetting.</p>
       </div>
-
       <div class="feature-card">
         <div class="feature-icon fi-citrine">
           <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
@@ -654,7 +774,6 @@
         <h3 class="feature-title">Smart categorisation</h3>
         <p class="feature-desc">Receipts are filed into the right expense category before you open the app. Train it once and it learns your business for good.</p>
       </div>
-
       <div class="feature-card">
         <div class="feature-icon fi-green">
           <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -662,15 +781,13 @@
         <h3 class="feature-title">CRA-compliant storage</h3>
         <p class="feature-desc">Every receipt stored in full resolution for 7 years, encrypted at rest, and retrievable in seconds if CRA ever comes calling.</p>
       </div>
-
       <div class="feature-card">
-        <div class="feature-icon fi-purple">
+        <div class="feature-icon fi-citrine">
           <svg viewBox="0 0 24 24" fill="none" stroke="#0099CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
         <h3 class="feature-title">QuickBooks Online sync</h3>
         <p class="feature-desc">Push expenses directly to QBO. No double-entry, no copy-paste errors. Your bookkeeper gets clean, categorised data automatically.</p>
       </div>
-
       <div class="feature-card">
         <div class="feature-icon fi-red">
           <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
@@ -678,7 +795,6 @@
         <h3 class="feature-title">Multi-company portals</h3>
         <p class="feature-desc">Manage receipts across multiple entities from a single login. Each company gets its own isolated portal — perfect for fractional CFOs.</p>
       </div>
-
       <div class="feature-card">
         <div class="feature-icon fi-teal">
           <svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -686,7 +802,6 @@
         <h3 class="feature-title">HST auto-flagging</h3>
         <p class="feature-desc">Every receipt is automatically checked for HST/GST. Missing tax info gets flagged before it becomes a problem at filing time.</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -698,22 +813,15 @@
       <span class="eyebrow">Pricing</span>
       <h2 class="section-title">Simple, transparent pricing.<br>No surprises.</h2>
       <p class="body-copy">All plans include a 30-day free trial. No credit card required to start.</p>
-      <div class="pricing-toggle">
+      <div class="pricing-toggle" role="group" aria-label="Billing cycle">
         <button class="toggle-btn active" id="monthlyBtn" onclick="setToggle('monthly')">Monthly</button>
-        <button class="toggle-btn" id="annualBtn" onclick="setToggle('annual')">Annual <span style="font-size:.7rem;color:#059669;font-weight:700">Save 20%</span></button>
+        <button class="toggle-btn" id="annualBtn" onclick="setToggle('annual')">Annual <span style="font-size:.72rem;color:#059669;font-weight:700">Save 20%</span></button>
       </div>
     </div>
-
     <div class="pricing-grid">
-
-      <!-- Free trial -->
       <div class="plan-card">
         <div class="plan-name">Starter</div>
-        <div class="plan-price">
-          <span class="currency">CA</span>
-          <span class="amount">$0</span>
-          <span class="period">/mo</span>
-        </div>
+        <div class="plan-price"><span class="currency">CA</span><span class="amount">$0</span><span class="period">/mo</span></div>
         <p class="plan-desc">30 days free, no card required. Full access to all features so you can see exactly what Nabbit can do.</p>
         <hr class="plan-divider"/>
         <ul class="plan-features">
@@ -726,16 +834,10 @@
         </ul>
         <button class="btn btn-outline btn-lg plan-cta" onclick="openModal('trial')">Start free trial</button>
       </div>
-
-      <!-- Pay as you go — featured -->
       <div class="plan-card featured">
         <div class="plan-badge">Most popular</div>
         <div class="plan-name">Pay As You Go</div>
-        <div class="plan-price">
-          <span class="currency">CA</span>
-          <span class="amount" id="paygoPrice">$14</span>
-          <span class="period" id="paygoPeriod">.99/mo</span>
-        </div>
+        <div class="plan-price"><span class="currency">CA</span><span class="amount" id="paygoPrice">$14</span><span class="period" id="paygoPeriod">.99/mo</span></div>
         <p class="plan-desc">Per user, per month. Scales with your business. Cancel any time.</p>
         <hr class="plan-divider"/>
         <ul class="plan-features">
@@ -748,15 +850,9 @@
         </ul>
         <button class="btn btn-primary btn-lg plan-cta" onclick="openModal('trial')">Start free trial →</button>
       </div>
-
-      <!-- Value plan -->
       <div class="plan-card">
         <div class="plan-name">Value Plan</div>
-        <div class="plan-price">
-          <span class="currency">CA</span>
-          <span class="amount" id="valuePrice">$64</span>
-          <span class="period" id="valuePeriod">.99/mo</span>
-        </div>
+        <div class="plan-price"><span class="currency">CA</span><span class="amount" id="valuePrice">$64</span><span class="period" id="valuePeriod">.99/mo</span></div>
         <p class="plan-desc">Up to 5 users, priority support, and multi-company access. Built for bookkeepers and fractional CFOs.</p>
         <hr class="plan-divider"/>
         <ul class="plan-features">
@@ -769,7 +865,6 @@
         </ul>
         <button class="btn btn-outline btn-lg plan-cta" onclick="openModal('trial')">Start free trial</button>
       </div>
-
     </div>
   </div>
 </section>
@@ -782,43 +877,30 @@
       <h2 class="section-title">Less receipt stress.<br>Better books.</h2>
     </div>
     <div class="testi-grid">
-
       <div class="testi-card">
-        <div class="stars">★★★★★</div>
+        <div class="stars" aria-label="5 stars">★★★★★</div>
         <p class="testi-text">"I used to spend the last Sunday of every month digging through my wallet. Now I snap receipts on the spot with Nabbit and my bookkeeper has everything she needs by the 1st."</p>
         <div class="testi-author">
           <div class="testi-av" style="background:#00A854">MP</div>
-          <div>
-            <div class="testi-name">Marcus P.</div>
-            <div class="testi-role">Owner, Northside Contracting · Hamilton, ON</div>
-          </div>
+          <div><div class="testi-name">Marcus P.</div><div class="testi-role">Owner, Northside Contracting · Hamilton, ON</div></div>
         </div>
       </div>
-
       <div class="testi-card">
-        <div class="stars">★★★★★</div>
+        <div class="stars" aria-label="5 stars">★★★★★</div>
         <p class="testi-text">"As a fractional CFO across three clients, Nabbit's multi-portal setup is exactly what I needed. One login, clean data separation, zero spreadsheet gymnastics."</p>
         <div class="testi-author">
           <div class="testi-av" style="background:#0099CC">SK</div>
-          <div>
-            <div class="testi-name">Sandra K., CPA</div>
-            <div class="testi-role">Fractional CFO · Toronto, ON</div>
-          </div>
+          <div><div class="testi-name">Sandra K., CPA</div><div class="testi-role">Fractional CFO · Toronto, ON</div></div>
         </div>
       </div>
-
       <div class="testi-card">
-        <div class="stars">★★★★★</div>
+        <div class="stars" aria-label="5 stars">★★★★★</div>
         <p class="testi-text">"The QBO sync alone saved me 90 minutes at month-end. And knowing every receipt is CRA-compliant for 7 years? Peace of mind I didn't know I was missing."</p>
         <div class="testi-author">
           <div class="testi-av" style="background:#059669">TR</div>
-          <div>
-            <div class="testi-name">Theo R.</div>
-            <div class="testi-role">Founder, Lakeside Media · Ottawa, ON</div>
-          </div>
+          <div><div class="testi-name">Theo R.</div><div class="testi-role">Founder, Lakeside Media · Ottawa, ON</div></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -826,7 +908,7 @@
 <!-- ─── ABOUT ──────────────────────────────────────────────── -->
 <section id="about" style="padding:clamp(4rem,8vw,7rem) 0;">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
       <div>
         <span class="eyebrow" style="display:block;margin-bottom:.75rem">About Nabbit</span>
         <h2 class="section-title" style="margin-bottom:1.25rem">Built by accountants,<br>for accountants.</h2>
@@ -837,31 +919,21 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:1.25rem;">
         <div style="background:var(--indigo-lt);border-radius:var(--r-lg);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-          <div style="font-size:1.5rem;flex-shrink:0">🇨🇦</div>
-          <div>
-            <div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">Canadian-first</div>
-            <div style="font-size:.83rem;color:var(--slate-lt);line-height:1.6">Built for CRA rules, HST/GST, and the way Canadian businesses actually work.</div>
-          </div>
+          <div style="font-size:1.5rem;flex-shrink:0" aria-hidden="true">🇨🇦</div>
+          <div><div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">Canadian-first</div><div style="font-size:.85rem;color:var(--slate-lt);line-height:1.6">Built for CRA rules, HST/GST, and the way Canadian businesses actually work.</div></div>
         </div>
         <div style="background:#ECFDF5;border-radius:var(--r-lg);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-          <div style="font-size:1.5rem;flex-shrink:0">🔒</div>
-          <div>
-            <div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">Data isolation</div>
-            <div style="font-size:.83rem;color:var(--slate-lt);line-height:1.6">Multi-tenant with strict row-level security. No company can ever see another company's data.</div>
-          </div>
+          <div style="font-size:1.5rem;flex-shrink:0" aria-hidden="true">🔒</div>
+          <div><div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">Data isolation</div><div style="font-size:.85rem;color:var(--slate-lt);line-height:1.6">Multi-tenant with strict row-level security. No company can ever see another company's data.</div></div>
         </div>
         <div style="background:#E0F4FB;border-radius:var(--r-lg);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
-          <div style="font-size:1.5rem;flex-shrink:0">⚡</div>
-          <div>
-            <div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">AI-powered extraction</div>
-            <div style="font-size:.83rem;color:var(--slate-lt);line-height:1.6">Powered by Anthropic's Claude vision API. Reads and categorises your receipt in under 3 seconds.</div>
-          </div>
+          <div style="font-size:1.5rem;flex-shrink:0" aria-hidden="true">⚡</div>
+          <div><div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">AI-powered extraction</div><div style="font-size:.85rem;color:var(--slate-lt);line-height:1.6">Powered by Anthropic's Claude vision API. Reads and categorises your receipt in under 3 seconds.</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- ─── VIDEO WALKTHROUGHS ──────────────────────────────── -->
 <section id="walkthroughs" style="padding:clamp(4rem,8vw,7rem) 0;background:#fff;">
@@ -871,82 +943,73 @@
       <h2 class="section-title">Up and running in under 10 minutes.</h2>
       <p class="body-copy" style="max-width:50ch;margin:1rem auto 0">Three short videos that walk you through everything — from creating your account to your first receipt synced to QuickBooks.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
-
-      <!-- Video 1 -->
-      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,168,84,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="background:var(--slate);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;" onclick="openVideo(1)">
-          <!-- Thumbnail -->
+    <div class="video-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;">
+        <button style="background:var(--slate);aspect-ratio:16/9;width:100%;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;border:none;padding:0;" onclick="openVideo(1)" aria-label="Watch: Register and set up your account">
           <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0A2015,#007A3D);display:flex;align-items:center;justify-content:center;">
             <div style="text-align:center">
-              <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,.3);cursor:pointer">
+              <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;border:2px solid rgba(255,255,255,.3);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
               </div>
-              <div style="font-size:.7rem;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.1em;text-transform:uppercase">2 min watch</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.1em;text-transform:uppercase">2 min watch</div>
             </div>
           </div>
-          <div style="position:absolute;top:.75rem;left:.75rem;background:var(--citrine);color:var(--slate);font-size:.65rem;font-weight:700;padding:.25rem .6rem;border-radius:100px;letter-spacing:.05em">STEP 1</div>
-        </div>
+          <div style="position:absolute;top:.75rem;left:.75rem;background:var(--citrine);color:#fff;font-size:.65rem;font-weight:700;padding:.25rem .6rem;border-radius:100px;">STEP 1</div>
+        </button>
         <div style="padding:1.25rem 1.5rem 1.5rem">
-          <div style="font-family:var(--font-d);font-weight:700;font-size:.95rem;color:var(--slate);margin-bottom:.35rem">Register & set up your account</div>
-          <div style="font-size:.82rem;color:var(--slate-lt);line-height:1.6">Create your Nabbit account, add your company, invite your bookkeeper, and take your first receipt photo.</div>
+          <div style="font-family:var(--font-d);font-weight:700;font-size:.95rem;color:var(--slate);margin-bottom:.35rem">Register &amp; set up your account</div>
+          <div style="font-size:.85rem;color:var(--slate-lt);line-height:1.6">Create your Nabbit account, add your company, invite your bookkeeper, and take your first receipt photo.</div>
         </div>
       </div>
-
-      <!-- Video 2 -->
-      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,168,84,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="background:var(--slate);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;" onclick="openVideo(2)">
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;">
+        <button style="background:var(--slate);aspect-ratio:16/9;width:100%;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;border:none;padding:0;" onclick="openVideo(2)" aria-label="Watch: Connect QuickBooks Online">
           <div style="position:absolute;inset:0;background:linear-gradient(135deg,#004D80,#0099CC);display:flex;align-items:center;justify-content:center;">
             <div style="text-align:center">
-              <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,.3)">
+              <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;border:2px solid rgba(255,255,255,.3);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
               </div>
-              <div style="font-size:.7rem;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.1em;text-transform:uppercase">3 min watch</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.1em;text-transform:uppercase">3 min watch</div>
             </div>
           </div>
-          <div style="position:absolute;top:.75rem;left:.75rem;background:var(--citrine);color:var(--slate);font-size:.65rem;font-weight:700;padding:.25rem .6rem;border-radius:100px;letter-spacing:.05em">STEP 2</div>
-        </div>
+          <div style="position:absolute;top:.75rem;left:.75rem;background:var(--citrine);color:#fff;font-size:.65rem;font-weight:700;padding:.25rem .6rem;border-radius:100px;">STEP 2</div>
+        </button>
         <div style="padding:1.25rem 1.5rem 1.5rem">
           <div style="font-family:var(--font-d);font-weight:700;font-size:.95rem;color:var(--slate);margin-bottom:.35rem">Connect QuickBooks Online</div>
-          <div style="font-size:.82rem;color:var(--slate-lt);line-height:1.6">Authorise the QBO connection in two clicks, map your expense accounts, and watch your first receipt sync live.</div>
+          <div style="font-size:.85rem;color:var(--slate-lt);line-height:1.6">Authorise the QBO connection in two clicks, map your expense accounts, and watch your first receipt sync live.</div>
         </div>
       </div>
-
-      <!-- Video 3 -->
-      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,168,84,.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="background:var(--slate);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;" onclick="openVideo(3)">
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);overflow:hidden;">
+        <button style="background:var(--slate);aspect-ratio:16/9;width:100%;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;border:none;padding:0;" onclick="openVideo(3)" aria-label="Watch: Connect OneDrive and SharePoint">
           <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0F1A12,#1A4A2E);display:flex;align-items:center;justify-content:center;">
             <div style="text-align:center">
-              <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;backdrop-filter:blur(4px);border:2px solid rgba(255,255,255,.3)">
+              <div style="width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .75rem;border:2px solid rgba(255,255,255,.3);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
               </div>
-              <div style="font-size:.7rem;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.1em;text-transform:uppercase">3 min watch</div>
+              <div style="font-size:.72rem;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.1em;text-transform:uppercase">3 min watch</div>
             </div>
           </div>
-          <div style="position:absolute;top:.75rem;left:.75rem;background:var(--citrine);color:var(--slate);font-size:.65rem;font-weight:700;padding:.25rem .6rem;border-radius:100px;letter-spacing:.05em">STEP 3</div>
-        </div>
+          <div style="position:absolute;top:.75rem;left:.75rem;background:var(--citrine);color:#fff;font-size:.65rem;font-weight:700;padding:.25rem .6rem;border-radius:100px;">STEP 3</div>
+        </button>
         <div style="padding:1.25rem 1.5rem 1.5rem">
           <div style="font-family:var(--font-d);font-weight:700;font-size:.95rem;color:var(--slate);margin-bottom:.35rem">Connect OneDrive / SharePoint</div>
-          <div style="font-size:.82rem;color:var(--slate-lt);line-height:1.6">Link your Microsoft 365 account so receipt images are automatically backed up to your company SharePoint folder.</div>
+          <div style="font-size:.85rem;color:var(--slate-lt);line-height:1.6">Link your Microsoft 365 account so receipt images are automatically backed up to your company SharePoint folder.</div>
         </div>
       </div>
-
     </div>
 
     <!-- Video modal -->
-    <div id="videoModal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:2rem;" onclick="closeVideo()">
+    <div id="videoModal" role="dialog" aria-modal="true" aria-label="Video player" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:2rem;" onclick="closeVideo()">
       <div style="width:100%;max-width:800px;position:relative;" onclick="event.stopPropagation()">
-        <button onclick="closeVideo()" style="position:absolute;top:-40px;right:0;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer">✕ Close</button>
+        <button onclick="closeVideo()" style="position:absolute;top:-44px;right:0;background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;min-width:44px;min-height:44px;display:flex;align-items:center;gap:.5rem;" aria-label="Close video">✕ Close</button>
         <div id="videoContent" style="background:#000;border-radius:12px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;overflow:hidden;">
           <div style="text-align:center;color:rgba(255,255,255,.5)">
             <div style="font-size:2rem;margin-bottom:.75rem">🎬</div>
             <div style="font-family:var(--font-d);font-weight:700;font-size:1rem;color:#fff;margin-bottom:.4rem" id="videoTitle">Video coming soon</div>
-            <div style="font-size:.85rem">We're recording the walkthrough videos now.<br>Sign up for early access and we'll notify you.</div>
+            <div style="font-size:.88rem">We're recording the walkthrough videos now.<br>Sign up for early access and we'll notify you.</div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -967,40 +1030,38 @@
 </div>
 
 <!-- ─── FOOTER ────────────────────────────────────────────── -->
-<footer>
+<footer role="contentinfo">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
         <a href="/" class="nav-logo" style="color:#fff;margin-bottom:1rem;display:flex">
-          <img src="logo.jpg" alt="Nabbit" style="height:36px;width:auto;object-fit:contain;border-radius:6px;"/>
+          <img src="logo.jpg" alt="Nabbit" width="36" height="36" style="object-fit:contain;border-radius:6px;" loading="lazy"/>
           nabbit
         </a>
         <p class="footer-desc">Nabbit makes receipt management effortless for Canadian small businesses, bookkeepers, and everyone in between.</p>
         <div class="social-links">
-          <a href="https://x.com/nabbitca" target="_blank" rel="noopener" class="social-link" aria-label="Twitter/X">
+          <a href="https://x.com/nabbitca" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Nabbit on X (Twitter)">
             <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
-          <a href="https://linkedin.com/company/nabbitca" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+          <a href="https://linkedin.com/company/nabbitca" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Nabbit on LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <a href="https://instagram.com/nabbitca" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+          <a href="https://instagram.com/nabbitca" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Nabbit on Instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </a>
         </div>
       </div>
-
       <div class="footer-col">
         <h4>Product</h4>
         <ul>
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#how">How it works</a></li>
-        <li><a href="#walkthroughs">Videos</a></li>
+          <li><a href="#walkthroughs">Videos</a></li>
           <li><a href="#">Changelog</a></li>
           <li><a href="#">Roadmap</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
@@ -1011,18 +1072,16 @@
           <li><a href="login.html">Admin Login</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
         <h4>Stay in the loop</h4>
-        <p style="font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:.75rem;line-height:1.6">Product updates, tax tips, and the occasional bookkeeping shortcut.</p>
+        <p style="font-size:.8rem;color:rgba(255,255,255,.4);margin-bottom:.75rem;line-height:1.6">Product updates, tax tips, and the occasional bookkeeping shortcut.</p>
         <div class="newsletter-form">
-          <input class="newsletter-input" type="email" id="newsletterEmail" placeholder="you@company.com" aria-label="Email address"/>
+          <input class="newsletter-input" type="email" id="newsletterEmail" placeholder="you@company.com" aria-label="Email address for newsletter"/>
           <button class="btn-newsletter" onclick="subscribeNewsletter()">Join</button>
         </div>
-        <div id="newsletterMsg" style="display:none;font-size:.75rem;color:#6EE7B7;margin-top:.5rem"></div>
+        <div id="newsletterMsg" style="display:none;font-size:.78rem;color:#6EE7B7;margin-top:.5rem" role="alert"></div>
       </div>
     </div>
-
     <div class="footer-bottom">
       <span>© 2026 Nabbit (1001583085 Ontario Inc.). All rights reserved.</span>
       <div class="footer-links">
@@ -1034,19 +1093,22 @@
   </div>
 </footer>
 
+<!-- ─── ⑪ STICKY MOBILE CTA BAR ────────────────────────── -->
+<div class="mobile-cta-bar" role="complementary" aria-label="Get started">
+  <button class="btn btn-primary btn-lg" onclick="openModal('trial')">Start free trial — 30 days →</button>
+</div>
+
 <!-- ─── TRIAL MODAL ───────────────────────────────────────── -->
-<div class="modal-overlay" id="trialModal" onclick="closeModalOnOverlay(event,'trialModal')">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
-    <button class="modal-close" onclick="closeModal('trial')" aria-label="Close">✕</button>
+<div class="modal-overlay" id="trialModal" onclick="closeModalOnOverlay(event,'trialModal')" role="dialog" aria-modal="true" aria-labelledby="trialTitle">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('trial')" aria-label="Close dialog">✕</button>
     <div class="modal-logo">
-      <img src="logo.jpg" alt="Nabbit" style="height:28px;width:auto;object-fit:contain;border-radius:4px;"/>
+      <img src="logo.jpg" alt="Nabbit" width="28" height="28" style="object-fit:contain;border-radius:4px;" loading="lazy"/>
       <span class="modal-logo-text">nabbit</span>
     </div>
     <h2 class="modal-title" id="trialTitle">Start your free trial</h2>
     <p class="modal-sub">30 days free. No credit card required. Cancel any time.</p>
-
-    <div id="trialAlert" class="form-alert"></div>
-
+    <div id="trialAlert" class="form-alert" role="alert"></div>
     <div class="form-row">
       <div class="form-group">
         <label class="form-label" for="trialFirst">First name</label>
@@ -1059,7 +1121,7 @@
     </div>
     <div class="form-group">
       <label class="form-label" for="trialEmail">Work email</label>
-      <input class="form-input" type="email" id="trialEmail" placeholder="you@company.com" autocomplete="email"/>
+      <input class="form-input" type="email" id="trialEmail" placeholder="you@company.com" autocomplete="email" inputmode="email"/>
     </div>
     <div class="form-group">
       <label class="form-label" for="trialCompany">Company name</label>
@@ -1077,43 +1139,38 @@
 </div>
 
 <!-- ─── LOGIN MODAL ───────────────────────────────────────── -->
-<div class="modal-overlay" id="loginModal" onclick="closeModalOnOverlay(event,'loginModal')">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
-    <button class="modal-close" onclick="closeModal('login')" aria-label="Close">✕</button>
+<div class="modal-overlay" id="loginModal" onclick="closeModalOnOverlay(event,'loginModal')" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('login')" aria-label="Close dialog">✕</button>
     <div class="modal-logo">
-      <img src="logo.jpg" alt="Nabbit" style="height:28px;width:auto;object-fit:contain;border-radius:4px;"/>
+      <img src="logo.jpg" alt="Nabbit" width="28" height="28" style="object-fit:contain;border-radius:4px;" loading="lazy"/>
       <span class="modal-logo-text">nabbit</span>
     </div>
     <h2 class="modal-title" id="loginTitle">Welcome back</h2>
     <p class="modal-sub">Log in to your Nabbit account.</p>
-
-    <div id="loginAlert" class="form-alert"></div>
-
+    <div id="loginAlert" class="form-alert" role="alert"></div>
     <div class="form-group">
       <label class="form-label" for="loginEmail">Email</label>
-      <input class="form-input" type="email" id="loginEmail" placeholder="you@company.com" autocomplete="email"/>
+      <input class="form-input" type="email" id="loginEmail" placeholder="you@company.com" autocomplete="email" inputmode="email"/>
     </div>
     <div class="form-group">
       <label class="form-label" for="loginPassword">Password</label>
       <input class="form-input" type="password" id="loginPassword" placeholder="Your password" autocomplete="current-password"/>
     </div>
     <a href="#" class="forgot-link" onclick="showForgot();return false">Forgot password?</a>
-
     <div id="forgotForm" style="display:none;margin-bottom:1rem">
       <div class="form-group">
         <label class="form-label" for="forgotEmail">Enter your email to reset</label>
-        <input class="form-input" type="email" id="forgotEmail" placeholder="you@company.com"/>
+        <input class="form-input" type="email" id="forgotEmail" placeholder="you@company.com" inputmode="email"/>
       </div>
       <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="sendReset()">Send reset link</button>
     </div>
-
     <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem">
-      <label style="display:flex;align-items:center;gap:6px;font-size:.82rem;color:var(--slate-md);cursor:pointer">
-        <input type="checkbox" id="rememberMe" style="accent-color:var(--indigo)"/>
+      <label style="display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--slate-md);cursor:pointer;min-height:44px;">
+        <input type="checkbox" id="rememberMe" style="accent-color:var(--indigo);width:18px;height:18px;"/>
         Remember me
       </label>
     </div>
-
     <button class="btn btn-primary btn-lg form-submit" onclick="submitLogin()">Log in →</button>
     <div class="form-divider" style="margin-top:1rem"><span>Don't have an account?</span></div>
     <button class="btn btn-outline form-submit" onclick="switchToTrial()">Start free trial</button>
@@ -1123,21 +1180,49 @@
 <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
 <script>
   // ── NAV SCROLL SHADOW ──
+  const mainNav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
-    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 8);
-  });
+    mainNav.classList.toggle('scrolled', window.scrollY > 8);
+    // Hide mobile CTA bar when near top
+    const bar = document.querySelector('.mobile-cta-bar');
+    if (bar) bar.style.opacity = window.scrollY > 300 ? '1' : '0';
+  }, { passive: true });
+  // Init opacity
+  const ctaBar = document.querySelector('.mobile-cta-bar');
+  if (ctaBar) ctaBar.style.opacity = '0';
 
   // ── HAMBURGER ──
-  document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('mobileMenu').classList.toggle('open');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    mobileBackdrop.classList.toggle('open', isOpen);
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
-  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    mobileBackdrop.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  // Close mobile menu on ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeMobile();
+      closeModal('trial');
+      closeModal('login');
+      closeVideo();
+    }
+  });
 
   // ── PRICING TOGGLE ──
-  const prices = {
-    paygo:  { monthly: '$14<span style="font-size:1.2rem">.99</span>', annual: '$11<span style="font-size:1.2rem">.99</span>' },
-    value:  { monthly: '$64<span style="font-size:1.2rem">.99</span>', annual: '$51<span style="font-size:1.2rem">.99</span>' }
-  };
   let billingCycle = 'monthly';
   function setToggle(cycle) {
     billingCycle = cycle;
@@ -1155,6 +1240,11 @@
     closeMobile();
     document.getElementById(type + 'Modal').classList.add('open');
     document.body.style.overflow = 'hidden';
+    // Focus first input for accessibility
+    setTimeout(() => {
+      const first = document.querySelector('#' + type + 'Modal input');
+      if (first) first.focus();
+    }, 100);
   }
   function closeModal(type) {
     document.getElementById(type + 'Modal').classList.remove('open');
@@ -1164,9 +1254,6 @@
   function closeModalOnOverlay(e, id) {
     if (e.target.id === id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
   }
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeModal('trial'); closeModal('login'); }
-  });
   function switchToLogin() { closeModal('trial'); setTimeout(() => openModal('login'), 150); }
   function switchToTrial() { closeModal('login'); setTimeout(() => openModal('trial'), 150); }
 
@@ -1181,29 +1268,18 @@
   }
 
   // ── TRIAL SUBMIT ──
-  // In production this would POST to your Supabase sign-up or
-  // redirect to ledger-live-close.lovable.app with a deep link.
   function submitTrial() {
     const first = document.getElementById('trialFirst').value.trim();
     const last  = document.getElementById('trialLast').value.trim();
     const email = document.getElementById('trialEmail').value.trim();
     const company = document.getElementById('trialCompany').value.trim();
     const pass  = document.getElementById('trialPassword').value;
-
-    if (!first || !last || !email || !company || !pass) {
-      showAlert('trial', 'Please fill in all fields.', true); return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showAlert('trial', 'Please enter a valid email address.', true); return;
-    }
-    if (pass.length < 8) {
-      showAlert('trial', 'Password must be at least 8 characters.', true); return;
-    }
-
-    // Redirect to the live app with pre-filled email
+    if (!first || !last || !email || !company || !pass) { showAlert('trial', 'Please fill in all fields.', true); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showAlert('trial', 'Please enter a valid email address.', true); return; }
+    if (pass.length < 8) { showAlert('trial', 'Password must be at least 8 characters.', true); return; }
     showAlert('trial', '🐇 Setting up your account…', false);
     setTimeout(() => {
-      const params = new URLSearchParams({email:email,first:first,last:last,company:company,ref:'nabbit-trial',action:'signup'});
+      const params = new URLSearchParams({email,first,last,company,ref:'nabbit-trial',action:'signup'});
       window.location.href = 'login.html?' + params.toString();
     }, 1200);
   }
@@ -1220,9 +1296,7 @@
   }
 
   // ── FORGOT PASSWORD ──
-  function showForgot() {
-    document.getElementById('forgotForm').style.display = 'block';
-  }
+  function showForgot() { document.getElementById('forgotForm').style.display = 'block'; }
   function sendReset() {
     const email = document.getElementById('forgotEmail').value.trim();
     if (!email) { showAlert('login', 'Please enter your email address.', true); return; }
@@ -1247,22 +1321,24 @@
   }
 
   // ── SCROLL ANIMATIONS ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.feature-card, .testi-card, .step, .plan-card').forEach((el, i) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = `opacity .45s ease ${i * 0.07}s, transform .45s ease ${i * 0.07}s, border-color .25s, box-shadow .25s`;
-    observer.observe(el);
-  });
+    document.querySelectorAll('.feature-card, .testi-card, .step, .plan-card').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = `opacity .45s ease ${i * 0.07}s, transform .45s ease ${i * 0.07}s, border-color .25s, box-shadow .25s`;
+      observer.observe(el);
+    });
+  }
 
   // ── VIDEO MODAL ──
   const videoTitles = ['', 'Register & set up your account', 'Connect QuickBooks Online', 'Connect OneDrive & SharePoint'];
@@ -1276,7 +1352,6 @@
     document.getElementById('videoModal').style.display = 'none';
     document.body.style.overflow = '';
   }
-  document.addEventListener('keydown', e => { if(e.key==='Escape') closeVideo(); });
 </script>
 
 </body>
