@@ -352,13 +352,24 @@
       -webkit-tap-highlight-color: transparent;
     }
     .toggle-btn.active { background: #fff; color: var(--slate); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
-    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; align-items: start; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem; align-items: start; }
     .plan-card {
       background: #fff; border: 1.5px solid var(--border);
       border-radius: var(--r-xl); padding: 2rem;
       position: relative; transition: transform .2s, box-shadow .2s;
     }
     .plan-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .enterprise-banner {
+      margin-top: 2rem; display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--r-xl); padding: 2rem 2.5rem;
+    }
+    .enterprise-banner .plan-name { margin-bottom: .4rem; }
+    @media (max-width: 768px) {
+      .enterprise-banner { flex-direction: column; align-items: flex-start; text-align: left; }
+      .enterprise-banner .btn { width: 100%; }
+    }
+
     .plan-card.featured { border-color: var(--indigo); border-width: 2px; box-shadow: 0 0 0 4px var(--indigo-lt), var(--shadow-md); }
     .plan-badge {
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
@@ -532,7 +543,6 @@
     @media (max-width: 1024px) {
       .features-grid { grid-template-columns: repeat(2,1fr); }
       .pricing-grid { grid-template-columns: 1fr 1fr; max-width: 700px; margin: 0 auto; }
-      .pricing-grid .plan-card:last-child { grid-column: 1 / -1; max-width: 360px; margin: 0 auto; }
       .testi-grid { grid-template-columns: repeat(2,1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; }
     }
@@ -560,7 +570,6 @@
       .feature-card { padding: 1.35rem; }
 
       .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
-      .pricing-grid .plan-card:last-child { grid-column: unset; max-width: unset; }
 
       .testi-grid { grid-template-columns: 1fr; }
 
@@ -825,6 +834,21 @@
     </div>
     <div class="pricing-grid">
       <div class="plan-card">
+        <div class="plan-name">Personal Use</div>
+        <div class="plan-price"><span class="currency">CA</span><span class="amount">$7</span><span class="period">.99/mo</span></div>
+        <p class="plan-desc">For individuals and freelancers. Not a business account &mdash; just your own receipts, organised.</p>
+        <hr class="plan-divider"/>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Single user</li>
+          <li><span class="check">✓</span> AI receipt capture &amp; parsing</li>
+          <li><span class="check">✓</span> Google Drive integration</li>
+          <li><span class="check">✓</span> Auto-generated receipt tracker sheet</li>
+          <li><span class="cross">✗</span> QuickBooks integration</li>
+          <li><span class="cross">✗</span> SharePoint integration</li>
+        </ul>
+        <button class="btn btn-outline btn-lg plan-cta" onclick="openModal('trial')">Start free trial</button>
+      </div>
+      <div class="plan-card">
         <div class="plan-name">Starter</div>
         <div class="plan-price"><span class="currency">CA</span><span class="amount">$0</span><span class="period">/mo</span></div>
         <p class="plan-desc">7 days free, no card required. Full access to all features so you can see exactly what Nabbit can do.</p>
@@ -832,10 +856,8 @@
         <ul class="plan-features">
           <li><span class="check">✓</span> Up to 50 receipts</li>
           <li><span class="check">✓</span> AI categorisation</li>
-          <li><span class="check">✓</span> QBO export (CSV)</li>
           <li><span class="check">✓</span> 1 company portal</li>
           <li><span class="cross">✗</span> QBO direct sync</li>
-          <li><span class="cross">✗</span> CRA 7-year storage</li>
         </ul>
         <button class="btn btn-outline btn-lg plan-cta" onclick="openModal('trial')">Start free trial</button>
       </div>
@@ -847,29 +869,35 @@
         <hr class="plan-divider"/>
         <ul class="plan-features">
           <li><span class="check">✓</span> Unlimited receipts</li>
-          <li><span class="check">✓</span> AI categorisation + learning</li>
+          <li><span class="check">✓</span> AI receipt categorisation</li>
+          <li><span class="check">✓</span> Receipt approval workflow</li>
+          <li><span class="check">✓</span> GL coding &amp; job tagging</li>
           <li><span class="check">✓</span> QBO direct sync</li>
-          <li><span class="check">✓</span> CRA 7-year storage</li>
           <li><span class="check">✓</span> 1 company portal</li>
-          <li><span class="check">✓</span> Email & CSV forwarding</li>
         </ul>
         <button class="btn btn-primary btn-lg plan-cta" onclick="openModal('trial')">Start free trial →</button>
       </div>
       <div class="plan-card">
         <div class="plan-name">Value Plan</div>
         <div class="plan-price"><span class="currency">CA</span><span class="amount" id="valuePrice">$64</span><span class="period" id="valuePeriod">.99/mo</span></div>
-        <p class="plan-desc">Up to 5 users, priority support, and multi-company access. Built for bookkeepers and fractional CFOs.</p>
+        <p class="plan-desc">Up to 5 users included at one flat monthly rate instead of per-user pricing. Built for growing teams.</p>
         <hr class="plan-divider"/>
         <ul class="plan-features">
           <li><span class="check">✓</span> Everything in Pay As You Go</li>
-          <li><span class="check">✓</span> Up to 5 users</li>
-          <li><span class="check">✓</span> Multi-company portals</li>
+          <li><span class="check">✓</span> Up to 5 users included</li>
+          <li><span class="check">✓</span> Flat monthly rate (no per-user charges)</li>
           <li><span class="check">✓</span> Priority support</li>
           <li><span class="check">✓</span> Dedicated onboarding</li>
-          <li><span class="check">✓</span> Bulk export + reporting</li>
         </ul>
         <button class="btn btn-outline btn-lg plan-cta" onclick="openModal('trial')">Start free trial</button>
       </div>
+    </div>
+    <div class="enterprise-banner">
+      <div>
+        <div class="plan-name">Enterprise</div>
+        <p class="plan-desc" style="margin-bottom:0">Custom pricing for large organisations. Everything in the Value Plan, plus dedicated onboarding support and custom terms.</p>
+      </div>
+      <a href="mailto:support@nabbit.ca" class="btn btn-primary btn-lg">Contact us →</a>
     </div>
   </div>
 </section>
@@ -900,7 +928,7 @@
       </div>
       <div class="testi-card">
         <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p class="testi-text">"The QBO sync alone saved me 90 minutes at month-end. And knowing every receipt is CRA-compliant for 7 years? Peace of mind I didn't know I was missing."</p>
+        <p class="testi-text">"The QBO sync alone saved me 90 minutes at month-end. Every receipt is captured and categorised before I even sit down to close the books."</p>
         <div class="testi-author">
           <div class="testi-av" style="background:#059669">TR</div>
           <div><div class="testi-name">Theo R.</div><div class="testi-role">Founder, Lakeside Media · Ottawa, ON</div></div>
