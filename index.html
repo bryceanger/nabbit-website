@@ -652,7 +652,7 @@
 
       <div class="nav-actions">
         <a href="login.html" class="nav-login">Log in</a>
-        <button class="btn btn-primary" onclick="openModal('trial')">Start free trial →</button>
+        <button class="btn btn-primary" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial →</button>
       </div>
 
       <!-- Hamburger with ARIA -->
@@ -674,7 +674,7 @@
   <a href="#faq" onclick="closeMobile()">FAQ</a>
   <a href="#about" onclick="closeMobile()">About</a>
   <a href="login.html" onclick="closeMobile()" style="color:var(--slate-lt)">Log in</a>
-  <button class="btn btn-primary btn-lg mobile-cta" onclick="openModal('trial');closeMobile()">Start free trial →</button>
+  <button class="btn btn-primary btn-lg mobile-cta" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial →</button>
 </div>
 
 <!-- ─── HERO ──────────────────────────────────────────────── -->
@@ -687,7 +687,7 @@
         <h1>Every receipt,<br><span class="accent">nabbed</span> and filed.</h1>
         <p class="hero-sub">Snap a photo or drag and drop — Nabbit captures every receipt the moment it happens and has it organised, categorised, and ready for QuickBooks before you're back at your desk.</p>
         <div class="hero-actions">
-          <button class="btn btn-primary btn-lg" onclick="openModal('trial')">Start free — 7 days →</button>
+          <button class="btn btn-primary btn-lg" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free — 7 days →</button>
           <a href="#how" class="btn btn-outline">See how it works</a>
         </div>
         <div class="hero-trust">
@@ -857,7 +857,7 @@
           <li><span class="check">✓</span> Running tracker spreadsheet, built for you</li>
           <li><span class="cross">✗</span> No QuickBooks connection</li>
         </ul>
-        <button class="btn btn-outline btn-lg plan-cta" onclick="openModal('trial')">Start free trial</button>
+        <button class="btn btn-outline btn-lg plan-cta" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial</button>
       </div>
       <div class="plan-card featured">
         <div class="plan-badge">Most popular</div>
@@ -872,7 +872,7 @@
           <li><span class="check">✓</span> Expense accounts &amp; job tracking</li>
           <li><span class="check">✓</span> Sends expenses straight to QuickBooks</li>
         </ul>
-        <button class="btn btn-primary btn-lg plan-cta" onclick="openModal('trial')">Start free trial →</button>
+        <button class="btn btn-primary btn-lg plan-cta" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial →</button>
       </div>
       <div class="plan-card">
         <div class="plan-name">Team</div>
@@ -886,7 +886,7 @@
           <li><span class="check">✓</span> Priority support</li>
           <li><span class="check">✓</span> Personal onboarding help</li>
         </ul>
-        <button class="btn btn-outline btn-lg plan-cta" onclick="openModal('trial')">Start free trial</button>
+        <button class="btn btn-outline btn-lg plan-cta" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial</button>
       </div>
     </div>
     <div class="enterprise-banner">
@@ -1092,7 +1092,7 @@
         <p class="body-copy" style="margin-top:.75rem">First 7 days free. Cancel anytime before your trial ends and pay nothing.</p>
       </div>
       <div class="cta-actions">
-        <button class="btn btn-citrine btn-lg" onclick="openModal('trial')">Start free trial →</button>
+        <button class="btn btn-citrine btn-lg" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial →</button>
         <span class="cta-note">First 7 days free · Cancel anytime</span>
       </div>
     </div>
@@ -1166,7 +1166,7 @@
 
 <!-- ─── ⑪ STICKY MOBILE CTA BAR ────────────────────────── -->
 <div class="mobile-cta-bar" role="complementary" aria-label="Get started">
-  <button class="btn btn-primary btn-lg" onclick="openModal('trial')">Start free trial — 7 days →</button>
+  <button class="btn btn-primary btn-lg" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial — 7 days →</button>
 </div>
 
 <!-- ─── TRIAL MODAL ───────────────────────────────────────── -->
@@ -1326,7 +1326,7 @@
     if (e.target.id === id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
   }
   function switchToLogin() { closeModal('trial'); setTimeout(() => openModal('login'), 150); }
-  function switchToTrial() { closeModal('login'); setTimeout(() => openModal('trial'), 150); }
+  function switchToTrial() { window.location.href = 'https://app.nabbit.ca/signup'; }
 
   function showAlert(type, msg, isError) {
     const el = document.getElementById(type + 'Alert');
