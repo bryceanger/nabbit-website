@@ -250,9 +250,9 @@
     .mascot-wrapper {
       position: relative;
       filter: drop-shadow(0 24px 48px rgba(0,168,84,.18));
-      animation: mascot-float 8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+      animation: mascot-float 12s ease-in-out infinite;
     }
-    @keyframes mascot-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+    @keyframes mascot-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
     .hero-card {
       background: #fff; border-radius: var(--r-lg); border: 1px solid var(--border);
       padding: 1.5rem; box-shadow: var(--shadow-lg);
@@ -275,9 +275,9 @@
       font-size: .75rem; font-weight: 700; font-family: var(--font-d);
       color: var(--slate); display: flex; align-items: center; gap: 5px;
     }
-    .chip-1 { top: -16px; right: -10px; animation: chip-float 4s ease-in-out infinite; }
-    .chip-2 { bottom: 30px; left: -20px; animation: chip-float 4.5s ease-in-out infinite .8s; }
-    @keyframes chip-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+    .chip-1 { top: -16px; right: -10px; animation: chip-float 12s ease-in-out infinite; }
+    .chip-2 { bottom: 30px; left: -20px; animation: chip-float 14s ease-in-out infinite 1s; }
+    @keyframes chip-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} } 50%{transform:translateY(-5px)} }
 
     /* ─── PROOF STRIP ────────────────────────────────────── */
     .proof { background: var(--slate); padding: 1.5rem var(--pad-x); }
