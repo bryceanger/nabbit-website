@@ -1013,13 +1013,7 @@
     <div id="videoModal" role="dialog" aria-modal="true" aria-label="Video player" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:2rem;" onclick="closeVideo()">
       <div style="width:100%;max-width:800px;position:relative;" onclick="event.stopPropagation()">
         <button onclick="closeVideo()" style="position:absolute;top:-44px;right:0;background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;min-width:44px;min-height:44px;display:flex;align-items:center;gap:.5rem;" aria-label="Close video">✕ Close</button>
-        <div id="videoContent" style="background:#000;border-radius:12px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-          <div style="text-align:center;color:rgba(255,255,255,.5)">
-            <div style="font-size:2rem;margin-bottom:.75rem">🎬</div>
-            <div style="font-family:var(--font-d);font-weight:700;font-size:1rem;color:#fff;margin-bottom:.4rem" id="videoTitle">Video coming soon</div>
-            <div style="font-size:.88rem">We're recording the walkthrough videos now.<br>Sign up for early access and we'll notify you.</div>
-          </div>
-        </div>
+        <div id="videoContent" style="background:#000;border-radius:12px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;overflow:hidden;"></div>
       </div>
     </div>
   </div>
@@ -1348,8 +1342,11 @@
   }
 
   // ── VIDEO MODAL ──
-  const videoTitles = ['', 'Register & set up your account', 'Connect QuickBooks Online', 'Connect OneDrive & SharePoint'];
+  const videoSrcs = ['', '/nabbit-walkthrough.html', '/nabbit-qbo-setup.html', '/nabbit-integrations-walkthrough.html'];
+  const videoTitles = ['', 'Getting started', 'Connect QuickBooks Online', 'Connect Cloud Storage'];
   function openVideo(n) {
+    const content = document.getElementById('videoContent');
+    content.innerHTML = '<iframe src="' + videoSrcs[n] + '" style="width:100%;height:100%;border:none;border-radius:12px;" allowfullscreen></iframe>';
     document.getElementById('videoTitle').textContent = videoTitles[n];
     const modal = document.getElementById('videoModal');
     modal.style.display = 'flex';
@@ -1357,6 +1354,7 @@
   }
   function closeVideo() {
     document.getElementById('videoModal').style.display = 'none';
+    document.getElementById('videoContent').innerHTML = '';
     document.body.style.overflow = '';
   }
 </script>
