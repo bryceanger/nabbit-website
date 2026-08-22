@@ -1345,12 +1345,7 @@
   const videoSrcs = ['', 'https://app.nabbit.ca/nabbit-walkthrough.html', 'https://app.nabbit.ca/nabbit-qbo-setup.html', 'https://app.nabbit.ca/nabbit-integrations-walkthrough.html'];
   const videoTitles = ['', 'Getting started', 'Connect QuickBooks Online', 'Connect Cloud Storage'];
   function openVideo(n) {
-    const content = document.getElementById('videoContent');
-    content.innerHTML = '<iframe src="' + videoSrcs[n] + '" style="width:100%;height:100%;border:none;border-radius:12px;" allowfullscreen></iframe>';
-    document.getElementById('videoTitle').textContent = videoTitles[n];
-    const modal = document.getElementById('videoModal');
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+    window.open(videoSrcs[n], '_blank');
   }
   function closeVideo() {
     document.getElementById('videoModal').style.display = 'none';
