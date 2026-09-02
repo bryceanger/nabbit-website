@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No Receipt? No ITC. Nabbit Fixes That. | Nabbit</title>
+<meta name="description" content="The CRA requires receipts to claim Input Tax Credits. Nabbit captures, organizes, and syncs every receipt automatically. Never lose an ITC again.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#22c55e;--green-dark:#16a34a;--green-dim:rgba(34,197,94,0.1);
+  --bg:#0d1117;--surface:#161b22;--border:rgba(255,255,255,0.08);
+  --text:#f0f6fc;--muted:#8b949e;--red:#ef4444;
+}
+body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--text);line-height:1.6;}
+a{color:var(--green);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;border-bottom:1px solid var(--border);max-width:960px;margin:0 auto;}
+.nav-logo{font-family:'DM Sans',sans-serif;font-weight:700;font-size:18px;color:#fff;display:flex;align-items:center;gap:8px;}
+.nav-icon{width:26px;height:26px;background:var(--green);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;}
+.nav-cta{background:var(--green);color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:600;transition:background .2s;}
+.nav-cta:hover{background:var(--green-dark);text-decoration:none;}
+.hero{max-width:760px;margin:0 auto;padding:72px 32px 56px;text-align:center;}
+.cra-tag{display:inline-block;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;margin-bottom:24px;letter-spacing:0.04em;}
+.hero h1{font-family:'DM Sans',sans-serif;font-size:clamp(30px,5vw,52px);font-weight:700;line-height:1.15;color:#fff;margin-bottom:20px;}
+.hero h1 span{color:var(--green);}
+.hero p{font-size:17px;color:var(--muted);max-width:560px;margin:0 auto 36px;line-height:1.7;}
+.hero-cta-row{display:flex;flex-direction:column;align-items:center;gap:12px;}
+.btn-primary{background:var(--green);color:#fff;padding:14px 32px;border-radius:10px;font-size:15px;font-weight:600;transition:background .2s;display:inline-block;}
+.btn-primary:hover{background:var(--green-dark);text-decoration:none;}
+.promo-note{font-size:13px;color:var(--muted);}
+.promo-note strong{color:var(--green);}
+.rule-section{max-width:760px;margin:0 auto;padding:0 32px 64px;}
+.rule-box{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:14px;padding:28px 32px;}
+.rule-box-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.rule-icon{font-size:20px;}
+.rule-box-head h2{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:#fca5a5;}
+.rule-box p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:10px;}
+.rule-box p:last-child{margin-bottom:0;}
+.rule-cite{font-size:12px;color:#6b7280;margin-top:12px;}
+.rule-cite a{color:#6b7280;}
+.how{max-width:760px;margin:0 auto;padding:0 32px 72px;}
+.section-label{font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;}
+.how h2{font-family:'DM Sans',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;color:#fff;margin-bottom:40px;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 20px;}
+.step-num{width:30px;height:30px;background:var(--green-dim);border:1px solid rgba(34,197,94,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--green);margin-bottom:14px;font-family:'DM Sans',sans-serif;}
+.step h3{font-size:14px;font-weight:600;color:#fff;margin-bottom:6px;}
+.step p{font-size:13px;color:var(--muted);line-height:1.6;}
+.proof{max-width:760px;margin:0 auto;padding:0 32px 72px;}
+.proof h2{font-family:'DM Sans',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:#fff;margin-bottom:32px;}
+.proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.proof-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.check{color:var(--green);font-size:16px;margin-bottom:8px;}
+.proof-card h4{font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;}
+.proof-card p{font-size:12px;color:var(--muted);line-height:1.55;}
+.bottom-cta{max-width:760px;margin:0 auto;padding:0 32px 80px;text-align:center;}
+.bottom-cta-box{background:var(--green-dim);border:1px solid rgba(34,197,94,0.2);border-radius:18px;padding:48px 32px;}
+.bottom-cta-box h2{font-family:'DM Sans',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;color:#fff;margin-bottom:12px;}
+.bottom-cta-box p{font-size:15px;color:var(--muted);margin-bottom:28px;}
+.bottom-cta-box .promo-note{margin-top:14px;}
+.footer{border-top:1px solid var(--border);padding:24px 32px;text-align:center;font-size:12px;color:#6b7280;max-width:960px;margin:0 auto;}
+.footer a{color:#6b7280;}
+@media(max-width:600px){
+  .steps{grid-template-columns:1fr;}
+  .proof-grid{grid-template-columns:1fr;}
+  .nav{padding:14px 20px;}
+  .hero{padding:48px 20px 40px;}
+  .rule-section,.how,.proof,.bottom-cta{padding-left:20px;padding-right:20px;}
+  .rule-box{padding:20px;}
+  .bottom-cta-box{padding:32px 20px;}
+}
+</style>
+</head>
+<body>
+<div style="max-width:960px;margin:0 auto;">
+  <nav class="nav">
+    <div class="nav-logo"><div class="nav-icon">N</div>nabbit</div>
+    <a href="https://app.nabbit.ca/signup?promo=FIELD2FREE" class="nav-cta">Start free</a>
+  </nav>
+</div>
+<section class="hero">
+  <div class="cra-tag">CRA Compliance</div>
+  <h1>No receipt.<br><span>No ITC.</span><br>Nabbit fixes that.</h1>
+  <p>The CRA requires a receipt for every Input Tax Credit you claim. Nabbit captures, organizes, and syncs every receipt the moment you spend — so you never lose a dollar to a missing piece of paper.</p>
+  <div class="hero-cta-row">
+    <a href="https://app.nabbit.ca/signup?promo=FIELD2FREE" class="btn-primary">Start free — no credit card</a>
+    <div class="promo-note">Use code <strong>FIELD2FREE</strong> for free access</div>
+  </div>
+</section>
+<section class="rule-section">
+  <div class="rule-box">
+    <div class="rule-box-head"><span class="rule-icon">⚠️</span><h2>The CRA rule is clear</h2></div>
+    <p>Under the Excise Tax Act, you must hold sufficient documentary evidence — typically an original receipt — to claim an Input Tax Credit on a GST/HST purchase. If you’re audited and can’t produce the receipt, the ITC is denied. No exceptions.</p>
+    <p>A missing $48 restaurant receipt isn’t just $48 lost — it’s the HST on that $48, denied. Across dozens of receipts a month, that adds up fast.</p>
+    <div class="rule-cite">Source: <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/complete-file-input-tax-credit.html" target="_blank" rel="noopener">CRA — Input tax credits</a> · Excise Tax Act, s. 169(4)</div>
+  </div>
+</section>
+<section class="how">
+  <div class="section-label">How it works</div>
+  <h2>Capture every receipt.<br>Automatically.</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Snap a photo</h3><p>Take a photo of any receipt — paper, email, or PDF. Nabbit works on any phone.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>AI reads it</h3><p>Vendor, amount, date, HST — extracted in seconds. No manual entry.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Synced everywhere</h3><p>Filed to Google Drive, recorded in QuickBooks, or stored in SharePoint. CRA-ready.</p></div>
+  </div>
+</section>
+<section class="proof">
+  <h2>Built for Canadian business owners</h2>
+  <div class="proof-grid">
+    <div class="proof-card"><div class="check">✓</div><h4>HST extracted automatically</h4><p>Nabbit reads and records the HST separately on every receipt — exactly what you need to file ITCs.</p></div>
+    <div class="proof-card"><div class="check">✓</div><h4>CRA-ready documentation</h4><p>Every receipt stored with vendor, date, amount, and tax. Produces audit-ready records on demand.</p></div>
+    <div class="proof-card"><div class="check">✓</div><h4>Syncs to QuickBooks</h4><p>Receipts flow directly into QuickBooks Online so your bookkeeper has everything they need.</p></div>
+    <div class="proof-card"><div class="check">✓</div><h4>Google Drive backup</h4><p>Every receipt image backed up to your own Google Drive folder. You own your records.</p></div>
+  </div>
+</section>
+<section class="bottom-cta">
+  <div class="bottom-cta-box">
+    <h2>Stop leaving ITCs on the table.</h2>
+    <p>It takes 30 seconds to sign up. Start capturing receipts today.</p>
+    <a href="https://app.nabbit.ca/signup?promo=FIELD2FREE" class="btn-primary">Create your free account</a>
+    <div class="promo-note">Code <strong>FIELD2FREE</strong> · Free forever on the Personal plan</div>
+  </div>
+</section>
+<div style="max-width:960px;margin:0 auto;">
+  <footer class="footer">
+    © 2026 Nabbit · 1001583085 Ontario Inc. · <a href="https://nabbit.ca">nabbit.ca</a> · <a href="https://nabbit.ca/resources/no-receipt-no-itc.html">Read: No Receipt, No ITC</a>
+  </footer>
+</div>
+</body>
+</html>
