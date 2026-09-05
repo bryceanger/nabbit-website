@@ -1,1 +1,320 @@
-placeholder_contractors
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nabbit for Contractors & Trades — Receipt Capture on the Job Site</title>
+<meta name="description" content="Nabbit is built for Canadian contractors, plumbers, electricians and trades. Snap receipts on the job site, sync to QuickBooks, stay CRA-ready. Try free for 7 days.">
+<link rel="canonical" href="https://nabbit.ca/contractors">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #00A854;
+    --green-dark: #007A3D;
+    --green-light: #E8F7EF;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --bg: #f9fafb;
+  }
+  body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; }
+
+  /* NAV */
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; border-bottom: 1px solid var(--border); background: #fff; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo img { height: 32px; }
+  .nav-logo span { font-weight: 700; font-size: 18px; color: var(--text); }
+  .nav-links { display: flex; align-items: center; gap: 24px; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { background: var(--green); color: #fff !important; padding: 8px 20px; border-radius: 8px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--green-dark) !important; color: #fff !important; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #0f2027 0%, #1a3a2e 50%, #0f2027 100%); color: #fff; padding: 80px 40px; text-align: center; }
+  .hero-badge { display: inline-block; background: rgba(0,168,84,0.2); border: 1px solid rgba(0,168,84,0.4); color: #4ade80; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .hero h1 span { color: #4ade80; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto 36px; line-height: 1.6; }
+  .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--green); color: #fff; padding: 14px 32px; border-radius: 10px; font-size: 16px; font-weight: 700; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--green-dark); }
+  .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; padding: 14px 32px; border-radius: 10px; font-size: 16px; font-weight: 600; text-decoration: none; display: inline-block; border: 1px solid rgba(255,255,255,0.2); transition: background 0.2s; }
+  .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+  .hero-note { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 16px; }
+
+  /* TRADES STRIP */
+  .trades-strip { background: var(--green-light); padding: 20px 40px; text-align: center; border-bottom: 1px solid #d1fae5; }
+  .trades-strip p { font-size: 14px; font-weight: 600; color: var(--green-dark); }
+  .trades-list { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+  .trade-tag { font-size: 13px; color: var(--green-dark); background: #fff; border: 1px solid #a7f3d0; padding: 4px 14px; border-radius: 100px; font-weight: 500; }
+
+  /* PROBLEM */
+  .section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green); margin-bottom: 12px; }
+  .section h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+  .section p.lead { font-size: 18px; color: var(--muted); line-height: 1.7; max-width: 700px; }
+
+  .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
+  .pain-card { background: #fff5f5; border: 1px solid #fecaca; border-radius: 12px; padding: 24px; }
+  .pain-card .icon { font-size: 28px; margin-bottom: 12px; }
+  .pain-card h3 { font-size: 16px; font-weight: 700; color: #dc2626; margin-bottom: 8px; }
+  .pain-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* VIDEO */
+  .video-section { background: var(--bg); padding: 80px 40px; text-align: center; }
+  .video-section h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; margin-bottom: 12px; }
+  .video-section p { font-size: 16px; color: var(--muted); margin-bottom: 40px; }
+  .video-wrapper { max-width: 800px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.15); }
+  .video-wrapper iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
+
+  /* HOW IT WORKS */
+  .steps { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-top: 48px; }
+  .step { display: flex; flex-direction: column; align-items: flex-start; }
+  .step-num { width: 44px; height: 44px; background: var(--green); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; margin-bottom: 16px; flex-shrink: 0; }
+  .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .step p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* BENEFITS */
+  .benefits-section { background: var(--text); color: #fff; padding: 80px 40px; }
+  .benefits-inner { max-width: 1100px; margin: 0 auto; }
+  .benefits-inner h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 48px; text-align: center; }
+  .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .benefit { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px; }
+  .benefit-icon { font-size: 32px; margin-bottom: 14px; }
+  .benefit h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .benefit p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; }
+
+  /* PRICING */
+  .pricing-section { padding: 80px 40px; max-width: 900px; margin: 0 auto; text-align: center; }
+  .pricing-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 12px; }
+  .pricing-section p.lead { font-size: 16px; color: var(--muted); margin-bottom: 48px; }
+  .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .plan { border: 2px solid var(--border); border-radius: 16px; padding: 32px; text-align: left; }
+  .plan.featured { border-color: var(--green); background: var(--green-light); }
+  .plan-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green); margin-bottom: 8px; }
+  .plan h3 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+  .plan .price { font-size: 32px; font-weight: 800; color: var(--green); margin: 12px 0; }
+  .plan .price span { font-size: 14px; font-weight: 400; color: var(--muted); }
+  .plan ul { list-style: none; margin: 16px 0 24px; }
+  .plan ul li { font-size: 14px; color: var(--muted); padding: 6px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+  .plan ul li::before { content: "✓"; color: var(--green); font-weight: 700; }
+  .plan a { display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; text-decoration: none; }
+  .plan.featured a { background: var(--green); color: #fff; }
+  .plan:not(.featured) a { background: var(--text); color: #fff; }
+
+  /* CTA */
+  .final-cta { background: var(--green); color: #fff; padding: 80px 40px; text-align: center; }
+  .final-cta h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px; }
+  .final-cta p { font-size: 18px; opacity: 0.85; margin-bottom: 36px; }
+  .final-cta .btn-white { background: #fff; color: var(--green); padding: 16px 40px; border-radius: 10px; font-size: 17px; font-weight: 700; text-decoration: none; display: inline-block; }
+  .final-cta .note { font-size: 13px; opacity: 0.7; margin-top: 16px; }
+
+  /* FOOTER */
+  footer { background: var(--text); color: rgba(255,255,255,0.5); padding: 32px 40px; text-align: center; font-size: 13px; }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 12px; }
+
+  @media (max-width: 640px) {
+    nav { padding: 14px 20px; }
+    .hero, .section, .steps, .video-section, .benefits-section, .pricing-section, .final-cta { padding: 60px 20px; }
+    .trades-strip { padding: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://nabbit.ca" class="nav-logo">
+    <img src="https://gojybvyjampzvuvoihql.supabase.co/storage/v1/object/public/brand-assets/nabbit-logo.png" alt="Nabbit">
+    <span>Nabbit</span>
+  </a>
+  <div class="nav-links">
+    <a href="https://nabbit.ca/how-it-works.html">How It Works</a>
+    <a href="https://nabbit.ca/quickbooks.html">QuickBooks</a>
+    <a href="https://nabbit.ca/#pricing">Pricing</a>
+    <a href="https://app.nabbit.ca/signup?ref=FIELD2FREE" class="nav-cta">Start Free Trial</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Built for Canadian Trades</div>
+  <h1>Stop Losing Receipts<br><span>On the Job Site</span></h1>
+  <p>Snap a photo of any receipt the moment you get it. Nabbit reads the vendor, amount, HST/GST automatically — and syncs straight to QuickBooks. CRA-ready, always.</p>
+  <div class="hero-ctas">
+    <a href="https://app.nabbit.ca/signup?ref=FIELD2FREE" class="btn-primary">Start Free — 7 Days on Us</a>
+    <a href="#how-it-works" class="btn-secondary">See How It Works</a>
+  </div>
+  <p class="hero-note">No credit card required to start &middot; Cancels anytime</p>
+</section>
+
+<div class="trades-strip">
+  <p>Trusted by Canadian trades professionals</p>
+  <div class="trades-list">
+    <span class="trade-tag">Plumbers</span>
+    <span class="trade-tag">Electricians</span>
+    <span class="trade-tag">General Contractors</span>
+    <span class="trade-tag">HVAC Technicians</span>
+    <span class="trade-tag">Home Services</span>
+    <span class="trade-tag">Landscapers</span>
+    <span class="trade-tag">Renovation Crews</span>
+  </div>
+</div>
+
+<div class="section">
+  <p class="section-label">The Problem</p>
+  <h2>Field Workers Lose Receipts.<br>CRA Doesn't Care.</h2>
+  <p class="lead">If you can't prove the expense, you can't deduct it. Lost receipts mean lost money at tax time — and headaches if you're ever audited.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="icon">🧾</div>
+      <h3>Receipts disappear</h3>
+      <p>Paper receipts get wet, torn, or lost in the truck. By month-end they're gone.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">📋</div>
+      <h3>Manual entry kills time</h3>
+      <p>Typing receipts into QuickBooks at 9pm after a 10-hour day isn't a system — it's punishment.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">🚨</div>
+      <h3>CRA audit risk</h3>
+      <p>CRA requires 6 years of records. Without digital backups, you're exposed.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">💸</div>
+      <h3>Lost deductions</h3>
+      <p>Every untracked expense is money you overpay in taxes. It adds up fast.</p>
+    </div>
+  </div>
+</div>
+
+<section class="video-section" id="how-it-works">
+  <p class="section-label" style="text-align:center;">See It In Action</p>
+  <h2>Two Seconds at the Counter.<br>Done.</h2>
+  <p>Watch how Nabbit works on a real job site — snap, capture, sync.</p>
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/JQHKPvyySHQ?rel=0&modestbranding=1" title="Nabbit Receipt Capture Demo" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div style="margin-top:32px;">
+    <a href="https://nabbit.ca/nabbit-prospect-walkthrough.html" style="color:var(--green);font-weight:600;text-decoration:none;font-size:15px;">
+      → Watch the full product walkthrough
+    </a>
+  </div>
+</section>
+
+<div class="steps">
+  <p class="section-label">How It Works</p>
+  <h2>From Receipt to QuickBooks<br>in Under 10 Seconds</h2>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Snap the receipt</h3>
+      <p>Open Nabbit on your phone. Point the camera at any receipt — from a supplier, hardware store, fuel pump, or restaurant. Tap once.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>AI reads it instantly</h3>
+      <p>Nabbit extracts the vendor name, date, amount, HST/GST, and your card number automatically. No typing. No guessing.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Tag the job (optional)</h3>
+      <p>Assign the expense to a job, project, or cost code. Perfect for tracking materials by job site or client.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Syncs to QuickBooks</h3>
+      <p>Every receipt flows directly into QuickBooks Online — categorised, coded, and CRA-ready. Your bookkeeper gets clean data.</p>
+    </div>
+  </div>
+</div>
+
+<section class="benefits-section">
+  <div class="benefits-inner">
+    <h2>Built for How Trades Actually Work</h2>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <div class="benefit-icon">📱</div>
+        <h3>Mobile-first, always</h3>
+        <p>Designed for one hand on the job site. Opens straight to the camera. Works on iOS and Android. No laptop required.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🇨🇦</div>
+        <h3>Built for Canada</h3>
+        <p>Understands HST, GST, PST, and QST automatically. Keeps your records in the format CRA expects for 6-year retention.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">⚡</div>
+        <h3>QuickBooks sync</h3>
+        <p>Direct integration with QuickBooks Online. No CSV exports, no copy-paste. Expenses land in the right account automatically.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">👥</div>
+        <h3>Team-ready</h3>
+        <p>Multiple crew members capturing receipts, one dashboard for you or your bookkeeper to review and approve. Everyone in sync.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🏷️</div>
+        <h3>Job tagging</h3>
+        <p>Assign expenses to specific jobs or clients at capture time. Makes billing reimbursable expenses and job costing effortless.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">☁️</div>
+        <h3>Cloud backup</h3>
+        <p>Every receipt image saved to Google Drive or SharePoint. Accessible anywhere, protected forever — even if your phone is lost or stolen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section" id="pricing">
+  <p class="section-label">Pricing</p>
+  <h2>Simple, Honest Pricing</h2>
+  <p class="lead">All plans include a 7-day free trial. No credit card needed to start.</p>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-badge">&nbsp;</div>
+      <h3>Business</h3>
+      <div class="price">$14.99<span>/user/mo CAD</span></div>
+      <ul>
+        <li>AI receipt capture</li>
+        <li>QuickBooks Online sync</li>
+        <li>Approval workflow</li>
+        <li>Job tagging</li>
+        <li>Google Drive backup</li>
+      </ul>
+      <a href="https://app.nabbit.ca/signup?ref=FIELD2FREE">Start free trial</a>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">Best for crews</div>
+      <h3>Team</h3>
+      <div class="price">$64.99<span>/mo CAD</span></div>
+      <ul>
+        <li>Everything in Business</li>
+        <li>Up to 7 users included</li>
+        <li>Better value at 5+ people</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="https://app.nabbit.ca/signup?ref=FIELD2FREE">Start free trial</a>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:24px;">Use code <strong>FIELD2FREE</strong> — your first month is on us</p>
+</section>
+
+<section class="final-cta">
+  <h2>Start Capturing Receipts<br>on Your Next Job</h2>
+  <p>7-day free trial. Takes 2 minutes to set up. No laptop required.</p>
+  <a href="https://app.nabbit.ca/signup?ref=FIELD2FREE" class="btn-white">Try Nabbit Free</a>
+  <p class="note">No credit card &middot; Cancel anytime &middot; FIELD2FREE applied automatically</p>
+</section>
+
+<footer>
+  <p>&copy; 2026 Nabbit &mdash; <a href="https://nabbit.ca">Home</a> <a href="https://nabbit.ca/how-it-works.html">How It Works</a> <a href="https://nabbit.ca/quickbooks.html">QuickBooks</a> <a href="https://nabbit.ca/blog/no-receipt-no-itc.html">CRA Guide</a> <a href="https://app.nabbit.ca/signup">Sign Up</a></p>
+</footer>
+
+</body>
+</html>
