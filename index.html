@@ -41,6 +41,7 @@
   <style>
     /* ─── TOKENS ──────────────────────────────────────────── */
     :root {
+      color-scheme: only light;
       --indigo:     #00A854;
       --indigo-dk:  #007A3D;
       --indigo-lt:  #E8F5EE;
@@ -289,7 +290,7 @@
     @keyframes chip-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} } 50%{transform:translateY(-5px)} }
 
     /* ─── PROOF STRIP ────────────────────────────────────── */
-    .proof { background: var(--slate, #0F1A12); background-color: #0F1A12; padding: 1.5rem var(--pad-x); }
+    .proof { background: var(--slate, #0F1A12); background-color: #0F1A12; color-scheme: only light; padding: 1.5rem var(--pad-x); }
     .proof-inner {
       max-width: 1160px; margin: 0 auto;
       display: flex; align-items: center; justify-content: center;
@@ -657,11 +658,11 @@
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="/resources/no-receipt-no-itc.html">Resources</a></li>
+        <li><a href='/resources/no-receipt-no-itc'>Resources</a></li>
       </ul>
 
       <div class="nav-actions">
-        <a href="login.html" class="nav-login">Log in</a>
+        <a class='nav-login' href='/login'>Log in</a>
         <button class="btn btn-primary" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial →</button>
       </div>
 
@@ -683,7 +684,7 @@
   <a href="#pricing" onclick="closeMobile()">Pricing</a>
   <a href="#faq" onclick="closeMobile()">FAQ</a>
   <a href="#about" onclick="closeMobile()">About</a>
-  <a href="login.html" onclick="closeMobile()" style="color:var(--slate-lt)">Log in</a>
+  <a href='/login' onclick='closeMobile()' style='color:var(--slate-lt)'>Log in</a>
   <button class="btn btn-primary btn-lg mobile-cta" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial →</button>
 </div>
 
@@ -699,7 +700,7 @@
         <p class="hero-sub" style="font-size:.9rem;color:var(--sage);font-style:italic;margin-top:-.5rem;">Your bookkeeper sees it instantly. The CRA can see it in six years. Either way, the proof is there.</p>
         <div class="hero-actions">
           <button class="btn btn-primary btn-lg" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free — 7 days →</button>
-          <a href="/nabbit-prospect-walkthrough.html" target="_blank" class="btn btn-outline">See how it works</a>
+          <a class='btn btn-outline' href='/nabbit-prospect-walkthrough' target='_blank'>See how it works</a>
         </div>
         <div class="hero-trust">
         </div>
@@ -1154,11 +1155,11 @@
         <h4>Company</h4>
         <ul>
           <li><a href="#about">About</a></li>
-        <li><a href="/resources/no-receipt-no-itc.html">Resources</a></li>
+        <li><a href='/resources/no-receipt-no-itc'>Resources</a></li>
           <li><a href="#">Blog</a></li>
           <li><a href="#">Security</a></li>
           <li><a href="mailto:hello@nabbit.ca">Contact</a></li>
-          <li><a href="login.html">Admin Login</a></li>
+          <li><a href='/login'>Admin Login</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1174,9 +1175,9 @@
     <div class="footer-bottom">
       <span>© 2026 Nabbit (1001583085 Ontario Inc.). All rights reserved.</span>
       <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Use</a>
-        <a href="eula.html">EULA</a>
+        <a href='/privacy'>Privacy Policy</a>
+        <a href='/terms'>Terms of Use</a>
+        <a href='/eula'>EULA</a>
       </div>
     </div>
   </div>
