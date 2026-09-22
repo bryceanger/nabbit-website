@@ -1226,6 +1226,19 @@
 
 <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
 <script>
+  // ── DEEP-LINK ANCHOR FIX ──
+  // Chrome's native #hash scroll on page load can get interrupted by late layout
+  // shifts (web fonts, the embedded video) while scroll-behavior:smooth is animating,
+  // leaving the page stuck at the top. Re-fire the scroll once the page has settled.
+  if (location.hash) {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const target = document.querySelector(location.hash);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 120);
+    });
+  }
+
   // ── NAV SCROLL SHADOW ──
   const mainNav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
