@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How Nabbit Works \u2014 Receipt Capture, Simplified</title>
+<title>How Nabbit Works — Receipt Capture, Simplified</title>
+<link rel="canonical" href="https://nabbit.ca/how-it-works.html">
 <meta name="description" content="See how Nabbit works in under a minute: register, connect Google Drive or SharePoint, snap a receipt, and it's captured, logged, and saved automatically.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -263,15 +264,15 @@
 <script>
 const steps = [
   {label:"Step 1 of 5", title:"Register in seconds", scene:"register",
-   narration:"Create your Nabbit account with a work email and a password. That's it \u2014 no install, nothing to configure, and your card isn't charged until the 7-day trial ends."},
+   narration:"Create your Nabbit account with a work email and a password. That's it — no install, nothing to configure, and your card isn't charged until the 7-day trial ends."},
   {label:"Step 2 of 5", title:"Log in from anywhere", scene:"login",
-   narration:"Nabbit runs right in your browser \u2014 on your phone, in the truck, at your desk. Log in and you're capturing receipts within seconds."},
+   narration:"Nabbit runs right in your browser — on your phone, in the truck, at your desk. Log in and you're capturing receipts within seconds."},
   {label:"Step 3 of 5", title:"Connect Google Drive or SharePoint", scenes:["connect","consent"],
-   narration:"Hook Nabbit up to the storage you already use \u2014 Google Drive or SharePoint. One click, and every receipt you capture saves there automatically, organized and ready."},
+   narration:"Hook Nabbit up to the storage you already use — Google Drive or SharePoint. One click, and every receipt you capture saves there automatically, organized and ready."},
   {label:"Step 4 of 5", title:"Snap a picture", scenes:["snap","captured"],
-   narration:"Snap a picture of any receipt. Receipt captured, logged, and saved \u2014 automatically. No messy folders of paper, no trying to figure it all out at the end of the month."},
+   narration:"Snap a picture of any receipt. Receipt captured, logged, and saved — automatically. No messy folders of paper, no trying to figure it all out at the end of the month."},
   {label:"Step 5 of 5", title:"Everything at your fingertips", scene:"fingertips",
-   narration:"From there, everything's at your fingertips \u2014 tag receipts to a job, review and adjust anytime, or just leave it safely stored for when you need it."},
+   narration:"From there, everything's at your fingertips — tag receipts to a job, review and adjust anytime, or just leave it safely stored for when you need it."},
 ];
 
 let stepIdx = 0, sceneIdx = 0, voiceOn = false;
@@ -288,7 +289,7 @@ function render(){
   document.getElementById('scenetitle').textContent = step.title;
   document.getElementById('narrationtext').textContent = step.narration;
   document.getElementById('prevbtn').disabled = (stepIdx === 0);
-  document.getElementById('nextbtn').textContent = (stepIdx === steps.length - 1) ? 'Start free \u2192' : 'Next \u2192';
+  document.getElementById('nextbtn').textContent = (stepIdx === steps.length - 1) ? 'Start free →' : 'Next →';
 
   const nav = document.getElementById('stepsnav');
   nav.innerHTML = '';
