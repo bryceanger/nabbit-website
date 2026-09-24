@@ -707,15 +707,47 @@
     </div>
 
       <div class="hero-visual">
-    <div style="position:relative;width:100%;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);background:#0f1a0f;aspect-ratio:16/9">
-      <iframe
-        src="https://www.youtube.com/embed/JQHKPvyySHQ?autoplay=0&rel=0&modestbranding=1&color=white"
-        title="Nabbit — Receipt Management, Simplified"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        style="position:absolute;inset:0;width:100%;height:100%;border:none"
-      ></iframe>
+    <div style="position:relative;width:100%;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);background:#0f1a0f;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(1rem,4vw,2rem);gap:clamp(1rem,3vw,1.75rem)">
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:clamp(.5rem,2vw,1.25rem);width:100%;max-width:520px;">
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;flex:1;min-width:0;">
+          <div style="width:clamp(44px,9vw,60px);height:clamp(44px,9vw,60px);border-radius:50%;background:rgba(244,248,245,.08);display:flex;align-items:center;justify-content:center;">
+            <svg width="52%" height="52%" viewBox="0 0 24 24" fill="none" stroke="#F4F8F5" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l3 3v17H6z"/><path d="M9 7h6M9 11h6M9 15h3"/></svg>
+          </div>
+          <span style="color:#F4F8F5;font-size:clamp(.6rem,1.6vw,.78rem);font-weight:600;text-align:center;opacity:.85">Receipt</span>
+        </div>
+
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5A7060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;flex:1;min-width:0;">
+          <div style="width:clamp(44px,9vw,60px);height:clamp(44px,9vw,60px);border-radius:50%;background:rgba(0,168,84,.18);display:flex;align-items:center;justify-content:center;">
+            <svg width="52%" height="52%" viewBox="0 0 24 24" fill="none" stroke="#00A854" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="#00A854" stroke="none"/><path d="M9 6h6"/></svg>
+          </div>
+          <span style="color:#F4F8F5;font-size:clamp(.6rem,1.6vw,.78rem);font-weight:600;text-align:center;opacity:.85">Snap it</span>
+        </div>
+
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5A7060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;flex:1;min-width:0;">
+          <div style="width:clamp(44px,9vw,60px);height:clamp(44px,9vw,60px);border-radius:50%;background:rgba(0,153,204,.18);display:flex;align-items:center;justify-content:center;">
+            <svg width="52%" height="52%" viewBox="0 0 24 24" fill="none" stroke="#0099CC" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <span style="color:#F4F8F5;font-size:clamp(.6rem,1.6vw,.78rem);font-weight:600;text-align:center;opacity:.85">Auto-coded</span>
+        </div>
+
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5A7060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;flex:1;min-width:0;">
+          <div style="width:clamp(44px,9vw,60px);height:clamp(44px,9vw,60px);border-radius:50%;background:rgba(244,248,245,.08);display:flex;align-items:center;justify-content:center;">
+            <span style="color:#F4F8F5;font-weight:800;font-size:clamp(.75rem,2vw,1rem);">QB</span>
+          </div>
+          <span style="color:#F4F8F5;font-size:clamp(.6rem,1.6vw,.78rem);font-weight:600;text-align:center;opacity:.85">In QuickBooks</span>
+        </div>
+
+      </div>
+
+      <p style="color:#F4F8F5;font-size:clamp(.95rem,2.2vw,1.15rem);font-weight:700;text-align:center;margin:0;">Snap it. It's in QuickBooks. Done.</p>
     </div>
   </div>
 </section>
@@ -911,32 +943,29 @@
 <section class="testimonials">
   <div class="container">
     <div class="testi-header">
-      <span class="eyebrow">What people are saying</span>
+      <span class="eyebrow">Built for how you work</span>
       <h2 class="section-title">Less receipt stress.<br>Better books.</h2>
     </div>
     <div class="testi-grid">
       <div class="testi-card">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p class="testi-text">"I used to spend the last Sunday of every month digging through my wallet. Now I snap receipts on the spot with Nabbit and my bookkeeper has everything she needs by the 1st."</p>
+        <p class="testi-text">"Snap a receipt, and it's in QuickBooks before your coffee's cold — categorized, matched, and ready to reconcile."</p>
         <div class="testi-author">
-          <div class="testi-av" style="background:#00A854">MP</div>
-          <div><div class="testi-name">Marcus P.</div><div class="testi-role">Owner, Northside Contracting · Hamilton, ON</div></div>
+          <div class="testi-av" style="background:#00A854">✓</div>
+          <div><div class="testi-name">Instant sync</div><div class="testi-role">Every receipt, seconds after you snap it</div></div>
         </div>
       </div>
       <div class="testi-card">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p class="testi-text">"As a fractional CFO across three clients, Nabbit's multi-portal setup is exactly what I needed. One login, clean data separation, zero spreadsheet gymnastics."</p>
+        <p class="testi-text">"One login, every client. Fractional CFOs and bookkeepers get clean data separation across all their portfolio companies."</p>
         <div class="testi-author">
-          <div class="testi-av" style="background:#0099CC">SK</div>
-          <div><div class="testi-name">Sandra K., CPA</div><div class="testi-role">Fractional CFO · Toronto, ON</div></div>
+          <div class="testi-av" style="background:#0099CC">⧉</div>
+          <div><div class="testi-name">Multi-portal</div><div class="testi-role">Built for firms managing multiple clients</div></div>
         </div>
       </div>
       <div class="testi-card">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p class="testi-text">"The QuickBooks sync alone saved me 90 minutes at month-end. Every receipt is captured and categorised before I even sit down to close the books."</p>
+        <p class="testi-text">"No more end-of-month archaeology. Every receipt is captured and coded the day it happens, not the day before your books close."</p>
         <div class="testi-author">
-          <div class="testi-av" style="background:#059669">TR</div>
-          <div><div class="testi-name">Theo R.</div><div class="testi-role">Founder, Lakeside Media · Ottawa, ON</div></div>
+          <div class="testi-av" style="background:#059669">⏱</div>
+          <div><div class="testi-name">Month-end ready</div><div class="testi-role">Nothing left to chase when the books close</div></div>
         </div>
       </div>
     </div>
