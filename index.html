@@ -11,6 +11,7 @@
   gtag('config', 'G-B7Y36TL7QV');
 </script>
   <meta charset="UTF-8"/>
+  <meta name="color-scheme" content="light only"/>
   <!-- ① VIEWPORT: prevent iOS font inflation -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
@@ -290,15 +291,15 @@
     @keyframes chip-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} } 50%{transform:translateY(-5px)} }
 
     /* ─── PROOF STRIP ────────────────────────────────────── */
-    .proof { background: var(--slate, #0F1A12); background-color: #0F1A12; color-scheme: only light; padding: 1.5rem var(--pad-x); }
+    .proof { background: #0F1A12 !important; background-color: #0F1A12 !important; color-scheme: light only; forced-color-adjust: none; padding: 1.5rem var(--pad-x); }
     .proof-inner {
       max-width: 1160px; margin: 0 auto;
       display: flex; align-items: center; justify-content: center;
       gap: 2rem; flex-wrap: wrap;
     }
     .proof-stat { text-align: center; min-width: 80px; }
-    .proof-num { font-family: var(--font-d); font-weight: 900; font-size: 1.6rem; color: var(--citrine); line-height: 1; }
-    .proof-label { font-size: .78rem; color: rgba(255,255,255,.75); margin-top: 3px; }
+    .proof-num { font-family: var(--font-d); font-weight: 900; font-size: 1.6rem; color: #0099CC !important; line-height: 1; }
+    .proof-label { font-size: .78rem; color: #FFFFFF !important; opacity: .8; margin-top: 3px; }
     .proof-div { width: 1px; height: 40px; background: rgba(255,255,255,.12); }
 
     /* ─── HOW IT WORKS ───────────────────────────────────── */
@@ -696,7 +697,7 @@
       <div class="hero-copy">
         
         <h1>Snap it.<br><span class="accent">Done.</span></h1>
-        <p class="hero-sub">Two seconds at the counter. Nabbit reads the vendor, amount, tax, and registration number automatically. By the time you're back in the truck, it's categorized and ready for QuickBooks.</p>
+        <p class="hero-sub">Two seconds at the counter. Nabbit reads the vendor, amount, tax, and registration number automatically. By the time you're back in the truck, it's categorized and ready for Google Drive or QuickBooks.</p>
         <p class="hero-sub" style="font-size:.9rem;color:var(--sage);font-style:italic;margin-top:-.5rem;">Your bookkeeper sees it instantly. The CRA can see it in six years. Either way, the proof is there.</p>
         <div class="hero-actions">
           <button class="btn btn-primary btn-lg" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free — 7 days →</button>
@@ -740,14 +741,14 @@
 
         <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem;flex:1;min-width:0;">
           <div style="width:clamp(44px,9vw,60px);height:clamp(44px,9vw,60px);border-radius:50%;background:rgba(244,248,245,.08);display:flex;align-items:center;justify-content:center;">
-            <span style="color:#F4F8F5;font-weight:800;font-size:clamp(.75rem,2vw,1rem);">QB</span>
+            <svg width="52%" height="52%" viewBox="0 0 24 24" fill="none" stroke="#F4F8F5" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
           </div>
-          <span style="color:#F4F8F5;font-size:clamp(.6rem,1.6vw,.78rem);font-weight:600;text-align:center;opacity:.85">In QuickBooks</span>
+          <span style="color:#F4F8F5;font-size:clamp(.55rem,1.5vw,.72rem);font-weight:600;text-align:center;opacity:.85">Drive or QuickBooks</span>
         </div>
 
       </div>
 
-      <p style="color:#F4F8F5;font-size:clamp(.95rem,2.2vw,1.15rem);font-weight:700;text-align:center;margin:0;">Snap it. It's in QuickBooks. Done.</p>
+      <p style="color:#F4F8F5;font-size:clamp(.95rem,2.2vw,1.15rem);font-weight:700;text-align:center;margin:0;">Snap it. It's in Google Drive or QuickBooks. Done.</p>
     </div>
   </div>
 </section>
