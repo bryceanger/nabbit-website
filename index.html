@@ -40,7 +40,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 
   <style>
-    /* ─── TOKENS ──────────────────────────────────────────── */
+    /* ─── TOKENS ───────────────────────────────────── */
     :root {
       color-scheme: only light;
       --indigo:     #00A854;
@@ -64,7 +64,7 @@
       --nav-h: 64px;
     }
 
-    /* ─── RESET ──────────────────────────────────────────── */
+    /* ─── RESET ────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html {
       scroll-behavior: smooth;
@@ -77,7 +77,7 @@
     img { display: block; max-width: 100%; height: auto; }
     button { cursor: pointer; font-family: inherit; }
 
-    /* ─── UTILITY ────────────────────────────────────────── */
+    /* ─── UTILITY ────────────────────────── */
     .container { max-width: 1160px; margin: 0 auto; padding: 0 var(--pad-x); }
     .eyebrow {
       font-family: var(--font-d); font-weight: 700; font-size: .75rem;
@@ -90,7 +90,7 @@
     }
     .body-copy { font-size: 1rem; color: var(--slate-lt); line-height: 1.75; }
 
-    /* ─── BUTTONS — ⑦ min 44×44px touch targets ─────────── */
+    /* ─── BUTTONS ─ ⑦ min 44×44px touch targets ───────── */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       font-family: var(--font-d); font-weight: 700; font-size: .95rem;
@@ -127,7 +127,7 @@
     .btn-ghost-white:hover { background: rgba(255,255,255,.2); }
     .btn-lg { font-size: 1.05rem; padding: .9rem 2.25rem; }
 
-    /* ─── NAV ────────────────────────────────────────────── */
+    /* ─── NAV ────────────────────────────── */
     nav {
       position: sticky; top: 0; z-index: 200;
       background: rgba(244,248,245,.92);
@@ -153,12 +153,12 @@
     .nav-login {
       font-family: var(--font-d); font-weight: 600; font-size: .88rem;
       color: var(--slate-md); transition: color .2s;
-      /* ⑦ ensure tap target for nav login link */
+      /* ⑧ ensure tap target for nav login link */
       padding: .5rem .25rem; min-height: 44px; display: inline-flex; align-items: center;
     }
     .nav-login:hover { color: var(--indigo); }
 
-    /* ─── HAMBURGER — ⑨ enlarged tap zone ────────────────── */
+    /* ─── HAMBURGER ─ ⑩ enlarged tap zone ────────────── */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none;
@@ -171,7 +171,7 @@
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ─── MOBILE MENU — ⑩ full-screen slide, backdrop ───── */
+    /* ─── MOBILE MENU ─ ⑪ full-screen slide, backdrop ───── */
     .mobile-backdrop {
       display: none; position: fixed; inset: 0; z-index: 198;
       background: rgba(15,26,18,.4); backdrop-filter: blur(2px);
@@ -189,7 +189,7 @@
       display: flex;
     }
     .mobile-menu.open { transform: translateY(0); opacity: 1; }
-    /* ⑦ Large tap targets for mobile nav links */
+    /* ⑧ Large tap targets for mobile nav links */
     .mobile-menu a {
       font-family: var(--font-d); font-size: 1.1rem; font-weight: 700; color: var(--slate);
       padding: 1rem 0; border-bottom: 1px solid var(--border);
@@ -200,7 +200,7 @@
     .mobile-menu a:last-of-type { border-bottom: none; }
     .mobile-menu .mobile-cta { margin-top: 1.25rem; width: 100%; }
 
-    /* ─── ⑪ STICKY MOBILE CTA BAR ────────────────────────── */
+    /* ─── ⑫ STICKY MOBILE CTA BAR ──────────────── */
     .mobile-cta-bar {
       display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 197;
       background: var(--white); border-top: 1px solid var(--border);
@@ -211,7 +211,7 @@
     }
     .mobile-cta-bar .btn { width: 100%; }
 
-    /* ─── HERO ───────────────────────────────────────────── */
+    /* ─── HERO ──────────────────────────── */
     .hero {
       padding: clamp(3rem, 8vw, 7rem) 0 clamp(2.5rem, 5vw, 4.5rem);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -267,7 +267,7 @@
     .hero-card {
       background: #fff; border-radius: var(--r-lg); border: 1px solid var(--border);
       padding: 1.5rem; box-shadow: var(--shadow-lg);
-      width: min(300px, 100%); /* ⑫ never overflow on small screens */
+      width: min(300px, 100%); /* ⑬ never overflow on small screens */
     }
     .hero-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
     .hero-card-icon {
@@ -290,7 +290,7 @@
     .chip-2 { bottom: 30px; left: -20px; animation: chip-float 4.5s ease-in-out infinite .8s; }
     @keyframes chip-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} } 50%{transform:translateY(-5px)} }
 
-    /* ─── PROOF STRIP ────────────────────────────────────── */
+    /* ─── PROOF STRIP ───────────────────────── */
     .proof { background: #F4F8F5 !important; background-color: #F4F8F5 !important; border-top: 1px solid #D6E8DB; border-bottom: 1px solid #D6E8DB; padding: 1.5rem var(--pad-x); }
     .proof-inner {
       max-width: 1160px; margin: 0 auto;
@@ -302,7 +302,7 @@
     .proof-label { font-size: .78rem; color: #2D4A35 !important; opacity: 1; margin-top: 3px; }
     .proof-div { width: 1px; height: 40px; background: #D6E8DB; }
 
-    /* ─── HOW IT WORKS ───────────────────────────────────── */
+    /* ─── HOW IT WORKS ─────────────────────── */
     .how { padding: clamp(4rem, 8vw, 7rem) 0; }
     .how-header { text-align: center; margin-bottom: 4rem; }
     .how-header .eyebrow { margin-bottom: .75rem; display: block; }
@@ -323,7 +323,7 @@
     .step-title { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--slate); margin-bottom: .4rem; }
     .step-desc { font-size: .9rem; color: var(--slate-lt); line-height: 1.65; }
 
-    /* ─── FEATURES ───────────────────────────────────────── */
+    /* ─── FEATURES ───────────────────────── */
     .features { padding: clamp(3rem, 7vw, 6rem) 0; background: var(--indigo-lt); }
     .features-header { text-align: center; margin-bottom: 3.5rem; }
     .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
@@ -346,7 +346,7 @@
     .feature-title { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--slate); margin-bottom: .4rem; }
     .feature-desc { font-size: .88rem; color: var(--slate-lt); line-height: 1.65; }
 
-    /* ─── PRICING ────────────────────────────────────────── */
+    /* ─── PRICING ────────────────────────── */
     .pricing { padding: clamp(4rem, 8vw, 7rem) 0; }
     .pricing-header { text-align: center; margin-bottom: 3.5rem; }
     .pricing-toggle {
@@ -356,7 +356,7 @@
     }
     .toggle-btn {
       font-family: var(--font-d); font-weight: 600; font-size: .85rem;
-      /* ⑦ 44px min tap target */
+      /* ⑧ 44px min tap target */
       padding: .6rem 1.2rem; min-height: 44px;
       border-radius: 100px; border: none; background: none;
       color: var(--slate-lt); transition: all .2s;
@@ -410,7 +410,7 @@
     .plan-features li .cross { color: #D1D5DB; flex-shrink: 0; margin-top: 1px; }
     .plan-cta { width: 100%; text-align: center; justify-content: center; }
 
-    /* ─── TESTIMONIALS ───────────────────────────────────── */
+    /* ─── TESTIMONIALS ────────────────────── */
     .testimonials { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--slate); }
     .testi-header { text-align: center; margin-bottom: 3.5rem; }
     .testi-header .eyebrow { color: var(--citrine); display: block; margin-bottom: .75rem; }
@@ -429,7 +429,7 @@
     .testi-name { font-family: var(--font-d); font-weight: 700; font-size: .88rem; color: #fff; }
     .testi-role { font-size: .75rem; color: rgba(255,255,255,.4); }
 
-    /* ─── CTA BANNER ─────────────────────────────────────── */
+    /* ─── CTA BANNER ──────────────────────── */
     .cta-banner { background: var(--indigo); padding: clamp(4rem, 8vw, 6rem) 0; position: relative; overflow: hidden; }
     .cta-banner::before {
       content: ''; position: absolute; top: -100px; right: -100px;
@@ -443,13 +443,13 @@
     .cta-actions { display: flex; flex-direction: column; align-items: center; gap: .75rem; flex-shrink: 0; }
     .cta-note { font-size: .78rem; color: rgba(255,255,255,.5); }
 
-    /* ─── FOOTER ─────────────────────────────────────────── */
+    /* ─── FOOTER ────────────────────────── */
     footer { background: var(--slate); padding: clamp(3rem, 6vw, 5rem) 0 2rem; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.08); }
     .footer-desc { font-size: .85rem; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 28ch; margin-bottom: 1.5rem; }
     .social-links { display: flex; gap: 10px; }
     .social-link {
-      /* ⑦ 44×44 touch targets */
+      /* ⑧ 44×44 touch targets */
       width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.15);
       border-radius: 8px; display: flex; align-items: center; justify-content: center;
       transition: border-color .2s, background .2s;
@@ -459,7 +459,7 @@
     .social-link svg { width: 18px; height: 18px; fill: rgba(255,255,255,.55); }
     .footer-col h4 { font-family: var(--font-d); font-weight: 700; font-size: .85rem; color: #fff; margin-bottom: .9rem; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
-    /* ⑦ Footer links: min 44px tap target */
+    /* ⑧ Footer links: min 44px tap target */
     .footer-col ul li a {
       font-size: .85rem; color: rgba(255,255,255,.45); transition: color .2s;
       display: block; padding: .4rem 0; min-height: 44px;
@@ -470,7 +470,7 @@
     .newsletter-input {
       flex: 1; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
       border-radius: 8px; padding: .7rem 1rem; font-size: .88rem; color: #fff;
-      /* ⑦ min 44px tap height */
+      /* ⑧ min 44px tap height */
       min-height: 44px;
       font-family: var(--font-b); outline: none; transition: border-color .2s;
     }
@@ -492,7 +492,7 @@
     .footer-links a { color: rgba(255,255,255,.28); transition: color .2s; }
     .footer-links a:hover { color: rgba(255,255,255,.6); }
 
-    /* ─── MODAL ──────────────────────────────────────────── */
+    /* ─── MODAL ────────────────────────── */
     .modal-overlay {
       position: fixed; inset: 0; z-index: 999;
       background: rgba(15,26,18,.55); backdrop-filter: blur(4px);
@@ -513,7 +513,7 @@
     .modal-close {
       position: absolute; top: 1rem; right: 1rem;
       background: none; border: none; font-size: 1.3rem; color: var(--slate-lt);
-      /* ⑦ 44×44 tap target */
+      /* ⑧ 44×44 tap target */
       width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
       border-radius: 8px; transition: background .2s, color .2s;
       -webkit-tap-highlight-color: transparent;
@@ -529,7 +529,7 @@
       background: #fff; border: 1.5px solid var(--border); border-radius: var(--r-sm);
       padding: .8rem 1rem; font-size: 1rem; color: var(--slate); font-family: var(--font-b);
       outline: none; transition: border-color .2s, box-shadow .2s; width: 100%;
-      /* ⑦ 48px min height */
+      /* ⑧ 48px min height */
       min-height: 48px;
       /* prevent iOS zoom on focus (font-size >= 16px) */
     }
@@ -548,18 +548,18 @@
       font-size: .85rem; color: var(--indigo); font-weight: 600;
       text-align: right; display: flex; justify-content: flex-end; align-items: center;
       margin-top: -.5rem; margin-bottom: .75rem;
-      min-height: 44px; /* ⑦ tap target */
+      min-height: 44px; /* ⑧ tap target */
     }
 
-    /* ─── ⑬ FOCUS VISIBLE (keyboard accessibility) ───────── */
+    /* ─── ⑭ FOCUS VISIBLE (keyboard accessibility) ───── */
     :focus-visible {
       outline: 2px solid var(--indigo);
       outline-offset: 3px;
     }
 
-    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    /* ─── RESPONSIVE ──────────────────────── */
 
-    /* ⑭ TABLET: 3-col → 2-col */
+    /* ⑮ TABLET: 3-col → 2-col */
     @media (max-width: 1024px) {
       .features-grid { grid-template-columns: repeat(2,1fr); }
       .pricing-grid { grid-template-columns: 1fr 1fr; max-width: 700px; margin: 0 auto; }
@@ -567,7 +567,7 @@
       .footer-top { grid-template-columns: 1fr 1fr; }
     }
 
-    /* ⑮ MOBILE: full single-column, hero text-first */
+    /* ⑯ MOBILE: full single-column, hero text-first */
     @media (max-width: 768px) {
       :root { --pad-x: 1.25rem; }
 
@@ -576,10 +576,10 @@
         padding-top: 2.5rem;
         gap: 2.5rem;
       }
-      /* ⑯ TEXT FIRST on mobile — visual above fold is the copy, not the image */
+      /* ㉑ TEXT FIRST on mobile — visual above fold is the copy, not the image */
       .hero-visual { order: 1; }
       .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
-      /* ⑰ Full-width buttons on mobile */
+      /* ㉒ Full-width buttons on mobile */
       .hero-actions { flex-direction: column; align-items: stretch; }
       .hero-actions .btn { width: 100%; }
 
@@ -608,7 +608,7 @@
 
       .form-row { grid-template-columns: 1fr; }
 
-      /* ⑱ Show sticky CTA bar on mobile, add bottom padding to content */
+      /* ㉓ Show sticky CTA bar on mobile, add bottom padding to content */
       .mobile-cta-bar { display: block; }
       footer { padding-bottom: calc(2rem + 80px + env(safe-area-inset-bottom)); }
 
@@ -619,7 +619,7 @@
       .video-grid { grid-template-columns: 1fr !important; }
     }
 
-    /* ⑲ SMALL PHONES: extra adjustments below 400px */
+    /* ㉔ SMALL PHONES: extra adjustments below 400px */
     @media (max-width: 400px) {
       :root { --pad-x: 1rem; }
       .hero h1 { font-size: 1.9rem; }
@@ -629,7 +629,7 @@
       .proof-stat { min-width: 50px; }
     }
 
-    /* ⑳ REDUCED MOTION: respect user preference */
+    /* ㉕ REDUCED MOTION: respect user preference */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
@@ -639,10 +639,140 @@
   <link rel="icon" type="image/png" sizes="192x192" href="https://gojybvyjampzvuvoihql.supabase.co/storage/v1/object/public/brand-assets/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="https://gojybvyjampzvuvoihql.supabase.co/storage/v1/object/public/brand-assets/icon-512.png">
   <link rel="apple-touch-icon" sizes="180x180" href="https://gojybvyjampzvuvoihql.supabase.co/storage/v1/object/public/brand-assets/icon-180.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://nabbit.ca/#software",
+      "name": "Nabbit",
+      "url": "https://nabbit.ca",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Accounting Software",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CAD",
+        "description": "7-day free trial. Paid plans start after trial."
+      },
+      "description": "Nabbit captures, categorises, and files every receipt the moment it happens. Receipt management built for Canadian small businesses.",
+      "featureList": [
+        "AI receipt capture from photo or upload",
+        "Automatic vendor, date, amount, and tax extraction",
+        "QuickBooks Online sync",
+        "CRA-compliant receipt storage",
+        "HST/GST auto-flagging",
+        "Team approval workflow",
+        "Google Drive and SharePoint integration"
+      ],
+      "screenshot": "https://nabbit.ca/og-image.png",
+      "publisher": { "@id": "https://nabbit.ca/#organization" },
+      "inLanguage": "en-CA",
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Canadian small business owners, bookkeepers, accountants"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://nabbit.ca/#organization",
+      "name": "Nabbit",
+      "legalName": "1001583085 Ontario Inc.",
+      "url": "https://nabbit.ca",
+      "email": "hello@nabbit.ca",
+      "foundingLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "ON",
+          "addressCountry": "CA"
+        }
+      },
+      "areaServed": { "@type": "Country", "name": "Canada" },
+      "knowsAbout": [
+        "Receipt management",
+        "CRA compliance",
+        "Input Tax Credits",
+        "GST/HST",
+        "QuickBooks Online",
+        "Small business accounting"
+      ],
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nabbit.ca/#website",
+      "url": "https://nabbit.ca",
+      "name": "Nabbit",
+      "description": "Receipt management for Canadian small businesses",
+      "publisher": { "@id": "https://nabbit.ca/#organization" },
+      "inLanguage": "en-CA"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nabbit.ca/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What happens after my 7-day free trial?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Your subscription starts automatically at the plan price you chose. You won't be charged anything during the trial, and you can cancel anytime before it ends and pay nothing." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to install anything?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Nabbit runs in your web browser on any computer, tablet, or phone — just sign in at app.nabbit.ca. On your phone, you can add it to your home screen so it works like an app." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get receipts into Nabbit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Take a photo with your phone, or drag and drop a file on your computer. Nabbit reads the vendor, date, amount, and tax automatically — you just confirm the details." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Nabbit work with QuickBooks?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, on Business and Team plans. Nabbit sends approved expenses directly into QuickBooks Online — no re-typing, no importing files. The Personal Use plan doesn't include QuickBooks; instead your receipts are saved to your own Google Drive with a running tracker spreadsheet." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does someone review receipts before they post to QuickBooks?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every receipt sits in a Pending queue until an admin or bookkeeper reviews, codes, and approves it, individually or in bulk. Nothing reaches QuickBooks without a human sign-off first." }
+        },
+        {
+          "@type": "Question",
+          "name": "What if a receipt gets lost or never gets captured?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Admins can upload a full credit card statement at any time. Nabbit checks every line against what's already been captured and creates a placeholder for anything missing, so a lost or forgotten receipt never falls through the cracks." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I cancel Nabbit anytime?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Cancel from your Billing page in two clicks. You keep access until the end of the period you've paid for, and you're never charged again after that." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data safe with Nabbit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Your receipts and data are stored securely in the cloud and are private to your company — no other Nabbit customer can see them." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens to my data if I cancel?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Your data stays accessible for 30 days after cancellation so you can export everything. CRA requires 6 years of records, and we make sure you can always get to them." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my bookkeeper know how to use Nabbit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — bookkeepers pick it up in minutes. Nabbit is built around a simple approve/reject workflow that accountants find familiar. Many customers set Nabbit up themselves and then invite their bookkeeper as a reviewer." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
-<!-- ─── NAV ──────────────────────────────────────────────── -->
+<!-- ─── NAV ────────────────────────────── -->
 <nav id="mainNav" role="banner">
   <div class="container">
     <div class="nav-inner">
@@ -689,7 +819,7 @@
   <button class="btn btn-primary btn-lg mobile-cta" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial →</button>
 </div>
 
-<!-- ─── HERO ──────────────────────────────────────────────── -->
+<!-- ─── HERO ────────────────────────────── -->
 <section>
   <div class="container">
     <div class="hero">
@@ -753,7 +883,7 @@
   </div>
 </section>
 
-<!-- ─── PROOF STRIP ────────────────────────────────────────── --><!-- cache-bust: 2026-09-10 -->
+<!-- ─── PROOF STRIP ───────────────────────── --><!-- cache-bust: 2026-09-10 -->
 <div class="proof" role="region" aria-label="Key statistics">
   <div class="proof-inner">
     
@@ -766,7 +896,7 @@
   </div>
 </div>
 
-<!-- ─── HOW IT WORKS ──────────────────────────────────────── -->
+<!-- ─── HOW IT WORKS ─────────────────────── -->
 <section class="how" id="how">
   <div class="container">
     <div class="how-header">
@@ -802,7 +932,7 @@
   </div>
 </section>
 
-<!-- ─── FEATURES ──────────────────────────────────────────── -->
+<!-- ─── FEATURES ────────────────────────── -->
 <section class="features" id="features">
   <div class="container">
     <div class="features-header">
@@ -837,6 +967,7 @@
         </div>
         <h3 class="feature-title">QuickBooks Online sync</h3>
         <p class="feature-desc">Push expenses directly to QuickBooks Online. No double-entry, no copy-paste errors. Your bookkeeper gets clean, categorised data automatically.</p>
+        <p style="margin-top:10px;font-size:13px;"><a href="/quickbooks.html" style="color:var(--citrine,#0099CC);">Learn how Nabbit syncs with QuickBooks Online →</a></p>
       </div>
       <div class="feature-card">
         <div class="feature-icon fi-red">
@@ -856,7 +987,7 @@
   </div>
 </section>
 
-<!-- ─── TESTIMONIAL ──────────────────────────────────────── -->
+<!-- ─── TESTIMONIAL ────────────────────────── -->
 <section style="padding:clamp(2.5rem,5vw,4rem) 0;background:#f0fdf4;border-top:1px solid #d1fae5;border-bottom:1px solid #d1fae5;">
   <div class="container" style="max-width:820px;text-align:center;">
     <blockquote style="font-size:clamp(1.1rem,2.5vw,1.35rem);font-weight:600;color:var(--slate);line-height:1.5;margin:0 0 1.25rem;font-style:italic;">
@@ -872,14 +1003,14 @@
   </div>
 </section>
 
-<!-- ─── PRICING ───────────────────────────────────────────── -->
+<!-- ─── PRICING ──────────────────────── -->
 <section class="pricing" id="pricing">
   <div class="container">
     <div class="pricing-header">
       <span class="eyebrow">Pricing</span>
       <h2 class="section-title">Simple, transparent pricing.<br>No surprises.</h2>
-      <p class="body-copy">All plans include a 7-day free trial. You won't be charged until your trial ends &mdash; cancel anytime before then and pay nothing.</p>
-      <p class="body-copy" style="font-size:.85rem;margin-top:.5rem">Not sure which plan fits? Email <a href="mailto:hello@nabbit.ca" style="color:var(--indigo);font-weight:600">hello@nabbit.ca</a> &mdash; a real person replies.</p>
+      <p class="body-copy">All plans include a 7-day free trial. You won't be charged until your trial ends — cancel anytime before then and pay nothing.</p>
+      <p class="body-copy" style="font-size:.85rem;margin-top:.5rem">Not sure which plan fits? Email <a href="mailto:hello@nabbit.ca" style="color:var(--indigo);font-weight:600">hello@nabbit.ca</a> — a real person replies.</p>
       <div class="pricing-toggle" role="group" aria-label="Billing cycle">
         <button class="toggle-btn active" id="monthlyBtn" onclick="setToggle('monthly')">Monthly</button>
         <button class="toggle-btn" id="annualBtn" onclick="setToggle('annual')">Annual <span style="font-size:.72rem;color:#059669;font-weight:700">Save 20%</span></button>
@@ -889,7 +1020,7 @@
       <div class="plan-card">
         <div class="plan-name">Personal Use</div>
         <div class="plan-price"><span class="currency">CA</span><span class="amount">$7</span><span class="period">.99/mo</span></div>
-        <p class="plan-desc">Best for individuals and freelancers. Just your own receipts, captured and organised &mdash; no accounting software needed.</p>
+        <p class="plan-desc">Best for individuals and freelancers. Just your own receipts, captured and organised — no accounting software needed.</p>
         <hr class="plan-divider"/>
         <ul class="plan-features">
           <li><span class="check">✓</span> One person, one account</li>
@@ -904,7 +1035,7 @@
         <div class="plan-badge">Most popular</div>
         <div class="plan-name">Business</div>
         <div class="plan-price"><span class="currency">CA</span><span class="amount" id="paygoPrice">$14</span><span class="period" id="paygoPeriod">.99/mo</span></div>
-        <p class="plan-desc">Best for small businesses. Priced per user, per month &mdash; add people as you grow. Cancel any time.</p>
+        <p class="plan-desc">Best for small businesses. Priced per user, per month — add people as you grow. Cancel any time.</p>
         <hr class="plan-divider"/>
         <ul class="plan-features">
           <li><span class="check">✓</span> Unlimited receipts</li>
@@ -918,7 +1049,7 @@
       <div class="plan-card">
         <div class="plan-name">Team</div>
         <div class="plan-price"><span class="currency">CA</span><span class="amount" id="valuePrice">$64</span><span class="period" id="valuePeriod">.99/mo</span></div>
-        <p class="plan-desc">Best for teams of 5&ndash;7. One flat monthly price for up to 7 people &mdash; simpler than paying per user. Extra seats available at $9.99/user/mo.</p>
+        <p class="plan-desc">Best for teams of 5–7. One flat monthly price for up to 7 people — simpler than paying per user. Extra seats available at $9.99/user/mo.</p>
         <hr class="plan-divider"/>
         <ul class="plan-features">
           <li><span class="check">✓</span> Everything in Business</li>
@@ -940,7 +1071,7 @@
   </div>
 </section>
 
-<!-- ─── TESTIMONIALS ──────────────────────────────────────── -->
+<!-- ─── TESTIMONIALS ───────────────────────── -->
 <section class="testimonials">
   <div class="container">
     <div class="testi-header">
@@ -973,7 +1104,7 @@
   </div>
 </section>
 
-<!-- ─── ABOUT ──────────────────────────────────────────────── -->
+<!-- ─── ABOUT ────────────────────────── -->
 <section id="about" style="padding:clamp(4rem,8vw,7rem) 0;">
   <div class="container">
     <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
@@ -1003,7 +1134,7 @@
   </div>
 </section>
 
-<!-- ─── VIDEO WALKTHROUGHS ──────────────────────────────── -->
+<!-- ─── VIDEO WALKTHROUGHS ──────────────────── -->
 <section id="walkthroughs" style="padding:clamp(4rem,8vw,7rem) 0;background:#fff;">
   <div class="container">
     <div style="text-align:center;margin-bottom:3.5rem">
@@ -1075,7 +1206,7 @@
   </div>
 </section>
 
-<!-- ─── FAQ ──────────────────────────────────────────────── -->
+<!-- ─── FAQ ────────────────────────────── -->
 <section id="faq" style="padding:clamp(4rem,8vw,7rem) 0;background:#fff;">
   <div class="container" style="max-width:820px;">
     <div style="text-align:center;margin-bottom:3rem">
@@ -1131,7 +1262,7 @@
   </div>
 </section>
 
-<!-- ─── CTA BANNER ────────────────────────────────────────── -->
+<!-- ─── CTA BANNER ────────────────────────── -->
 <div class="cta-banner">
   <div class="container">
     <div class="cta-inner">
@@ -1147,7 +1278,7 @@
   </div>
 </div>
 
-<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<!-- ─── FOOTER ────────────────────────── -->
 <footer role="contentinfo">
   <div class="container">
     <div class="footer-top">
@@ -1202,12 +1333,12 @@
   </div>
 </footer>
 
-<!-- ─── ⑪ STICKY MOBILE CTA BAR ────────────────────────── -->
+<!-- ─── ⑫ STICKY MOBILE CTA BAR ────────────── -->
 <div class="mobile-cta-bar" role="complementary" aria-label="Get started">
   <button class="btn btn-primary btn-lg" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial — 7 days →</button>
 </div>
 
-<!-- ─── LOGIN MODAL ───────────────────────────────────────── -->
+<!-- ─── LOGIN MODAL ──────────────────────── -->
 <div class="modal-overlay" id="loginModal" onclick="closeModalOnOverlay(event,'loginModal')" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('login')" aria-label="Close dialog">✕</button>
@@ -1246,7 +1377,7 @@
   </div>
 </div>
 
-<!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+<!-- ─── JAVASCRIPT ────────────────────────── -->
 <script>
   // ── DEEP-LINK ANCHOR FIX ──
   // Chrome's native #hash scroll on page load can get interrupted by late layout
