@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="canonical" href="https://nabbit.ca/thank-you.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B7Y36TL7QV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-B7Y36TL7QV');
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W2KJWXMT');</script>
+<!-- End Google Tag Manager -->
+<script>
+  // Purchase conversion event for GTM/GA4. Stripe appends session_id when
+  // success_url is set to .../thank-you.html?session_id={CHECKOUT_SESSION_ID}
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'purchase_complete',
+      stripe_session_id: params.get('session_id') || undefined
+    });
+  })();
+</script>
+<meta charset="UTF-8"/>
+<meta name="color-scheme" content="light only"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+<meta name="theme-color" content="#00A854"/>
+<meta name="robots" content="noindex"/>
+<title>You're all set — Nabbit</title>
+<meta name="description" content="Thanks for subscribing to Nabbit."/>
+<style>
+  :root {
+    color-scheme: only light;
+    --indigo: #00A854; --indigo-dk: #007A3D; --indigo-lt: #E8F5EE;
+    --citrine: #0099CC;
+    --slate: #0F1A12; --slate-md: #2D4A35; --slate-lt: #5A7060;
+    --white: #F4F8F5; --border: #D6E8DB;
+    --font-d: 'Plus Jakarta Sans', sans-serif;
+    --font-b: 'Inter', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-b); background: var(--white); color: var(--slate);
+    line-height: 1.6; min-height: 100vh; display: flex; align-items: center;
+    justify-content: center; padding: 2rem;
+  }
+  .card {
+    max-width: 520px; width: 100%; text-align: center;
+    background: #fff; border: 1px solid var(--border); border-radius: 24px;
+    padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 5vw, 3rem);
+    box-shadow: 0 20px 60px rgba(0,168,84,0.16), 0 4px 16px rgba(15,26,18,0.10);
+  }
+  .logo { width: 56px; height: 56px; border-radius: 14px; margin: 0 auto 1.5rem; display: block; }
+  .check {
+    width: 64px; height: 64px; border-radius: 50%; background: var(--indigo-lt);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;
+  }
+  .check svg { width: 32px; height: 32px; }
+  h1 {
+    font-family: var(--font-d); font-weight: 800; font-size: clamp(1.5rem, 4vw, 2rem);
+    letter-spacing: -.03em; margin-bottom: .75rem; color: var(--slate);
+  }
+  p.lead { color: var(--slate-lt); font-size: 1.05rem; margin-bottom: 2rem; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: var(--font-d); font-weight: 700; font-size: .95rem;
+    padding: .9rem 2rem; min-height: 48px; border-radius: 100px; border: none;
+    background: var(--indigo); color: #fff; width: 100%;
+  }
+  .btn:hover { background: var(--indigo-dk); }
+  .fine { margin-top: 1.5rem; font-size: .85rem; color: var(--slate-lt); }
+  .fine a { color: var(--indigo); text-decoration: underline; }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2KJWXMT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="card">
+  <img src="logo.jpg" alt="Nabbit" class="logo"/>
+  <div class="check">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#00A854" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+  </div>
+  <h1>You're all set</h1>
+  <p class="lead">Thanks for subscribing to Nabbit. Your payment went through and your account is active.</p>
+  <a href="https://app.nabbit.ca" class="btn">Go to your dashboard</a>
+  <p class="fine">Questions about your subscription? <a href="mailto:support@nabbit.ca">Email us</a>.</p>
+</div>
+
+</body>
+</html>
