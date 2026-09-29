@@ -18,15 +18,60 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-W2KJWXMT');</script>
 <!-- End Google Tag Manager -->
 <script>
-  // Purchase conversion event for GTM/GA4. Stripe appends session_id when
-  // success_url is set to .../thank-you.html?session_id={CHECKOUT_SESSION_ID}
-  (function() {
-    var params = new URLSearchParams(window.location.search);
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'purchase_complete',
-      stripe_session_id: params.get('session_id') || undefined
-    });
+  // This page is the exclusive Stripe success_url for Nabbit signups
+  // (set in supabase/functions/stripe-signup-checkout-v2). Stripe appends
+  // session_id and plan as query params. These events replicate what
+  // signup.tsx's fireSignupConversion() used to fire client-side on
+  // app.nabbit.ca -- moved here because sessionStorage on app.nabbit.ca is
+  // not readable from nabbit.ca (different origin), so plan comes via the
+  // URL instead. Google Ads' "Sign-ups" conversion action imports the GA4
+  // event named exactly "signup_complete" -- keep that name in sync with
+  // Google Ads if it's ever renamed. Server-side webhook conversion
+  // (stripe-webhook / sendGa4ServerConversion) remains the authoritative
+  // signal; this is a secondary client-side signal, deduped per session_id
+  // so a page refresh doesn't double-fire.
+  (function () {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var sessionId = params.get('session_id') || '';
+      var planId = params.get('plan') || 'unknown';
+      var dedupeKey = 'nabbit_ty_fired_' + sessionId;
+      if (sessionId && sessionStorage.getItem(dedupeKey)) return;
+      if (sessionId) sessionStorage.setItem(dedupeKey, '1');
+
+      var planValues = { personal: 7.99, payg: 14.99, value: 64.99 };
+      var value = planValues[planId] || 0;
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+          send_to: 'G-B7Y36TL7QV',
+          event_category: 'signup',
+          event_label: planId,
+        });
+        window.gtag('event', 'signup_complete', {
+          send_to: 'G-B7Y36TL7QV',
+          event_category: 'signup',
+          event_label: planId,
+        });
+        window.gtag('event', 'purchase', {
+          send_to: 'G-B7Y36TL7QV',
+          transaction_id: sessionId || ('nabbit_' + Date.now()),
+          currency: 'CAD',
+          value: value,
+          items: [{ item_name: planId, quantity: 1 }],
+        });
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'purchase_complete',
+        stripe_session_id: sessionId || undefined,
+        plan: planId,
+        value: value,
+      });
+    } catch (_) {
+      // Never let tracking errors break the page
+    }
   })();
 </script>
 <meta charset="UTF-8"/>
