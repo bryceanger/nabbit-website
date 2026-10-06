@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
 
-  <!-- ② iOS/Android PWA-readiness meta tags -->
+  <!-- ③ iOS/Android PWA-readiness meta tags -->
   <meta name="theme-color" content="#00A854"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
@@ -39,16 +39,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta property="og:description" content="Two seconds at the counter. Nabbit reads the receipt automatically and has it ready for QuickBooks before you're back in the truck."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://nabbit.ca"/>
-  <meta property="og:image" content="https://nabbit.ca/logo.jpg"/>
+  <meta property="og:image" content="https://nabbit.ca/og-image.png"/>
+  <meta property="og:site_name" content="Nabbit"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Nabbit — Snap it. Done."/>
+  <meta name="twitter:description" content="Two seconds at the counter. Nabbit reads the receipt automatically and has it ready for QuickBooks before you're back in the truck."/>
+  <meta name="twitter:image" content="https://nabbit.ca/og-image.png"/>
   <title>Receipt Capture Software for Canadian SMBs | Nabbit</title>
 
-  <!-- ③ FONTS: display=swap for performance -->
+  <!-- ④ FONTS: display=swap for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 
   <style>
-    /* ─── TOKENS ───────────────────────────────────── */
+    /* ─── TOKENS ──────────────────────────────── */
     :root {
       color-scheme: only light;
       --indigo:     #00A854;
@@ -68,24 +73,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       --font-d: 'Plus Jakarta Sans', sans-serif;
       --font-b: 'Inter', sans-serif;
       --pad-x: clamp(1rem, 5vw, 5rem);
-      /* ④ NAV HEIGHT token so scroll-padding stays in sync */
+      /* ⑤ NAV HEIGHT token so scroll-padding stays in sync */
       --nav-h: 64px;
     }
 
-    /* ─── RESET ────────────────────────────────── */
+    /* ─── RESET ────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html {
       scroll-behavior: smooth;
-      /* ⑤ SCROLL PADDING: anchors clear the sticky nav */
+      /* ⑥ SCROLL PADDING: anchors clear the sticky nav */
       scroll-padding-top: calc(var(--nav-h) + 16px);
     }
     body { font-family: var(--font-b); background: var(--white); color: var(--slate); line-height: 1.6; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
-    /* ⑥ IMAGES: lazy-loading default + responsive */
+    /* ⑦ IMAGES: lazy-loading default + responsive */
     img { display: block; max-width: 100%; height: auto; }
     button { cursor: pointer; font-family: inherit; }
 
-    /* ─── UTILITY ────────────────────────── */
+    /* ─── UTILITY ────────────────────────────── */
     .container { max-width: 1160px; margin: 0 auto; padding: 0 var(--pad-x); }
     .eyebrow {
       font-family: var(--font-d); font-weight: 700; font-size: .75rem;
@@ -98,7 +103,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .body-copy { font-size: 1rem; color: var(--slate-lt); line-height: 1.75; }
 
-    /* ─── BUTTONS ─ ⑦ min 44×44px touch targets ───────── */
+    /* ─── BUTTONS ─ ⑧ min 44×44px touch targets ─────────── */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       font-family: var(--font-d); font-weight: 700; font-size: .95rem;
@@ -107,7 +112,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-radius: 100px; border: none;
       transition: transform .15s, box-shadow .2s, background .2s, color .2s;
       white-space: nowrap;
-      /* ⑧ tap-highlight removed on iOS */
+      /* ⑨ tap-highlight removed on iOS */
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
     }
@@ -135,7 +140,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .btn-ghost-white:hover { background: rgba(255,255,255,.2); }
     .btn-lg { font-size: 1.05rem; padding: .9rem 2.25rem; }
 
-    /* ─── NAV ────────────────────────────── */
+    /* ─── NAV ──────────────────────────────── */
     nav {
       position: sticky; top: 0; z-index: 200;
       background: rgba(244,248,245,.92);
@@ -161,7 +166,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .nav-login {
       font-family: var(--font-d); font-weight: 600; font-size: .88rem;
       color: var(--slate-md); transition: color .2s;
-      /* ⑧ ensure tap target for nav login link */
+      /* ⑨ ensure tap target for nav login link */
       padding: .5rem .25rem; min-height: 44px; display: inline-flex; align-items: center;
     }
     .nav-login:hover { color: var(--indigo); }
@@ -197,7 +202,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       display: flex;
     }
     .mobile-menu.open { transform: translateY(0); opacity: 1; }
-    /* ⑧ Large tap targets for mobile nav links */
+    /* ⑨ Large tap targets for mobile nav links */
     .mobile-menu a {
       font-family: var(--font-d); font-size: 1.1rem; font-weight: 700; color: var(--slate);
       padding: 1rem 0; border-bottom: 1px solid var(--border);
@@ -208,7 +213,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .mobile-menu a:last-of-type { border-bottom: none; }
     .mobile-menu .mobile-cta { margin-top: 1.25rem; width: 100%; }
 
-    /* ─── ⑫ STICKY MOBILE CTA BAR ──────────────── */
+    /* ─── ⑫ STICKY MOBILE CTA BAR ──────────── */
     .mobile-cta-bar {
       display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 197;
       background: var(--white); border-top: 1px solid var(--border);
@@ -219,7 +224,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .mobile-cta-bar .btn { width: 100%; }
 
-    /* ─── HERO ──────────────────────────── */
+    /* ─── HERO ────────────────────────────── */
     .hero {
       padding: clamp(3rem, 8vw, 7rem) 0 clamp(2.5rem, 5vw, 4.5rem);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -298,7 +303,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .chip-2 { bottom: 30px; left: -20px; animation: chip-float 4.5s ease-in-out infinite .8s; }
     @keyframes chip-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} } 50%{transform:translateY(-5px)} }
 
-    /* ─── PROOF STRIP ───────────────────────── */
+    /* ─── PROOF STRIP ─────────────────────────── */
     .proof { background: #F4F8F5 !important; background-color: #F4F8F5 !important; border-top: 1px solid #D6E8DB; border-bottom: 1px solid #D6E8DB; padding: 1.5rem var(--pad-x); }
     .proof-inner {
       max-width: 1160px; margin: 0 auto;
@@ -310,7 +315,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .proof-label { font-size: .78rem; color: #2D4A35 !important; opacity: 1; margin-top: 3px; }
     .proof-div { width: 1px; height: 40px; background: #D6E8DB; }
 
-    /* ─── HOW IT WORKS ─────────────────────── */
+    /* ─── HOW IT WORKS ───────────────────────── */
     .how { padding: clamp(4rem, 8vw, 7rem) 0; }
     .how-header { text-align: center; margin-bottom: 4rem; }
     .how-header .eyebrow { margin-bottom: .75rem; display: block; }
@@ -331,7 +336,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .step-title { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--slate); margin-bottom: .4rem; }
     .step-desc { font-size: .9rem; color: var(--slate-lt); line-height: 1.65; }
 
-    /* ─── FEATURES ───────────────────────── */
+    /* ─── FEATURES ───────────────────────────── */
     .features { padding: clamp(3rem, 7vw, 6rem) 0; background: var(--indigo-lt); }
     .features-header { text-align: center; margin-bottom: 3.5rem; }
     .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
@@ -354,7 +359,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .feature-title { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--slate); margin-bottom: .4rem; }
     .feature-desc { font-size: .88rem; color: var(--slate-lt); line-height: 1.65; }
 
-    /* ─── PRICING ────────────────────────── */
+    /* ─── PRICING ──────────────────────────── */
     .pricing { padding: clamp(4rem, 8vw, 7rem) 0; }
     .pricing-header { text-align: center; margin-bottom: 3.5rem; }
     .pricing-toggle {
@@ -364,7 +369,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     .toggle-btn {
       font-family: var(--font-d); font-weight: 600; font-size: .85rem;
-      /* ⑧ 44px min tap target */
+      /* ⑨ 44px min tap target */
       padding: .6rem 1.2rem; min-height: 44px;
       border-radius: 100px; border: none; background: none;
       color: var(--slate-lt); transition: all .2s;
@@ -418,7 +423,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .plan-features li .cross { color: #D1D5DB; flex-shrink: 0; margin-top: 1px; }
     .plan-cta { width: 100%; text-align: center; justify-content: center; }
 
-    /* ─── TESTIMONIALS ────────────────────── */
+    /* ─── TESTIMONIALS ──────────────────────── */
     .testimonials { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--slate); }
     .testi-header { text-align: center; margin-bottom: 3.5rem; }
     .testi-header .eyebrow { color: var(--citrine); display: block; margin-bottom: .75rem; }
@@ -437,7 +442,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .testi-name { font-family: var(--font-d); font-weight: 700; font-size: .88rem; color: #fff; }
     .testi-role { font-size: .75rem; color: rgba(255,255,255,.4); }
 
-    /* ─── CTA BANNER ──────────────────────── */
+    /* ─── CTA BANNER ────────────────────────── */
     .cta-banner { background: var(--indigo); padding: clamp(4rem, 8vw, 6rem) 0; position: relative; overflow: hidden; }
     .cta-banner::before {
       content: ''; position: absolute; top: -100px; right: -100px;
@@ -451,13 +456,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .cta-actions { display: flex; flex-direction: column; align-items: center; gap: .75rem; flex-shrink: 0; }
     .cta-note { font-size: .78rem; color: rgba(255,255,255,.5); }
 
-    /* ─── FOOTER ────────────────────────── */
+    /* ─── FOOTER ──────────────────────────── */
     footer { background: var(--slate); padding: clamp(3rem, 6vw, 5rem) 0 2rem; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.08); }
     .footer-desc { font-size: .85rem; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 28ch; margin-bottom: 1.5rem; }
     .social-links { display: flex; gap: 10px; }
     .social-link {
-      /* ⑧ 44×44 touch targets */
+      /* ⑨ 44×44 touch targets */
       width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.15);
       border-radius: 8px; display: flex; align-items: center; justify-content: center;
       transition: border-color .2s, background .2s;
@@ -467,7 +472,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .social-link svg { width: 18px; height: 18px; fill: rgba(255,255,255,.55); }
     .footer-col h4 { font-family: var(--font-d); font-weight: 700; font-size: .85rem; color: #fff; margin-bottom: .9rem; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
-    /* ⑧ Footer links: min 44px tap target */
+    /* ⑨ Footer links: min 44px tap target */
     .footer-col ul li a {
       font-size: .85rem; color: rgba(255,255,255,.45); transition: color .2s;
       display: block; padding: .4rem 0; min-height: 44px;
@@ -478,7 +483,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .newsletter-input {
       flex: 1; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
       border-radius: 8px; padding: .7rem 1rem; font-size: .88rem; color: #fff;
-      /* ⑧ min 44px tap height */
+      /* ⑨ min 44px tap height */
       min-height: 44px;
       font-family: var(--font-b); outline: none; transition: border-color .2s;
     }
@@ -500,7 +505,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer-links a { color: rgba(255,255,255,.28); transition: color .2s; }
     .footer-links a:hover { color: rgba(255,255,255,.6); }
 
-    /* ─── MODAL ────────────────────────── */
+    /* ─── MODAL ────────────────────────────── */
     .modal-overlay {
       position: fixed; inset: 0; z-index: 999;
       background: rgba(15,26,18,.55); backdrop-filter: blur(4px);
@@ -521,7 +526,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .modal-close {
       position: absolute; top: 1rem; right: 1rem;
       background: none; border: none; font-size: 1.3rem; color: var(--slate-lt);
-      /* ⑧ 44×44 tap target */
+      /* ⑨ 44×44 tap target */
       width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
       border-radius: 8px; transition: background .2s, color .2s;
       -webkit-tap-highlight-color: transparent;
@@ -537,7 +542,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background: #fff; border: 1.5px solid var(--border); border-radius: var(--r-sm);
       padding: .8rem 1rem; font-size: 1rem; color: var(--slate); font-family: var(--font-b);
       outline: none; transition: border-color .2s, box-shadow .2s; width: 100%;
-      /* ⑧ 48px min height */
+      /* ⑨ 48px min height */
       min-height: 48px;
       /* prevent iOS zoom on focus (font-size >= 16px) */
     }
@@ -556,7 +561,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-size: .85rem; color: var(--indigo); font-weight: 600;
       text-align: right; display: flex; justify-content: flex-end; align-items: center;
       margin-top: -.5rem; margin-bottom: .75rem;
-      min-height: 44px; /* ⑧ tap target */
+      min-height: 44px; /* ⑨ tap target */
     }
 
     /* ─── ⑭ FOCUS VISIBLE (keyboard accessibility) ───── */
@@ -565,7 +570,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       outline-offset: 3px;
     }
 
-    /* ─── RESPONSIVE ──────────────────────── */
+    /* ─── RESPONSIVE ────────────────────────── */
 
     /* ⑮ TABLET: 3-col → 2-col */
     @media (max-width: 1024px) {
