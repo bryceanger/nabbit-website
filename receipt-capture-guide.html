@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+<title>Receipt Capture Guide for Canadian Businesses | Nabbit</title>
+<meta name="description" content="What a usable receipt record contains, what the CRA expects, how long to keep it, and how to build a capture routine that holds up at month-end."/>
+<meta property="og:title" content="Receipt Capture for Canadian Businesses: A Practical Guide"/>
+<meta property="og:description" content="What the CRA expects on a receipt, how long to keep it, and a capture routine that holds up at month-end."/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://nabbit.ca/receipt-capture-guide.html"/>
+<meta property="og:site_name" content="Nabbit"/>
+<meta property="og:image" content="https://nabbit.ca/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Receipt Capture for Canadian Businesses: A Practical Guide"/>
+<meta name="twitter:description" content="What the CRA expects on a receipt, how long to keep it, and a capture routine that holds up at month-end."/>
+<meta name="twitter:image" content="https://nabbit.ca/og-image.png"/>
+<link rel="canonical" href="https://nabbit.ca/receipt-capture-guide.html"/>
+<link rel="icon" type="image/x-icon" href="/logo.jpg"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+background: #f0ede8; color: #1a1a1a; line-height: 1.7;
+-webkit-font-smoothing: antialiased;
+}
+.nav {
+display: flex; align-items: center; justify-content: space-between;
+padding: 16px 24px; max-width: 800px; margin: 0 auto;
+}
+.nav a { text-decoration: none; }
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo img { width: 32px; height: 32px; object-fit: contain; }
+.nav-logo span { font-size: 18px; font-weight: 700; color: #1a1a1a; }
+.nav-back { font-size: 14px; color: #00A854; font-weight: 500; }
+.nav-back:hover { text-decoration: underline; }
+.article { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+.article-meta { font-size: 13px; color: #6b7a6b; margin-bottom: 12px; }
+.article h1 {
+font-size: 32px; font-weight: 800; line-height: 1.15;
+letter-spacing: -0.5px; margin-bottom: 24px; color: #0d0d0d;
+}
+.article-lead {
+font-size: 18px; color: #3a3a3a; font-weight: 400;
+line-height: 1.6; margin-bottom: 36px;
+padding-bottom: 28px; border-bottom: 1px solid #d6d0c8;
+}
+.article h2 {
+font-size: 20px; font-weight: 700; color: #0d0d0d;
+margin-top: 36px; margin-bottom: 12px;
+}
+.article p { font-size: 16px; color: #2a2a2a; margin-bottom: 18px; }
+.article strong { font-weight: 600; color: #0d0d0d; }
+.callout {
+background: #fff; border-left: 4px solid #00A854;
+padding: 16px 20px; margin: 28px 0; border-radius: 0 8px 8px 0;
+font-size: 15px; color: #2a2a2a; line-height: 1.6;
+}
+.callout strong { color: #00A854; }
+.tier-list { margin: 20px 0 28px; }
+.tier-item {
+display: flex; gap: 14px; padding: 12px 0;
+border-bottom: 1px solid #e8e2da; font-size: 15px;
+}
+.tier-item:last-child { border-bottom: none; }
+.tier-label {
+font-weight: 700; color: #00A854; white-space: nowrap;
+min-width: 110px; flex-shrink: 0;
+}
+.cta-box {
+background: #00A854; border-radius: 12px; padding: 28px 24px;
+text-align: center; margin: 40px 0 20px;
+}
+.cta-box p { color: #fff; font-size: 16px; margin-bottom: 16px; font-weight: 500; }
+.cta-box a {
+display: inline-block; background: #fff; color: #00A854;
+padding: 12px 28px; border-radius: 8px; font-weight: 700;
+font-size: 15px; text-decoration: none; transition: transform 0.15s;
+}
+.cta-box a:hover { transform: translateY(-1px); }
+.promo-note { font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 10px; }
+.promo-note strong { color: #fff; }
+.disclaimer {
+font-size: 12px; color: #8a8a8a; margin-top: 32px;
+padding-top: 20px; border-top: 1px solid #d6d0c8; line-height: 1.5;
+}
+@media (max-width: 600px) {
+.article h1 { font-size: 26px; }
+.article-lead { font-size: 16px; }
+.tier-item { flex-direction: column; gap: 4px; }
+}
+.article ul { margin: 0 0 20px 22px; } .article li { font-size: 16px; color: #2a2a2a; margin-bottom: 8px; }
+.article a { color: #00A854; font-weight: 500; }
+.cta-box a { color: #00A854; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://nabbit.ca"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Resources",
+          "item": "https://nabbit.ca/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Receipt capture guide",
+          "item": "https://nabbit.ca/receipt-capture-guide.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://nabbit.ca/receipt-capture-guide.html",
+      "url": "https://nabbit.ca/receipt-capture-guide.html",
+      "headline": "Receipt Capture for Canadian Businesses: A Practical Guide",
+      "description": "What a usable receipt record contains, how long to keep it, how the main capture methods compare, and a routine that holds up at month-end.",
+      "image": "https://nabbit.ca/og-image.png",
+      "datePublished": "2026-10-07",
+      "dateModified": "2026-10-07",
+      "inLanguage": "en-CA",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://nabbit.ca/#organization",
+        "name": "Nabbit",
+        "url": "https://nabbit.ca"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://nabbit.ca/#organization",
+        "name": "Nabbit",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://nabbit.ca/logo.jpg"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://nabbit.ca/receipt-capture-guide.html"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://nabbit.ca/#website"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is receipt capture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Receipt capture is the process of recording the details of a business purchase when you make it, usually by photographing or uploading the receipt, and storing the vendor, date, total, and tax in a searchable record. Good capture ties each receipt to an expense so it can be reviewed and posted to your accounting software."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the CRA accept a photo of a receipt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The CRA generally accepts electronic images of receipts in place of paper originals, as long as the image is a legible, accurate copy and you can produce and read it on request. Confirm the details in CRA Information Circular IC78-10R5 and speak to your accountant about your own situation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long do I need to keep receipts in Canada?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Businesses are generally required to keep books and records, including supporting receipts, for six years from the end of the last tax year they relate to. Longer periods can apply in some cases, such as when an audit or objection is open."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use a credit card statement instead of a receipt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A statement shows that you paid, but it does not show the tax charged or the supplier's GST/HST registration number. For input tax credit purposes, keep the receipt or invoice itself."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="nav">
+<a href="/" class="nav-logo">
+<img src="/logo.jpg" alt="Nabbit"/>
+<span>nabbit</span>
+</a>
+<a href="/" class="nav-back">&larr; Back to nabbit.ca</a>
+</div>
+<article class="article">
+<div class="article-meta">October 2026 &middot; 8 min read</div>
+<h1>Receipt capture for Canadian businesses: a practical guide</h1>
+<p class="article-lead">Receipt capture is the habit of turning every business purchase into a complete, searchable record at the moment it happens. For a GST/HST registrant, that record is what supports your input tax credits if the CRA ever asks. This guide covers what a usable record contains, how long to keep it, how the main capture methods compare, and a routine that holds up at month-end.</p>
+
+<h2>What receipt capture means</h2>
+<p>Receipt capture means recording the details of a purchase when you make it, in a form you can search later. A photo in your camera roll is a start. A capture process goes further. It pulls out the vendor, date, total, and tax, ties the record to an expense, and stores it somewhere your bookkeeper can reach.</p>
+<p>The test is simple. When your accountant, a lender, or the CRA asks about a purchase from two years ago, can you find the proof in under a minute?</p>
+
+<h2>What the CRA expects on a receipt</h2>
+<p>If you are a GST/HST registrant, you claim input tax credits (ITCs) for the tax you paid on business purchases. To support a claim, your documentation has to meet the Input Tax Credit Information (GST/HST) Regulations. The detail required rises with the size of the purchase. Under the thresholds in the proposed amendments, which are the ones we reference across this site:</p>
+<div class="tier-list">
+<div class="tier-item"><div class="tier-label">Under $100</div><div>Supplier name, date, and total paid.</div></div>
+<div class="tier-item"><div class="tier-label">$100 or more</div><div>Add the supplier's GST/HST registration number.</div></div>
+<div class="tier-item"><div class="tier-label">$500 or more</div><div>Add your business name and a description of what you bought.</div></div>
+</div>
+<p>These thresholds have been under revision, so confirm the amounts in force when you file. The CRA's <em>GST/HST Memorandum 8-4, Documentary Requirements for Claiming Input Tax Credits</em> is the primary source. For the dollar impact of getting this wrong, see <a href="/resources/no-receipt-no-itc.html">No receipt, no ITC</a>.</p>
+<p>One point catches people out. A credit card statement is not a receipt. It shows that you paid, not what tax was charged or whether the supplier is registered.</p>
+
+<h2>How long to keep records</h2>
+<p>Businesses are generally required to keep books and records, including supporting receipts, for six years from the end of the last tax year they relate to. A review can reach back that far, so a receipt you filed in 2026 may be requested well into the 2030s.</p>
+<p>The CRA generally accepts electronic images in place of paper originals, provided the image is a legible, accurate copy and you can produce and read it on request. Its guidance on electronic records is in Information Circular IC78-10R5. This matters because thermal paper fades, sometimes within months, and a faded original proves nothing.</p>
+
+<h2>Four ways businesses capture receipts</h2>
+<p><strong>The shoebox or glovebox.</strong> It costs nothing and works until the paper fades, gets lost, or piles up the week before a filing deadline. Someone still has to key every receipt in by hand.</p>
+<p><strong>The camera roll.</strong> Better than paper, because the image survives. But the photos sit with no vendor, amount, or tax attached, they live on one person's phone, and your bookkeeper has to read each one and retype it.</p>
+<p><strong>The shared inbox.</strong> Forwarding emailed receipts to one address works for online purchases. It does nothing for the paper slip handed to you at the counter.</p>
+<p><strong>A dedicated capture app.</strong> You photograph or upload the receipt once, the software reads the fields, and the record flows to your accounting system. This is the only option of the four that removes the retyping, which is where most errors and most hours go.</p>
+
+<h2>What to look for in capture software</h2>
+<ul>
+<li>It reads the fields the CRA cares about: vendor, date, total, and the tax amount shown separately.</li>
+<li>It lets a person check the extraction before anything posts. Automated reading is fast, and it is still wrong sometimes.</li>
+<li>It keeps the original image attached to the expense, not just the extracted data.</li>
+<li>It connects to your accounting software so you are not retyping or importing files.</li>
+<li>It stores records somewhere you control and can export from.</li>
+<li>It works from a phone, since that is where receipts get handed to you.</li>
+</ul>
+
+<h2>A routine that holds up</h2>
+<p>Capture the receipt the same day, ideally before you leave the counter. Review pending items once a week, which takes a few minutes if you do it weekly and an afternoon if you wait for the month-end. At month-end, reconcile captured expenses against your card and bank statements, so a missing receipt shows up while you can still ask the vendor for a copy.</p>
+<p>For businesses with staff, add one rule: the person who buys does not approve their own expense. A second set of eyes catches coding errors and personal purchases before they reach the books.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Claiming the ITC on a purchase when you do not have a compliant receipt. If the receipt is missing, code the line tax-out and record the full amount as the expense.</li>
+<li>Skipping small cash purchases because they feel too small to matter. Fuel, parking, and supplies add up across a year.</li>
+<li>Relying on statements in place of receipts.</li>
+<li>Keeping receipts only on one employee's phone, which leaves the business exposed when that person leaves.</li>
+<li>Waiting until month-end to capture, by which point the paper has faded and the details are forgotten.</li>
+</ul>
+
+<h2>Where Nabbit fits</h2>
+<p>Nabbit is receipt capture software built for Canadian small businesses. You photograph a receipt or upload a file, and Nabbit reads the vendor, date, amount, and tax. Each receipt sits in a pending queue until an admin reviews it. On Business and Team plans, approved expenses go straight into QuickBooks Online. The Personal Use plan saves receipts to your own Google Drive with a running tracker spreadsheet. Nabbit also works with SharePoint.</p>
+<p>Nabbit is a capture tool, not a tax adviser. It helps you keep the records, and your accountant decides how the rules apply to you. If your work is field-based, <a href="/contractors.html">see how Nabbit handles job-site purchases</a>, or read about the <a href="/quickbooks.html">QuickBooks sync</a>.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>What is receipt capture?</h3>
+<p>Receipt capture is the process of recording the details of a business purchase when you make it, usually by photographing or uploading the receipt, and storing the vendor, date, total, and tax in a searchable record. Good capture ties each receipt to an expense so it can be reviewed and posted to your accounting software.</p>
+<h3>Does the CRA accept a photo of a receipt?</h3>
+<p>The CRA generally accepts electronic images of receipts in place of paper originals, as long as the image is a legible, accurate copy and you can produce and read it on request. Confirm the details in CRA Information Circular IC78-10R5 and speak to your accountant about your own situation.</p>
+<h3>How long do I need to keep receipts in Canada?</h3>
+<p>Businesses are generally required to keep books and records, including supporting receipts, for six years from the end of the last tax year they relate to. Longer periods can apply in some cases, such as when an audit or objection is open.</p>
+<h3>Can I use a credit card statement instead of a receipt?</h3>
+<p>A statement shows that you paid, but it does not show the tax charged or the supplier's GST/HST registration number. For input tax credit purposes, keep the receipt or invoice itself.</p>
+
+<div class="cta-box">
+<p>Capture the receipt once. Have it ready for the books.</p>
+<a href="https://app.nabbit.ca/signup?ref=FIELD2FREE">Start a free 14-day trial &rarr;</a>
+<div class="promo-note">Use code <strong>FIELD2FREE</strong> for 2 months free</div>
+</div>
+<div class="disclaimer">This guide is general information only and is not tax, legal, or financial advice. Documentary thresholds for input tax credits have been the subject of proposed amendments; confirm the requirements in force at the time of your filing with the CRA or a qualified tax professional. Primary CRA sources: GST/HST Memorandum 8-4, Documentary Requirements for Claiming Input Tax Credits, and Information Circular IC78-10R5, Books and Records Retention/Destruction.</div>
+</article>
+</body>
+</html>
