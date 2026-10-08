@@ -2,35 +2,154 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QuickBooks Receipt Sync for Canadian SMBs | Nabbit</title>
-<meta name="description" content="Auto-sync receipts to QuickBooks Online in seconds. Built for Canadian GST/HST. 14-day free trial, no credit card needed.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nabbit + QuickBooks Online: Receipt Sync for Canada</title>
+<meta name="description" content="Auto-sync receipts to QuickBooks Online in seconds. AI reads vendor, amount, and GST/HST automatically. Built for Canadian SMBs. 14-day free trial.">
 <link rel="canonical" href="https://nabbit.ca/quickbooks">
-<meta property="og:title" content="QuickBooks Receipt Sync for Canadian SMBs | Nabbit"/>
-<meta property="og:description" content="Auto-sync receipts to QuickBooks Online in seconds. AI reads vendor, amount and GST/HST automatically. Built for Canadian small businesses."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://nabbit.ca/quickbooks"/>
-<meta property="og:site_name" content="Nabbit"/>
-<meta property="og:image" content="https://nabbit.ca/og-image.png"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="QuickBooks Receipt Sync for Canadian SMBs | Nabbit"/>
-<meta name="twitter:description" content="Auto-sync receipts to QuickBooks Online in seconds. AI reads GST/HST automatically. Built for Canadian businesses."/>
-<meta name="twitter:image" content="https://nabbit.ca/og-image.png"/>
+<meta property="og:title" content="Nabbit + QuickBooks Online: Receipt Sync for Canada">
+<meta property="og:description" content="Auto-sync receipts to QuickBooks Online in seconds. AI reads vendor, amount, and GST/HST automatically. Built for Canadian SMBs. 14-day free trial.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nabbit.ca/quickbooks">
+<meta property="og:site_name" content="Nabbit">
+<meta property="og:image" content="https://nabbit.ca/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f0ede8;--bg2:#fff;--text:#1a1a1a;--green:#00A854;--green2:#007a3d;--border:#ddd;--muted:#555}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:17px;line-height:1.7}
+a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}
+.page-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-logo{font-size:1.3rem;font-weight:700;color:var(--text)}
+.btn{display:inline-block;background:var(--green);color:#fff;padding:10px 22px;border-radius:6px;font-weight:600;font-size:.95rem;text-decoration:none}
+.btn:hover{background:var(--green2);text-decoration:none}
+.btn-outline{background:transparent;border:2px solid var(--green);color:var(--green);margin-right:8px}
+.btn-outline:hover{background:var(--green);color:#fff}
+.page-wrap{max-width:820px;margin:0 auto;padding:48px 24px 80px}
+h1{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.2;margin-bottom:20px;font-weight:700}
+h2{font-size:1.35rem;font-weight:700;margin:40px 0 14px;color:var(--text)}
+h3{font-size:1.1rem;font-weight:700;margin:24px 0 10px}
+h4{font-size:1rem;font-weight:700;margin:18px 0 8px}
+p{margin-bottom:16px}
+ul,ol{margin:0 0 16px 24px}li{margin-bottom:6px}
+strong{font-weight:700}
+.lead{font-size:1.15rem;color:var(--muted);margin-bottom:28px}
+.cta-box{background:var(--green);color:#fff;padding:28px 32px;border-radius:10px;margin:40px 0;text-align:center}
+.cta-box h2{color:#fff;margin:0 0 12px}
+.cta-box p{margin:0 0 18px;opacity:.92}
+.cta-box .btn{background:#fff;color:var(--green);font-size:1rem;padding:12px 28px}
+.cta-box .btn:hover{background:#e8f5ee}
+table{width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:.92rem}
+th{background:var(--text);color:#fff;padding:11px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid var(--border)}
+tr:nth-child(even) td{background:#f8f6f2}
+tr:hover td{background:#eef7f2}
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+.faq-q{font-weight:700;font-size:1rem;margin-bottom:8px}
+.faq-a{color:#333}
+.tag{display:inline-block;background:#e8f5ee;color:var(--green);padding:3px 10px;border-radius:20px;font-size:.8rem;font-weight:600;margin-right:6px}
+.steps{counter-reset:steps;list-style:none;margin-left:0}
+.steps li{counter-increment:steps;padding:16px 16px 16px 56px;position:relative;border-left:2px solid var(--green);margin-bottom:16px;background:#fff;border-radius:0 8px 8px 0}
+.steps li::before{content:counter(steps);position:absolute;left:-16px;top:14px;width:32px;height:32px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+.page-footer{background:var(--text);color:#aaa;padding:40px 24px;text-align:center;font-size:.9rem;margin-top:60px}
+.page-footer a{color:#ccc}
+.comparison-table td:first-child{font-weight:500}
+@media(max-width:600px){.page-wrap{padding:32px 16px 60px}.page-nav{padding:12px 16px}table{font-size:.82rem}th,td{padding:8px 10px}}
+</style>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W2KJWXMT');</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2KJWXMT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav class="page-nav">
+  <a href="/" class="nav-logo">Nabbit</a>
+  <div>
+    <a href="https://app.nabbit.ca" class="btn btn-outline">Login</a>
+    <a href="https://app.nabbit.ca/register" class="btn">Start free trial</a>
+  </div>
+</nav>
+
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://nabbit.ca/quickbooks",
-      "url": "https://nabbit.ca/quickbooks",
-      "name": "QuickBooks Receipt Sync for Canadian SMBs | Nabbit",
-      "description": "Auto-sync receipts to QuickBooks Online in seconds. AI reads vendor, amount and GST/HST automatically. Built for Canadian small businesses.",
-      "inLanguage": "en-CA",
-      "isPartOf": { "@id": "https://nabbit.ca/#website" },
-      "publisher": { "@id": "https://nabbit.ca/#organization" }
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://nabbit.ca/#software",
-      "name": "Nabbit",
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Does Nabbit work with QuickBooks Online Canada?","acceptedAnswer":{"@type":"Answer","text":"Yes. Nabbit integrates directly with QuickBooks Online Canada — the Canadian version with CAD chart of accounts, province-specific HST rates, and CRA-compliant tax codes. Not a generic US connector."}},
+{"@type":"Question","name":"How long does it take to sync a receipt to QuickBooks?","acceptedAnswer":{"@type":"Answer","text":"Most receipts are read by Nabbit's AI and available to sync within 10–15 seconds of capture. Sync to QuickBooks Online is near-instant once the expense is approved."}},
+{"@type":"Question","name":"Does Nabbit automatically detect GST and HST?","acceptedAnswer":{"@type":"Answer","text":"Yes. Nabbit reads the GST or HST amount directly from the receipt image, separates it from the base amount, and codes it to the correct tax line in QuickBooks. No manual tax code selection required."}},
+{"@type":"Question","name":"Can multiple employees submit receipts that sync to one QuickBooks account?","acceptedAnswer":{"@type":"Answer","text":"Yes. Nabbit supports team workflows where field staff capture receipts on their phones, managers approve, and the bookkeeper sees clean coded expenses in QuickBooks — no double-entry."}},
+{"@type":"Question","name":"Does Nabbit work with QuickBooks Desktop?","acceptedAnswer":{"@type":"Answer","text":"Nabbit is built for QuickBooks Online Canada. It does not currently integrate with QuickBooks Desktop."}},
+{"@type":"Question","name":"Is Nabbit CRA-compliant for receipt storage?","acceptedAnswer":{"@type":"Answer","text":"Yes. Nabbit stores receipt images at full resolution in a secure archive for CRA's 6-year retention requirement. Every stored receipt is indexed by date, vendor, and amount for fast retrieval during audits."}},
+{"@type":"Question","name":"How does Nabbit handle province-specific HST rates?","acceptedAnswer":{"@type":"Answer","text":"Nabbit applies the correct provincial HST/GST rate based on the vendor location and province. Ontario receipts get 13% HST; Alberta receipts get 5% GST — automatically, without manual setup."}},
+{"@type":"Question","name":"What happens if Nabbit reads a receipt incorrectly?","acceptedAnswer":{"@type":"Answer","text":"Before an expense syncs to QuickBooks, you or your team reviews and approves it. If the AI misread a value, you correct it in the approval step. The corrected data syncs to QuickBooks — not the original OCR result."}}
+]}
+</script>
+<div class="page-wrap">
+<h1>Sync Receipts to QuickBooks Online Automatically</h1>
+<p class="lead">Nabbit reads every receipt — vendor, amount, date, and GST/HST — and syncs it directly to QuickBooks Online Canada. No re-entry. No spreadsheets. No missing ITCs.</p>
+
+<h2>How the Integration Works</h2>
+<ol class="steps">
+<li><strong>Capture the receipt.</strong> Snap a photo on your phone or forward an email receipt. Nabbit accepts camera photos, PDF attachments, and emailed receipts.</li>
+<li><strong>AI reads the receipt.</strong> Within 10–15 seconds, Nabbit's AI extracts the vendor name, date, total amount, and GST/HST amount. The tax is separated from the base amount automatically.</li>
+<li><strong>Review and approve.</strong> The expense appears in your Nabbit dashboard (or your employee submits it for your approval). Verify the coding, adjust the expense category if needed, and approve.</li>
+<li><strong>Syncs to QuickBooks Online Canada.</strong> The coded expense — including the GST/HST amount — appears in QuickBooks. Your bookkeeper sees a clean, categorised expense. No double-entry.</li>
+</ol>
+
+<div class="cta-box">
+<h2>Start your free 14-day trial</h2>
+<p>Connect QuickBooks Online Canada in minutes. No credit card required.</p>
+<a href="https://app.nabbit.ca/register" class="btn">Start Free Trial &rarr;</a>
+</div>
+
+<h2>Built for Canadian QuickBooks Online Users</h2>
+<p>Most expense tools were built for the US market and adapted for Canada. Nabbit was built in Canada for Canadian businesses — which shows in the details that matter at tax time.</p>
+<p><strong>GST/HST is automatic, not a setting.</strong> Every receipt Nabbit reads has its GST or HST extracted and coded separately. Input Tax Credits (ITCs) are tracked per transaction, so your QuickBooks GST/HST report is accurate at quarter end — without a spreadsheet reconciliation.</p>
+<p><strong>CAD by default.</strong> Every amount is in Canadian dollars. No currency conversion, no US defaults, no surprises on your QuickBooks reports.</p>
+<p><strong>CRA 6-year archive.</strong> Nabbit stores the original receipt image at full resolution alongside the coded expense. If CRA audits your 2024 returns in 2029, you can pull any receipt by date, vendor, or amount in seconds.</p>
+<p><strong>Province-specific HST rates.</strong> Ontario 13%, BC 5% GST + 7% PST, Alberta 5% GST. Nabbit applies the correct rate per receipt location — no manual tax code setup required.</p>
+
+<h2>Integration Details</h2>
+<table>
+<tr><th>Feature</th><th>Details</th></tr>
+<tr><td>QuickBooks version</td><td>QuickBooks Online Canada (QBO CA)</td></tr>
+<tr><td>Sync direction</td><td>Nabbit → QuickBooks (one-way)</td></tr>
+<tr><td>What syncs</td><td>Expense, vendor, amount, date, tax, category, receipt image link</td></tr>
+<tr><td>Tax handling</td><td>GST/HST extracted and coded automatically per receipt</td></tr>
+<tr><td>Currency</td><td>CAD only</td></tr>
+<tr><td>Chart of accounts</td><td>Maps to your existing QBO CA chart of accounts</td></tr>
+<tr><td>Multi-user</td><td>Yes — field staff capture, managers approve, bookkeeper views in QBO</td></tr>
+<tr><td>Approval workflow</td><td>Yes — required before expenses sync</td></tr>
+<tr><td>Setup time</td><td>Under 10 minutes</td></tr>
+<tr><td>Support</td><td>Canadian business hours via email</td></tr>
+</table>
+
+<h2>Who Uses Nabbit for QuickBooks</h2>
+<p><strong>Trades and contractors.</strong> Field crews capture receipts at the supplier, lumber yard, or job site. Materials, fuel, and equipment expenses arrive in QuickBooks coded and categorised — without the pile on the dashboard at month end.</p>
+<p><strong>Professional services firms.</strong> Consultants, accountants, and agencies with client-billable expenses need clean records. Nabbit separates billable from non-billable expenses at capture and syncs them correctly to QuickBooks projects.</p>
+<p><strong>Retail and hospitality.</strong> Businesses with frequent vendor purchases and high receipt volume benefit from Nabbit's speed — ten receipts captured and synced in under five minutes.</p>
+<p><strong>Growing teams.</strong> When you add your fifth employee, the manual receipt collection process breaks down. Nabbit's team workflow scales without adding bookkeeping hours.</p>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><div class="faq-q">Does Nabbit work with QuickBooks Online Canada?</div><div class="faq-a">Yes. Nabbit integrates directly with QuickBooks Online Canada — the Canadian version with CAD chart of accounts, province-specific HST rates, and CRA-compliant tax codes. Not a generic US connector.</div></div>
+<div class="faq-item"><div class="faq-q">How long does it take to sync a receipt to QuickBooks?</div><div class="faq-a">Most receipts are read by Nabbit's AI and available to sync within 10–15 seconds of capture. Sync to QuickBooks Online is near-instant once the expense is approved.</div></div>
+<div class="faq-item"><div class="faq-q">Does Nabbit automatically detect GST and HST?</div><div class="faq-a">Yes. Nabbit reads the GST or HST amount directly from the receipt image, separates it from the base amount, and codes it to the correct tax line in QuickBooks. No manual tax code selection required.</div></div>
+<div class="faq-item"><div class="faq-q">Can multiple employees submit receipts that sync to one QuickBooks account?</div><div class="faq-a">Yes. Nabbit supports team workflows where field staff capture receipts on their phones, managers approve, and the bookkeeper sees clean coded expenses in QuickBooks — no double-entry.</div></div>
+<div class="faq-item"><div class="faq-q">Does Nabbit work with QuickBooks Desktop?</div><div class="faq-a">Nabbit is built for QuickBooks Online Canada. It does not currently integrate with QuickBooks Desktop.</div></div>
+<div class="faq-item"><div class="faq-q">Is Nabbit CRA-compliant for receipt storage?</div><div class="faq-a">Yes. Nabbit stores receipt images at full resolution in a secure archive for CRA's 6-year retention requirement. Every stored receipt is indexed by date, vendor, and amount for fast retrieval during audits.</div></div>
+<div class="faq-item"><div class="faq-q">How does Nabbit handle province-specific HST rates?</div><div class="faq-a">Nabbit applies the correct provincial HST/GST rate based on the vendor location and province. Ontario receipts get 13% HST; Alberta receipts get 5% GST — automatically, without manual setup.</div></div>
+<div class="faq-item"><div class="faq-q">What happens if Nabbit reads a receipt incorrectly?</div><div class="faq-a">Before an expense syncs to QuickBooks, you or your team reviews and approves it. If the AI misread a value, you correct it in the approval step. The corrected data syncs to QuickBooks — not the original OCR result.</div></div>
+
+<div class="cta-box">
+<h2>Connect QuickBooks Online Canada in minutes</h2>
+<p>14-day free trial. No credit card required. Most businesses sync their first receipt the same day they sign up.</p>
+<a href="https://app.nabbit.ca/register" class="btn">Start Free Trial — No Credit Card Required &rarr;</a>
+</div>
+</div>
+
+<footer class="page-footer">
+  <p><a href="/">Nabbit</a> &mdash; Canadian receipt capture software &mdash; <a href="/quickbooks">QuickBooks integration</a> &mdash; <a href="/resources/what-receipts-to-keep-for-cra">Resources</a></p>
+  <p style="margin-top:8px"><a href="mailto:hello@nabbit.ca">hello@nabbit.ca</a></p>
+</footer>
+</body>
+</html>
