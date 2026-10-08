@@ -1,36 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
-<meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>No Receipt, No ITC: What CRA Requires | Nabbit</title>
-<meta name="description" content="If the CRA audits and you can't produce the receipt, the ITC is denied — no exceptions. Learn the exact documentation rules and how Nabbit captures every receipt automatically."/>
-<meta property="og:title" content="No Receipt, No ITC — The CRA Rule Costing Canadian Businesses Thousands"/>
-<meta property="og:description" content="Missing receipts turn recoverable HST into a permanent cost. Here is the CRA rule, the real dollar impact, and the fix."/>
-<meta property="og:type" content="article"/>
-<meta property="og:url" content="https://nabbit.ca/resources/no-receipt-no-itc"/>
-<meta property="og:site_name" content="Nabbit"/>
-<meta property="og:image" content="https://nabbit.ca/og-image.png"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="No Receipt, No ITC — The CRA Rule Costing Canadian Businesses Thousands"/>
-<meta name="twitter:description" content="Missing receipts turn recoverable HST into a permanent cost. Here is the CRA rule, the real dollar impact, and the fix."/>
-<meta name="twitter:image" content="https://nabbit.ca/og-image.png"/>
-<link rel="canonical" href="https://nabbit.ca/resources/no-receipt-no-itc"/>
-<link rel="icon" type="image/x-icon" href="/logo.jpg"/>
+<meta name="description" content="Missing receipts mean denied Input Tax Credits. Learn what CRA requires to support ITC claims and how to avoid common audit triggers.">
+<link rel="canonical" href="https://nabbit.ca/resources/no-receipt-no-itc">
+<meta property="og:title" content="No Receipt, No ITC: What CRA Requires | Nabbit">
+<meta property="og:description" content="Missing receipts mean denied Input Tax Credits. Learn what CRA requires to support ITC claims and how to avoid common audit triggers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nabbit.ca/resources/no-receipt-no-itc">
+<meta property="og:site_name" content="Nabbit">
+<meta property="og:image" content="https://nabbit.ca/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-background: #f0ede8; color: #1a1a1a; line-height: 1.7;
--webkit-font-smoothing: antialiased;
-}
-.nav {
-display: flex; align-items: center; justify-content: space-between;
-padding: 16px 24px; max-width: 800px; margin: 0 auto;
-}
-.nav a { text-decoration: none; }
-.nav-logo { display: flex; align-items: center; gap: 10px; }
+:root{--bg:#f0ede8;--bg2:#fff;--text:#1a1a1a;--green:#00A854;--green2:#007a3d;--border:#ddd;--muted:#555}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:17px;line-height:1.7}
+a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}
+.page-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-logo{font-size:1.3rem;font-weight:700;color:var(--text)}
+.btn{display:inline-block;background:var(--green);color:#fff;padding:10px 22px;border-radius:6px;font-weight:600;font-size:.95rem;text-decoration:none}
+.btn:hover{background:var(--green2);text-decoration:none}
+.btn-outline{background:transparent;border:2px solid var(--green);color:var(--green);margin-right:8px}
+.btn-outline:hover{background:var(--green);color:#fff}
+.page-wrap{max-width:820px;margin:0 auto;padding:48px 24px 80px}
+h1{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.2;margin-bottom:20px;font-weight:700}
+h2{font-size:1.35rem;font-weight:700;margin:40px 0 14px;color:var(--text)}
+h3{font-size:1.1rem;font-weight:700;margin:24px 0 10px}
+h4{font-size:1rem;font-weight:700;margin:18px 0 8px}
+p{margin-bottom:16px}
+ul,ol{margin:0 0 16px 24px}li{margin-bottom:6px}
+strong{font-weight:700}
+.lead{font-size:1.15rem;color:var(--muted);margin-bottom:28px}
+.cta-box{background:var(--green);color:#fff;padding:28px 32px;border-radius:10px;margin:40px 0;text-align:center}
+.cta-box h2{color:#fff;margin:0 0 12px}
+.cta-box p{margin:0 0 18px;opacity:.92}
+.cta-box .btn{background:#fff;color:var(--green);font-size:1rem;padding:12px 28px}
+.cta-box .btn:hover{background:#e8f5ee}
+table{width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:.92rem}
+th{background:var(--text);color:#fff;padding:11px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid var(--border)}
+tr:nth-child(even) td{background:#f8f6f2}
+tr:hover td{background:#eef7f2}
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+.faq-q{font-weight:700;font-size:1rem;margin-bottom:8px}
+.faq-a{color:#333}
+.tag{display:inline-block;background:#e8f5ee;color:var(--green);padding:3px 10px;border-radius:20px;font-size:.8rem;font-weight:600;margin-right:6px}
+.steps{counter-reset:steps;list-style:none;margin-left:0}
+.steps li{counter-increment:steps;padding:16px 16px 16px 56px;position:relative;border-left:2px solid var(--green);margin-bottom:16px;background:#fff;border-radius:0 8px 8px 0}
+.steps li::before{content:counter(steps);position:absolute;left:-16px;top:14px;width:32px;height:32px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+.page-footer{background:var(--text);color:#aaa;padding:40px 24px;text-align:center;font-size:.9rem;margin-top:60px}
+.page-footer a{color:#ccc}
+.comparison-table td:first-child{font-weight:500}
+@media(max-width:600px){.page-wrap{padding:32px 16px 60px}.page-nav{padding:12px 16px}table{font-size:.82rem}th,td{padding:8px 10px}}
+</style>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W2KJWXMT');</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2KJWXMT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav class="page-nav">
+  <a href="/" class="nav-logo">Nabbit</a>
+  <div>
+    <a href="https://app.nabbit.ca" class="btn btn-outline">Login</a>
+    <a href="https://app.nabbit.ca/register" class="btn">Start free trial</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+<h1>No Receipt, No ITC: What CRA Requires</h1>
+<p class="lead">If your business is GST/HST-registered, every dollar of GST or HST you pay on business expenses can be recovered as an Input Tax Credit — but only if you have the receipt to prove it. This is what CRA requires, and what happens when you don't have it.</p>
+
+<h2>The Rule</h2>
+<p>Under the Excise Tax Act, claiming an Input Tax Credit (ITC) requires that you have documentary evidence to support the claim. That evidence must exist at the time you file your GST/HST return. If CRA audits your ITC claims and you cannot produce the supporting documentation, the ITC is denied — and you may owe the amount back plus interest.</p>
+<p>There is no appeal on the basis of "I know I paid HST on that expense." Without the receipt, the ITC does not exist.</p>
+
+<h2>What Documentation CRA Requires</h2>
+<p>For transactions under $30: a log entry or other notation is technically sufficient, though a receipt is best practice.</p>
+<p>For transactions $30–$149.99 (simplified invoice): the receipt must show the vendor name, date, total amount paid (including tax), and the HST or GST rate applied.</p>
+<p>For transactions $150 and over (full invoice): all of the above, plus the vendor's GST/HST registration number, and the tax amount shown separately from the base amount.</p>
+<p>The most common reason ITCs are denied: a receipt for a transaction over $150 that does not show the vendor's HST registration number.</p>
+
+<h2>What Counts as Acceptable Documentation</h2>
+<p>CRA accepts original paper receipts, electronic receipts (email receipts, PDF invoices), and photographed images of paper receipts. A clear, legible photo of a receipt taken on a smartphone satisfies CRA's documentation requirements — provided it includes all required fields and is legible.</p>
+<p>Bank statements and credit card statements alone do not qualify. They show that a payment was made; they do not show what was purchased or and whether HST was charged. CRA specifically states that bank statements are not acceptable as standalone ITC documentation.</p>
+
+<h2>The Practical Problem: Receipts Disappear</h2>
+<p>Thermal paper — used by most point-of-sale receipt printers — fades within 2–5 years under normal storage conditions. CRA requires businesses to keep records for 6 years. A 2024 restaurant receipt stored in a filing cabinet may be completely blank by 2028 — well within the audit window.</p>
+<p>The solution is to photograph every receipt at the point of purchase and store the image digitally. A legible digital image satisfies CRA's requirements and does not degrade.</p>
+
+<h2>How Nabbit Prevents Lost ITCs</h2>
+<p>Nabbit captures the receipt image at the moment of purchase, extracts the vendor name, amount, date, and HST amount, and stores the full-resolution image in a secure archive. Every receipt is indexed by date, vendor, and amount — making CRA audit preparation a matter of seconds.</p>
+<p>The GST and HST amount is also coded separately before syncing to QuickBooks Online Canada. At quarter end, your ITC total is already in QuickBooks —"no spreadsheet required.</p>
+
+<div class="cta-box">
+<h2>Never lose an ITC again</h2>
+<p>Nabbit captures receipts, stores them for CRA's 6-year requirement, and tracks GST/HST automatically.</p>
+<a href="https://app.nabbit.ca/register" class="btn">Start Free Trial &rarr;</a>
+</div>
+
+<p>Related: <a href="/resources/what-receipts-to-keep-for-cra">What receipts do you need to keep for CRA?</a> | <a href="/resources/how-to-track-gst-hst-input-tax-credits">How to track GST/HST Input Tax Credits</a></p>
+</div>
+
+<footer class="page-footer">
+  <p><a href="/">Nabbit</a> &mdash; Canadian receipt capture software &mdash; <a href="/quickbooks">QuickBooks integration</a> &mdash; <a href="/resources/what-receipts-to-keep-for-cra">Resources</a></p>
+  <p style="margin-top:8px"><a href="mailto:hello@nabbit.ca">hello@nabbit.ca</a></p>
+</footer>
+</body>
+</html>
