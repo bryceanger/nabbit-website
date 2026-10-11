@@ -57,9 +57,17 @@ tr:hover td{background:#eef7f2}
 .page-footer a{color:#ccc}
 .comparison-table td:first-child{font-weight:500}
 @media(max-width:600px){.page-wrap{padding:32px 16px 60px}.page-nav{padding:12px 16px}table{font-size:.82rem}th,td{padding:8px 10px}}
+.byline{font-size:.9rem;color:var(--muted);margin:-14px 0 22px}
+figure.diagram{margin:0 0 28px}figure.diagram img{width:100%;height:auto;border:1px solid var(--border);border-radius:10px;background:#fff;display:block}figure.diagram figcaption{font-size:.85rem;color:var(--muted);margin-top:6px}
+.next-read{font-size:.98rem;background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 16px}
+.sources li{font-size:.95rem}.sources p{font-size:.95rem;color:var(--muted)}
+.footer-guides{font-size:.82rem;line-height:2;margin-bottom:12px}.footer-guides a{margin:0 8px;white-space:nowrap;display:inline-block}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W2KJWXMT');</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://nabbit.ca/vs/expensify", "url": "https://nabbit.ca/vs/expensify", "name": "Nabbit vs. Expensify: Expense Management for Canadian Business", "inLanguage": "en-CA", "isPartOf": {"@id": "https://nabbit.ca/#website"}, "publisher": {"@id": "https://nabbit.ca/#organization"}}, {"@type": "Article", "headline": "Nabbit vs. Expensify: Expense Management for Canadian Business", "description": "Comparing Nabbit and Expensify for Canadian businesses. GST/HST, CRA compliance, QuickBooks Canada, pricing in CAD — here's the honest breakdown.", "inLanguage": "en-CA", "datePublished": "2026-10-09", "dateModified": "2026-10-11", "author": {"@type": "Organization", "name": "The Nabbit Team", "url": "https://nabbit.ca/author/nabbit-team", "sameAs": ["https://www.capterra.ca/software/1240783/Nabbit", "https://www.capterra.com/p/10185362/Nabbit/", "https://www.g2.com/products/nabbit/reviews"]}, "publisher": {"@id": "https://nabbit.ca/#organization"}, "mainEntityOfPage": {"@id": "https://nabbit.ca/vs/expensify"}}]}
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -108,14 +116,49 @@ tr:hover td{background:#eef7f2}
 <h2>Pricing Context</h2>
 <p>Expensify charges in USD. For a Canadian business, this means your monthly cost fluctuates with the CAD/USD exchange rate — and at current rates (approximately 1.35–1.40 CAD per USD), US-priced tools cost 35–40% more than their listed price. Nabbit is priced in CAD. What you see is what you pay.</p>
 
+<h2>What Should You Check Before Choosing a Receipt Tool?</h2>
+<p>Whichever product you pick, test it against the things that cause trouble at GST/HST filing time and in a CRA audit:</p>
+<ul>
+<li>Does it read GST/HST as its own amount, not just the receipt total?</li>
+<li>Does it capture the supplier's GST/HST registration number? CRA expects it on receipts of $30 or more to support an Input Tax Credit.</li>
+<li>Does it handle the provincial mix of HST, GST plus PST, and GST plus QST?</li>
+<li>Does a person review each expense before it posts to your books?</li>
+<li>Does it keep the original receipt image for the six years CRA requires?</li>
+</ul>
+
+<h2>How Can You Test Expensify and Nabbit With Your Own Receipts?</h2>
+<p>Submit one reimbursement the way your team really would, with a mix of paper receipts: a faded thermal receipt, a fuel receipt, a restaurant receipt with a tip, and a receipt that shows GST and PST separately. Compare what each tool read against the paper, and note how many fields you had to correct by hand. Then ask what the tool does with the corrected data, because the cost of a bad read is an ITC you cannot support later. The guide on <a href="/resources/what-receipts-to-keep-for-cra">what receipts CRA requires</a> lists exactly what a valid receipt must show.</p>
+
 <div class="cta-box">
 <h2>Try Nabbit Free</h2>
 <p>14-day free trial. No credit card. Connect QuickBooks Online Canada in minutes and sync your first receipt the same day.</p>
 <a href="https://app.nabbit.ca/register" class="btn">Start Free Trial &rarr;</a>
 </div>
+<section class="sources">
+<h2>Sources</h2>
+<p>The rules on this page come from these Canada Revenue Agency publications. Check them for the current wording, because CRA updates its guidance.</p>
+<ul>
+  <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/calculate-prepare-report/input-tax-credit.html" rel="noopener">Input tax credits</a>, Canada Revenue Agency</li>
+  <li><a href="https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc188/keeping-records.html" rel="noopener">RC188 Keeping Records</a>, Canada Revenue Agency</li>
+</ul>
+</section>
+
+<aside class="related" aria-label="Related">
+  <h2>Related</h2>
+  <ul>
+    <li><a href="/vs/hubdoc">Nabbit vs. Hubdoc for Canadian Business</a></li>
+    <li><a href="/how-it-works">How Nabbit Works, Step by Step</a></li>
+    <li><a href="/quickbooks">How Nabbit Syncs to QuickBooks Online Canada</a></li>
+    <li><a href="/resources/how-to-track-gst-hst-input-tax-credits">How to Track GST/HST Input Tax Credits</a></li>
+    <li><a href="/receipt-capture-guide">Receipt Capture Guide for Canadian Businesses</a></li>
+  </ul>
+</aside>
+
 </div>
 
 <footer class="page-footer">
+  <nav class="footer-guides" aria-label="All guides"><a href="/resources/no-receipt-no-itc">No Receipt, No ITC: What CRA Requires</a> <a href="/resources/what-receipts-to-keep-for-cra">What Receipts Do You Need to Keep for CRA?</a> <a href="/resources/how-long-keep-business-receipts-canada">How Long Do You Need to Keep Business Receipts in Canada?</a> <a href="/resources/how-to-track-gst-hst-input-tax-credits">How to Track GST/HST Input Tax Credits</a> <a href="/receipt-capture-guide">Receipt Capture Guide for Canadian Businesses</a> <a href="/resources/canadian-business-expense-categories">Canadian Business Expense Categories</a> <a href="/resources/expense-report-template-canada">Expense Report Template for Canadian Business</a> <a href="/how-it-works">How Nabbit Works, Step by Step</a> <a href="/quickbooks">How Nabbit Syncs to QuickBooks Online Canada</a> <a href="/contractors">Receipt App for Canadian Contractors and Tradespeople</a> <a href="/nabbit-explainer">Nabbit: Receipt Capture Built for Canadian Businesses</a> <a href="/vs/dext">Nabbit vs. Dext for Canadian Business</a> <a href="/vs/expensify">Nabbit vs. Expensify for Canadian Business</a> <a href="/vs/hubdoc">Nabbit vs. Hubdoc for Canadian Business</a> <a href="/resources/">All resources</a> <a href="/author/nabbit-team">About the Nabbit Team</a></nav>
+  
   <p><a href="/">Nabbit</a> &mdash; Canadian receipt capture software &mdash; <a href="/quickbooks">QuickBooks integration</a> &mdash; <a href="/resources/what-receipts-to-keep-for-cra">Resources</a></p>
   <p style="margin-top:8px"><a href="mailto:hello@nabbit.ca">hello@nabbit.ca</a></p>
 </footer>

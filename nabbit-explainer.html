@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nabbit — Receipt Capture for Canadian Businesses</title>
-<meta name="description" content="Nabbit is a Canadian receipt capture app. Photograph receipts, let AI extract vendor, amount, and GST/HST, and sync clean expenses to QuickBooks Online Canada. Built for Canada.">
+<meta name="description" content="Nabbit is a Canadian receipt capture app. It reads vendor, amount and GST/HST from a photo and syncs approved expenses to QuickBooks Online Canada.">
 <link rel="canonical" href="https://nabbit.ca/nabbit-explainer">
 <meta property="og:title" content="Nabbit — Receipt Capture for Canadian Businesses">
 <meta property="og:description" content="Photograph receipts, AI reads vendor and HST, expenses sync to QuickBooks Online Canada automatically. No paper pile. No data entry.">
@@ -17,11 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"WebPage","@id":"https://nabbit.ca/nabbit-explainer","url":"https://nabbit.ca/nabbit-explainer","name":"Nabbit — Receipt Capture for Canadian Businesses","description":"Nabbit is a receipt capture app built for Canadian businesses. AI reads receipts, separates GST/HST, and syncs to QuickBooks Online Canada.","inLanguage":"en-CA","isPartOf":{"@id":"https://nabbit.ca/#website"},"publisher":{"@id":"https://nabbit.ca/#organization"}},
-{"@type":"SoftwareApplication","name":"Nabbit","applicationCategory":"BusinessApplication","operatingSystem":"iOS, Android, Web","description":"Canadian receipt capture app with AI-powered GST/HST extraction and QuickBooks Online Canada integration.","offers":{"@type":"Offer","priceCurrency":"CAD","price":"0","description":"14-day free trial"},"url":"https://nabbit.ca","featureList":["AI receipt reading","GST/HST extraction","QuickBooks Online Canada sync","Offline capture","Team workflows","CRA-compliant 6-year archive"]},
-{"@type":"Article","headline":"Nabbit — Receipt Capture for Canadian Businesses","datePublished":"2026-09-01","dateModified":"2026-10-09","author":{"@type":"Organization","name":"Nabbit","url":"https://nabbit.ca"},"publisher":{"@type":"Organization","name":"Nabbit","url":"https://nabbit.ca","logo":"https://nabbit.ca/logo.jpg"},"url":"https://nabbit.ca/nabbit-explainer","mainEntityOfPage":{"@id":"https://nabbit.ca/nabbit-explainer"}}
-]}
+{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://nabbit.ca/nabbit-explainer", "url": "https://nabbit.ca/nabbit-explainer", "name": "Nabbit — Receipt Capture for Canadian Businesses", "description": "Nabbit is a receipt capture app built for Canadian businesses. AI reads receipts, separates GST/HST, and syncs to QuickBooks Online Canada.", "inLanguage": "en-CA", "isPartOf": {"@id": "https://nabbit.ca/#website"}, "publisher": {"@id": "https://nabbit.ca/#organization"}}, {"@type": "SoftwareApplication", "name": "Nabbit", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS, Android, Web", "description": "Canadian receipt capture app with AI-powered GST/HST extraction and QuickBooks Online Canada integration.", "offers": {"@type": "Offer", "priceCurrency": "CAD", "price": "0", "description": "14-day free trial"}, "url": "https://nabbit.ca", "featureList": ["AI receipt reading", "GST/HST extraction", "QuickBooks Online Canada sync", "Offline capture", "Team workflows", "CRA-compliant 6-year archive"]}, {"@type": "Article", "headline": "Nabbit — Receipt Capture for Canadian Businesses", "datePublished": "2026-09-01", "dateModified": "2026-10-11", "author": {"@type": "Organization", "name": "The Nabbit Team", "url": "https://nabbit.ca/author/nabbit-team", "sameAs": ["https://www.capterra.ca/software/1240783/Nabbit", "https://www.capterra.com/p/10185362/Nabbit/", "https://www.g2.com/products/nabbit/reviews"]}, "publisher": {"@type": "Organization", "name": "Nabbit", "url": "https://nabbit.ca", "logo": "https://nabbit.ca/logo.jpg"}, "url": "https://nabbit.ca/nabbit-explainer", "mainEntityOfPage": {"@id": "https://nabbit.ca/nabbit-explainer"}}]}
 </script>
 <style>
 :root{--bg:#f0ede8;--bg2:#fff;--text:#1a1a1a;--green:#00A854;--green2:#007a3d;--border:#ddd;--muted:#555}
@@ -59,6 +55,11 @@ strong{font-weight:700}
 .page-footer{background:var(--text);color:#aaa;padding:40px 24px;text-align:center;font-size:.9rem;margin-top:60px}
 .page-footer a{color:#ccc}
 @media(max-width:600px){.page-wrap{padding:32px 16px 60px}.page-nav{padding:12px 16px}.feature-grid{grid-template-columns:1fr}}
+.byline{font-size:.9rem;color:var(--muted);margin:-14px 0 22px}
+figure.diagram{margin:0 0 28px}figure.diagram img{width:100%;height:auto;border:1px solid var(--border);border-radius:10px;background:#fff;display:block}figure.diagram figcaption{font-size:.85rem;color:var(--muted);margin-top:6px}
+.next-read{font-size:.98rem;background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 16px}
+.sources li{font-size:.95rem}.sources p{font-size:.95rem;color:var(--muted)}
+.footer-guides{font-size:.82rem;line-height:2;margin-bottom:12px}.footer-guides a{margin:0 8px;white-space:nowrap;display:inline-block}
 </style>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W2KJWXMT');</script>
@@ -131,21 +132,40 @@ strong{font-weight:700}
 
 <h2>Is Nabbit CRA-Compliant?</h2>
 <p>Yes. CRA accepts digital photographs of paper receipts as sufficient documentation for ITC claims, provided the image is legible and includes all required fields. Nabbit stores full-resolution images in a secure archive indexed by date, vendor, and amount. For a full breakdown of what CRA requires, see <a href="/resources/no-receipt-no-itc">No Receipt, No ITC: What CRA Requires</a>.</p>
+<h2>What Happens to a Receipt After You Photograph It?</h2>
+<p>The app reads the vendor name, date, total, and GST/HST from the photo, usually within 10 to 15 seconds. You or your team then review the values and correct anything the AI misread. Only approved expenses sync to QuickBooks Online Canada. If you are offline, receipts queue on the phone and upload when coverage returns. The full walk-through is on <a href="/how-it-works">how Nabbit works</a>.</p>
+
+<h2>How Does Nabbit Compare With Other Receipt Tools?</h2>
+<p>Nabbit is built around Canadian GST/HST and QuickBooks Online Canada. If you are weighing other tools, the side-by-side pages cover <a href="/vs/dext">Nabbit vs. Dext</a>, <a href="/vs/expensify">Nabbit vs. Expensify</a>, and <a href="/vs/hubdoc">Nabbit vs. Hubdoc</a>, including the cases where each of those products is the better fit.</p>
+
+<h2>Where Can You Learn More About CRA Receipt Rules?</h2>
+<p>The CRA rules behind all of this are covered in plain language in our guides on <a href="/resources/what-receipts-to-keep-for-cra">what receipts to keep</a>, <a href="/resources/how-long-keep-business-receipts-canada">how long to keep them</a>, and <a href="/resources/no-receipt-no-itc">why a missing receipt means a denied ITC</a>. Each guide links to the CRA's own publications. Builders and tradespeople can start with the page for <a href="/contractors">Canadian contractors</a>.</p>
+
+<section class="sources">
+<h2>Sources</h2>
+<p>The rules on this page come from these Canada Revenue Agency publications. Check them for the current wording, because CRA updates its guidance.</p>
+<ul>
+  <li><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/calculate-prepare-report/input-tax-credit.html" rel="noopener">Input tax credits</a>, Canada Revenue Agency</li>
+  <li><a href="https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc188/keeping-records.html" rel="noopener">RC188 Keeping Records</a>, Canada Revenue Agency</li>
+</ul>
+</section>
 
 <aside class="related" aria-label="Related">
   <h2>Related</h2>
   <ul>
-    <li><a href="/how-it-works">How Nabbit Works — Step by Step</a></li>
-    <li><a href="/quickbooks">How Nabbit Syncs to QuickBooks Online Canada</a></li>
-    <li><a href="/contractors">Receipt App for Canadian Contractors and Tradespeople</a></li>
+    <li><a href="/vs/dext">Nabbit vs. Dext for Canadian Business</a></li>
+    <li><a href="/vs/expensify">Nabbit vs. Expensify for Canadian Business</a></li>
+    <li><a href="/vs/hubdoc">Nabbit vs. Hubdoc for Canadian Business</a></li>
+    <li><a href="/resources/expense-report-template-canada">Expense Report Template for Canadian Business</a></li>
     <li><a href="/resources/no-receipt-no-itc">No Receipt, No ITC: What CRA Requires</a></li>
-    <li><a href="/receipt-capture-guide">Receipt Capture Guide for Canadian Businesses</a></li>
   </ul>
 </aside>
 
 </div>
 
 <footer class="page-footer">
+  <nav class="footer-guides" aria-label="All guides"><a href="/resources/no-receipt-no-itc">No Receipt, No ITC: What CRA Requires</a> <a href="/resources/what-receipts-to-keep-for-cra">What Receipts Do You Need to Keep for CRA?</a> <a href="/resources/how-long-keep-business-receipts-canada">How Long Do You Need to Keep Business Receipts in Canada?</a> <a href="/resources/how-to-track-gst-hst-input-tax-credits">How to Track GST/HST Input Tax Credits</a> <a href="/receipt-capture-guide">Receipt Capture Guide for Canadian Businesses</a> <a href="/resources/canadian-business-expense-categories">Canadian Business Expense Categories</a> <a href="/resources/expense-report-template-canada">Expense Report Template for Canadian Business</a> <a href="/how-it-works">How Nabbit Works, Step by Step</a> <a href="/quickbooks">How Nabbit Syncs to QuickBooks Online Canada</a> <a href="/contractors">Receipt App for Canadian Contractors and Tradespeople</a> <a href="/nabbit-explainer">Nabbit: Receipt Capture Built for Canadian Businesses</a> <a href="/vs/dext">Nabbit vs. Dext for Canadian Business</a> <a href="/vs/expensify">Nabbit vs. Expensify for Canadian Business</a> <a href="/vs/hubdoc">Nabbit vs. Hubdoc for Canadian Business</a> <a href="/resources/">All resources</a> <a href="/author/nabbit-team">About the Nabbit Team</a></nav>
+  
   <p><a href="/">Nabbit</a> &mdash; Canadian receipt capture software &mdash; <a href="/quickbooks">QuickBooks integration</a> &mdash; <a href="/resources/what-receipts-to-keep-for-cra">Resources</a></p>
   <p style="margin-top:8px"><a href="mailto:hello@nabbit.ca">hello@nabbit.ca</a></p>
 </footer>
