@@ -16,6 +16,18 @@
 <link rel="icon" href="/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebPage","@id":"https://nabbit.ca/resources/how-to-track-gst-hst-input-tax-credits","url":"https://nabbit.ca/resources/how-to-track-gst-hst-input-tax-credits","name":"How to Track GST/HST Input Tax Credits (ITC) for Business","description":"Input Tax Credits reduce how much GST/HST you remit to CRA. Here's how Canadian businesses track ITCs accurately — and avoid common errors that get denied.","inLanguage":"en-CA","isPartOf":{"@id":"https://nabbit.ca/#website"},"publisher":{"@id":"https://nabbit.ca/#organization"}},
+{"@type":"Article","headline":"How to Track GST/HST Input Tax Credits (ITCs) for Your Business","description":"Input Tax Credits reduce how much GST/HST you remit to CRA. Here's how Canadian businesses track ITCs accurately — and avoid common errors that get denied.","inLanguage":"en-CA","publisher":{"@id":"https://nabbit.ca/#organization"},"mainEntityOfPage":{"@id":"https://nabbit.ca/resources/how-to-track-gst-hst-input-tax-credits"},"datePublished":"2026-10-09","dateModified":"2026-10-09","author":{"@type":"Organization","name":"Nabbit","url":"https://nabbit.ca"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is an Input Tax Credit (ITC)?","acceptedAnswer":{"@type":"Answer","text":"An ITC is the GST or HST you paid as a business expense that CRA allows you to deduct from the GST/HST you collected from customers. You remit the difference. For example, if you collected $1,300 HST and paid $400 HST on expenses, your net remittance is $900."}},
+{"@type":"Question","name":"What qualifies for a GST/HST Input Tax Credit?","acceptedAnswer":{"@type":"Answer","text":"To claim an ITC, the expense must be a business expense (not personal), have been made in your tax period, be supported by a valid receipt showing the vendor's GST/HST registration number (for expenses $150 and over), and be at least partly related to generating taxable income."}},
+{"@type":"Question","name":"Where do businesses go wrong tracking ITCs?","acceptedAnswer":{"@type":"Answer","text":"The most common errors: missing receipts (the ITC is denied without one), using bank statements instead of receipts, not checking for the vendor's HST registration number on receipts over $150, and claiming personal expenses as business expenses."}},
+{"@type":"Question","name":"How does QuickBooks Online Canada help track ITCs?","acceptedAnswer":{"@type":"Answer","text":"QuickBooks Online Canada uses GST/HST tax codes that separate the base amount from the tax amount on each expense entry. At quarter end, the GST/HST Expense Detail report gives you the total ITCs to enter on line 106 of your GST34 return."}}
+]}
+]}
+</script>
 <style>
 :root{--bg:#f0ede8;--bg2:#fff;--text:#1a1a1a;--green:#00A854;--green2:#007a3d;--border:#ddd;--muted:#555}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -31,7 +43,6 @@ a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}
 h1{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.2;margin-bottom:20px;font-weight:700}
 h2{font-size:1.35rem;font-weight:700;margin:40px 0 14px;color:var(--text)}
 h3{font-size:1.1rem;font-weight:700;margin:24px 0 10px}
-h4{font-size:1rem;font-weight:700;margin:18px 0 8px}
 p{margin-bottom:16px}
 ul,ol{margin:0 0 16px 24px}li{margin-bottom:6px}
 strong{font-weight:700}
@@ -41,6 +52,7 @@ strong{font-weight:700}
 .cta-box p{margin:0 0 18px;opacity:.92}
 .cta-box .btn{background:#fff;color:var(--green);font-size:1rem;padding:12px 28px}
 .cta-box .btn:hover{background:#e8f5ee}
+h4{font-size:1rem;font-weight:700;margin:18px 0 8px}
 table{width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:.92rem}
 th{background:var(--text);color:#fff;padding:11px 14px;text-align:left;font-weight:600}
 td{padding:10px 14px;border-bottom:1px solid var(--border)}
@@ -53,6 +65,11 @@ tr:hover td{background:#eef7f2}
 .steps{counter-reset:steps;list-style:none;margin-left:0}
 .steps li{counter-increment:steps;padding:16px 16px 16px 56px;position:relative;border-left:2px solid var(--green);margin-bottom:16px;background:#fff;border-radius:0 8px 8px 0}
 .steps li::before{content:counter(steps);position:absolute;left:-16px;top:14px;width:32px;height:32px;background:var(--green);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+.related{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin:40px 0}
+.related h2{font-size:1rem;font-weight:700;margin:0 0 12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.related ul{list-style:none;margin:0;padding:0}
+.related li{margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.related li:last-child{margin:0;padding:0;border:0}
 .page-footer{background:var(--text);color:#aaa;padding:40px 24px;text-align:center;font-size:.9rem;margin-top:60px}
 .page-footer a{color:#ccc}
 .comparison-table td:first-child{font-weight:500}
@@ -82,7 +99,7 @@ tr:hover td{background:#eef7f2}
 
 <h2>What Qualifies for an ITC?</h2>
 <p>To claim an ITC, the expense must: be a business expense (not personal); have been made in your tax period; be supported by a valid receipt that shows the vendor's GST/HST registration number (for expenses $150 and over); and be for a purpose at least partly related to generating taxable income.</p>
-<p><strong>Common expenses where ITCs are missed:</strong> office supplies purchased without saving the receipt; business meals where the server's receipt is discarded; software subscriptions where the invoice does not show a Canadian GST/HST registration number; and contractor invoices that do not include the contractor's GST/HST rumber.</p>
+<p><strong>Common expenses where ITCs are missed:</strong> office supplies purchased without saving the receipt; business meals where the server's receipt is discarded; software subscriptions where the invoice does not show a Canadian GST/HST registration number; and contractor invoices that do not include the contractor's GST/HST number.</p>
 
 <h2>How to Track ITCs Systematically</h2>
 <ol class="steps">
@@ -92,14 +109,24 @@ tr:hover td{background:#eef7f2}
 <li><strong>File using the net method.</strong> On your GST/HST return (Form GST34), line 106 is your total ITCs. Enter the reconciled amount from QuickBooks here. Your net remittance is line 105 (GST/HST collected) minus line 106 (ITCs).</li>
 </ol>
 
-<h2>Where Businesses Go Wrong</h2>
+<h2>Where Do Businesses Go Wrong Tracking ITCs?</h2>
 <p><strong>Missing receipts.</strong> The most common error. If CRA audits your ITC claim and you cannot produce the receipt, the ITC is denied. Save every receipt — no exceptions.</p>
 <p><strong>Using bank statements instead of receipts.</strong> Bank statements show what you paid, not what you bought or whether HST was charged. CRA does not accept bank statements as standalone ITC documentation for transactions over $30.</p>
 <p><strong>Not checking the HST registration number.</strong> For expenses $150 and over, CRA requires the vendor's HST registration number on the receipt. If your supplier is not registered for HST (businesses under $30,000 in revenue are not required to register), you cannot claim an ITC on their invoices.</p>
 <p><strong>Claiming personal expenses.</strong> Mixed personal/business expenses (like a phone used for both) must be prorated. Claiming 100% of a mixed-use expense is a common audit trigger.</p>
 
-<h2>How Nabbit Automates ITC Tracking</h2>
+<h2>How Does Nabbit Automate ITC Tracking?</h2>
 <p>Nabbit reads the GST or HST amount directly from every receipt image and records it as a separate tax field before syncing to QuickBooks Online. Instead of manually entering tax codes, every expense arrives in QuickBooks already coded with the correct GST/HST amount. At quarter end, your QuickBooks GST/HST report gives you the exact ITC total — no spreadsheet, no manual reconciliation.</p>
+
+<h2>What Does a Correctly Tracked ITC Look Like in QuickBooks Online Canada?</h2>
+<p>In QuickBooks Online Canada, each expense transaction has a "Tax" field where you apply the appropriate rate code. For Ontario expenses, the correct code is "HST ON (13%)". For Alberta, it is "GST (5%)". When the code is applied correctly, QuickBooks splits the transaction into the base amount and the tax amount, and records the tax amount as a recoverable ITC.</p>
+<p>At filing time, the GST/HST Expense Detail report (found under Reports → Taxes) shows you every expense entry for the period with its tax amount broken out. The total of the Tax Amount column is the number that goes on line 106 of your GST34 return. Line 105 is the GST/HST you collected; your net remittance is line 105 minus line 106.</p>
+<p>A common setup error is applying a "No Tax" or "Exempt" code to expenses that actually had HST charged. The expense records correctly in your profit and loss, but the ITC never makes it into line 106. Over a quarter of business spending, this error can mean hundreds of dollars of recoverable tax that was never reclaimed.</p>
+
+<h2>How Do ITCs Work at Different HST Rates Across Provinces?</h2>
+<p>Canada has three GST/HST rate tiers that affect ITC amounts differently. Ontario, New Brunswick, Newfoundland and Labrador, Nova Scotia, and Prince Edward Island apply HST at rates between 13% and 15%. British Columbia, Manitoba, Saskatchewan, and Quebec apply GST at 5% separately from provincial sales tax — and provincial sales tax (PST/QST) is generally not recoverable as an ITC, only the federal 5% GST portion is.</p>
+<p>Alberta, the Northwest Territories, Nunavut, and Yukon apply only GST at 5% with no provincial sales tax component. For businesses that operate across multiple provinces, the recoverable amount per dollar of expense depends on where the purchase was made — not where the business is headquartered. A Manitoba-based contractor buying supplies in Ontario is entitled to claim the Ontario HST at 13%, not Manitoba GST at 5%.</p>
+<p>QuickBooks Online Canada handles this automatically when the correct province-specific tax code is applied to each transaction. The error occurs when a single default tax code is applied regardless of where the purchase was made, understating ITCs for out-of-province transactions in higher-rate provinces.</p>
 
 <div class="cta-box">
 <h2>Track ITCs automatically — never leave money with CRA</h2>
@@ -107,7 +134,17 @@ tr:hover td{background:#eef7f2}
 <a href="https://app.nabbit.ca/register" class="btn">Start Free Trial &rarr;</a>
 </div>
 
-<p>Related: <a href="/resources/what-receipts-to-keep-for-cra">What receipts does CRA require?</a> | <a href="/quickbooks">QuickBooks Online Canada sync</a></p>
+<aside class="related" aria-label="Related">
+  <h2>Related</h2>
+  <ul>
+    <li><a href="/resources/what-receipts-to-keep-for-cra">What Receipts Do You Need to Keep for CRA?</a></li>
+    <li><a href="/resources/no-receipt-no-itc">No Receipt, No ITC: What CRA Requires</a></li>
+    <li><a href="/quickbooks">How Nabbit Syncs to QuickBooks Online Canada</a></li>
+    <li><a href="/receipt-capture-guide">Receipt Capture Guide for Canadian Businesses</a></li>
+    <li><a href="/contractors">Receipt App for Canadian Contractors and Tradespeople</a></li>
+  </ul>
+</aside>
+
 </div>
 
 <footer class="page-footer">
