@@ -1,36 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
-<meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Receipt Capture Guide for Canadian Businesses | Nabbit</title>
-<meta name="description" content="What a usable receipt record contains, what the CRA expects, how long to keep it, and how to build a capture routine that holds up at month-end."/>
-<meta property="og:title" content="Receipt Capture for Canadian Businesses: A Practical Guide"/>
-<meta property="og:description" content="What the CRA expects on a receipt, how long to keep it, and a capture routine that holds up at month-end."/>
-<meta property="og:type" content="article"/>
-<meta property="og:url" content="https://nabbit.ca/receipt-capture-guide"/>
-<meta property="og:site_name" content="Nabbit"/>
-<meta property="og:image" content="https://nabbit.ca/og-image.png"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Receipt Capture for Canadian Businesses: A Practical Guide"/>
-<meta name="twitter:description" content="What the CRA expects on a receipt, how long to keep it, and a capture routine that holds up at month-end."/>
-<meta name="twitter:image" content="https://nabbit.ca/og-image.png"/>
-<link rel="canonical" href="https://nabbit.ca/receipt-capture-guide"/>
-<link rel="icon" type="image/x-icon" href="/logo.jpg"/>
+<meta name="description" content="What a usable receipt record contains, what CRA expects, how long to keep it, and how to build a capture routine that holds up at month-end and through an audit.">
+<link rel="canonical" href="https://nabbit.ca/receipt-capture-guide">
+<meta property="og:title" content="Receipt Capture Guide for Canadian Businesses | Nabbit">
+<meta property="og:description" content="What a usable receipt record contains, what CRA expects, how long to keep it, and how to build a capture routine that holds up at month-end and through an audit.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nabbit.ca/receipt-capture-guide">
+<meta property="og:site_name" content="Nabbit">
+<meta property="og:image" content="https://nabbit.ca/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebPage","@id":"https://nabbit.ca/receipt-capture-guide","url":"https://nabbit.ca/receipt-capture-guide","name":"Receipt Capture Guide for Canadian Businesses","description":"What a usable receipt record contains, what CRA expects, how long to keep it, and how to build a capture routine that holds up at month-end and through an audit.","inLanguage":"en-CA","isPartOf":{"@id":"https://nabbit.ca/#website"},"publisher":{"@id":"https://nabbit.ca/#organization"}},
+{"@type":"Article","headline":"Receipt Capture Guide for Canadian Businesses","description":"What a usable receipt record contains, what CRA expects, how long to keep it, and how to build a capture routine that holds up at month-end and through an audit.","inLanguage":"en-CA","publisher":{"@id":"https://nabbit.ca/#organization"},"mainEntityOfPage":{"@id":"https://nabbit.ca/receipt-capture-guide"},"datePublished":"2026-10-09","dateModified":"2026-10-09","author":{"@type":"Organization","name":"Nabbit","url":"https://nabbit.ca"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What information must a receipt include for a CRA ITC claim?","acceptedAnswer":{"@type":"Answer","text":"For transactions under $30, a log entry is sufficient. For $30–$149.99, the receipt must show vendor name, date, total, and GST/HST rate. For $150 and over, you also need the vendor's GST/HST registration number and the tax amount shown separately from the base amount."}},
+{"@type":"Question","name":"How long do I need to keep receipts in Canada?","acceptedAnswer":{"@type":"Answer","text":"CRA requires businesses to keep records for six years after the end of the tax year they relate to. A 2024 receipt must be available until at least 2031."}},
+{"@type":"Question","name":"Does CRA accept photos of receipts?","acceptedAnswer":{"@type":"Answer","text":"Yes. CRA accepts digital photographs of paper receipts as sufficient documentation for ITC claims, provided the image is legible and includes all required fields. The digital image is the record — the paper original does not need to be retained once photographed."}},
+{"@type":"Question","name":"What happens if a receipt fades before the 6-year window is up?","acceptedAnswer":{"@type":"Answer","text":"If a receipt is illegible at audit time, the ITC it represents is denied. Thermal paper fades within two to five years. The only protection is photographing receipts immediately and storing the digital image. CRA does not accept \"I know I paid HST\" without documentation."}}
+]}
+]}
+</script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-background: #f0ede8; color: #1a1a1a; line-height: 1.7;
--webkit-font-smoothing: antialiased;
-}
-.nav {
-display: flex; align-items: center; justify-content: space-between;
-padding: 16px 24px; max-width: 800px; margin: 0 auto;
-}
-.nav a { text-decoration: none; }
-.nav-logo { display: flex; align-items: center; gap: 10px; }
+:root{--bg:#f0ede8;--bg2:#fff;--text:#1a1a1a;--green:#00A854;--green2:#007a3d;--border:#ddd;--muted:#555}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:17px;line-height:1.7}
+a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}
+.page-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-logo{font-size:1.3rem;font-weight:700;color:var(--text)}
+.btn{display:inline-block;background:var(--green);color:#fff;padding:10px 22px;border-radius:6px;font-weight:600;font-size:.95rem;text-decoration:none}
+.btn:hover{background:var(--green2);text-decoration:none}
+.btn-outline{background:transparent;border:2px solid var(--green);color:var(--green);margin-right:8px}
+.btn-outline:hover{background:var(--green);color:#fff}
+.page-wrap{max-width:820px;margin:0 auto;padding:48px 24px 80px}
+h1{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.2;margin-bottom:20px;font-weight:700}
+h2{font-size:1.35rem;font-weight:700;margin:40px 0 14px;color:var(--text)}
+h3{font-size:1.1rem;font-weight:700;margin:24px 0 10px}
+p{margin-bottom:16px}
+ul,ol{margin:0 0 16px 24px}li{margin-bottom:6px}
+strong{font-weight:700}
+.lead{font-size:1.15rem;color:var(--muted);margin-bottom:28px}
+.cta-box{background:var(--green);color:#fff;padding:28px 32px;border-radius:10px;margin:40px 0;text-align:center}
+.cta-box h2{color:#fff;margin:0 0 12px}
+.cta-box p{margin:0 0 18px;opacity:.92}
+.cta-box .btn{background:#fff;color:var(--green);font-size:1rem;padding:12px 28px}
+.cta-box .btn:hover{background:#e8f5ee}
+table{width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:.92rem}
+th{background:var(--text);color:#fff;padding:11px 14px;text-align:left;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid var(--border)}
+tr:nth-child(even) td{background:#f8f6f2}
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+.faq-q{font-weight:700;font-size:1rem;margin-bottom:8px}
+.faq-a{color:#333}
+.related{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin:40px 0}
+.related h2{font-size:1rem;font-weight:700;margin:0 0 12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.related ul{list-style:none;margin:0;padding:0}
+.related li{margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.related li:last-child{margin:0;padding:0;border:0}
+.page-footer{background:var(--text);color:#aaa;padding:40px 24px;text-align:center;font-size:.9rem;margin-top:60px}
+.page-footer a{color:#ccc}
+@media(max-width:600px){.page-wrap{padding:32px 16px 60px}.page-nav{padding:12px 16px}table{font-size:.82rem}th,td{padding:8px 10px}}
+</style>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W2KJWXMT');</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2KJWXMT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav class="page-nav">
+  <a href="/" class="nav-logo">Nabbit</a>
+  <div>
+    <a href="https://app.nabbit.ca" class="btn btn-outline">Login</a>
+    <a href="https://app.nabbit.ca/register" class="btn">Start free trial</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+<h1>Receipt Capture Guide for Canadian Businesses</h1>
+<p class="lead">Receipt capture is the practice of photographing or scanning business receipts at the point of purchase so the digital image becomes the permanent, searchable record for CRA compliance and Input Tax Credit claims. This guide covers what a receipt must include, what CRA requires at each transaction amount, and how to build a capture routine that holds up at month-end and through an audit.</p>
+
+<h2>Why Does Receipt Capture Matter for Canadian Businesses?</h2>
+<p>If your business is registered for GST/HST, every dollar of tax you pay on business expenses is recoverable as an Input Tax Credit (ITC) — but only with documentation. CRA does not accept estimates, credit card statements, or your word for it. The receipt is the record. Without it, the ITC does not exist.</p>
+<p>For most Canadian businesses, the gap between what is owed in ITCs and what is actually claimed comes down to lost or faded receipts. Thermal paper — used by nearly every point-of-sale printer — fades within two to five years. CRA requires records for six years. A 2024 fuel receipt stored in a filing cabinet may be completely blank by 2028, well within the audit window.</p>
+<p>The practical answer is to photograph every receipt immediately and store the image digitally. This guide explains how to do that systematically, what fields must be captured for CRA compliance, and what documentation requirements apply at different transaction amounts.</p>
+
+<h2>What Must a Receipt Include for a CRA ITC Claim?</h2>
+<p>CRA's documentation requirements depend on the transaction amount. The rules apply to the supplier's invoice or receipt, not to your internal records.</p>
+
+<table>
+  <tr><th>Transaction amount</th><th>Required fields</th></tr>
+  <tr><td>Under $30</td><td>A log entry or other notation is technically sufficient. A receipt is best practice.</td></tr>
+  <tr><td>$30–$149.99 (simplified invoice)</td><td>Vendor name, date, total amount paid (including tax), GST/HST rate applied</td></tr>
+  <tr><td>$150 and over (full invoice)</td><td>All of the above, plus: vendor's GST/HST registration number, tax amount shown separately from the base amount</td></tr>
+</table>
+
+<p>The most common reason ITCs are denied in a CRA audit: a receipt for a transaction over $150 that does not show the vendor's HST registration number. This happens with smaller suppliers, independent contractors, or vendors who print incomplete receipts. If you cannot obtain a proper invoice after the fact, the ITC for that transaction will likely be denied.</p>
+
+<h2>Does CRA Accept Photos of Receipts?</h2>
+<p>Yes. CRA accepts digital photographs of paper receipts as sufficient documentation for ITC claims, provided the image is legible and includes all required fields. The policy is clear: the digital image is the record. You do not need to retain the paper original once the image is captured and stored.</p>
+<p>Requirements for the digital image: it must be a true and complete reproduction, the data must be systematically recorded, and images must be retained for the full six-year period. The image must also be producible for CRA on request. A smartphone photo stored in a searchable, indexed archive satisfies all of these requirements.</p>
+<p>What does not satisfy the requirements: a blurry photo, a cropped image that cuts off the vendor name or HST number, or a photo stored in a camera roll with no indexing. If an auditor asks for all HST receipts from 2022 and you have to scroll through 3,000 photos, that is a practical problem regardless of the legal standard.</p>
+
+<h2>How Long Do You Need to Keep Receipts in Canada?</h2>
+<p>CRA requires businesses to keep records for six years after the end of the tax year to which they relate. For a fiscal year ending December 31, 2024, the records must be kept until at least December 31, 2030.</p>
+<p>There are exceptions that extend this window: if you are under audit, if you have a loss you are carrying forward, or if CRA has specifically requested longer retention. In practice, keeping records for seven or eight years reduces risk at the edges of the six-year window.</p>
+<p>See <a href="/resources/no-receipt-no-itc">No Receipt, No ITC: What CRA Requires</a> for a complete breakdown of the documentation requirements and what happens when documentation is missing at audit time.</p>
+
+<h2>What Is the Most Common Receipt Capture Failure?</h2>
+<p>There are three common failure modes, in order of frequency:</p>
+<ol>
+  <li><strong>Not capturing at the point of sale.</strong> The most effective time to photograph a receipt is at the counter, immediately after the transaction. Receipts that go into a pocket, bag, or truck dashboard are the ones that get lost. A capture-at-purchase discipline eliminates this failure entirely.</li>
+  <li><strong>Thermal paper fading before the 6-year window.</strong> A receipt photographed in January and filed in a cabinet is vulnerable. A receipt photographed and stored digitally is not. This is why the photograph is the record, not the paper.</li>
+  <li><strong>No process for team-collected receipts.</strong> When a crew member buys materials and hands you a paper receipt at week's end, that receipt has already been handled, folded, and possibly left in a vehicle. A team capture workflow — where each person photographs receipts themselves — keeps the record at its best quality.</li>
+</ol>
+
+<h2>How Should You Build a Receipt Capture Routine?</h2>
+<p>A reliable receipt capture routine has three components: capture policy, storage system, and review schedule.</p>
+
+<h3>Capture policy</h3>
+<p>Photograph every business receipt at the moment of purchase. Do not sort receipts into "important" and "unimportant." The time saved by skipping a $12 fuel receipt is less than the time lost when it becomes relevant in an audit. For businesses with employees or crews, everyone captures their own receipts. A shared platform like Nabbit allows field staff to capture receipts on their own phones without sharing credentials or mailing paper.</p>
+
+<h3>Storage system</h3>
+<p>Images need to be stored in a system that is searchable by date, vendor, and amount. A camera roll is not a system. Email forwarding is not a system. The standard is: given a vendor name and a month, can you pull every receipt from that vendor in under 60 seconds? If not, the storage system is not audit-ready. A receipt capture app stores images in an indexed archive alongside the extracted data, making any receipt retrievable in seconds.</p>
+
+<h3>Review schedule</h3>
+<p>Receipts should be reviewed and approved before the end of the accounting period they relate to. A receipt that sits unreviewed for three months is one where a data error goes undetected and gets fixed at the worst possible time. Monthly review cycles keep the books current and make quarter-end ITC calculations a matter of minutes, not days.</p>
+
+<div class="cta-box">
+  <h2>Automate your receipt capture</h2>
+  <p>Nabbit captures receipts, reads GST/HST, and syncs to QuickBooks Online Canada. 14-day free trial.</p>
+  <a href="https://app.nabbit.ca/register" class="btn">Start Free Trial &rarr;</a>
+</div>
+
+<h2>What Receipts Are Required for Common Business Expenses?</h2>
+<p>Every GST/HST-taxable business expense requires documentation for an ITC claim. Common categories for Canadian businesses include materials and supplies, fuel, tools and equipment, meals and entertainment (50% deductible), vehicle expenses, professional services, and subcontractor invoices.</p>
+<p>For a complete breakdown by expense type, see <a href="/resources/what-receipts-to-keep-for-cra">What Receipts Do You Need to Keep for CRA?</a></p>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+  <div class="faq-q">What information must a receipt include for a CRA ITC claim?</div>
+  <div class="faq-a">For transactions under $30, a log entry is sufficient. For $30–$149.99, the receipt must show vendor name, date, total, and GST/HST rate. For $150 and over, you also need the vendor's GST/HST registration number and the tax amount shown separately from the base amount.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">How long do I need to keep receipts in Canada?</div>
+  <div class="faq-a">CRA requires businesses to keep records for six years after the end of the tax year they relate to. A 2024 receipt must be available until at least 2031.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">Does CRA accept photos of receipts?</div>
+  <div class="faq-a">Yes. CRA accepts digital photographs of paper receipts as sufficient documentation for ITC claims, provided the image is legible and includes all required fields. The digital image is the record — the paper original does not need to be retained once photographed.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q">What happens if a receipt fades before the 6-year window is up?</div>
+  <div class="faq-a">If a receipt is illegible at audit time, the ITC it represents is denied. Thermal paper fades within two to five years. The only protection is photographing receipts immediately and storing the digital image. CRA does not accept "I know I paid HST" without documentation.</div>
+</div>
+
+<aside class="related" aria-label="Related">
+  <h2>Related</h2>
+  <ul>
+    <li><a href="/resources/no-receipt-no-itc">No Receipt, No ITC: What CRA Requires</a></li>
+    <li><a href="/resources/what-receipts-to-keep-for-cra">What Receipts Do You Need to Keep for CRA?</a></li>
+    <li><a href="/how-it-works">How Nabbit Works — Step by Step</a></li>
+    <li><a href="/quickbooks">How Nabbit Syncs to QuickBooks Online Canada</a></li>
+    <li><a href="/contractors">Receipt App for Canadian Contractors and Tradespeople</a></li>
+  </ul>
+</aside>
+
+</div>
+
+<footer class="page-footer">
+  <p><a href="/">Nabbit</a> &mdash; Canadian receipt capture software &mdash; <a href="/quickbooks">QuickBooks integration</a> &mdash; <a href="/resources/what-receipts-to-keep-for-cra">Resources</a></p>
+  <p style="margin-top:8px"><a href="mailto:hello@nabbit.ca">hello@nabbit.ca</a></p>
+</footer>
+</body>
+</html>
