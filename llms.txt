@@ -1,0 +1,29 @@
+# Nabbit
+
+> Nabbit is a Canadian receipt capture app. It reads vendor, amount and GST/HST from a photo and syncs approved expenses to QuickBooks Online Canada. Built for Canadian trades contractors, bookkeepers and small businesses. Pricing is in CAD. Free 14-day trial, no credit card required.
+
+## Product
+- [How Nabbit Works — Receipt Capture, Simplified](https://nabbit.ca/how-it-works): See how Nabbit works: photograph a receipt, AI reads the vendor, total and GST/HST, you approve it, and it syncs to QuickBooks Online Canada.
+- [Nabbit + QuickBooks Online: Receipt Sync for Canada](https://nabbit.ca/quickbooks): Auto-sync receipts to QuickBooks Online in seconds. AI reads vendor, amount, and GST/HST automatically. Built for Canadian SMBs. 14-day free trial.
+- [Receipt App for Canadian Contractors & Tradespeople | Nabbit](https://nabbit.ca/contractors): Snap job site receipts, track GST/HST, and send expenses to QuickBooks. Built for Canadian contractors. Try free for 14 days.
+- [Nabbit — Receipt Capture for Canadian Businesses](https://nabbit.ca/nabbit-explainer): Nabbit is a Canadian receipt capture app. It reads vendor, amount and GST/HST from a photo and syncs approved expenses to QuickBooks Online Canada.
+- [How Nabbit Keeps Your Receipts Private | Nabbit](https://nabbit.ca/security): Who can see your receipts in Nabbit, who reads them, where the images live, and what happens to your records if you cancel. Plain answers, no jargon.
+
+## Guides
+- [Receipt Capture Guide for Canadian Businesses | Nabbit](https://nabbit.ca/receipt-capture-guide): How Canadian businesses should capture, store and organize receipts for CRA: what to photograph, what to record, and how to stay audit-ready.
+- [CRA Receipt Requirements for Canadian Small Businesses](https://nabbit.ca/nabbit-cra-landing): What receipts must you keep for CRA? Learn GST/HST documentation rules and how Nabbit automates compliance. Read the guide.
+- [Resources — Canadian Receipt & Expense Guides | Nabbit](https://nabbit.ca/resources): Free guides for Canadian small businesses on CRA receipt requirements, GST/HST tracking, expense categories, and more.
+- [No Receipt, No ITC: What CRA Requires | Nabbit](https://nabbit.ca/resources/no-receipt-no-itc): Missing receipts mean denied Input Tax Credits. Learn what CRA requires to support ITC claims and how to avoid common audit triggers.
+- [What Receipts Do You Need to Keep for CRA? (2026 Guide)](https://nabbit.ca/resources/what-receipts-to-keep-for-cra): CRA requires specific receipts for business expenses. Learn what to keep, how long to keep it, and what counts as acceptable proof for Canadian businesses.
+- [How to Track GST/HST Input Tax Credits (ITC) for Business](https://nabbit.ca/resources/how-to-track-gst-hst-input-tax-credits): Input Tax Credits reduce how much GST/HST you remit to CRA. Here's how Canadian businesses track ITCs accurately — and avoid common errors that get denied.
+- [How Long to Keep Business Receipts in Canada (CRA Rules)](https://nabbit.ca/resources/how-long-keep-business-receipts-canada): CRA requires Canadian businesses to keep receipts for 6 years. Here's what that means, what counts, and how to manage it without paper clutter.
+- [Canadian Business Expense Categories: Complete Tax List](https://nabbit.ca/resources/canadian-business-expense-categories): A complete list of deductible business expense categories for Canadian small businesses, with CRA notes and common ITC considerations for each type.
+- [Expense Report Template for Canadian Business](https://nabbit.ca/resources/expense-report-template-canada): Expense report layout for Canadian businesses: GST/HST columns, receipt checks and meal rules. Copy the fields into your own spreadsheet.
+
+## Comparisons
+- [Nabbit vs. Dext: Which Is Better for Canadian Business?](https://nabbit.ca/vs/dext): Comparing Nabbit and Dext for Canadian expense management. See how they handle GST/HST, CRA compliance, QuickBooks sync, and Canadian pricing.
+- [Nabbit vs. Expensify: Which Is Better for Canadian Teams?](https://nabbit.ca/vs/expensify): Comparing Nabbit and Expensify for Canadian businesses. GST/HST, CRA compliance, QuickBooks Canada, pricing in CAD — here's the honest breakdown.
+- [Nabbit vs. Hubdoc: Best Receipt Tool for Canada?](https://nabbit.ca/vs/hubdoc): Nabbit vs. Hubdoc for Canadian businesses. Compare GST/HST handling, CRA compliance, QuickBooks sync, pricing, and team features side by side.
+
+## About
+- [The Nabbit Team: Authors of the Nabbit Guides](https://nabbit.ca/author/nabbit-team): The Nabbit Team writes the guides on this site about CRA receipt rules, GST/HST input tax credits and QuickBooks Online Canada. See what we cover.
