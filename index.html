@@ -655,6 +655,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .btn-lg { padding: .85rem 1.25rem; }
       .hero-visual img { max-width: 100%; height: auto; }
     }
+  
+    /* desktop nav: overflow links live in a More dropdown */
+    .nav-more { position: relative; }
+    .nav-more > button { background: none; border: 0; font: inherit; font-size: .88rem; font-weight: 500; color: var(--slate-md); cursor: pointer; padding: 0; white-space: nowrap; }
+    .nav-more > button:hover { color: var(--indigo); }
+    .nav-more ul { display: none; position: absolute; top: 100%; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: .5rem; min-width: 240px; box-shadow: 0 12px 32px rgba(15,26,18,.12); list-style: none; flex-direction: column; gap: 0; z-index: 300; }
+    .nav-more:hover ul, .nav-more:focus-within ul { display: flex; }
+    .nav-more ul a { display: block; padding: .5rem .75rem; border-radius: 8px; }
+    .nav-more ul a:hover { background: var(--bg); }
   </style>
   <link rel="manifest" href="/manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="https://gojybvyjampzvuvoihql.supabase.co/storage/v1/object/public/brand-assets/icon-32.png">
@@ -823,6 +832,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#about">About</a></li>
         <li><a href='/resources/'>Resources</a></li>
+        <li class="nav-more"><button type="button" aria-haspopup="true">More ▾</button>
+        <ul>
           <li><a href='/how-it-works'>How Nabbit works</a></li>
           <li><a href='/quickbooks'>QuickBooks integration</a></li>
           <li><a href='/contractors'>For contractors</a></li>
@@ -833,6 +844,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href='/vs/hubdoc'>Nabbit vs. Hubdoc</a></li>
           <li><a href='/resources/how-long-keep-business-receipts-canada'>How long to keep receipts</a></li>
           <li><a href='/author/nabbit-team'>The Nabbit Team</a></li>
+        </ul></li>
       </ul>
 
       <div class="nav-actions">
@@ -858,6 +870,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="#pricing" onclick="closeMobile()">Pricing</a>
   <a href="#faq" onclick="closeMobile()">FAQ</a>
   <a href="#about" onclick="closeMobile()">About</a>
+  <a href='/resources/' onclick='closeMobile()'>Resources</a>
+  <a href='/quickbooks' onclick='closeMobile()'>QuickBooks integration</a>
+  <a href='/contractors' onclick='closeMobile()'>For contractors</a>
   <a href='/login' onclick='closeMobile()' style='color:var(--slate-lt)'>Log in</a>
   <button class="btn btn-primary btn-lg mobile-cta" onclick="window.location.href='https://app.nabbit.ca/signup'">Start free trial →</button>
 </div>
