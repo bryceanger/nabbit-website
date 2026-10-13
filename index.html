@@ -227,7 +227,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* ─── HERO ────────────────────────────── */
     .hero {
       padding: clamp(3rem, 8vw, 7rem) 0 clamp(2.5rem, 5vw, 4.5rem);
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
       align-items: center; gap: 4rem;
     }
     .hero-badge {
@@ -585,7 +585,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       :root { --pad-x: 1.25rem; }
 
       .hero {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0,1fr);
         padding-top: 2.5rem;
         gap: 2.5rem;
       }
@@ -645,6 +645,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* ㉕ REDUCED MOTION: respect user preference */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  
+    /* mobile/desktop fit pass: stop nowrap buttons forcing horizontal scroll */
+    body { overflow-x: clip; }
+    .hero-copy, .hero-visual { min-width: 0; }
+    @media (max-width: 768px) {
+      .btn { white-space: normal; text-align: center; line-height: 1.25; }
+      .btn-lg { padding: .85rem 1.25rem; }
+      .hero-visual img { max-width: 100%; height: auto; }
     }
   </style>
   <link rel="manifest" href="/manifest.json">
@@ -904,7 +913,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div style="margin:0 auto 3rem;max-width:520px;border-radius:20px;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,0.12);">
       <iframe
         src="/nabbit-prospect-walkthrough.html"
-        style="width:100%;height:600px;border:none;display:block;"
+        style="width:100%;height:600px;border:none;display:block;" onload="try{var d=this.contentDocument.documentElement;this.style.height=Math.max(600,d.scrollHeight)+'px'}catch(e){}"
         title="See how Nabbit works"
         loading="lazy"
       ></iframe>
