@@ -908,7 +908,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img src="/img/sample-invoice.webp" width="1000" height="686" alt="Sample supplier invoice from a fictional lumber yard to ABC Company, with vendor, line items, 13% HST of $169.52 and a total of $1,473.52 CAD" style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.15);background:#fff" fetchpriority="high">
       <figcaption style="margin-top:.75rem;font-size:.85rem;text-align:center;opacity:.8">Snap it. It's in Google Drive or QuickBooks. Done. <span style="opacity:.7">(Sample invoice, fictional supplier.)</span></figcaption>
     </figure>
-    <!-- TODO (audit D1.5): swap this sample invoice for a real app screenshot of the same invoice captured in Nabbit, showing vendor, amount and HST extracted and the category suggested. Suggested alt: "Nabbit app showing a captured lumber-yard receipt with HST extracted and expense category suggested". -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin-top:1rem;width:100%">
+      <figure style="margin:0"><img src="/img/nabbit-app-capture.webp" width="520" height="449" alt="Nabbit app Capture receipt screen with Take Photo and Choose Photo/PDF options" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 24px rgba(0,0,0,.1);background:#fff"><figcaption style="margin-top:.4rem;font-size:.8rem;text-align:center;opacity:.8">1. Snap or upload the receipt</figcaption></figure>
+      <figure style="margin:0"><img src="/img/nabbit-app-extraction.webp" width="560" height="433" alt="Nabbit app showing a captured receipt with vendor, amount, date and expense category filled in" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 24px rgba(0,0,0,.1);background:#fff"><figcaption style="margin-top:.4rem;font-size:.8rem;text-align:center;opacity:.8">2. Nabbit reads vendor, amount, date and category</figcaption></figure>
+    </div>
+    <!-- TODO (audit D1.5): app crops above do not show HST. Replace the extraction crop with one showing HST extracted to fully satisfy the audit. -->
   </div>
 </section>
 
