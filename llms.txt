@@ -24,6 +24,8 @@
 - [Nabbit vs. Dext: Which Is Better for Canadian Business?](https://nabbit.ca/vs/dext): Comparing Nabbit and Dext for Canadian expense management. See how they handle GST/HST, CRA compliance, QuickBooks sync, and Canadian pricing.
 - [Nabbit vs. Expensify: Which Is Better for Canadian Teams?](https://nabbit.ca/vs/expensify): Comparing Nabbit and Expensify for Canadian businesses. GST/HST, CRA compliance, QuickBooks Canada, pricing in CAD — here's the honest breakdown.
 - [Nabbit vs. Hubdoc: Best Receipt Tool for Canada?](https://nabbit.ca/vs/hubdoc): Nabbit vs. Hubdoc for Canadian businesses. Compare GST/HST handling, CRA compliance, QuickBooks sync, pricing, and team features side by side.
+- [Nabbit vs. Shoeboxed: Which Is Better for Canadian Business?](https://nabbit.ca/vs/shoeboxed): Nabbit vs. Shoeboxed for Canadian businesses. Compare GST/HST handling, QuickBooks Online Canada sync, pricing and paper receipts side by side.
+- [Nabbit vs. Neat: Which Is Better for Canadian Business?](https://nabbit.ca/vs/neat): Nabbit vs. Neat for Canadian businesses. Compare price, GST/HST handling and QuickBooks Online Canada sync side by side.
 
 ## About
 - [The Nabbit Team: Authors of the Nabbit Guides](https://nabbit.ca/author/nabbit-team): The Nabbit Team writes the guides on this site about CRA receipt rules, GST/HST input tax credits and QuickBooks Online Canada. See what we cover.
