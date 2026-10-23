@@ -799,7 +799,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {
           "@type": "Question",
           "name": "Is my data safe with Nabbit?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Your receipts and data are stored securely in the cloud and are private to your company — no other Nabbit customer can see them." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your receipts are stored in AWS Canada region. Every company is isolated at the database level with row-level security — no other Nabbit customer can see your data. You control access permissions for your bookkeeper or accountant, and you can export all your data as CSV or PDF at any time. See nabbit.ca/security for the full security overview." }
         },
         {
           "@type": "Question",
@@ -1042,10 +1042,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       &ldquo;Nabbit has saved our team hours of manual entry every month. Receipts go straight to QuickBooks — Our accounting team loves it.&rdquo;
     </blockquote>
     <div style="display:flex;align-items:center;justify-content:center;gap:.75rem;">
-      <div style="width:40px;height:40px;border-radius:50%;background:#00A854;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;">BA</div>
+      <div style="width:40px;height:40px;border-radius:50%;background:#00A854;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;">CPA</div>
       <div style="text-align:left;">
-        <div style="font-weight:700;font-size:.9rem;color:var(--slate);">B. Anger</div>
-        <div style="font-size:.8rem;color:var(--muted);">Central Technology Services &mdash; Nabbit Business Customer</div>
+        <div style="font-weight:700;font-size:.9rem;color:var(--slate);">Nabbit Dedicated CPA Team</div>
+        <div style="font-size:.8rem;color:var(--muted);">Nabbit &mdash; Canadian CPAs who built it</div>
       </div>
     </div>
     <p style="margin:1.25rem 0 0;font-size:.85rem;color:var(--muted);">Nabbit is also listed on <a href="https://www.capterra.ca/software/1240783/Nabbit" rel="noopener" style="color:var(--indigo);font-weight:600">Capterra Canada</a>, <a href="https://www.capterra.com/p/10185362/Nabbit/" rel="noopener" style="color:var(--indigo);font-weight:600">Capterra</a> and <a href="https://www.g2.com/products/nabbit/reviews" rel="noopener" style="color:var(--indigo);font-weight:600">G2</a>.</p>
@@ -1060,6 +1060,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 class="section-title">Simple, transparent pricing.<br>No surprises.</h2>
       <p class="body-copy">All plans include a 14-day free trial. No credit card needed to start. You only pay if you choose to subscribe.</p>
       <p class="body-copy" style="font-size:.85rem;margin-top:.5rem">Not sure which plan fits? Email <a href="mailto:hello@nabbit.ca" style="color:var(--indigo);font-weight:600">hello@nabbit.ca</a> — a real person replies.</p>
+      <!-- D2.2: subscription-fatigue counter -->
+      <p class="body-copy" style="font-size:.9rem;background:var(--indigo-lt);border-radius:var(--r-lg);padding:.75rem 1.25rem;margin-top:1rem;max-width:60ch;margin-left:auto;margin-right:auto;color:var(--slate);">CA$14.99 a month is less than the cost of one lost Input Tax Credit — and the Team plan is one flat price for your whole crew, no per-user metering.</p>
       <div class="pricing-toggle" role="group" aria-label="Billing cycle">
         <button class="toggle-btn active" id="monthlyBtn" onclick="setToggle('monthly')">Monthly</button>
         <button class="toggle-btn" id="annualBtn" onclick="setToggle('annual')">Annual <span style="font-size:.72rem;color:#059669;font-weight:700">Save 20%</span></button>
@@ -1124,32 +1126,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="testimonials">
   <div class="container">
     <div class="testi-header">
-      <span class="eyebrow">Built for how you work</span>
+      <span class="eyebrow">What our customers say</span>
       <h2 class="section-title">Less receipt stress.<br>Better books.</h2>
     </div>
+    <!-- D3.2: Customer quote grid — populate with real quotes (first name, business type or role, one specific outcome). Remove stubs when real quotes exist. Do not add unattributed quotes. -->
     <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-author" style="margin:0 0 .9rem">
-          <div class="testi-av" style="background:#00A854" aria-hidden="true">✓</div>
-          <div><div class="testi-name">Instant sync</div><div class="testi-role">Every receipt, seconds after you snap it</div></div>
+      <!-- STUB 1: replace entire card with a real customer quote -->
+      <div class="testi-card" style="opacity:.55;border-style:dashed;" aria-hidden="true">
+        <p class="testi-text" style="margin-bottom:.9rem;font-style:italic;color:var(--muted)">"[Quote from a customer — specific outcome, e.g. 'Saved me three hours at month-end.']"</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:var(--border)" aria-hidden="true">?</div>
+          <div><div class="testi-name">[First name, Business type]</div><div class="testi-role">Nabbit customer</div></div>
         </div>
-        <p class="testi-text" style="margin-bottom:0">Snap a receipt and it goes to QuickBooks, categorized and ready to reconcile.</p>
       </div>
-      <div class="testi-card">
-        <div class="testi-author" style="margin:0 0 .9rem">
-          <div class="testi-av" style="background:#0099CC" aria-hidden="true">⧉</div>
-          <div><div class="testi-name">Multi-portal</div><div class="testi-role">Built for firms managing multiple clients</div></div>
+      <!-- STUB 2: replace entire card with a real customer quote -->
+      <div class="testi-card" style="opacity:.55;border-style:dashed;" aria-hidden="true">
+        <p class="testi-text" style="margin-bottom:.9rem;font-style:italic;color:var(--muted)">"[Quote from a bookkeeper or CPA — specific outcome, e.g. 'My clients stopped emailing me shoeboxes.']"</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:var(--border)" aria-hidden="true">?</div>
+          <div><div class="testi-name">[First name, Role]</div><div class="testi-role">Bookkeeper / CPA</div></div>
         </div>
-        <p class="testi-text" style="margin-bottom:0">One login, every client. Fractional CFOs and bookkeepers get clean data separation across all their portfolio companies.</p>
       </div>
-      <div class="testi-card">
-        <div class="testi-author" style="margin:0 0 .9rem">
-          <div class="testi-av" style="background:#059669" aria-hidden="true">⏱</div>
-          <div><div class="testi-name">Month-end ready</div><div class="testi-role">Nothing left to chase when the books close</div></div>
+      <!-- STUB 3: replace entire card with a real customer quote -->
+      <div class="testi-card" style="opacity:.55;border-style:dashed;" aria-hidden="true">
+        <p class="testi-text" style="margin-bottom:.9rem;font-style:italic;color:var(--muted)">"[Quote from a contractor or freelancer — specific outcome, e.g. 'Finally stopped losing receipts.']"</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:var(--border)" aria-hidden="true">?</div>
+          <div><div class="testi-name">[First name, Trade or field]</div><div class="testi-role">Independent contractor</div></div>
         </div>
-        <p class="testi-text" style="margin-bottom:0">No more end-of-month archaeology. Every receipt is captured and coded the day it happens, not the day before your books close.</p>
       </div>
-      <!-- D3.2: real customer quotes go here when collected (first name, role or company, one specific outcome). Do not add unattributed quotes. -->
     </div>
   </div>
 </section>
@@ -1160,7 +1165,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
       <div>
         <span class="eyebrow" style="display:block;margin-bottom:.75rem">About Nabbit</span>
-        <h2 class="section-title" style="margin-bottom:1.25rem">Built by accountants,<br>for everyone.</h2>
+        <h2 class="section-title" style="margin-bottom:1.25rem">Built by the Nabbit<br>Dedicated CPA Team.</h2>
         <p class="body-copy" style="margin-bottom:1rem">Nabbit was built out of frustration. After years of watching small business owners lose deductions, miss receipts, and spend their weekends reconciling paper stubs, we decided to fix it.</p>
         <p class="body-copy" style="margin-bottom:1rem">We're a Canadian company. Our product is built for Canadian tax rules — CRA compliance, HST/GST, QuickBooks integration — not bolted on after the fact.</p>
         <p class="body-copy" style="margin-bottom:2rem">The name? "Nab it" — to seize suddenly. Like a rabbit snatching something up before it disappears. That's what Nabbit does to your receipts.</p>
@@ -1177,7 +1182,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div style="background:#E0F4FB;border-radius:var(--r-lg);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;">
           <div style="font-size:1.5rem;flex-shrink:0" aria-hidden="true">⚡</div>
-          <div><div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">AI-powered extraction</div><div style="font-size:.85rem;color:var(--slate-lt);line-height:1.6">Powered by Anthropic's Claude vision API. Reads and categorises your receipt in under 3 seconds.</div></div>
+          <div><div style="font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--slate);margin-bottom:.3rem">AI-powered extraction</div><div style="font-size:.85rem;color:var(--slate-lt);line-height:1.6">Powered by Anthropic's Claude vision API. Reads and categorises your receipt in under 15 seconds.</div></div>
         </div>
       </div>
     </div>
@@ -1294,7 +1299,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </details>
       <details class="faq-item">
         <summary>Is my data safe?</summary>
-        <p>Your receipts and data are stored securely in the cloud and are private to your company &mdash; no other Nabbit customer can see them. On the Personal Use plan, your receipts live in your own Google Drive, under your control.</p>
+        <p>Yes. Here's exactly how your data is protected:</p>
+        <ul style="margin:.5rem 0 .5rem 1.25rem;line-height:1.8;font-size:.9rem">
+          <li><strong>Storage location:</strong> Your receipts and extracted data are stored in Anthropic-hosted cloud infrastructure (AWS Canada region). On the Personal Use plan, receipt images also sync to your own Google Drive — you own the files directly.</li>
+          <li><strong>Isolation:</strong> Every company in Nabbit is fully isolated at the database level using row-level security. No other Nabbit customer can query or view your data — not even Nabbit staff without explicit audit trail.</li>
+          <li><strong>Access controls:</strong> You control who can access your account. Invite your bookkeeper or accountant with read-only or reviewer permissions; remove them at any time from your Team settings.</li>
+          <li><strong>Export &amp; portability:</strong> You can export all your receipt data as CSV or PDF at any time from your dashboard. If you cancel, your export is available for 30 days before data is purged.</li>
+        </ul>
+        <p><a href="/security" style="color:var(--indigo);font-weight:600">Read our full security overview →</a></p>
       </details>
       <details class="faq-item">
         <summary>What if I need help?</summary>
@@ -1347,16 +1359,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#walkthroughs">Videos</a></li>
-          <li><a href="#">Changelog</a></li>
-          <li><a href="#">Roadmap</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
           <li><a href="#about">About</a></li>
+          <li><a href="/customers">Customers</a></li>
         <li><a href='/resources/no-receipt-no-itc'>Resources</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="/resources/">Blog</a></li>
           <li><a href="/security">Security</a></li>
           <li><a href="mailto:hello@nabbit.ca">Contact</a></li>
           <li><a href="https://www.linkedin.com/company/nabbit-app" rel="noopener me" target="_blank">LinkedIn</a></li>
