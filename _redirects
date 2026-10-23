@@ -4,6 +4,9 @@ https://www.nabbit.ca/* https://nabbit.ca/:splat 301!
 /how-it-works.html /how-it-works 301!
 /quickbooks.html /quickbooks 301!
 /nabbit-cra-landing.html /nabbit-cra-landing 301!
+/eula.html /eula 301!
+/terms /eula 301!
+/terms.html /eula 301!
 
 # HeyCatch short links (single-character paths) -> attribution
 /a /?utm_source=heycatch&utm_campaign=a 302
