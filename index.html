@@ -918,16 +918,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
       <div class="hero-visual">
-    <figure style="margin:0;width:100%">
-      <img src="/img/sample-invoice.webp" width="1000" height="686" alt="Sample supplier invoice from a fictional lumber yard to ABC Company, with vendor, line items, 13% HST of $169.52 and a total of $1,473.52 CAD" style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.15);background:#fff" fetchpriority="high">
-      <figcaption style="margin-top:.75rem;font-size:.85rem;text-align:center;opacity:.8">Snap it. It's in Google Drive or QuickBooks. Done. <span style="opacity:.7">(Sample invoice, fictional supplier.)</span></figcaption>
-    </figure>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin-top:1rem;width:100%">
-      <figure style="margin:0"><img src="/img/nabbit-app-capture.webp" width="520" height="449" alt="Nabbit app Capture receipt screen with Take Photo and Choose Photo/PDF options" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 24px rgba(0,0,0,.1);background:#fff"><figcaption style="margin-top:.4rem;font-size:.8rem;text-align:center;opacity:.8">1. Snap or upload the receipt</figcaption></figure>
-      <figure style="margin:0"><img src="/img/nabbit-app-extraction.webp" width="560" height="433" alt="Nabbit app showing a captured receipt with vendor, amount, date and expense category filled in" loading="lazy" style="display:block;width:100%;height:auto;border-radius:12px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 24px rgba(0,0,0,.1);background:#fff"><figcaption style="margin-top:.4rem;font-size:.8rem;text-align:center;opacity:.8">2. Nabbit reads vendor, amount, date and category</figcaption></figure>
-    </div>
-    <!-- TODO (audit D1.5): app crops above do not show HST. Replace the extraction crop with one showing HST extracted to fully satisfy the audit. -->
-  </div>
+          <div style="width:100%;max-width:500px;margin:0 auto;background:#fff;border:1px solid #D6E8DB;border-radius:24px;box-shadow:0 20px 60px rgba(0,168,84,.14),0 4px 16px rgba(15,26,18,.08);padding:1.75rem">
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#00A854;margin-bottom:1.4rem">How Nabbit works</div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:1.3rem">
+            <div style="position:absolute;left:21px;top:24px;bottom:24px;width:2px;background:repeating-linear-gradient(#00A854 0 6px,transparent 6px 13px);z-index:0"></div>
+            <div style="position:relative;z-index:1;display:flex;gap:1rem;align-items:flex-start">
+              <div style="flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:#00A854;box-shadow:0 0 0 5px #E8F5EE;display:flex;align-items:center;justify-content:center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              </div>
+              <div style="padding-top:2px">
+                <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.02rem;color:#0F1A12">Snap the receipt</div>
+                <div style="font-size:.9rem;color:#5A7060;line-height:1.5;margin-top:2px">A photo, PDF or screenshot, however it lands in your hands.</div>
+              </div>
+            </div>
+            <div style="position:relative;z-index:1;display:flex;gap:1rem;align-items:flex-start">
+              <div style="flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:#0099CC;box-shadow:0 0 0 5px #E0F4FB;display:flex;align-items:center;justify-content:center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15l.6 1.6L21 17l-1.4.4L19 19l-.6-1.6L17 17l1.4-.4z"/></svg>
+              </div>
+              <div style="padding-top:2px">
+                <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.02rem;color:#0F1A12">Nabbit reads it</div>
+                <div style="font-size:.9rem;color:#5A7060;line-height:1.5;margin-top:2px">Vendor, amount, date, HST and category, pulled automatically.</div>
+              </div>
+            </div>
+            <div style="position:relative;z-index:1;display:flex;gap:1rem;align-items:flex-start">
+              <div style="flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:#007A3D;box-shadow:0 0 0 5px #E8F5EE;display:flex;align-items:center;justify-content:center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+              </div>
+              <div style="padding-top:2px">
+                <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.02rem;color:#0F1A12">Synced and done</div>
+                <div style="font-size:.9rem;color:#5A7060;line-height:1.5;margin-top:2px">Straight to QuickBooks, Google Drive or SharePoint.</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:1.6rem;padding:.85rem 1rem;border-radius:14px;background:#E8F5EE;display:flex;align-items:center;gap:.6rem">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#007A3D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <div style="font-size:.82rem;color:#2D4A35;line-height:1.4"><strong style="color:#0F1A12">Done in seconds.</strong> HST and category captured, filed and CRA-ready.</div>
+          </div>
+        </div>
+        </div>
 </section>
 
 <!-- ─── PROOF STRIP ───────────────────────── --><!-- cache-bust: 2026-09-10 -->
