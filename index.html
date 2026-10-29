@@ -917,8 +917,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-      <div class="hero-visual">
-          <div style="width:100%;max-width:500px;margin:0 auto;background:#fff;border:1px solid #D6E8DB;border-radius:24px;box-shadow:0 20px 60px rgba(0,168,84,.14),0 4px 16px rgba(15,26,18,.08);padding:1.75rem">
+      <style>
+#hiw>div:nth-child(2)>div:nth-child(n+2){opacity:0;animation:hiw-in .6s ease forwards}
+#hiw>div:nth-child(2)>div:nth-child(2){animation-delay:.2s}
+#hiw>div:nth-child(2)>div:nth-child(3){animation-delay:.7s}
+#hiw>div:nth-child(2)>div:nth-child(4){animation-delay:1.2s}
+#hiw>div:nth-child(3){opacity:0;animation:hiw-in .6s ease 1.8s forwards}
+#hiw>div:nth-child(2)>div:first-child{animation:hiw-flow .9s linear infinite}
+#hiw>div:nth-child(2)>div:nth-child(n+2)>div:first-child{animation:hiw-pop 4.5s ease-in-out infinite}
+#hiw>div:nth-child(2)>div:nth-child(2)>div:first-child{animation-delay:2s}
+#hiw>div:nth-child(2)>div:nth-child(3)>div:first-child{animation-delay:3.5s}
+#hiw>div:nth-child(2)>div:nth-child(4)>div:first-child{animation-delay:5s}
+@keyframes hiw-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes hiw-flow{to{background-position:0 13px}}
+@keyframes hiw-pop{0%,30%,100%{transform:scale(1)}12%{transform:scale(1.14)}}
+@media (prefers-reduced-motion: reduce){#hiw *{animation:none!important;opacity:1!important}}
+</style>
+<div class="hero-visual">
+          <div id="hiw" style="width:100%;max-width:500px;margin:0 auto;background:#fff;border:1px solid #D6E8DB;border-radius:24px;box-shadow:0 20px 60px rgba(0,168,84,.14),0 4px 16px rgba(15,26,18,.08);padding:1.75rem">
           <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#00A854;margin-bottom:1.4rem">How Nabbit works</div>
           <div style="position:relative;display:flex;flex-direction:column;gap:1.3rem">
             <div style="position:absolute;left:21px;top:24px;bottom:24px;width:2px;background:repeating-linear-gradient(#00A854 0 6px,transparent 6px 13px);z-index:0"></div>
