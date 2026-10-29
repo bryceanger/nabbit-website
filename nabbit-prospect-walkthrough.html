@@ -488,7 +488,7 @@ function startShow() {
   setScene(0);
   const vo = document.getElementById('vo');
   vo.currentTime = 0;
-  vo.play().catch(() => {});
+  vo.play().catch(() => { vo.muted = true; vo.play().catch(() => {}); });
   rafId = requestAnimationFrame(tick);
   vo.addEventListener('ended', () => {
     cancelAnimationFrame(rafId);
