@@ -32,7 +32,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:17px;line-height:1.7}
 a{color:var(--green);text-decoration:none}a:hover{text-decoration:underline}
 .page-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-.nav-logo{font-size:1.3rem;font-weight:700;color:var(--text)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.3rem;font-weight:900;letter-spacing:-0.02em;color:#0f1a12;text-decoration:none}.nav-logo img{width:36px;height:36px;display:block}
 .btn{display:inline-block;background:var(--green);color:#fff;padding:10px 22px;border-radius:6px;font-weight:600;font-size:.95rem;text-decoration:none}
 .btn:hover{background:var(--green2);text-decoration:none}
 .btn-outline{background:transparent;border:2px solid var(--green);color:var(--green);margin-right:8px}
@@ -80,6 +80,7 @@ analytics.init({
   install: { framework: 'web', agent: 'claude-code' },
 });
 </script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@900&display=swap" rel="stylesheet">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -89,7 +90,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2KJWXMT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="page-nav">
-  <a href="/" class="nav-logo">Nabbit</a>
+  <a href="/" class="nav-logo"><img src="/logo.webp" alt="Nabbit" width="36" height="36">nabbit</a>
   <div>
     <a href="https://app.nabbit.ca" class="btn btn-outline">Login</a>
     <a href="https://app.nabbit.ca/register" class="btn">Start free trial</a>
