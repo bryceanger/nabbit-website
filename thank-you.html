@@ -50,6 +50,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       var value = planValues[planId] || 0;
 
       if (typeof window.gtag === 'function') {
+        // Google Ads enhanced conversion (AW-18423757315) + enhanced conversions
+        window.gtag('config', 'AW-18423757315', { allow_enhanced_conversions: true });
+        (function () {
+          function fireAdsConversion(ud) {
+            if (ud) window.gtag('set', 'user_data', ud);
+            window.gtag('event', 'conversion', {
+              send_to: 'AW-18423757315/jvpeCNH6_Z0dEIP0kNFE',
+              value: value,
+              currency: 'CAD',
+              transaction_id: sessionId || ('nabbit_' + Date.now()),
+            });
+          }
+          if (sessionId) {
+            fetch('https://app.nabbit.ca/api/public/get-signup-contact?session_id=' + encodeURIComponent(sessionId))
+              .then(function (r) { return r.ok ? r.json() : null; })
+              .then(function (c) { fireAdsConversion(c && c.sha256_email ? { sha256_email_address: c.sha256_email } : null); })
+              .catch(function () { fireAdsConversion(null); });
+          } else {
+            fireAdsConversion(null);
+          }
+        })();
         window.gtag('event', 'conversion', {
           send_to: 'G-B7Y36TL7QV',
           event_category: 'signup',
