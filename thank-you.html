@@ -37,14 +37,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   // (stripe-webhook / sendGa4ServerConversion) remains the authoritative
   // signal; this is a secondary client-side signal, deduped per session_id
   // so a page refresh doesn't double-fire.
+  //
+  // No-card trial flow (app.nabbit.ca/signup -> startTrial): there is no
+  // Stripe session. The app instead appends `plan` and `eh` (SHA-256 of the
+  // normalized signup email, computed in the browser; never the plain email)
+  // so Google Ads enhanced conversions can match the conversion. When `eh`
+  // is present it is used directly; the Stripe session_id lookup below stays
+  // as the fallback for the card-upfront flow.
   (function () {
     try {
       var params = new URLSearchParams(window.location.search);
       var sessionId = params.get('session_id') || '';
       var planId = params.get('plan') || 'unknown';
-      var dedupeKey = 'nabbit_ty_fired_' + sessionId;
-      if (sessionId && sessionStorage.getItem(dedupeKey)) return;
-      if (sessionId) sessionStorage.setItem(dedupeKey, '1');
+      var ehRaw = (params.get('eh') || '').toLowerCase();
+      var eh = /^[0-9a-f]{64}$/.test(ehRaw) ? ehRaw : '';
+      var dedupeId = sessionId || eh;
+      var dedupeKey = 'nabbit_ty_fired_' + dedupeId;
+      if (dedupeId && sessionStorage.getItem(dedupeKey)) return;
+      if (dedupeId) sessionStorage.setItem(dedupeKey, '1');
 
       var planValues = { personal: 7.99, payg: 14.99, value: 64.99 };
       var value = planValues[planId] || 0;
@@ -59,10 +69,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               send_to: 'AW-18423757315/jvpeCNH6_Z0dEIP0kNFE',
               value: value,
               currency: 'CAD',
-              transaction_id: sessionId || ('nabbit_' + Date.now()),
+              transaction_id: sessionId || (eh ? 'nabbit_' + eh.slice(0, 16) : 'nabbit_' + Date.now()),
             });
           }
-          if (sessionId) {
+          if (eh) {
+            fireAdsConversion({ sha256_email_address: eh });
+          } else if (sessionId) {
             fetch('https://app.nabbit.ca/api/public/get-signup-contact?session_id=' + encodeURIComponent(sessionId))
               .then(function (r) { return r.ok ? r.json() : null; })
               .then(function (c) { fireAdsConversion(c && c.sha256_email ? { sha256_email_address: c.sha256_email } : null); })
