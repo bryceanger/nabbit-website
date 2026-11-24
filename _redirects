@@ -7,6 +7,8 @@ https://www.nabbit.ca/* https://nabbit.ca/:splat 301!
 /eula.html /eula 301!
 /terms /eula 301!
 /terms.html /eula 301!
+/blog/no-receipt-no-itc /resources/no-receipt-no-itc 301!
+/blog/no-receipt-no-itc.html /resources/no-receipt-no-itc 301!
 
 # HeyCatch short links (single-character paths) -> attribution
 /a /?utm_source=heycatch&utm_campaign=a 302
